@@ -24,6 +24,8 @@ as specified in docs/05.
   confidence cap for disputed ancestors, which are exposed via `verification` instead (P9); no ruderalis
   handling at all, since autoflowers are excluded from v1 (P1).
 
+- Follow-up from T-002: docs/05 says every number is null for an unknown result, but `LineageSchema` uses `confidence: 0` with `confidence_level: none`. Align the docs/05 wording with the schema.
+
 ## Acceptance criteria
 - [ ] Every test in docs/05 "Required unit tests" is implemented and passing.
 - [ ] The fictional worked example in docs/05 reproduces exactly (50 / 70 / 60, confidences 0.97 / ≈0.955 / ≈0.713,

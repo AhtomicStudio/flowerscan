@@ -26,6 +26,8 @@ docs: [tools/vault-build/README.md, docs/04-data-model.md, docs/decisions/0003-o
 - Fixture vault in `tools/vault-build/test/fixtures/` covering: a valid tree, an unresolved link, a cycle,
   a banned tag, an unsourced tag, a duplicate alias.
 
+- Follow-up from T-002: ship breeder names (e.g. a `breeders.json` or a `breeder_name` on `StrainRecord`), because `breeder_id` alone can't be displayed. Also, `built_at` in the manifest conflicts with byte-identical builds: take it from an input (e.g. the last vault commit date) or leave it out of the content hash.
+
 ## Acceptance criteria
 - [ ] `vault:check` exits 1 on each error fixture with a readable message naming file and field.
 - [ ] `vault:build` on the valid fixture produces JSON that validates against `StrainRecord`.

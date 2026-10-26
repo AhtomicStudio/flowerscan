@@ -19,6 +19,7 @@ Installable, works offline after first visit, meets every budget in docs/10, and
 - Update flow: "New version available. Refresh" toast. Never hot-swap mid-scan.
 - Bundle size check in CI (scanner route ≤ 170 KB gz). Lighthouse CI (mobile) ≥ 90 performance.
 - Offline copy for OCR-not-yet-downloaded (docs/08).
+- Coverage gate in CI (follow-up from T-002): add `@vitest/coverage-v8` via the catalog and fail CI when `packages/core` drops below 90% line coverage (docs/10).
 
 ## Acceptance criteria
 - [ ] Airplane-mode test: barcode → result and search → result work. Note the device in the Log.

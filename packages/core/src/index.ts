@@ -1,5 +1,132 @@
 // Public API of @flowerscan/core. Anything not exported here is internal.
-// Domain modules (schema, lineage, match, scan, markdown, backup) arrive with T-002 onward.
+// Schemas follow docs/04-data-model.md exactly. Lineage, match, scan, markdown and backup logic arrive
+// with T-003 onward.
 
-/** Version of the note/record schemas described in docs/04-data-model.md. */
-export const SCHEMA_VERSION = 1;
+export { sanitizeFilename, slugify } from "./ids/id-rules";
+export { BACKUP_FORMAT, type BackupFile, BackupFileSchema } from "./schema/backup";
+export {
+  type BarcodeMemory,
+  BarcodeMemorySchema,
+  CODE_128_LEARNABLE_AFTER,
+} from "./schema/barcode-memory";
+export { type Breeder, BreederSchema } from "./schema/breeder";
+export {
+  type BuildManifest,
+  BuildManifestSchema,
+  type InlineCross,
+  InlineCrossSchema,
+  type LineageParent,
+  LineageParentSchema,
+  type StrainRecord,
+  StrainRecordSchema,
+  type StrainsFile,
+  StrainsFileSchema,
+} from "./schema/build-output";
+export {
+  NodeIdSchema,
+  SLUG_PATTERN,
+  SlugSchema,
+  UNKNOWN_PARENT,
+  WEIGHT_SUM_TOLERANCE,
+  WikilinkSchema,
+} from "./schema/common";
+export {
+  BARCODE_FORMATS,
+  BASE_SATIVA_PCTS,
+  type BarcodeFormat,
+  BarcodeFormatSchema,
+  type BaseSativaPct,
+  BaseSativaPctSchema,
+  CLASSIFICATION_LABELS,
+  type ClassificationLabel,
+  ClassificationLabelSchema,
+  CONFIDENCE_LEVELS,
+  type ConfidenceLevel,
+  ConfidenceLevelSchema,
+  DERIVATIONS,
+  type Derivation,
+  DerivationSchema,
+  FACETS,
+  type Facet,
+  FacetSchema,
+  LINEAGE_METHODS,
+  type LineageMethod,
+  LineageMethodSchema,
+  NODE_KINDS,
+  type NodeKind,
+  NodeKindSchema,
+  PACKAGE_SAYS,
+  type PackageSays,
+  PackageSaysSchema,
+  POLARITIES,
+  POTENCY_ANALYTES,
+  POTENCY_QUALIFIERS,
+  POTENCY_SOURCES,
+  POTENCY_UNITS,
+  type Polarity,
+  PolaritySchema,
+  type PotencyAnalyte,
+  PotencyAnalyteSchema,
+  type PotencyQualifier,
+  PotencyQualifierSchema,
+  type PotencySource,
+  PotencySourceSchema,
+  type PotencyUnit,
+  PotencyUnitSchema,
+  PRODUCT_FORMS,
+  type ProductForm,
+  ProductFormSchema,
+  REPORTED_TYPES,
+  RETAIL_BARCODE_FORMATS,
+  type ReportedType,
+  ReportedTypeSchema,
+  SCAN_METHODS,
+  SCAN_MODES,
+  SCHEMA_VERSION,
+  type ScanMethod,
+  ScanMethodSchema,
+  type ScanMode,
+  ScanModeSchema,
+  SEARCHABLE_KINDS,
+  type SearchableKind,
+  SearchableKindSchema,
+  SOURCE_SUPPORTS,
+  type SourceSupport,
+  SourceSupportSchema,
+  SUBLABELS,
+  type Sublabel,
+  SublabelSchema,
+  TERM_STATUSES,
+  type TermStatus,
+  TermStatusSchema,
+  THEMES,
+  type Theme,
+  ThemeSchema,
+  US_STATE_CODES,
+  type UsStateCode,
+  UsStateCodeSchema,
+  VERIFICATIONS,
+  type Verification,
+  VerificationSchema,
+} from "./schema/enums";
+export {
+  BASE_SATIVA_PCT_MIN_SOURCES,
+  type CrossNode,
+  type GeneticNode,
+  GeneticNodeSchema,
+  type LandraceNode,
+  type StrainNode,
+  type ThcRange,
+} from "./schema/genetic-node";
+export { type Lineage, LineageSchema } from "./schema/lineage";
+export {
+  EVIDENCE_PREFIX,
+  type PotencyObservation,
+  PotencyObservationSchema,
+  type PotencyReading,
+  PotencyReadingSchema,
+} from "./schema/potency";
+export { type Scan, type ScanBarcodeFormat, ScanSchema } from "./schema/scan";
+export { type Settings, SettingsSchema } from "./schema/settings";
+export { isSupported, type Source, SourceSchema } from "./schema/source";
+export { type TaxonomyTerm, TaxonomyTermSchema } from "./schema/taxonomy-term";

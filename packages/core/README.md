@@ -1,6 +1,6 @@
 # packages/core: `@flowerscan/core`
 
-> Not scaffolded yet. Created in **T-001/T-002**. This README describes the intended shape.
+> Scaffolded in **T-001**. `schema/` and `ids/` landed in **T-002**; the other modules below are still planned.
 
 Pure TypeScript domain logic shared by the web app, the vault build tool, and (later) the Obsidian plugin.
 
@@ -10,19 +10,22 @@ Pure TypeScript domain logic shared by the web app, the vault build tool, and (l
 - Every exported function is deterministic and unit-tested. Coverage ≥ 90%.
 - Allowed dependencies: `zod`, `yaml`. Add others only via an ADR.
 
-## Planned modules
+## Modules
 
 ```
 src/
-├── schema/      zod schemas + inferred types: GeneticNode, Breeder, Source, TaxonomyTerm, Scan, Lineage
+├── schema/      zod schemas + inferred types for every docs/04 entity (vault nodes, user data, build output)
+├── ids/         slugify(), sanitizeFilename() (docs/04 ID and filename rules)
 ├── lineage/     computeLineage(graph), constants (bands, reported values), ALGO_VERSION
 ├── taxonomy/    load/validate taxonomy, banned-term check
 ├── match/       normalize, trigram index, scorers, decide()
 ├── scan/        parseLabelText(), classifyQr(), classifyBarcode(), lexicon/
-├── markdown/    parseNote(), sanitizeFilename() (MVP) · toStrainNote(), toScanNote(), mergeUserNotes() (Phase 2)
+├── markdown/    parseNote() (MVP) · toStrainNote(), toScanNote(), mergeUserNotes() (Phase 2)
 ├── backup/      serializeBackup(), parseBackup(), mergeBackup() (journal backup file, docs/04)
 └── index.ts     public API (anything not exported here is internal)
 test/
+├── schema/      valid + invalid fixtures for every schema (fictional names)
+├── ids/         slugify / sanitizeFilename cases
 ├── lineage/     unit + snapshot of the seed dataset
 ├── match/       recorded OCR outputs → expected matches
 └── markdown/__golden__/

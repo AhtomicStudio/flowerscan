@@ -29,6 +29,8 @@ built only from data the founders record, ready to accept opt-in user data in Ph
 - Make sure `vault-build` and the web build never read `data/observations/` (add a test).
 - No user data: `source: user_opt_in` is rejected until the Phase 2 opt-in exists.
 
+- Follow-up from T-002: add a check that one observation never mixes units within the same analyte (not yet in `PotencyObservationSchema`).
+
 ## Acceptance criteria
 - [ ] Fixture observations validate. Bad ones (unknown strain, mixed units, `user_opt_in`) fail with clear messages.
 - [ ] The report groups by analyte and never combines different analytes.

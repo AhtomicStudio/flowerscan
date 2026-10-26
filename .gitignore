@@ -10,6 +10,7 @@ apps/web/public/data/
 
 # test output
 coverage/
+.vitest/
 apps/web/test-results/
 apps/web/playwright-report/
 apps/web/blob-report/

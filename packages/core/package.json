@@ -10,6 +10,9 @@
     "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.test.json && node scripts/assert-purity.mjs",
     "test": "vitest run"
   },
+  "dependencies": {
+    "zod": "catalog:"
+  },
   "devDependencies": {
     "typescript": "catalog:",
     "vitest": "catalog:"
