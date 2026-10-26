@@ -1,0 +1,5 @@
+{
+  // Tests may use test-runner types. Source purity is checked separately by tsconfig.json.
+  "extends": "./tsconfig.json",
+  "include": ["src", "test", "vitest.config.ts"]
+}

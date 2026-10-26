@@ -1,0 +1,10 @@
+{
+  // Source only. No DOM lib and no @types/* globals: core must stay pure (ADR-0002).
+  // scripts/assert-purity.mjs proves that DOM and Node globals fail to compile here.
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["ES2023"],
+    "types": []
+  },
+  "include": ["src"]
+}

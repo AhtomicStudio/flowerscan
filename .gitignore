@@ -1,0 +1,32 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+*.tsbuildinfo
+
+# generated strain data (tools/vault-build writes here)
+apps/web/public/data/
+
+# test output
+coverage/
+apps/web/test-results/
+apps/web/playwright-report/
+apps/web/blob-report/
+
+# Obsidian workspace state (curators' personal settings)
+data/vault/.obsidian/
+data/vault/.trash/
+
+# env & secrets
+.env
+.env.*
+!.env.example
+
+# OS / editors
+.DS_Store
+Thumbs.db
+*.log
+.vscode/*
+!.vscode/extensions.json
+.idea/

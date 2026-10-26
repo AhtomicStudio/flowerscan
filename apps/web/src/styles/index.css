@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+/* Placeholder base. Real design tokens arrive in T-004 (src/styles/tokens.css). */
+body {
+  background-color: #0b0d0c;
+  color: #eef3ef;
+}

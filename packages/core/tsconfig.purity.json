@@ -1,0 +1,6 @@
+{
+  // Compiles a fixture that touches DOM and Node globals with core's exact settings.
+  // It MUST fail; scripts/assert-purity.mjs checks that it does.
+  "extends": "./tsconfig.json",
+  "include": ["scripts/purity-fixture.ts"]
+}
