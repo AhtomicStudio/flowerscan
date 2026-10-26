@@ -47,12 +47,24 @@ Everything from **Extract** onward is pure `core` code and is unit-tested with r
 ### From OCR text: `parseLabelText(lines) → LabelFacts`
 - **Strip noise lines/tokens** using lexicons in `core/scan/lexicon/`:
   - units and quantities: `3.5g`, `1/8 oz`, `28g`, `net wt`, `mg`
-  - potency patterns: `THC 24.1%`, `Total THC`, `THCa`, `CBD <1%`, which are **captured**, then stripped
-  - category words: `indica`, `sativa`, `hybrid`, which are **captured as `package_says`**, then stripped
-  - product forms: `flower`, `pre-roll`, `pre-rolls`, `cart`, `vape`, `live resin`, `rosin`, `badder`…
-  - compliance boilerplate: `government warning`, `keep out of reach of children`, `for use only by adults 21`…
-  - known brand names (a list we grow over time): **captured as `brand`**, then stripped
-  - dates, lot/batch numbers, license numbers, METRC-style tag IDs
+  - potency patterns: `THC 24.1%`, `Total THC`, `THCa`, `THC-A`, `Δ9-THC`, `Total Cannabinoids`, `CBD <1%`,
+    `ND`, `<LOQ`, `241 mg/g`, which are **captured**, then stripped. Labels often print THC, THCa, and Total THC
+    side by side; keep what was printed and don't compute totals (basis field: domain review P2).
+  - category words: `indica`, `sativa`, `hybrid`, plus variants such as `indica-dominant`, `sativa hybrid`,
+    `hybrid (i)`, and single letters **only** in brackets (`(I)`, `(S)`, `(H)`). These are **captured as
+    `package_says`**, then stripped. (The sublabel is currently lost: domain review P3.)
+  - product forms: `flower`, `smalls`, `shake`, `pre-roll`, `pre-rolls`, `joint`, `blunt`, `cart`, `pod`,
+    `disposable`, `vape`, `live resin`, `rosin`, `badder`… Careful: some double as strain tokens (`hash` in
+    Hash Plant). See domain review P6.
+  - compliance boilerplate: state warning blocks, e.g. `government warning`, `schedule i controlled substance`,
+    `keep out of reach of children`, `contains marijuana`, `may be habit forming`, `poison control`,
+    `1-800-222-1222`, `for use only by persons 21`. Include the spelling `marihuana` (Michigan).
+  - known brand names (a list we grow over time): **captured as `brand`**, then stripped. Some brands are also
+    strain tokens (`Cookies`, `Runtz`); don't strip those inside a longer strain-name match.
+  - dates (`PKG: 02/23/19`), lot/batch/harvest-batch numbers, license numbers (e.g. CA `C11-0000512-LIC`,
+    `CCL22-0001771`; MI `AU-R-000524`; WA 9-digit UBI), and track-and-trace IDs (Metrc package UIDs are 24
+    characters and have been observed to start with `1A4`). Full lexicon proposals with sources:
+    [research/2026-10-26-domain-review.md §4](research/2026-10-26-domain-review.md#4-label-parser-lexicon-additions-for-t-011).
 - **Candidate generation:** from each remaining line, all contiguous 1–5 token n-grams, plus a
   cross-line join of adjacent large lines (names wrap: "BLUE / DREAM").
 - Output: `{ candidates: [{ text, weight }], package_says, thc_pct, cbd_pct, brand, product_form }`.
@@ -61,6 +73,10 @@ Everything from **Extract** onward is pure `core` code and is unit-tested with r
 ### From QR: `classifyQr(payload) → QrFacts`
 - **Our deep link** (`https://<our-domain>/s/<strain-id>`) → direct `strain_id`, no matching needed.
 - **Lab/COA URL** (domain list grows over time) → `{ kind: "coa", url }`. Phase 2: parse known formats.
+  New York requires a COA QR or barcode on every package.
+- **Track-and-trace Retail ID** (e.g. Metrc Retail ID, a serialized per-unit QR; required on every unit in NY
+  since 2026) → `{ kind: "traceability", url }`. Like a COA, it's **never** a strain decision. Reading the product
+  name from its landing page would need the network and an explicit opt-in (Phase 2 at the earliest).
 - **Other URL** → slug tokens from the path (`/products/blue-dream-3-5g` → "blue dream") become candidates.
 - **Plain text** → treated like OCR text.
 
@@ -68,16 +84,28 @@ Everything from **Extract** onward is pure `core` code and is unit-tested with r
 - Validate check digits for UPC/EAN. Reject invalid values (they were misreads).
 - Look up local barcode memory → `strain_id` if known. Otherwise mark it "unknown barcode" and offer
   text scan or search. Once the user confirms a strain, remember the mapping.
+- Note: a Code 128 on a cannabis label is often a **per-package track-and-trace UID** (states require the UID on
+  each unit's label) or a store's own POS sticker, not a product code. A UID never repeats across purchases, so
+  remembering it doesn't help. Whether to skip learning those values is domain review P13.
 
 ## 4. Normalize (core/match/normalize)
 
 Applied identically to strain names/aliases at index time and to candidates at query time:
 - Unicode NFKD, strip diacritics, lowercase.
 - `#4` → `4`, `&` → `and`, `×` / ` x ` (cross notation) → space.
+  - ⚠️ **Open (domain review P4):** folding cross notation into a space lets `Wedding Cake x Gelato 33`
+    fuzzy-match one parent strongly, which is a false-accept risk. The proposal keeps it as a marker token and
+    never auto-accepts a single parent. Don't confuse it with quantity "x" (`5 x 0.5g`, `1x1g`).
+  - Number tokens are part of a strain's identity (`Gorilla Glue #4` ≠ `#5`, `Gelato #33` ≠ `#41`). Number
+    handling in scoring is domain review P5.
 - Collapse punctuation and whitespace.
 - OCR confusion folding for **scoring only** (a secondary key, not the display text): `0↔o`, `1↔l↔i`,
   `5↔s`, `8↔b`, `rn↔m`, `vv↔w`.
-- Keep a list of meaningful short tokens that must not be dropped: `og`, `gg`, `gsc`, `bx`, `s1`, `f1`.
+- Keep a list of meaningful short tokens that must not be dropped: `og`, `gg`, `gsc`, `gmo`, `mac`, `gdp`,
+  `nl`, `ak`, `sfv`, `bx`, `s1`, `f1`, `ibl`, and single-letter cut suffixes after a name (`chem d`). A candidate
+  made only of a generic token (`og`, `kush`, `haze`, `glue`, `cookies`, `z`) should not auto-accept (verify
+  with the T-008 tests and tune in T-012). Naming test cases
+  for T-008: [research/2026-10-26-domain-review.md §2.4](research/2026-10-26-domain-review.md#24-naming-test-cases-for-t-008--30).
 
 ## 5. Match (core/match)
 

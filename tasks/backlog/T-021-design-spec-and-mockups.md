@@ -15,6 +15,13 @@ MVP screens, meeting the docs/08 quality bar and reviewed by the founders before
 
 ## Requirements
 - Read the T-020 research first, and apply its top patterns where they fit.
+- Apply the T-020 corrections to the docs/08 quality bar (see the T-020 Log): reduced motion is WCAG AAA
+  (keep the rule, fix the label), target spacing ≥ 12 px, the updated PWA criteria (iOS 26, Lighthouse), and the
+  missing AA items (2.5.7 dragging alternatives: sheets need a close button, plus 2.4.11, 4.1.3, 1.3.4, 1.4.10, 1.4.12).
+- Design the states the T-024 test plan found unspecified (docs/testing/test-plan.md "coverage gaps"):
+  no camera / camera in use / API missing, the age-gate [Leave] destination, unknown barcode, "lineage disputed",
+  UPC and QR both in view, OCR failure or slowness, storage full or unavailable.
+- Follow the domain-review copy guidance (open-questions P8, P14): "lineage estimate", the package-says rule.
 - `docs/design/flows.md`: the first-run, scan → result, close call, no match, permission denied, and offline flows.
 - `docs/design/screens/*.md`: one spec per screen (age gate, scanner, result sheet, "Which one?", no match,
   search, journal list/detail, settings, about). Each covers layout, hierarchy, every state, copy draft (hedged,

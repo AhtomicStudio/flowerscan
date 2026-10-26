@@ -2,8 +2,8 @@
 id: T-023
 title: Brand name shortlist with availability checks
 milestone: M0
-status: backlog
-owner: marketing (drafts) → Roy (decides)
+status: review
+owner: marketing
 depends_on: []
 touches: [docs/brand/drafts/]
 docs: [docs/12-naming.md, docs/13-creative-brief.md, docs/09-compliance-and-privacy.md]
@@ -21,8 +21,8 @@ Give Roy a short, checked list of name options so he can pick the brand name (op
 - Rank a top 5 with rationale.
 
 ## Acceptance criteria
-- [ ] `docs/brand/drafts/<date>-name-shortlist.md` exists with the checks documented.
-- [ ] No name is called "available" without the method stated.
+- [x] `docs/brand/drafts/<date>-name-shortlist.md` exists with the checks documented.
+- [x] No name is called "available" without the method stated.
 - [ ] Roy's decision recorded in docs/open-questions.md (Q11) when he makes it.
 
 ## Out of scope

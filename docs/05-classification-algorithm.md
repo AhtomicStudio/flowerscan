@@ -3,6 +3,18 @@
 Implemented as pure functions in `packages/core/src/lineage/`. Deterministic: the same graph always gives
 the same output. `ALGO_VERSION = 1`. Bump it whenever the output for any input can change.
 
+## What the number means (read before writing copy)
+
+`sativa_pct` is **an average of how a strain's ancestors are classified**, carried down the family tree to
+curated landrace values (or to sourced `reported_type` where the tree ends). It is **not** a measured share of
+"sativa DNA", and it does not predict effects.
+- The market terms "Sativa" and "Indica" are vernacular. Research finds that commercial "sativa" and "indica"
+  samples didn't differ genome-wide, and that the labels tracked a few aroma (terpene) genes instead (Watts et al.
+  2021). Reported ancestry correlates only moderately with genetic structure (r² = 0.36, Sawler et al. 2015).
+- So the output is a documented, explainable **estimate**. Copy says "lineage estimate" or "family tree leans…",
+  never "68% sativa genetics". Sources and discussion:
+  [research/2026-10-26-domain-review.md §1](research/2026-10-26-domain-review.md#1-lineage-model-docs05).
+
 ## Inputs
 
 A graph of genetic nodes (see [04-data-model.md](04-data-model.md)): each node has `parents`
@@ -90,9 +102,20 @@ If `value` is null: `label = unknown` and every number is null.
   `X = A × (A × B)` gives `0.75·A + 0.25·B`.
 - **Selections, phenos, cuts, S1s** have one parent with weight 1.0, and so inherit the parent's value
   with one generation of decay.
+  - *Modeling note (data curation, no algorithm change):* an **S1** is a real new seed generation. A **cut** is a
+    clone, the same plant as its source. A **numbered pheno** (`Gelato #33`) is a sibling selected from the seed
+    population, so when its parents are sourced, give it **the seed line's parents** rather than the seed-line
+    name. Whether cuts should skip the decay step is open (domain review P7).
 - **Three-way crosses** must go through a `cross` node (`(A × B) × C`) or explicit `parent_weights`.
+- **Reciprocal crosses** (`A × B` vs. `B × A`) give the same value. Keep the parent order the source uses.
+- **Folklore or undisclosed lineages** (e.g. Haze, Chemdawg) are common among foundational strains. Don't pick
+  one story or invent weights to complete a tree. Use `"unknown"` parents or `verification: disputed` per the
+  sourcing policy in [04](04-data-model.md#data-sourcing--licensing-policy). Expect many popular strains to come
+  out `partial`.
 - **Ruderalis/autoflower** genetics are out of scope for v1. Treat ruderalis landraces as
   `base_sativa_pct: 50` with a note, and flag them in the build report. Revisit in v2.
+  - ⚠️ **Open (domain review P1):** a fixed 50 is an invented value and conflicts with AGENTS.md non-negotiable 2
+    (no default 50/50). The proposal is to return `null` (unknown) for ruderalis instead. Decide before T-005.
 - **Traced vs. reported disagreement:** when `method` is `traced` or `partial` and the node has a
   `reported_type`, the UI may show "Breeder says: Indica-dominant". We never average the two silently.
 - Rounding happens only at the end. Intermediate values stay floats.

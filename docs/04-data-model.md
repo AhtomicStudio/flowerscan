@@ -30,7 +30,7 @@ Every node in the family tree is one note in the vault.
 | `id` | slug string | ✔ | Lowercase kebab, **immutable** once published. See ID rules. |
 | `schema_version` | int | ✔ | Currently `1`. |
 | `name` | string | ✔ | Display name exactly as commonly written, e.g. `Gorilla Glue #4`. |
-| `aliases` | string[] | | Native Obsidian property. Abbreviations, old names, common misspellings: `["GG4", "Original Glue"]`. Used by the matcher. |
+| `aliases` | string[] | | Native Obsidian property. Other names for **the same plant**: abbreviations, renames (trademark or regulator), nicknames, common misspellings: `["GG4", "Original Glue"]`. Used by the matcher. **Not** for sibling phenos or other cuts (`Chem 91` is not an alias of `Chemdawg`; `Gelato #33` is not an alias of `Gelato`), and not for names used inconsistently across markets. Those stay separate nodes or go to "Which one?". |
 | `parents` | (wikilink \| `"unknown"`)[] | ✔ (may be `[]` for landraces) | e.g. `["[[Strain A]]", "[[Strain B]]"]`. Use `"unknown"` for an undisclosed parent. One parent = a selection/pheno/S1. |
 | `parent_weights` | number[] | | Same length as `parents`, sums to 1. Omit for equal weights. |
 | `reported_type` | `indica \| indica-dominant \| balanced \| sativa-dominant \| sativa \| unknown` | ✔ | What the breeder or reliable sources *say*. Used when lineage is incomplete, and shown for comparison. |
@@ -93,7 +93,8 @@ See [09-compliance-and-privacy.md](09-compliance-and-privacy.md).
   depend on it). On a collision, add the breeder slug: `blue-dream-<breeder>`.
 - Vault filename: `name` with Obsidian-unsafe characters removed (`\ / : * ? " < > | # ^ [ ]`),
   e.g. `Gorilla Glue 4.md`, and the exact name kept in `name` and `aliases`.
-- Cross notes: `Strain A x Strain B.md`, `kind: cross`.
+- Cross notes: `Strain A x Strain B.md`, `kind: cross`. Keep the parent order the source gives (by
+  convention the mother, or seed parent, comes first). Don't reorder alphabetically.
 
 ---
 

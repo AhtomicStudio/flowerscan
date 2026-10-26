@@ -13,6 +13,9 @@ tasks/
 ## Lifecycle
 1. **Pick** a task in `backlog/` whose `depends_on` tasks are all in `done/`.
 2. **Claim** it: move the file to `active/`, set `status: active` and `owner: <you / agent role>`.
+   Roles without shell access (researcher, cannabis-expert, marketing) write the file into `active/` and
+   leave the backlog copy for the coordinating session to delete.
+   When human sign-off is still needed, finish with `status: review` and leave the file in `active/`.
 3. **Work** within `touches:`. If you need to touch other paths, update `touches` and note why in the log.
 4. **Finish:** check every acceptance box, meet the Definition of Done
    ([10-quality-and-testing.md](../docs/10-quality-and-testing.md#definition-of-done-every-task)), append to

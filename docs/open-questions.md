@@ -11,6 +11,28 @@ Record each answer here with a date, and write an ADR if it affects architecture
 | Q10 | **Legal review before public launch: who, and when?** Not covered by the small monthly budget (Q9). | T-019 | Required before public launch; not before a private beta |
 | Q11 | **Final brand name and visual identity** (Roy). See [12-naming.md](12-naming.md) and [13-creative-brief.md](13-creative-brief.md). | T-004 final tokens, T-017 copy, T-019 domain | Build under "FlowerScan" with swappable tokens |
 
+## Domain proposals from T-022 (pending tech-lead / founder decision)
+
+From the cannabis domain review ([research/2026-10-26-domain-review.md §6](research/2026-10-26-domain-review.md#6-proposals-needing-a-decision)).
+Recommended default: **accept all.** Each one makes the product more honest or prevents a false accept.
+
+| # | Proposal (short) | Blocks |
+| --- | --- | --- |
+| P1 | Ruderalis has no default 50: return unknown (or exclude autoflowers in v1) | T-005, T-007 |
+| P2 | Scan stores `thc_basis` (total / thca / delta9 / unspecified), as printed, never computed | **T-002** |
+| P3 | Keep the full package label ("Indica-dominant hybrid"), not just the indica/sativa/hybrid word | **T-002**, T-011 |
+| P4 | "A x B" cross labels never auto-accept a single parent | T-008, T-007 |
+| P5 | Numbers are identity: `#4` ≠ `#5`. A mismatch blocks auto-accept | T-008 |
+| P6 | Match before stripping lexicon words (so Cookies, Runtz, Hash Plant survive) | T-011 |
+| P7 | Cuts/clones get no generation decay; numbered phenos take the seed line's parents | T-005, T-007 |
+| P8 | "Package says" callout only when the *direction* differs; "lineage estimate, not a lab test" copy | T-013, docs/08 |
+| P9 | Confidence capped at medium when any ancestor is disputed | T-005 |
+| P10 | Landrace values: coarse fixed scale, written rubric, two sources each | T-007 |
+| P11 | Golden set covers CA, MI, NY, WA, CO labels plus one hemp THCa package | T-012 |
+| P12 | Legal review (Q10) to cover youth-appeal risk of candy-like strain names in the UI | T-019 |
+| P13 | Don't learn barcode memory for track-and-trace UIDs | T-010, T-015 |
+| P14 | Result copy: "We match the name on the package. We can't confirm what's inside" | T-013 |
+
 ## Answered (2026-10-25)
 
 | # | Question | Answer | Effect on the plan |
