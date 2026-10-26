@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<title>FlowerScan clickable mockup (placeholder tokens, fictional data)</title>
+<!-- Mockup only: production self-hosts fonts (docs/design/tokens-proposal.md, "Fonts must be self-hosted"). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   PLACEHOLDER TOKENS (docs/design/tokens-proposal.md). Roy's identity replaces these values (Q11).
+   ========================================================================== */
+:root {
+  --font-display: "Archivo", "Arial Narrow", "Roboto Condensed", system-ui, sans-serif;
+  --font-ui: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --text-display: 2.75rem; --text-title: 1.625rem; --text-headline: 1.25rem;
+  --text-body: 1.0625rem; --text-footnote: .9375rem; --text-caption: .8125rem;
+  --radius-sm: 8px; --radius-md: 14px; --radius-lg: 24px; --radius-pill: 999px;
+  --size-target: 48px; --size-shutter: 76px; --tabbar: 64px;
+  --safe-top: env(safe-area-inset-top, 0px); --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --motion-instant: 100ms; --motion-fast: 180ms; --motion-standard: 260ms;
+  --ease-out: cubic-bezier(.2,.8,.2,1); --ease-spring: cubic-bezier(.16,1.1,.3,1); --ease-snap: cubic-bezier(.2,.9,.3,1.2);
+  --color-class-indica: #A88BFF; --color-class-hybrid: #3EDB7A; --color-class-sativa: #FFB547; --color-class-unknown: #A3ACA7;
+  --color-on-class: #0B0D0C;
+  --toast-bg: #262C29; --toast-text: #F1F4F2; --toast-action: #5CE1FF;
+}
+:root, [data-theme="dark"], .dark-scope {
+  --color-bg: #0B0D0C; --color-surface-1: #141816; --color-surface-2: #1C211F; --color-surface-3: #262C29;
+  --color-border: #39413D; --color-border-strong: #6B746F;
+  --color-text: #F1F4F2; --color-text-2: #B4BDB8; --color-text-3: #8C9690;
+  --color-accent: #5CE1FF; --color-on-accent: #04161B; --color-accent-text: #5CE1FF; --color-accent-tint: #1B2C2D;
+  --color-danger: #FF6B5E; --color-on-danger: #0B0D0C;
+  --color-class-indica-ink: #A88BFF; --color-class-hybrid-ink: #3EDB7A; --color-class-sativa-ink: #FFB547; --color-class-unknown-ink: #A3ACA7;
+  --track-outline: transparent;
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --color-bg: #F5F7F6; --color-surface-1: #FFFFFF; --color-surface-2: #EEF1EF; --color-surface-3: #E2E6E4;
+  --color-border: #D3D9D5; --color-border-strong: #7C8681;
+  --color-text: #101412; --color-text-2: #4A534E; --color-text-3: #5F6964;
+  --color-accent: #006E87; --color-on-accent: #FFFFFF; --color-accent-text: #006E87; --color-accent-tint: #EBF3F5;
+  --color-danger: #B42318; --color-on-danger: #FFFFFF;
+  --color-class-indica-ink: #6A48E0; --color-class-hybrid-ink: #17733D; --color-class-sativa-ink: #9A5A00; --color-class-unknown-ink: #5F6964;
+  --track-outline: #7C8681;
+  color-scheme: light;
+}
+.cls-indica { --cls: var(--color-class-indica); --cls-ink: var(--color-class-indica-ink); }
+.cls-hybrid { --cls: var(--color-class-hybrid); --cls-ink: var(--color-class-hybrid-ink); }
+.cls-sativa { --cls: var(--color-class-sativa); --cls-ink: var(--color-class-sativa-ink); }
+.cls-unknown { --cls: var(--color-class-unknown); --cls-ink: var(--color-class-unknown-ink); }
+
+/* ========================================================================== Base */
+* { box-sizing: border-box; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; }
+body { margin: 0; font-family: var(--font-ui); font-size: var(--text-body); line-height: 1.5; background: #050606; color: var(--color-text); -webkit-font-smoothing: antialiased; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; background: none; border: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+a { color: var(--color-accent-text); }
+h1, h2, h3, p { margin: 0; }
+.sr-only { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.display { font-family: var(--font-display); font-stretch: 75%; font-weight: 800; letter-spacing: -.005em; }
+.num { font-variant-numeric: tabular-nums; }
+.ic { width: 24px; height: 24px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.ic.sm { width: 18px; height: 18px; } .ic.lg { width: 36px; height: 36px; stroke-width: 2; } .ic.xl { width: 48px; height: 48px; stroke-width: 1.5; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; border-radius: 6px; }
+.hero :focus-visible { outline-color: var(--color-on-class); }
+/* Headings receive focus programmatically (sheet open, route change) for screen readers; they aren't controls, so no ring. */
+h1[tabindex="-1"]:focus-visible, h2[tabindex="-1"]:focus-visible { outline: none; }
+
+/* Device frame: full screen on phones, a 390 x 844 frame on desktop */
+#device { position: fixed; inset: 0; overflow: hidden; background: var(--color-bg); }
+@media (min-width: 560px) {
+  body { min-height: 100vh; display: grid; place-items: center; background: radial-gradient(circle at 30% 20%, #1a201d, #050606 70%); }
+  #device { position: relative; inset: auto; width: 390px; height: 844px; border-radius: 48px; box-shadow: 0 0 0 10px #1b1f1d, 0 0 0 11px #333, 0 40px 80px rgba(0,0,0,.6); }
+}
+
+.screen { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; background: var(--color-bg); color: var(--color-text); padding: calc(var(--safe-top) + 20px) 20px calc(var(--tabbar) + var(--safe-bottom) + 32px); scroll-padding-bottom: calc(var(--tabbar) + 24px); }
+.screen.no-tabs { padding-bottom: calc(var(--safe-bottom) + 24px); }
+.screen.flush { padding-left: 0; padding-right: 0; }
+.page-title { font-size: var(--text-title); line-height: 1.15; margin: 12px 0 4px; }
+.caption { font-size: var(--text-caption); line-height: 1.4; color: var(--color-text-3); font-weight: 500; }
+.foot { font-size: var(--text-footnote); line-height: 1.45; color: var(--color-text-2); }
+.section-h { font-size: var(--text-caption); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--color-text-3); margin: 28px 0 8px; }
+.appbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: -8px -8px 8px; min-height: 48px; }
+
+/* Buttons */
+.btn { min-height: 52px; padding: 0 20px; border-radius: var(--radius-md); display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600; font-size: var(--text-body); line-height: 1.2; text-align: center; transition: transform var(--motion-instant) var(--ease-out), filter var(--motion-instant); }
+.btn:active { transform: scale(.97); filter: brightness(.9); }
+.btn.primary { background: var(--color-accent); color: var(--color-on-accent); }
+.btn.secondary { background: var(--color-surface-2); color: var(--color-text); box-shadow: inset 0 0 0 1px var(--color-border-strong); }
+.btn.tertiary { min-height: 48px; padding: 0 4px; color: var(--color-accent-text); }
+.btn.danger { background: var(--color-danger); color: var(--color-on-danger); }
+.btn.block { width: 100%; }
+.btn-row { display: flex; gap: 12px; } .btn-row > .btn { flex: 1; }
+.btn-stack { display: grid; gap: 12px; }
+.icon-btn { width: 48px; height: 48px; border-radius: 50%; display: inline-grid; place-items: center; flex: none; transition: transform var(--motion-instant); }
+.icon-btn:active { transform: scale(.92); }
+.linkish { color: var(--color-accent-text); font-weight: 600; min-height: 48px; display: inline-flex; align-items: center; gap: 4px; }
+
+/* Tab bar */
+.tabbar { position: absolute; left: 0; right: 0; bottom: 0; height: calc(var(--tabbar) + var(--safe-bottom)); padding-bottom: var(--safe-bottom); display: flex; background: var(--color-surface-1); border-top: 1px solid var(--color-border); z-index: 5; }
+.dark-scope .tabbar { background: var(--color-bg); }
+.tab { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-decoration: none; color: var(--color-text-2); font-size: var(--text-caption); font-weight: 500; position: relative; min-width: 48px; }
+.tab[aria-current="page"] { color: var(--color-accent-text); font-weight: 700; }
+.tab[aria-current="page"]::before { content: ""; position: absolute; top: 4px; width: 32px; height: 4px; border-radius: 2px; background: currentColor; }
+
+/* ========================================================================== Scanner (always dark) */
+.scanner { padding: 0; overflow: hidden; background: #000; }
+.feed { position: absolute; inset: 0; background: radial-gradient(120% 70% at 50% 35%, #4a463d 0%, #26241f 45%, #0d0c0a 100%); transition: filter .2s; }
+.feed::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, rgba(255,255,255,.015) 0 2px, transparent 2px 9px); pointer-events: none; }
+.feed.frozen { filter: saturate(.7) brightness(.85); }
+.feed.off { background: #050606; }
+.feed.off .pkg { display: none; }
+.flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; animation: flash .25s ease-out; }
+@keyframes flash { 0% { opacity: .08 } 100% { opacity: 0 } }
+.pkg { position: absolute; left: 50%; top: 18%; width: 74%; height: 44%; transform: translateX(-50%) rotate(-2.5deg); background: linear-gradient(160deg, #e9e4d8, #cfc8b7); border-radius: 14px; box-shadow: 0 30px 60px rgba(0,0,0,.6); color: #23211c; padding: 18px 18px; font-family: var(--font-ui); }
+.pkg-label small { display: block; font-size: 10px; letter-spacing: .2em; font-weight: 700; opacity: .6; }
+.pkg-label b { display: block; font-family: var(--font-display); font-stretch: 85%; font-weight: 800; font-size: 34px; line-height: 1; margin: 6px 0 4px; letter-spacing: .02em; }
+.pkg-label span { display: block; font-size: 12px; font-weight: 600; letter-spacing: .08em; }
+.pkg-claim { display: inline-block !important; margin-top: 8px; border: 1.5px solid #23211c; border-radius: 4px; padding: 1px 6px; font-size: 11px !important; }
+.pkg-warn { position: absolute; left: 18px; right: 110px; bottom: 16px; font-size: 7px; line-height: 1.3; opacity: .55; letter-spacing: .02em; }
+.pkg-barcode { position: absolute; right: 16px; bottom: 14px; width: 86px; height: 58px; background: #fff; border-radius: 3px; padding: 5px 6px 2px; display: flex; flex-direction: column; gap: 2px; }
+.pkg-barcode i { flex: 1; background: repeating-linear-gradient(90deg, #111 0 2px, #fff 2px 3px, #111 3px 4px, #fff 4px 6px, #111 6px 9px, #fff 9px 10px); }
+.pkg-barcode span { font-size: 7px; color: #111; text-align: center; letter-spacing: .1em; }
+.topbar { position: absolute; left: 0; right: 0; top: 0; padding: calc(var(--safe-top) + 8px) 12px 28px 20px; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(rgba(0,0,0,.6), transparent); color: #fff; z-index: 2; }
+.wordmark { font-family: var(--font-display); font-stretch: 80%; font-weight: 800; font-size: 1.25rem; letter-spacing: .01em; }
+.torch[aria-pressed="true"] { background: #fff; color: #0B0D0C; }
+.reticle { position: absolute; left: 10%; width: 80%; top: 21%; height: 26%; transition: all var(--motion-fast) var(--ease-snap); z-index: 1; pointer-events: none; }
+.reticle i { position: absolute; width: 34px; height: 34px; border: 0 solid #fff; filter: drop-shadow(0 0 1px #0B0D0C) drop-shadow(0 0 0 #0B0D0C); }
+.reticle i.tl { left: 0; top: 0; border-left-width: 3px; border-top-width: 3px; border-top-left-radius: 16px; }
+.reticle i.tr { right: 0; top: 0; border-right-width: 3px; border-top-width: 3px; border-top-right-radius: 16px; }
+.reticle i.bl { left: 0; bottom: 0; border-left-width: 3px; border-bottom-width: 3px; border-bottom-left-radius: 16px; }
+.reticle i.br { right: 0; bottom: 0; border-right-width: 3px; border-bottom-width: 3px; border-bottom-right-radius: 16px; }
+.reticle.locked i { border-color: #5CE1FF; width: 22px; height: 22px; }
+.reticle.locked { animation: pulse .5s .2s ease-out; }
+@keyframes pulse { 50% { transform: scale(1.06); } }
+.shimmer { position: absolute; inset: 6px; border-radius: 12px; overflow: hidden; }
+.shimmer::before { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -40%; background: linear-gradient(90deg, transparent, rgba(92,225,255,.35), transparent); animation: sweep 1.2s linear 4; }
+@keyframes sweep { to { left: 100%; } }
+.hint { position: absolute; left: 50%; top: calc(21% + 26% + 16px); transform: translateX(-50%); width: max-content; max-width: 88%; background: rgba(0,0,0,.6); color: #fff; border-radius: var(--radius-pill); padding: 8px 16px; font-size: var(--text-footnote); font-weight: 500; text-align: center; z-index: 2; }
+.hint .btn-row { margin-top: 8px; }
+.hint .btn { min-height: 44px; font-size: var(--text-footnote); }
+.hint.box { border-radius: 18px; padding: 12px 14px; }
+.progress { height: 6px; border-radius: 3px; background: rgba(255,255,255,.2); margin-top: 8px; overflow: hidden; }
+.progress > b { display: block; height: 100%; width: 0; background: #5CE1FF; transition: width 2.4s linear; }
+.scan-bottom { position: absolute; left: 0; right: 0; bottom: calc(var(--tabbar) + var(--safe-bottom)); padding: 40px 16px 14px; background: linear-gradient(transparent, rgba(0,0,0,.72) 35%); z-index: 2; color: #fff; }
+.modes { display: flex; justify-content: center; margin: 0 auto 16px; background: rgba(0,0,0,.6); border-radius: var(--radius-pill); padding: 4px; width: max-content; max-width: 100%; }
+.mode { position: relative; min-height: 40px; min-width: 64px; padding: 0 12px; border-radius: var(--radius-pill); font-size: var(--text-footnote); font-weight: 600; color: #F1F4F2; }
+.mode::after { content: ""; position: absolute; inset: -4px 0; } /* 40 px pill + 4 px each side = 48 px hit area */
+.mode[aria-checked="true"] { background: #F1F4F2; color: #0B0D0C; }
+.controls { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+.side { justify-self: center; display: flex; flex-direction: column; align-items: center; gap: 4px; font-size: var(--text-caption); font-weight: 600; color: #fff; min-width: 64px; }
+.side .disc { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: rgba(0,0,0,.55); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.55); }
+.shutter { width: var(--size-shutter); height: var(--size-shutter); border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px #0B0D0C, inset 0 0 0 4px #fff, inset 0 0 0 6px #0B0D0C; transition: transform var(--motion-instant) var(--ease-snap); }
+.shutter:active, .shutter.pressed { transform: scale(.92); }
+.ring { width: var(--size-shutter); height: var(--size-shutter); border-radius: 50%; box-shadow: inset 0 0 0 3px #5CE1FF, 0 0 0 1px #0B0D0C; position: relative; }
+.ring::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid #5CE1FF; animation: radar 1.6s ease-out 3; opacity: 0; }
+@keyframes radar { 0% { transform: scale(.8); opacity: .8 } 100% { transform: scale(1.25); opacity: 0 } }
+.thumb { width: 56px; height: 56px; border-radius: 14px; background: var(--color-class-hybrid); color: #0B0D0C; display: grid; place-items: center; box-shadow: 0 0 0 1.5px rgba(255,255,255,.7); }
+.cam-panel { position: absolute; left: 0; right: 0; top: 0; bottom: calc(var(--tabbar) + var(--safe-bottom)); overflow-y: auto; background: var(--color-surface-1); padding: calc(var(--safe-top) + 72px) 24px 24px; }
+.cam-panel .ic.xl { color: var(--color-text-2); margin-bottom: 16px; }
+.cam-panel h1 { font-size: var(--text-title); line-height: 1.15; margin-bottom: 8px; }
+.cam-panel ol { padding-left: 20px; margin: 12px 0 24px; color: var(--color-text-2); font-size: var(--text-footnote); }
+.cam-panel ol li { margin-bottom: 6px; }
+.steps-card { background: var(--color-surface-2); border-radius: var(--radius-md); padding: 14px 16px 2px; margin: 16px 0 24px; }
+.steps-card b { font-size: var(--text-footnote); }
+.inline-note { margin-top: 12px; font-size: var(--text-footnote); color: var(--color-text-2); }
+
+/* Start-camera + camera card */
+.center-cta { position: absolute; left: 50%; top: 34%; transform: translate(-50%, -50%); z-index: 3; text-align: center; color: #fff; width: 80%; }
+.center-cta p { margin-top: 12px; font-size: var(--text-footnote); color: #B4BDB8; }
+.card-screen { display: flex; flex-direction: column; padding-top: calc(var(--safe-top) + 48px); }
+.card-art { margin: 24px auto 32px; width: 220px; height: 160px; position: relative; }
+.card-art .r { position: absolute; inset: 0; }
+.card-art .r i { position: absolute; width: 40px; height: 40px; border: 0 solid var(--color-accent); }
+.card-art .r i.tl { left: 0; top: 0; border-left-width: 3px; border-top-width: 3px; border-top-left-radius: 18px; }
+.card-art .r i.tr { right: 0; top: 0; border-right-width: 3px; border-top-width: 3px; border-top-right-radius: 18px; }
+.card-art .r i.bl { left: 0; bottom: 0; border-left-width: 3px; border-bottom-width: 3px; border-bottom-left-radius: 18px; }
+.card-art .r i.br { right: 0; bottom: 0; border-right-width: 3px; border-bottom-width: 3px; border-bottom-right-radius: 18px; }
+.card-art .dots { position: absolute; inset: 34px 30px; display: flex; gap: 10px; align-items: center; justify-content: center; }
+.card-art .dots span { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; color: #0B0D0C; animation: bob 2.4s var(--ease-out) infinite; }
+.card-art .dots span:nth-child(2) { animation-delay: .2s } .card-art .dots span:nth-child(3) { animation-delay: .4s }
+@keyframes bob { 0%, 70%, 100% { transform: translateY(0) } 35% { transform: translateY(-8px) } }
+.grow { flex: 1; }
+
+/* ========================================================================== Sheet */
+.scrim { position: absolute; inset: 0; background: rgba(0,0,0,.6); z-index: 20; animation: fade var(--motion-standard) var(--ease-out); }
+@keyframes fade { from { opacity: 0 } }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; margin: 0 auto; max-width: 640px; z-index: 21; display: flex; flex-direction: column; background: var(--color-surface-1); color: var(--color-text); border-radius: var(--radius-lg) var(--radius-lg) 0 0; box-shadow: 0 -12px 40px rgba(0,0,0,.55); height: 72%; transition: height .32s var(--ease-out); overflow: hidden; }
+.sheet[data-detent="large"] { height: calc(100% - var(--safe-top) - 12px); }
+.sheet[data-detent="auto"] { height: auto; max-height: calc(100% - var(--safe-top) - 12px); }
+.sheet.enter { animation: rise .42s var(--ease-spring); }
+@keyframes rise { from { transform: translateY(100%) } }
+.sheet.swap .sheet-scroll { animation: fade .2s var(--ease-out); }
+.sheet-scroll { flex: 1; overflow-y: auto; overscroll-behavior: contain; scroll-padding-bottom: 24px; }
+.sheet-top { display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; padding: 4px 8px 0; }
+.grabber { width: 48px; height: 48px; justify-self: center; display: grid; place-items: center; grid-column: 2; }
+.grabber span { width: 36px; height: 5px; border-radius: 3px; background: currentColor; opacity: .55; }
+.sheet-top .close { grid-column: 3; }
+.sheet-body { padding: 0 20px 24px; }
+.sheet-title { font-size: var(--text-headline); font-weight: 700; line-height: 1.3; margin: 0 0 6px; }
+.sheet-actions { flex: none; display: flex; gap: 12px; padding: 12px 20px calc(12px + var(--safe-bottom)); background: var(--color-surface-1); border-top: 1px solid var(--color-border); }
+.sheet-actions .btn { flex: 1; }
+
+/* ========================================================================== Result */
+.hero { background: var(--cls); color: var(--color-on-class); padding: 0 20px 20px; }
+.page-hero { border-radius: var(--radius-lg); padding-top: 18px; margin: 0 0 4px; }
+.hero-name { font-size: var(--text-title); line-height: 1.15; overflow-wrap: anywhere; }
+.hero-class { display: flex; align-items: center; gap: 10px; margin-top: 6px; }
+.hero-word { font-size: var(--text-display); line-height: 1.05; }
+.hero-sub { font-size: var(--text-headline); font-weight: 700; line-height: 1.3; }
+.hero-parents { font-size: var(--text-footnote); font-weight: 500; margin-top: 6px; }
+.chip-conf { margin-top: 12px; min-height: 40px; padding: 0 12px 0 10px; border-radius: var(--radius-pill); display: inline-flex; align-items: center; gap: 6px; box-shadow: inset 0 0 0 1.5px var(--color-on-class); font-weight: 600; font-size: var(--text-footnote); color: var(--color-on-class); position: relative; }
+.chip-conf::after { content: ""; position: absolute; inset: -4px 0; } /* 48 px hit area */
+.chip-conf[aria-expanded="true"] { background: rgba(11,13,12,.12); }
+.explain { margin-top: 10px; padding: 12px 14px; border-radius: 12px; font-size: var(--text-footnote); line-height: 1.45; }
+.hero .explain { background: rgba(11,13,12,.12); color: var(--color-on-class); }
+.body-explain { background: var(--color-surface-2); color: var(--color-text); }
+.meter { padding: 20px 20px 0; }
+.meter-labels { display: flex; justify-content: space-between; align-items: baseline; font-variant-numeric: tabular-nums; color: var(--color-text-2); font-size: var(--text-footnote); }
+.meter-labels b { color: var(--color-text); font-size: var(--text-headline); font-weight: 700; }
+.meter-labels .lean { color: var(--color-text); font-weight: 700; }
+.track { position: relative; height: 12px; border-radius: var(--radius-pill); margin: 14px 0 12px; background: linear-gradient(90deg, var(--color-class-indica), var(--color-class-hybrid) 50%, var(--color-class-sativa)); box-shadow: 0 0 0 1px var(--track-outline); }
+.tick { position: absolute; top: 2px; bottom: 2px; width: 2px; margin-left: -1px; border-radius: 1px; background: rgba(11,13,12,.45); }
+.knob { position: absolute; top: 50%; left: var(--pos, 50%); width: 24px; height: 24px; margin: -12px 0 0 -12px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 2px #0B0D0C, 0 2px 8px rgba(0,0,0,.45); transition: left .4s var(--ease-out); }
+.band { position: absolute; top: -5px; bottom: -5px; border-radius: var(--radius-pill); box-shadow: 0 0 0 2px #0B0D0C; background: rgba(255,255,255,.4); }
+.meter-cap { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; font-size: var(--text-footnote); color: var(--color-text-2); }
+.info-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 48px; color: var(--color-text-2); text-align: left; }
+.badge { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 10px; border-radius: var(--radius-pill); box-shadow: inset 0 0 0 1px var(--color-border-strong); color: var(--color-text); font-size: var(--text-caption); font-weight: 600; position: relative; }
+.badge::after { content: ""; position: absolute; inset: -8px -2px; }
+.unknown-panel { margin: 20px 20px 0; padding: 16px; border-radius: var(--radius-md); background: var(--color-surface-2); display: grid; grid-template-columns: 28px 1fr; gap: 4px 12px; }
+.unknown-panel .ic { color: var(--color-text-2); }
+.callout { margin: 16px 20px 0; padding: 14px 16px 6px; border-radius: var(--radius-md); background: var(--color-accent-tint); box-shadow: inset 3px 0 0 var(--color-accent); display: grid; grid-template-columns: 28px 1fr; gap: 2px 12px; animation: calloutIn .38s .6s both var(--ease-snap); }
+.callout .ic { color: var(--color-accent-text); animation: tilt .5s .9s both; }
+@keyframes calloutIn { from { opacity: 0; transform: translateY(8px) } }
+@keyframes tilt { 40% { transform: rotate(-8deg) } 80% { transform: rotate(4deg) } }
+.callout p { font-size: var(--text-body); }
+.callout .linkish { font-size: var(--text-footnote); }
+.facts { margin: 20px 20px 0; display: flex; align-items: center; gap: 10px; color: var(--color-text-2); font-size: var(--text-footnote); }
+.facts b { color: var(--color-text); }
+.rblock { margin: 24px 20px 0; }
+.block-h { font-size: var(--text-headline); font-weight: 700; margin-bottom: 4px; }
+.facet { margin-top: 12px; }
+.facet-h { font-size: var(--text-caption); font-weight: 600; color: var(--color-text-3); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 6px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.tag { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 12px; border-radius: var(--radius-sm); background: var(--color-surface-3); color: var(--color-text); font-size: var(--text-footnote); font-weight: 500; line-height: 1.3; animation: tagIn .26s both var(--ease-snap); animation-delay: calc(var(--i, 0) * 30ms + 520ms); }
+.tags:not(.expanded) .tag.extra { display: none; }
+.more { min-height: 48px; padding: 0 8px; color: var(--color-accent-text); font-weight: 600; font-size: var(--text-footnote); }
+@keyframes tagIn { from { opacity: 0; transform: translateY(6px) scale(.96) } }
+.disclosure { width: 100%; min-height: 64px; display: flex; align-items: center; gap: 12px; text-align: left; padding: 10px 16px; border-radius: var(--radius-md); background: var(--color-surface-2); }
+.disclosure .ic.chev { transition: transform var(--motion-standard) var(--ease-out); margin-left: auto; color: var(--color-text-2); }
+.disclosure[aria-expanded="true"] .ic.chev { transform: rotate(90deg); }
+.disclosure small { display: block; color: var(--color-text-2); font-size: var(--text-footnote); }
+.how { padding: 16px 4px 0; }
+.how > p { margin-bottom: 12px; font-size: var(--text-footnote); color: var(--color-text-2); }
+.how > p b { color: var(--color-text); }
+.tree, .tree ul { list-style: none; margin: 0; padding: 0; }
+.tree ul { margin-left: 10px; padding-left: 14px; border-left: 2px solid var(--color-border); }
+.node { display: flex; align-items: center; gap: 8px; min-height: 48px; padding: 4px 0; flex-wrap: wrap; }
+.node a, .node .nm { color: var(--color-text); font-weight: 600; text-decoration: none; min-height: 40px; display: inline-flex; align-items: center; }
+.node a { text-decoration: underline; text-decoration-color: var(--color-border-strong); text-underline-offset: 3px; }
+.node .kind { font-size: var(--text-caption); color: var(--color-text-3); }
+.node .val { font-variant-numeric: tabular-nums; font-size: var(--text-footnote); color: var(--color-text-2); margin-left: auto; }
+.node.unknown .nm { color: var(--color-text-2); font-weight: 500; gap: 6px; }
+.tree-note { font-size: var(--text-footnote); color: var(--color-text-2); padding: 0 0 8px; font-style: italic; }
+.pill { display: inline-flex; align-items: center; gap: 4px; min-height: 26px; padding: 2px 9px 2px 7px; border-radius: var(--radius-sm); background: var(--cls); color: var(--color-on-class); font-size: var(--text-caption); font-weight: 700; line-height: 1.2; }
+.pill .ic { width: 15px; height: 15px; stroke-width: 2.2; }
+.result-foot { margin: 28px 20px 8px; font-size: var(--text-footnote); color: var(--color-text-2); text-align: center; }
+.rate-row { padding: 0 20px 12px; background: var(--color-surface-1); }
+.rate-row p { font-size: var(--text-footnote); color: var(--color-text-2); margin-bottom: 2px; }
+.stars { display: flex; gap: 0; }
+.star { width: 48px; height: 48px; display: grid; place-items: center; color: var(--color-border-strong); }
+.star[aria-checked="true"], .star.on { color: var(--color-class-sativa-ink); }
+.star.on .ic, .star[aria-checked="true"] .ic { fill: currentColor; }
+.saved-btn .ic { animation: draw .2s both; }
+.btn.pop { animation: pop .3s var(--ease-snap); }
+@keyframes pop { 50% { transform: scale(1.06) } }
+@keyframes draw { from { opacity: 0; transform: scale(.4) } }
+
+/* Lists */
+.rows { display: grid; gap: 12px; list-style: none; margin: 0; padding: 0; }
+.row { width: 100%; display: flex; align-items: center; gap: 12px; text-align: left; min-height: 64px; padding: 12px 14px; border-radius: var(--radius-md); background: var(--color-surface-2); color: var(--color-text); text-decoration: none; }
+.row .ic.chev { margin-left: auto; color: var(--color-text-2); }
+.row .t { font-weight: 600; } .row .s { font-size: var(--text-footnote); color: var(--color-text-2); display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 2px; }
+.row .num-em { font-family: var(--font-display); font-stretch: 75%; font-weight: 800; font-size: 1.25rem; }
+.jrow { position: relative; padding-left: 18px; overflow: hidden; }
+.jrow::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--cls); }
+.jrow .cicon { color: var(--cls-ink); }
+.jstars { display: inline-flex; color: var(--color-class-sativa-ink); }
+.jstars .ic { width: 14px; height: 14px; fill: currentColor; }
+.jstars .ic.dim { fill: none; color: var(--color-border-strong); }
+.field { width: 100%; min-height: 52px; padding: 12px 14px; border-radius: var(--radius-md); background: var(--color-surface-2); border: 1px solid var(--color-border-strong); color: var(--color-text); font-size: var(--text-body); }
+textarea.field { min-height: 110px; resize: vertical; line-height: 1.5; }
+.field:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 1px; }
+.label { display: block; font-size: var(--text-caption); font-weight: 600; color: var(--color-text-2); margin: 0 0 6px; }
+.searchbar { display: flex; align-items: center; gap: 4px; margin: -4px -8px 12px; }
+.searchbar .wrap { flex: 1; position: relative; }
+.searchbar .wrap .ic { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--color-text-2); pointer-events: none; }
+.searchbar input { padding-left: 42px; padding-right: 48px; -webkit-appearance: none; appearance: none; }
+.searchbar .clear { position: absolute; right: 2px; top: 50%; transform: translateY(-50%); }
+mark { background: none; color: inherit; font-weight: 800; }
+input[type="search"]::-webkit-search-cancel-button { -webkit-appearance: none; appearance: none; display: none; }
+@media (max-width: 340px) { .btn-row { flex-direction: column; } .sheet-actions .btn { padding: 0 12px; white-space: nowrap; } }
+.empty { text-align: center; padding: 56px 12px 24px; }
+.empty .ic.xl { color: var(--color-text-3); margin-bottom: 12px; }
+.empty h2 { font-size: var(--text-headline); margin-bottom: 6px; }
+.empty p { color: var(--color-text-2); margin-bottom: 20px; }
+.note { background: var(--color-accent-tint); border-radius: var(--radius-md); padding: 12px 14px; font-size: var(--text-footnote); margin: 12px 0; }
+.group { background: var(--color-surface-2); border-radius: var(--radius-md); overflow: hidden; }
+.set { width: 100%; display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 8px 16px; text-align: left; text-decoration: none; color: var(--color-text); }
+.set + .set { border-top: 1px solid var(--color-border); }
+.set .v { margin-left: auto; color: var(--color-text-2); display: inline-flex; align-items: center; gap: 4px; font-size: var(--text-footnote); }
+.set.danger { color: var(--color-danger); font-weight: 600; }
+.seg { display: inline-flex; margin-left: auto; background: var(--color-surface-3); border-radius: var(--radius-pill); padding: 4px; }
+.seg button { min-height: 40px; padding: 0 12px; border-radius: var(--radius-pill); font-size: var(--text-footnote); font-weight: 600; color: var(--color-text-2); }
+.seg button[aria-checked="true"] { background: var(--color-surface-1); color: var(--color-text); box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.switch { margin-left: auto; width: 52px; height: 32px; border-radius: 16px; background: var(--color-surface-3); box-shadow: inset 0 0 0 1.5px var(--color-border-strong); position: relative; flex: none; }
+.switch::before { content: ""; position: absolute; inset: -8px -4px; } /* 48 px hit area */
+.switch::after { content: ""; position: absolute; top: 4px; left: 4px; width: 24px; height: 24px; border-radius: 50%; background: var(--color-text-2); transition: transform var(--motion-fast) var(--ease-snap); }
+.switch[aria-checked="true"] { background: var(--color-accent); box-shadow: none; }
+.switch[aria-checked="true"]::after { transform: translateX(20px); background: var(--color-on-accent); }
+.about h2 { font-size: var(--text-headline); margin: 32px 0 8px; scroll-margin-top: 16px; }
+.about p { margin-bottom: 12px; color: var(--color-text-2); }
+.about p b, .about li b { color: var(--color-text); }
+.about ul.plain { padding-left: 20px; color: var(--color-text-2); }
+.toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; }
+.toc a { min-height: 40px; display: inline-flex; align-items: center; padding: 0 12px; border-radius: var(--radius-pill); background: var(--color-surface-2); text-decoration: none; color: var(--color-text); font-size: var(--text-footnote); font-weight: 600; }
+.bands { width: 100%; border-collapse: collapse; font-size: var(--text-footnote); margin: 8px 0 16px; }
+.bands td { padding: 8px 0; border-bottom: 1px solid var(--color-border); }
+.bands td:last-child { text-align: right; color: var(--color-text-2); }
+.skel { background: var(--color-surface-2); border-radius: 10px; animation: skel 1.2s ease-in-out 4 alternate; }
+@keyframes skel { to { opacity: .55 } }
+
+/* Toast + dialog */
+#toast-root { position: absolute; left: 0; right: 0; bottom: calc(var(--tabbar) + var(--safe-bottom) + 12px); z-index: 40; display: grid; justify-items: center; pointer-events: none; padding: 0 16px; }
+.with-sheet #toast-root { bottom: calc(84px + var(--safe-bottom)); }
+.toast { pointer-events: auto; display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 4px 6px 4px 18px; border-radius: var(--radius-pill); background: var(--toast-bg); color: var(--toast-text); box-shadow: 0 8px 24px rgba(0,0,0,.35); font-size: var(--text-footnote); font-weight: 500; animation: toastIn .3s var(--ease-snap); max-width: 100%; }
+.toast button { color: var(--toast-action); font-weight: 700; min-height: 44px; padding: 0 12px; }
+.toast.solo { padding-right: 18px; }
+@keyframes toastIn { from { opacity: 0; transform: translateY(12px) } }
+.dialog-wrap { position: absolute; inset: 0; z-index: 30; display: grid; place-items: center; padding: 24px; background: rgba(0,0,0,.6); animation: fade .2s; }
+.dialog { background: var(--color-surface-1); border-radius: 20px; padding: 24px 20px 20px; width: 100%; max-width: 340px; }
+.dialog h2 { font-size: var(--text-headline); margin-bottom: 8px; }
+.dialog p { color: var(--color-text-2); margin-bottom: 20px; }
+
+/* Prototype controls (not part of the design) */
+#proto-btn { position: absolute; top: 38%; right: 0; z-index: 60; width: 26px; min-height: 92px; padding: 0; border-radius: 12px 0 0 12px; writing-mode: vertical-rl; opacity: .85; background: rgba(255,0,153,.82); color: #fff; font: 700 12px/1 var(--font-ui); letter-spacing: .04em; }
+#proto { position: absolute; inset: 0; z-index: 70; background: rgba(5,6,6,.97); color: #F1F4F2; overflow-y: auto; padding: calc(var(--safe-top) + 16px) 20px 40px; font-size: 15px; }
+#proto[hidden] { display: none; }
+#proto h2 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: #FF66C4; margin: 22px 0 8px; }
+#proto .links { display: flex; flex-wrap: wrap; gap: 8px; }
+#proto a, #proto .pbtn { min-height: 40px; display: inline-flex; align-items: center; padding: 0 12px; border-radius: 10px; background: #1C211F; color: #F1F4F2; text-decoration: none; font-weight: 600; font-size: 14px; }
+#proto select { min-height: 40px; background: #1C211F; color: #F1F4F2; border: 1px solid #6B746F; border-radius: 10px; padding: 0 8px; }
+#proto .disc { color: #B4BDB8; font-size: 13px; line-height: 1.5; }
+
+/* Reduced motion: system setting or the prototype toggle */
+html.rm *, html.rm *::before, html.rm *::after { animation-duration: .01ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; transition-duration: .15s !important; transition-property: opacity, background-color, color !important; }
+html.rm .shimmer::before { display: none; }
+html.rm .sheet.enter { animation: fade .15s !important; }
+</style>
+</head>
+<body>
+<div id="device">
+  <div id="app"></div>
+  <div id="sheet-root"></div>
+  <div id="toast-root" aria-live="polite"></div>
+  <div id="live" class="sr-only" role="status" aria-live="polite"></div>
+  <button id="proto-btn" type="button" aria-controls="proto" aria-expanded="false">PROTOTYPE</button>
+  <div id="proto" hidden></div>
+</div>
+<script>
+"use strict";
+/* ==========================================================================
+   FICTIONAL SAMPLE DATA. Names, lineages, tags and sources are invented for this mockup.
+   Shapes follow docs/04 (lineage object) and docs/05 (the numbers follow the v1 algorithm).
+   ========================================================================== */
+const L = (p, method, level, confidence) => ({
+  sativa_pct: p, indica_pct: p == null ? null : 100 - p, ...band(p), confidence, confidence_level: level, method, algo_version: 1,
+});
+function band(p) {
+  if (p == null) return { label: "unknown", sublabel: null };
+  if (p >= 80) return { label: "sativa", sublabel: null };
+  if (p >= 60) return { label: "hybrid", sublabel: "sativa-dominant" };
+  if (p >= 41) return { label: "hybrid", sublabel: "balanced" };
+  if (p >= 21) return { label: "hybrid", sublabel: "indica-dominant" };
+  return { label: "indica", sublabel: null };
+}
+const S = {
+  "landrace-k": { name: "Landrace K", kind: "landrace", parents: [], lineage: L(10, "traced", "high", 1), verification: "verified", source_count: 2 },
+  "landrace-t": { name: "Landrace T", kind: "landrace", parents: [], lineage: L(90, "traced", "high", 1), verification: "verified", source_count: 2 },
+  "landrace-c": { name: "Landrace C", kind: "landrace", parents: [], lineage: L(90, "traced", "high", 1), verification: "verified", source_count: 2 },
+  "strain-a": { name: "Strain A", kind: "strain", parents: ["landrace-k", "landrace-t"], lineage: L(50, "traced", "high", .97), reported_type: "balanced", verification: "verified", source_count: 3 },
+  "strain-h": { name: "Strain H", kind: "strain", parents: [], lineage: L(50, "reported", "medium", .5), reported_type: "balanced", verification: "verified", source_count: 1 },
+  "strain-g": { name: "Strain G", kind: "strain", parents: ["landrace-k", "strain-h"], lineage: L(30, "partial", "medium", .73), reported_type: "indica-dominant", verification: "disputed", source_count: 2 },
+  "kestrel-haze": { name: "Kestrel Haze", kind: "strain", aliases: ["K. Haze"], parents: ["strain-a", "landrace-c"], lineage: L(70, "traced", "high", .955), reported_type: "sativa-dominant", verification: "verified", source_count: 5,
+    effects: ["Uplifted", "Creative", "Focused"], negative: [], flavors: ["Citrus", "Pine"], terpenes: ["Terpinolene", "Pinene"] },
+  "marsh-wren-4": { name: "Marsh Wren #4", kind: "strain", breeder: "Breeder X", parents: ["strain-g", "unknown"], lineage: L(40, "partial", "medium", .60), reported_type: "balanced", verification: "verified", source_count: 3,
+    effects: ["Relaxed", "Calm", "Happy"], flavors: ["Earthy", "Woody"] },
+  "marsh-wren-7": { name: "Marsh Wren #7", kind: "strain", breeder: "Breeder X", parents: [], lineage: L(15, "reported", "medium", .5), reported_type: "indica", verification: "verified", source_count: 1 },
+  "marsh-wren": { name: "Marsh Wren", kind: "strain", parents: [], lineage: L(null, "unknown", "none", 0), reported_type: "unknown", verification: "verified", source_count: 1 },
+  "sandpiper": { name: "Sandpiper", kind: "strain", parents: [], lineage: L(15, "reported", "medium", .5), reported_type: "indica", verification: "verified", source_count: 2,
+    effects: ["Relaxed", "Hungry"], flavors: ["Grape", "Berry"] },
+  "night-heron": { name: "Night Heron", kind: "strain", parents: [], lineage: L(null, "unknown", "none", 0), reported_type: "unknown", verification: "verified", source_count: 1,
+    flavors: ["Diesel", "Earthy"] },
+  "bluebill": { name: "Bluebill", kind: "strain", parents: ["landrace-t", "strain-a"], lineage: L(70, "traced", "high", .96), reported_type: "sativa-dominant", verification: "verified", source_count: 4 },
+  "swiftwing": { name: "Swiftwing", kind: "strain", parents: ["landrace-t", "landrace-c"], lineage: L(90, "traced", "high", .97), reported_type: "sativa", verification: "verified", source_count: 4,
+    effects: ["Energetic", "Uplifted"], flavors: ["Lemon", "Tropical"], terpenes: ["Limonene"] },
+  "goldcrest": { name: "Goldcrest", kind: "strain", aliases: ["Gold Crest"], parents: ["landrace-k", "strain-a"], lineage: L(30, "traced", "high", .955), reported_type: "indica-dominant", verification: "verified", source_count: 6,
+    effects: ["Relaxed", "Calm", "Happy", "Euphoric", "Giggly", "Hungry", "Tingly", "Talkative", "Creative", "Uplifted", "Focused"],
+    negative: ["Dry mouth", "Dry eyes"], flavors: ["Berry", "Grape", "Sweet", "Vanilla", "Earthy", "Spicy", "Pepper", "Woody", "Floral"],
+    terpenes: ["Myrcene", "Caryophyllene", "Linalool", "Humulene", "Limonene"] },
+};
+/* Result variants: a strain plus the facts read from the (fictional) package. Potency is never part of this. */
+const V = {
+  traced: { id: "kestrel-haze", facts: { product_form: "Pre-roll", package_says: "hybrid" } },
+  partial: { id: "marsh-wren-4", facts: { product_form: "Flower", package_says: "hybrid" } },
+  reported: { id: "sandpiper", facts: { product_form: "Flower", package_says: "indica" } },
+  unknown: { id: "night-heron", facts: { product_form: "Flower", package_says: "indica" } },
+  "zero-tags": { id: "bluebill", facts: { product_form: null, package_says: null } },
+  many: { id: "goldcrest", facts: { product_form: "Vape", package_says: null } },
+  disagree: { id: "swiftwing", facts: { product_form: "Flower", package_says: "indica" } },
+};
+const J = [
+  { id: "j1", strain: "kestrel-haze", group: "Today", when: "Today · 2:14 PM", method: "Read from the label", form: "Pre-roll", pkg: "hybrid" },
+  { id: "j2", strain: "swiftwing", group: "Today", when: "Today · 11:02 AM", method: "Barcode", form: "Flower", pkg: "indica" },
+  { id: "j3", strain: "sandpiper", group: "This week", when: "Yesterday · 6:40 PM", method: "Searched", form: null, pkg: null },
+  { id: "j4", strain: null, read: "PREMIUM FLOWER 3.5G", group: "Earlier", when: "Oct 19 · 4:05 PM", method: "Read from the label", form: "Flower", pkg: null },
+  { id: "j5", strain: "night-heron", group: "Earlier", when: "Oct 12 · 1:30 PM", method: "QR code", form: "Flower", pkg: "indica" },
+];
+
+/* ========================================================================== Icons (Lucide-style, approximated) */
+const I = {
+  x: '<path d="M18 6 6 18M6 6l12 12"/>', chev: '<path d="m9 18 6-6-6-6"/>', back: '<path d="m12 19-7-7 7-7M19 12H5"/>',
+  search: '<circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>', info: '<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>',
+  moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>',
+  half: '<circle cx="12" cy="12" r="10"/><path d="M12 18a6 6 0 0 0 0-12v12z"/>', help: '<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/>',
+  fork: '<circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9M12 12v3"/>',
+  split: '<path d="M16 3h5v5M8 3H3v5M12 22v-8.3a4 4 0 0 0-1.172-2.872L3 3M15 9l6-6"/>',
+  ruler: '<path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0ZM14.5 12.5l2-2M11.5 9.5l2-2M8.5 6.5l2-2M17.5 15.5l2-2"/>',
+  share: '<path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13"/>', check: '<path d="M20 6 9 17l-5-5"/>',
+  bookmark: '<path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/>',
+  star: '<path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>',
+  camoff: '<path d="M2 2l20 20M7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16M9.5 4h5L17 7h3a2 2 0 0 1 2 2v7.5M14.12 15.12A3 3 0 1 1 9.88 10.88"/>',
+  camera: '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
+  pkg: '<path d="m7.5 4.27 9 5.15M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16ZM3.3 7 12 12l8.7-5M12 22V12"/>',
+  alert: '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3ZM12 9v4M12 17h.01"/>',
+  clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>', copy: '<rect width="14" height="14" x="8" y="8" rx="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>',
+  download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>', upload: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>',
+  trash: '<path d="M3 6h18M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>',
+  ext: '<path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>',
+  scan: '<path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 12h10"/>',
+  book: '<path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>',
+  gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+  torch: '<path d="M18 6c0 2-2 2-2 4v10a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2V10c0-2-2-2-2-4V2h12zM6 6h12M12 12v2"/>',
+  barcode: '<path d="M3 5v14M8 5v14M12 5v14M17 5v14M21 5v14"/>', pencil: '<path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>',
+  history: '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8M3 3v5h5M12 7v5l4 2"/>',
+};
+const icon = (n, c = "") => `<svg class="ic ${c}" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${I[n]}</svg>`;
+const CLS = { indica: { w: "Indica", i: "moon" }, hybrid: { w: "Hybrid", i: "half" }, sativa: { w: "Sativa", i: "sun" }, unknown: { w: "Unknown lineage", i: "help" } };
+const SUB = { "indica-dominant": "Indica-dominant", balanced: "Balanced", "sativa-dominant": "Sativa-dominant" };
+const REPORTED = { indica: "Indica", "indica-dominant": "Indica-dominant", balanced: "Balanced", "sativa-dominant": "Sativa-dominant", sativa: "Sativa" };
+const BANDS = ["Indica", "Indica-dominant", "Balanced", "Sativa-dominant", "Sativa"];
+const EDGES = [20.5, 40.5, 59.5, 79.5];
+const BAND_RANGE = { indica: [0, 20], "indica-dominant": [21, 40], balanced: [41, 59], "sativa-dominant": [60, 79], sativa: [80, 100] };
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const classText = lin => lin.label === "hybrid" ? `Hybrid · ${SUB[lin.sublabel]}` : CLS[lin.label].w;
+const pill = (lin, full) => `<span class="pill cls-${lin.label}">${icon(CLS[lin.label].i)}${full ? classText(lin) : (lin.label === "unknown" ? "Unknown" : CLS[lin.label].w)}</span>`;
+const closeEdge = p => { if (p == null) return -1; return EDGES.findIndex(e => Math.abs(p - e) <= 2); };
+function opposite(pkg, lin) {
+  if (!pkg || lin.label === "unknown") return false;
+  const sat = lin.label === "sativa" || lin.sublabel === "sativa-dominant";
+  const ind = lin.label === "indica" || lin.sublabel === "indica-dominant";
+  return (pkg === "indica" && sat) || (pkg === "sativa" && ind);
+}
+const CHIP = {
+  traced: { t: "Lineage traced", i: "check", e: { high: "Every branch of its family tree is traced to sourced data.", medium: "Every branch is traced, but through many generations, so treat it as an estimate.", low: "Every branch is traced, but through many generations, so treat it as an estimate." } },
+  partial: { t: "Partly traced", i: "fork", e: { high: "Most of its family tree is traced. Where it ends, we use how sources describe those strains.", medium: "Part of its family tree is traced. The rest uses how sources describe it.", low: "Only a small part of its family tree is traced, so this is a rough estimate." } },
+  reported: { t: "Breeder's label", i: "bookmark", e: { high: "", medium: "We don't have its family tree yet, so this uses how the breeder or published sources describe it.", low: "" } },
+};
+
+/* ========================================================================== State + helpers */
+const state = { saved: {}, ratings: { j1: 4, j3: 3 }, notes: { j1: "Bright, piney smell. Would get again." }, shutter: "traced", code: "remembered", mode: "Auto", torch: false, theme: "dark", deleted: {}, extraJournal: [], q: "", prevSheet: false };
+const $ = s => document.querySelector(s);
+const app = $("#app"), sheetRoot = $("#sheet-root"), toastRoot = $("#toast-root"), live = $("#live"), device = $("#device");
+let timers = [];
+const later = (fn, ms) => timers.push(setTimeout(fn, ms));
+const go = (h, replace) => { if (replace) location.replace(h); else location.hash = h; };
+function say(msg) { live.textContent = ""; setTimeout(() => { live.textContent = msg; }, 60); }
+function toast(msg, actionLabel, action) {
+  // Keep the toast above a sheet's bottom controls (action bar and rating row) so it never covers them.
+  const sh = sheetRoot.querySelector(".sheet");
+  toastRoot.style.bottom = "";
+  if (sh) {
+    const anchor = [...sh.querySelectorAll(".rate-row:not([hidden]), .sheet-actions")][0];
+    if (anchor) toastRoot.style.bottom = (device.getBoundingClientRect().bottom - anchor.getBoundingClientRect().top + 12) + "px";
+  }
+  toastRoot.innerHTML = `<div class="toast ${actionLabel ? "" : "solo"}" role="status"><span>${esc(msg)}</span>${actionLabel ? `<button type="button" data-toast-act>${esc(actionLabel)}</button>` : ""}</div>`;
+  const b = toastRoot.querySelector("[data-toast-act]");
+  if (b) b.onclick = () => { toastRoot.innerHTML = ""; action && action(); };
+  clearTimeout(toast.t); toast.t = setTimeout(() => { toastRoot.innerHTML = ""; }, actionLabel ? 6000 : 4000);
+}
+const buzz = p => { try { if (navigator.vibrate) navigator.vibrate(p); } catch (e) { /* not supported: silently skipped */ } };
+const tabbar = active => `<nav class="tabbar" aria-label="Main">
+  <a class="tab" href="#/scan" ${active === "scan" ? 'aria-current="page"' : ""}>${icon("scan")}Scan</a>
+  <a class="tab" href="#/journal" ${active === "journal" ? 'aria-current="page"' : ""}>${icon("book")}Journal</a>
+  <a class="tab" href="#/settings" ${active === "settings" ? 'aria-current="page"' : ""}>${icon("gear")}Settings</a></nav>`;
+
+/* ========================================================================== Router */
+function route() {
+  timers.forEach(clearTimeout); timers = [];
+  if (state.keepToast) state.keepToast = false; else { toastRoot.innerHTML = ""; }
+  const h = (location.hash.slice(1) || "/age").split("?")[0];
+  const p = h.split("/").filter(Boolean);
+  let base = "", sheet = "", after = null;
+  const [a, b, c] = p;
+  if (a === "age") base = ageGate();
+  else if (a === "leave") base = leaveScreen();
+  else if (a === "camera-card") base = cameraCard();
+  else if (a === "camera") base = scanner("off", b);
+  else if (a === "scan") {
+    const sheets = ["result", "which", "cross", "nomatch", "nothing-read", "barcode-unknown", "tracking", "coa", "readfail", "offline-ocr", "download-fail", "recent", "quota"];
+    if (sheets.includes(b)) { base = scanner("frozen"); sheet = scanSheet(b, c); }
+    else { base = scanner(b || "live"); after = () => scannerAfter(b || "live"); }
+  }
+  else if (a === "s") base = strainPage(b);
+  else if (a === "search") base = searchScreen();
+  else if (a === "journal") base = b ? journalDetail(b) : journalList("normal");
+  else if (a === "journal-empty") base = journalList("empty");
+  else if (a === "journal-unavailable") base = journalList("unavailable");
+  else if (a === "settings") { base = settingsScreen(); if (b) sheet = settingsSheet(b); }
+  else if (a === "about") { base = aboutScreen(); if (b) after = () => setTimeout(() => { const t = document.getElementById(b); if (t) t.scrollIntoView({ block: "start" }); }, 40); }
+  else base = ageGate();
+  app.innerHTML = base;
+  const hadSheet = state.prevSheet;
+  sheetRoot.innerHTML = sheet;
+  state.prevSheet = !!sheet;
+  device.classList.toggle("with-sheet", !!sheet);
+  const sh = sheetRoot.querySelector(".sheet");
+  if (sh) {
+    sh.classList.add(hadSheet ? "swap" : "enter");
+    const t = sh.querySelector("[data-focus]"); if (t) setTimeout(() => t.focus({ preventScroll: true }), 30);
+    const ann = sh.getAttribute("data-announce"); if (ann) say(ann);
+    initMeters(sh);
+  } else {
+    const t = app.querySelector("[data-focus]"); if (t) setTimeout(() => t.focus({ preventScroll: true }), 30);
+    initMeters(app);
+  }
+  if (a === "search") initSearch();
+  if (after) after();
+}
+function initMeters(root) {
+  root.querySelectorAll(".knob[data-pos]").forEach(k => requestAnimationFrame(() => requestAnimationFrame(() => { k.style.setProperty("--pos", k.dataset.pos + "%"); })));
+}
+
+/* ========================================================================== First run */
+function ageGate() {
+  return `<main class="screen no-tabs card-screen" aria-labelledby="age-h">
+    <div class="wordmark" style="text-align:center;margin-top:32px;font-size:1.5rem">FlowerScan</div>
+    <div class="grow"></div>
+    <h1 id="age-h" class="display page-title" tabindex="-1" data-focus style="font-size:2.25rem">Are you 21 or older?</h1>
+    <p class="foot" style="margin-bottom:28px">FlowerScan is for adults 21 and older.</p>
+    <div class="btn-stack">
+      <button class="btn primary block" type="button" data-go="#/camera-card">I'm 21 or older</button>
+      <button class="btn secondary block" type="button" data-go="#/leave" data-replace>Leave</button>
+    </div>
+    <p class="caption" style="text-align:center;margin-top:16px">We'll remember this on this phone.</p>
+  </main>`;
+}
+function leaveScreen() {
+  return `<main class="screen no-tabs card-screen" style="text-align:center">
+    <div class="wordmark" style="margin-top:32px;font-size:1.5rem">FlowerScan</div>
+    <div class="grow"></div>
+    <h1 class="display page-title" tabindex="-1" data-focus>FlowerScan is for adults 21 and older.</h1>
+    <p class="foot">Thanks for stopping by. You can close this tab.</p>
+    <div class="grow"></div>
+  </main>`;
+}
+function cameraCard() {
+  return `<main class="screen no-tabs card-screen dark-scope" aria-labelledby="cc-h">
+    <div class="card-art" aria-hidden="true"><div class="r"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></div>
+      <div class="dots"><span class="cls-indica" style="background:var(--cls)">${icon("moon")}</span><span class="cls-hybrid" style="background:var(--cls)">${icon("half")}</span><span class="cls-sativa" style="background:var(--cls)">${icon("sun")}</span></div></div>
+    <h1 id="cc-h" class="display page-title" tabindex="-1" data-focus style="font-size:2rem">Point at a package. We'll show you what's in its family tree.</h1>
+    <p class="foot" style="margin-top:12px">${icon("camera", "sm")} We use your camera to read labels. <b style="color:var(--color-text)">Photos never leave your phone.</b></p>
+    <div class="grow"></div>
+    <button class="btn primary block" type="button" data-go="#/scan/starting" data-replace>Continue</button>
+    <p style="text-align:center;margin-top:8px"><a class="linkish" href="#/search" style="justify-content:center">Type a name instead</a></p>
+  </main>`;
+}
+
+/* ========================================================================== Scanner */
+const HOWTO = `<div class="steps-card"><b>iPhone, Safari</b><ol><li>Tap <b>aA</b> in the address bar.</li><li>Tap <b>Website Settings</b>, then <b>Camera</b>, then <b>Allow</b>.</li></ol>
+  <b>Android, Chrome</b><ol><li>Tap the settings icon left of the address.</li><li>Tap <b>Permissions</b>, then <b>Camera</b>, then <b>Allow</b>.</li></ol></div>`;
+const CAM = {
+  denied: { h: "Camera is off for FlowerScan", p: "You can still search by name. To scan, turn the camera on:", extra: HOWTO, primary: ["Search by name", "#/search"], secondary: ["Try again", "retry-denied"] },
+  notfound: { h: "We can't find a camera on this device.", p: "Search works just as well.", primary: ["Search by name", "#/search"] },
+  busy: { h: "Your camera is busy.", p: "Another app might be using it. Close it, then try again.", primary: ["Try again", "#/scan/starting"], secondary: ["Search by name", "#/search"] },
+  unsupported: { h: "This browser can't open the camera.", p: "Open FlowerScan in Safari or Chrome to scan. In an app like Instagram, tap ••• and choose Open in browser.", primary: ["Search by name", "#/search"], secondary: ["Copy link", "copy-link"] },
+};
+function scanner(sub, cause) {
+  const off = sub === "off";
+  const dark = sub === "start" || sub === "starting" || off;
+  const mode = sub === "textshot" ? "Text" : state.mode; // "Scan the label" / "Try again": Text mode for one shot
+  const codeOnly = mode === "Barcode" || mode === "QR";
+  let hint = "Point at the strain name or a barcode";
+  if (mode === "Text") hint = "Fill the frame with the strain name, then tap";
+  if (mode === "Barcode") hint = "Point at a barcode";
+  if (mode === "QR") hint = "Point at a QR code";
+  if (sub === "coach") hint = "Move closer";
+  if (sub === "coach-light") hint = "More light. Try the torch.";
+  if (sub === "starting") hint = "Starting camera…";
+  if (sub === "reading" || sub === "slow") hint = "Reading label…";
+  if (sub === "lock") hint = "Barcode found";
+  if (sub === "textshot") hint = "Now tap to read the strain name";
+  let hintHtml = `<p class="hint" id="hint">${esc(hint)}</p>`;
+  if (sub === "download") hintHtml = `<div class="hint box" id="hint" style="min-width:260px">Getting text reading ready (one-time, 4 MB)…<div class="progress" role="progressbar" aria-label="Download progress" aria-valuemin="0" aria-valuemax="100"><b id="prog"></b></div></div>`;
+  if (sub === "start") hintHtml = "";
+  let panel = "";
+  if (off) {
+    const c = CAM[cause] || CAM.denied;
+    panel = `<section class="cam-panel" aria-labelledby="cam-h">${icon("camoff", "xl")}
+      <h1 id="cam-h" tabindex="-1" data-focus>${esc(c.h)}</h1><p class="foot">${esc(c.p)}</p>${c.extra || '<div style="height:24px"></div>'}
+      <div class="btn-stack"><button class="btn primary block" type="button" data-go="${c.primary[1]}">${icon("search", "sm")}${esc(c.primary[0])}</button>
+      ${c.secondary ? `<button class="btn secondary block" type="button" ${c.secondary[1].startsWith("#") ? `data-go="${c.secondary[1]}"` : `data-act="${c.secondary[1]}"`}>${esc(c.secondary[0])}</button>` : ""}</div>
+      <p class="inline-note" id="cam-note" role="status"></p></section>`;
+  }
+  const modes = ["Auto", "Text", "Barcode", "QR"].map(m => `<button class="mode" role="radio" type="button" aria-checked="${mode === m}" data-act="mode" data-mode="${m}">${m}</button>`).join("");
+  const last = latestSaved();
+  return `<main class="screen scanner dark-scope" aria-label="Scanner">
+    <div class="feed ${sub === "frozen" || sub === "reading" || sub === "slow" ? "frozen" : ""} ${dark ? "off" : ""}" aria-hidden="true">
+      <div class="pkg"><div class="pkg-label"><small>SAMPLE PACKAGE · FICTIONAL</small><b>KESTREL HAZE</b><span>PRE-ROLL · 1 G</span><span class="pkg-claim">HYBRID</span></div>
+      <p class="pkg-warn">GOVERNMENT WARNING: SAMPLE TEXT FOR A MOCKUP. KEEP OUT OF REACH OF CHILDREN. FOR USE ONLY BY ADULTS 21 AND OLDER.</p>
+      <div class="pkg-barcode" id="barcode" data-act="lock" title="Prototype: tap to bring the barcode into view"><i></i><span>0 12345 67890 5</span></div></div>
+      ${sub === "reading" ? '<div class="flash"></div>' : ""}
+    </div>
+    ${off ? "" : `<div class="topbar"><span class="wordmark">FlowerScan</span>
+      <button class="icon-btn torch" type="button" data-act="torch" aria-pressed="${state.torch}" aria-label="${state.torch ? "Turn off torch" : "Turn on torch"}">${icon("torch")}</button></div>
+    <div class="reticle ${sub === "lock" ? "locked" : ""}" id="reticle" aria-hidden="true"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i>${sub === "reading" || sub === "slow" ? '<div class="shimmer"></div>' : ""}</div>
+    ${hintHtml}
+    ${sub === "start" ? `<div class="center-cta"><button class="btn primary" type="button" data-go="#/scan/starting" data-replace>${icon("camera", "sm")}Start camera</button><p>Your browser will ask for camera access.</p></div>` : ""}
+    <div class="scan-bottom">
+      <div class="modes" role="radiogroup" aria-label="Scan mode">${modes}</div>
+      <div class="controls">
+        <button class="side" type="button" data-go="#/search"><span class="disc">${icon("search")}</span>Search</button>
+        ${codeOnly ? `<div class="ring" aria-hidden="true"></div><span class="sr-only">Looking for a ${mode === "QR" ? "QR code" : "barcode"}</span>`
+          : `<button class="shutter ${sub === "reading" ? "pressed" : ""}" type="button" data-act="shutter" aria-label="Read label text"></button>`}
+        ${last ? `<button class="side" type="button" data-go="#/scan/recent"><span class="thumb cls-${S[last].lineage.label}" style="background:var(--cls)">${icon(CLS[S[last].lineage.label].i)}</span>Recent</button>` : "<span></span>"}
+      </div>
+    </div>`}
+    ${panel}
+    ${tabbar("scan")}
+  </main>`;
+}
+function latestSaved() { const e = journalEntries().find(j => j.strain); return e ? e.strain : null; }
+function scannerAfter(sub) {
+  if (sub === "starting") { say("Starting camera"); later(() => go("#/scan", true), 750); }
+  if (sub === "reading") { say("Reading label"); later(() => go(shutterTarget(), true), 1300); }
+  if (sub === "slow") {
+    say("Reading label");
+    later(() => { const h = $("#hint"); if (h) h.textContent = "Still reading. Hold on…"; }, 1500);
+    later(() => {
+      const h = $("#hint"); if (!h) return;
+      const s = document.querySelector(".shimmer"); if (s) s.remove();
+      h.className = "hint box";
+      h.innerHTML = `This is taking longer than usual.<div class="btn-row"><button class="btn secondary" type="button" data-act="keepwaiting">Keep waiting</button><button class="btn primary" type="button" data-go="#/search">Search instead</button></div>`;
+      say("Taking longer than usual");
+    }, 5000);
+  }
+  if (sub === "download") {
+    say("Downloading text reading, one time");
+    requestAnimationFrame(() => requestAnimationFrame(() => { const p = $("#prog"); if (p) p.style.width = "100%"; }));
+    later(() => go("#/scan/reading", true), 2600);
+  }
+  if (sub === "lock") {
+    const r = $("#reticle"), bc = $("#barcode"), scr = document.querySelector(".scanner");
+    if (r && bc && scr) {
+      r.classList.remove("locked");
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        const a = bc.getBoundingClientRect(), s = scr.getBoundingClientRect();
+        Object.assign(r.style, { left: (a.left - s.left - 8) + "px", top: (a.top - s.top - 8) + "px", width: (a.width + 16) + "px", height: (a.height + 16) + "px" });
+        r.classList.add("locked");
+      }));
+    }
+    buzz(10); say("Barcode found");
+    const target = { remembered: "#/scan/result/traced", unknown: "#/scan/barcode-unknown", tracking: "#/scan/tracking", coa: "#/scan/coa" }[state.code];
+    later(() => go(target, true), 700);
+  }
+}
+function shutterTarget() {
+  const m = { which: "#/scan/which", cross: "#/scan/cross", nomatch: "#/scan/nomatch", "nothing-read": "#/scan/nothing-read", readfail: "#/scan/readfail", "offline-ocr": "#/scan/offline-ocr" };
+  return m[state.shutter] || `#/scan/result/${state.shutter}`;
+}
+
+/* ========================================================================== Result component */
+function resultView(id, opt) {
+  const s = S[id], lin = s.lineage, facts = opt.facts || {}, mode = opt.mode; // mode: sheet | page | journal
+  const uid = "r" + Math.random().toString(36).slice(2, 7);
+  const parents = s.parents.length ? s.parents.slice(0, 2).map(p => p === "unknown" ? "unknown parent" : esc(S[p].name)).join(" × ") + (s.parents.length > 2 ? ` +${s.parents.length - 2}` : "") : "";
+  const chip = s.kind === "landrace" ? { t: "Landrace", i: "bookmark", e: { high: "A traditional regional population. Its value comes from our landrace rubric, on a coarse 10 / 25 / 50 / 75 / 90 scale, backed by two sources." } } : CHIP[lin.method];
+  const H = mode === "sheet" ? "h2" : "h1";
+  let hero = `<header class="hero cls-${lin.label} ${mode === "sheet" ? "" : "page-hero"}">
+    ${mode === "sheet" ? `<div class="sheet-top" style="margin:0 -12px"><button class="grabber" type="button" data-act="detent" aria-label="Expand" aria-expanded="false"><span></span></button>
+      <button class="icon-btn close" type="button" data-act="close-sheet" aria-label="Close">${icon("x")}</button></div>` : ""}
+    <${H} class="display hero-name" id="sheet-title" tabindex="-1" data-focus>${esc(s.name)}</${H}>
+    <p class="hero-class">${icon(CLS[lin.label].i, "lg")}<span class="display hero-word">${CLS[lin.label].w}</span></p>
+    ${lin.sublabel ? `<p class="hero-sub">${SUB[lin.sublabel]}</p>` : ""}
+    ${parents ? `<p class="hero-parents">${parents}</p>` : ""}
+    ${chip ? `<button class="chip-conf" type="button" data-act="explain" aria-expanded="false" aria-controls="${uid}-c">${icon(chip.i, "sm")}${chip.t}${icon("info", "sm")}</button>
+      <div class="explain" id="${uid}-c" hidden>${chip.e[lin.confidence_level] || chip.e.medium}</div>` : ""}
+  </header>`;
+  // Meter
+  let meter = "";
+  const ce = closeEdge(lin.sativa_pct);
+  const estimateInfo = `<button class="info-btn" type="button" data-act="explain" aria-expanded="false" aria-controls="${uid}-m">Lineage estimate, not a lab test. ${icon("info", "sm")}</button>`;
+  const estimateText = `<div class="explain body-explain" id="${uid}-m" hidden>It's an average of how its ancestors are usually classified, carried down the family tree. It isn't a DNA or lab measurement, and it doesn't predict how a strain feels. <a href="#/about/classification">How classification works</a></div>`;
+  if (lin.method === "unknown") {
+    meter = `<div class="unknown-panel">${icon("help")}<div><p><b>We don't have enough of its family tree to estimate it.</b></p><p class="foot">We only show what our data supports.</p><a class="linkish" href="#/about/classification">How classification works ${icon("chev", "sm")}</a></div></div>`;
+  } else if (lin.method === "reported") {
+    const r = BAND_RANGE[s.reported_type];
+    meter = `<div class="meter"><div class="meter-labels"><span>Indica</span><span>Sativa</span></div>
+      <div class="track" aria-hidden="true">${EDGES.map(e => `<span class="tick" style="left:${e}%"></span>`).join("")}<span class="band" style="left:${r[0]}%;width:${r[1] - r[0]}%"></span></div>
+      <p class="sr-only">Described as ${REPORTED[s.reported_type]}. No family tree estimate.</p>
+      <div class="meter-cap"><span>Based on how it's described, not its family tree.</span></div></div>`;
+  } else {
+    const p = lin.sativa_pct, i = lin.indica_pct;
+    meter = `<div class="meter"><div class="meter-labels"><span class="${i > p ? "lean" : ""}">Indica <b class="num">${i}%</b></span><span class="${p > i ? "lean" : ""}">Sativa <b class="num">${p}%</b></span></div>
+      <div class="track" aria-hidden="true">${EDGES.map(e => `<span class="tick" style="left:${e}%"></span>`).join("")}<span class="knob" data-pos="${p}"></span></div>
+      <p class="sr-only">Lineage estimate: ${p}% sativa, ${i}% indica.</p>
+      <div class="meter-cap">${estimateInfo}${ce >= 0 ? `<button class="badge" type="button" data-act="explain" aria-expanded="false" aria-controls="${uid}-l">${icon("ruler", "sm")}Close to the line</button>` : ""}</div>
+      ${estimateText}
+      ${ce >= 0 ? `<div class="explain body-explain" id="${uid}-l" hidden>${p} is close to the cutoff between ${BANDS[ce]} and ${BANDS[ce + 1]}. A small change in the family tree would change the label.</div>` : ""}</div>`;
+  }
+  // Package says (only opposite directions, P8; scans only)
+  const opp = mode !== "page" && opposite(facts.package_says, lin);
+  const callout = opp ? `<aside class="callout" aria-label="Package and family tree disagree">${icon("split")}<div><p>Package says <b>${CLS[facts.package_says].w}</b>.</p><p>The family tree leans <b>${lin.label === "hybrid" ? SUB[lin.sublabel] : CLS[lin.label].w}</b>.</p>
+    <button class="linkish" type="button" data-act="open-how" data-how="${uid}">How we got ours ${icon("chev", "sm")}</button></div></aside>` : "";
+  const factsRow = mode === "sheet" && facts.product_form ? `<p class="facts">${icon("pkg", "sm")}<span>From the package: <b>${esc(facts.product_form)}</b></span></p>` : "";
+  // Tags (0..n, no filler)
+  const facet = (label, list, key) => {
+    if (!list || !list.length) return "";
+    const lid = `${uid}-${key}`;
+    return `<div class="facet"><h4 class="facet-h">${label}</h4><ul class="tags" id="${lid}">${list.map((t, n) => `<li class="tag ${n >= 8 ? "extra" : ""}" style="--i:${Math.min(n, 9)}">${esc(t)}</li>`).join("")}</ul>
+      ${list.length > 8 ? `<button class="more" type="button" data-act="more" data-list="${lid}" data-n="${list.length - 8}">+${list.length - 8} more</button>` : ""}</div>`;
+  };
+  const tagHtml = facet("Effects", s.effects, "e") + facet("Also reported", s.negative, "n") + facet("Flavors", s.flavors, "f") + facet("Terpenes", s.terpenes, "t");
+  const tags = tagHtml ? `<section class="rblock" aria-labelledby="${uid}-th"><h3 class="block-h" id="${uid}-th">Commonly reported</h3>${tagHtml}
+    <p class="caption" style="margin-top:10px">From ${s.source_count} sources · <button class="linkish" style="min-height:40px;font-size:inherit" type="button" data-act="open-how" data-how="${uid}">How we know</button></p></section>` : "";
+  // How we know
+  const ids = new Set(); let disputed = 0;
+  const walk = (nid, d) => { if (nid === "unknown") return; const n = S[nid]; if (d > 0) ids.add(nid); if (n.verification === "disputed") disputed++; if (d < 3) n.parents.forEach(x => walk(x, d + 1)); };
+  walk(id, 0);
+  const tree = s.parents.length ? `<ul class="tree" aria-label="Family tree">${treeNode(id, 0, true)}</ul>`
+    : s.kind === "landrace" ? `<p><b>A landrace is where our family trees stop.</b> Its value follows our written landrace rubric.</p>` : `<p><b>We don't have its family tree yet.</b></p>`;
+  const pk = facts.package_says && mode !== "page" ? `<p>Package says <b>${CLS[facts.package_says].w}</b>.${opp ? " See the note above." : ""}${lin.label === "unknown" ? " We can't compare it: the family tree is unknown." : ""}</p>` : "";
+  const how = `<section class="rblock" id="${uid}-howsec"><button class="disclosure" type="button" data-act="how" aria-expanded="false" aria-controls="${uid}-how" id="${uid}-howbtn">
+      <span><b>How we know</b><small>${s.parents.length ? `Family tree · ${ids.size} ancestors · ` : ""}${s.source_count} source${s.source_count === 1 ? "" : "s"}${disputed ? ` · ${disputed} disputed` : ""}</small></span>${icon("chev", "chev")}</button>
+    <div class="how" id="${uid}-how" hidden>${tree}
+      ${(lin.method === "traced" || lin.method === "partial") && REPORTED[s.reported_type] ? `<p>Sources describe it as <b>${REPORTED[s.reported_type]}</b>.</p>` : ""}
+      ${pk}<p>Based on ${s.source_count} source${s.source_count === 1 ? "" : "s"}. <a href="#/about/classification">How classification works</a></p></div></section>`;
+  const savedKey = opt.saveKey || id;
+  const saved = state.saved[savedKey];
+  const actions = mode === "journal" ? "" : actionsHtml(savedKey, saved);
+  const rate = mode === "journal" ? "" : `<div class="rate-row" id="rate-${savedKey}" ${saved ? "" : "hidden"}><p>Rate it for your journal (optional)</p>${starsHtml(savedKey)}</div>`;
+  const lead = `${meter}${callout}${factsRow}`, rest = `${tags}${how}<p class="result-foot">Effects vary person to person. Start low, go slow.</p>`;
+  const body = lead + rest;
+  return { hero, body, lead, rest, actions, rate, announce: `Result: ${s.name}. ${lin.label === "unknown" ? "Unknown lineage" : classText(lin) + (lin.method === "reported" ? ". Described by sources" : `. Lineage estimate ${lin.sativa_pct} percent sativa`)}${chip ? ". " + chip.t : ""}.` };
+}
+function treeNode(nid, d, root) {
+  if (nid === "unknown") return `<li><div class="node unknown"><span class="nm">${icon("help", "sm")}Unknown parent</span></div></li>`;
+  const n = S[nid], lin = n.lineage;
+  const val = lin.method === "reported" ? "described" : lin.sativa_pct == null ? "" : lin.sativa_pct;
+  const name = root ? `<span class="nm">${esc(n.name)}</span>` : `<a href="#/s/${nid}">${esc(n.name)}</a>`;
+  const kids = d < 3 && n.parents.length ? `<ul>${n.parents.map(x => treeNode(x, d + 1)).join("")}</ul>` : "";
+  const ends = !n.parents.length && n.kind !== "landrace" ? `<p class="tree-note">Origins of ${esc(n.name)} are unknown.</p>` : "";
+  const disp = n.verification === "disputed" ? `<button class="badge" type="button" data-act="explain" aria-expanded="false" aria-controls="d-${nid}-${d}">${icon("fork", "sm")}Lineage disputed</button>` : "";
+  return `<li><div class="node">${name}${n.kind === "landrace" ? '<span class="kind">Landrace</span>' : ""}${pill(lin)}<span class="val">${val}</span>${disp}</div>
+    ${disp ? `<div class="explain body-explain" id="d-${nid}-${d}" hidden>Sources disagree about this strain's parents. We show the best-supported version.</div>` : ""}${ends}${kids}</li>`;
+}
+function actionsHtml(key, saved) {
+  return `<div class="sheet-actions" id="act-${key}">
+    ${saved ? `<button class="btn primary saved-btn" type="button" data-go="#/journal/${state.extraJournal.find(e => e.key === key)?.id || "j1"}">${icon("check", "sm")}Saved</button>`
+      : `<button class="btn primary" type="button" data-act="save" data-key="${key}">Save</button>`}
+    <button class="btn secondary" type="button" data-act="share" data-key="${key}">${icon("share", "sm")}Share link</button></div>`;
+}
+function starsHtml(key) {
+  const r = state.ratings[key] || 0;
+  return `<div class="stars" role="radiogroup" aria-label="Your rating">${[1, 2, 3, 4, 5].map(n => `<button class="star ${n <= r ? "on" : ""}" type="button" role="radio" aria-checked="${n === r}" aria-label="${n} star${n > 1 ? "s" : ""}" data-act="rate" data-key="${key}" data-n="${n}">${icon("star")}</button>`).join("")}</div>`;
+}
+
+/* ========================================================================== Sheets over the scanner */
+function sheetShell(inner, { title, announce, detent = "auto", actions = "" }) {
+  return `<div class="scrim" data-act="close-sheet"></div>
+  <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" data-detent="${detent}" data-base="${detent}" ${announce ? `data-announce="${esc(announce)}"` : ""}>
+    <div class="sheet-top"><button class="grabber" type="button" data-act="detent" aria-label="Expand" aria-expanded="false"><span></span></button>
+      <button class="icon-btn close" type="button" data-act="close-sheet" aria-label="Close">${icon("x")}</button></div>
+    <div class="sheet-scroll"><div class="sheet-body"><h2 class="sheet-title" id="sheet-title" tabindex="-1" data-focus>${title}</h2>${inner}</div></div>${actions}</section>`;
+}
+function scanSheet(kind, arg) {
+  if (kind === "result") {
+    const v = V[arg] || (S[arg] ? { id: arg, facts: {} } : V.traced);
+    const r = resultView(v.id, { mode: "sheet", facts: v.facts, saveKey: v.id });
+    const learn = state.learnNote ? `<p class="facts">${icon("barcode", "sm")}<span>We'll recognize this barcode next time (on this phone).</span></p>` : "";
+    state.learnNote = false;
+    return `<div class="scrim" data-act="close-sheet"></div>
+      <section class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title" data-detent="medium" data-base="medium" data-announce="${esc(r.announce)}">
+        <div class="sheet-scroll">${r.hero}${learn}${r.body}</div>${r.rate}${r.actions}</section>`;
+  }
+  if (kind === "which") {
+    const c = ["marsh-wren-4", "marsh-wren-7", "marsh-wren"];
+    const rows = c.map(id => { const s = S[id]; const m = s.name.match(/^(.*?)(\s#\d+)?$/);
+      return `<li><button class="row" type="button" data-act="pick" data-id="${id}"><span><span class="t">${esc(m[1])}${m[2] ? `<span class="num-em">${esc(m[2])}</span>` : ""}</span>
+      <span class="s">${s.breeder ? `${esc(s.breeder)} ·` : ""} ${pill(s.lineage)}</span></span>${icon("chev", "chev")}</button></li>`; }).join("");
+    return sheetShell(`<p class="foot" style="margin-bottom:16px">We read <q>MARSH WREN</q>. Pick the one on your package.</p><ul class="rows">${rows}</ul>
+      <div style="margin-top:16px"><button class="btn secondary block" type="button" data-go="#/scan/nomatch" data-replace>None of these</button></div>
+      <p class="caption" style="margin-top:12px">We'll remember your pick for this barcode, on this phone.</p>`, { title: "Which one is it?", announce: "3 possible matches" });
+  }
+  if (kind === "cross") {
+    const rows = ["kestrel-haze", "sandpiper"].map(id => `<li><a class="row" href="#/s/${id}"><span><span class="t">${esc(S[id].name)}</span><span class="s">Parent, not a match · ${pill(S[id].lineage)}</span></span>${icon("chev", "chev")}</a></li>`).join("");
+    return sheetShell(`<p class="foot" style="margin-bottom:16px">We read <q>KESTREL HAZE x SANDPIPER</q>. We don't have this cross yet. Here are its parents.</p><ul class="rows">${rows}</ul>
+      <div style="margin-top:16px"><button class="btn secondary block" type="button" data-go="#/scan/nomatch" data-replace>None of these</button></div>`, { title: "That looks like a cross of two strains", announce: "Cross of two strains. 2 parents shown" });
+  }
+  if (kind === "nomatch" || kind === "nothing-read") {
+    const blank = kind === "nothing-read";
+    return sheetShell(`<p class="foot" style="margin-bottom:16px">${blank ? "Fill the frame with the strain name, and try the torch." : "Here's what we read. Fix it and search, or try again."}</p>
+      <label class="label" for="readtext">What we read</label>
+      <input class="field" id="readtext" type="search" enterkeyhint="search" value="${blank ? "" : "PREMIUM FLOWER"}" placeholder="Type the strain name" autocomplete="off" autocapitalize="off" spellcheck="false">
+      ${blank ? "" : `<details style="margin-top:8px"><summary class="linkish" style="list-style:none;cursor:pointer">See all the text we read</summary>
+        <ul class="foot" style="margin:4px 0 0;padding-left:20px"><li>PREMIUM FLOWER</li><li>NET WT 3.5G</li><li>LOT 2231-B</li><li>GOVERNMENT WARNING…</li></ul></details>`}
+      <div class="btn-row" style="margin-top:16px">${blank ? `<button class="btn primary" type="button" data-go="#/scan/textshot" data-replace>Try again</button><button class="btn secondary" type="button" data-act="search-read">Search</button>`
+        : `<button class="btn primary" type="button" data-act="search-read">Search</button><button class="btn secondary" type="button" data-go="#/scan/textshot" data-replace>Try again</button>`}</div>
+      <hr style="border:0;border-top:1px solid var(--color-border);margin:20px 0 4px">
+      <p class="foot">We don't have this strain yet? <button class="linkish" type="button" data-act="request">Request it</button></p>
+      <button class="btn tertiary" type="button" data-act="save-anyway">Save anyway</button>`,
+      { title: blank ? "We couldn't read any text there." : "We couldn't find a strain in that label.", announce: blank ? "No text found" : "No match found" });
+  }
+  if (kind === "barcode-unknown" || kind === "tracking" || kind === "coa") {
+    const t = {
+      "barcode-unknown": ["We don't know this barcode yet", "Cannabis barcodes aren't in any public list, so we learn them on your phone. Scan the strain name once and we'll remember it next time.", "Barcode 0 12345 67890 5"],
+      tracking: ["That's a tracking code", "It's unique to this one package, so it can't tell us the strain. Scan the strain name instead.", "Tracking code 1A4F…0042"],
+      coa: ["That QR is for lab results", "It doesn't name the strain. Scan the strain name instead.", "Link: lab-results.example"],
+    }[kind];
+    return sheetShell(`<p class="foot">${t[1]}</p><p class="caption" style="margin:10px 0 18px">${t[2]}</p>
+      <div class="btn-stack"><button class="btn primary block" type="button" data-act="scan-label">${icon("scan", "sm")}Scan the label</button>
+      <button class="btn secondary block" type="button" data-go="#/search">Search by name</button>
+      ${kind === "coa" ? `<button class="btn tertiary" type="button" data-act="open-link">${icon("ext", "sm")}Open link</button>` : ""}</div>`, { title: t[0], announce: "Barcode not recognized" });
+  }
+  if (kind === "readfail") return sheetShell(`<p class="foot" style="margin-bottom:18px">Fill the frame with the strain name, and try the torch.</p>
+      <div class="btn-row"><button class="btn primary" type="button" data-go="#/scan/reading" data-replace>Try again</button><button class="btn secondary" type="button" data-go="#/search">Search by name</button></div>`,
+      { title: "We couldn't read that label.", announce: "Couldn't read the label" });
+  if (kind === "offline-ocr") return sheetShell(`<p class="foot" style="margin-bottom:18px">Barcodes and search work offline.</p>
+      <div class="btn-row"><button class="btn primary" type="button" data-go="#/search">Search by name</button><button class="btn secondary" type="button" data-act="close-sheet">OK</button></div>`,
+      { title: "Text reading needs a one-time download.", announce: "Text reading needs a one-time download. Barcodes and search work offline." });
+  if (kind === "download-fail") return sheetShell(`<p class="foot" style="margin-bottom:18px">Check your connection and try again. Barcodes and search still work.</p>
+      <div class="btn-row"><button class="btn primary" type="button" data-go="#/scan/download" data-replace>Try again</button><button class="btn secondary" type="button" data-go="#/search">Search by name</button></div>`,
+      { title: "Text reading didn't download.", announce: "Text reading didn't download" });
+  if (kind === "quota") return sheetShell(`<p class="foot" style="margin-bottom:18px">Back up your journal and delete old scans, or free up space on your phone.</p>
+      <div class="btn-row"><button class="btn primary" type="button" data-go="#/journal">Open Journal</button><button class="btn secondary" type="button" data-go="#/settings">Back up</button></div>`,
+      { title: "Your phone is out of space for saved scans.", announce: "Couldn't save. Out of space" });
+  if (kind === "recent") {
+    const list = journalEntries().filter(e => e.strain).slice(0, 5);
+    return sheetShell(`<ul class="rows">${list.map(jRow).join("")}</ul>`, { title: "Recent", announce: "Recent scans" });
+  }
+  return "";
+}
+
+/* ========================================================================== Pages */
+function strainPage(id) {
+  if (!S[id]) {
+    return `<main class="screen"><div class="appbar"><button class="icon-btn" type="button" data-act="back" aria-label="Back">${icon("back")}</button></div>
+      <div class="empty">${icon("help", "xl")}<h1 class="sheet-title" tabindex="-1" data-focus>We can't find that strain.</h1><p>The link may be old, or the strain may have a new name.</p>
+      <div class="btn-stack"><button class="btn primary block" type="button" data-go="#/search">Search strains</button><button class="btn secondary block" type="button" data-go="#/scan">Open scanner</button></div></div>${tabbar("scan")}</main>`;
+  }
+  const r = resultView(id, { mode: "page", saveKey: id });
+  return `<main class="screen flush"><div style="padding:0 20px"><div class="appbar"><button class="icon-btn" type="button" data-act="back" aria-label="Back">${icon("back")}</button></div>${r.hero}</div>
+    ${r.lead}<div style="margin-top:16px">${r.rate}${r.actions.replace('class="sheet-actions"', 'class="sheet-actions" style="border:0;background:none;padding-bottom:12px"')}</div>${r.rest}${tabbar("scan")}</main>`;
+}
+function searchScreen() {
+  return `<main class="screen"><div class="searchbar"><button class="icon-btn" type="button" data-act="back" aria-label="Back">${icon("back")}</button>
+    <div class="wrap">${icon("search")}<label class="sr-only" for="q">Search strains</label><input class="field" id="q" type="search" enterkeyhint="search" placeholder="Search strains" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(state.q)}">
+    <button class="icon-btn clear" type="button" data-act="clear-q" aria-label="Clear search">${icon("x", "sm")}</button></div></div>
+    <div id="results"></div>${tabbar("scan")}</main>`;
+}
+function initSearch() {
+  const q = $("#q"); if (!q) return;
+  const render = () => {
+    const v = q.value.trim().toLowerCase(); state.q = q.value;
+    const out = $("#results");
+    if (!v) {
+      const rec = [...new Set(journalEntries().filter(e => e.strain).map(e => e.strain))].slice(0, 5);
+      out.innerHTML = (rec.length ? `<h2 class="section-h">Recent</h2><ul class="rows">${rec.map(id => resRow(id, "")).join("")}</ul>` : "") +
+        `<p class="caption" style="margin-top:20px">Tip: try a nickname or how it's spelled on the package.</p>`;
+      return;
+    }
+    const hits = Object.entries(S).filter(([, s]) => s.name.toLowerCase().includes(v) || (s.aliases || []).some(a => a.toLowerCase().includes(v)));
+    clearTimeout(initSearch.t); initSearch.t = setTimeout(() => say(hits.length ? `${hits.length} result${hits.length > 1 ? "s" : ""}` : "No results"), 500);
+    out.innerHTML = hits.length ? `<p class="caption" style="margin:4px 0 10px">${hits.length} result${hits.length > 1 ? "s" : ""}</p><ul class="rows">${hits.map(([id]) => resRow(id, v)).join("")}</ul>`
+      : `<div class="empty" style="padding-top:32px">${icon("search", "xl")}<h2>No strains match “${esc(q.value)}”.</h2><p>Check the spelling, or try fewer words.</p></div>
+         <p class="foot" style="text-align:center">We don't have this strain yet? <button class="linkish" type="button" data-act="request">Request it</button></p>`;
+  };
+  q.addEventListener("input", render); render();
+  setTimeout(() => q.focus(), 60);
+}
+function resRow(id, v) {
+  const s = S[id]; const hl = t => { if (!v) return esc(t); const i = t.toLowerCase().indexOf(v); return i < 0 ? esc(t) : esc(t.slice(0, i)) + "<mark>" + esc(t.slice(i, i + v.length)) + "</mark>" + esc(t.slice(i + v.length)); };
+  const alias = v && !s.name.toLowerCase().includes(v) ? (s.aliases || []).find(a => a.toLowerCase().includes(v)) : null;
+  return `<li><a class="row" href="#/s/${id}"><span><span class="t">${hl(s.name)}</span><span class="s">${alias ? `Also called “${hl(alias)}” ·` : ""}${s.kind === "landrace" ? "Landrace ·" : ""} ${pill(s.lineage, true)}</span></span>${icon("chev", "chev")}</a></li>`;
+}
+function journalEntries() { return [...state.extraJournal, ...J].filter(e => !state.deleted[e.id]); }
+function jRow(e) {
+  if (!e.strain) return `<li><a class="row jrow cls-unknown" href="#/journal/${e.id}"><span class="cicon">${icon("help")}</span><span><span class="t">Unidentified scan</span><span class="s"><q>${esc(e.read)}</q></span><span class="s">${e.form ? esc(e.form) + " · " : ""}${esc(e.when)}</span></span>${icon("chev", "chev")}</a></li>`;
+  const s = S[e.strain], lin = s.lineage, r = state.ratings[e.key || e.id];
+  const stars = r ? `<span class="jstars" aria-label="Rated ${r} of 5">${[1, 2, 3, 4, 5].map(n => icon("star", n <= r ? "" : "dim")).join("")}</span>` : "";
+  return `<li><a class="row jrow cls-${lin.label}" href="#/journal/${e.id}"><span class="cicon">${icon(CLS[lin.label].i)}</span><span style="min-width:0"><span class="t">${esc(s.name)}</span>
+    <span class="s">${classText(lin)} ${stars}</span><span class="s">${e.form ? esc(e.form) + " · " : ""}${esc(e.when)}</span></span>${icon("chev", "chev")}</a></li>`;
+}
+function journalList(kind) {
+  let body;
+  if (kind === "empty") body = `<div class="empty">${icon("book", "xl")}<h2>Your saved scans show up here.</h2><p>Scan a package and tap Save.</p><button class="btn primary" type="button" data-go="#/scan">Scan a package</button><p class="caption" style="margin-top:16px">Everything stays on this phone.</p></div>`;
+  else if (kind === "unavailable") body = `<div class="empty">${icon("alert", "xl")}<h2>Your journal isn't available in this browser mode.</h2><p>Private browsing and some settings block saving. Open FlowerScan in a normal tab to keep a journal.</p><button class="btn primary" type="button" data-go="#/scan">Scan a package</button></div>`;
+  else {
+    const list = journalEntries(); const groups = {};
+    list.forEach(e => { (groups[e.group] = groups[e.group] || []).push(e); });
+    body = list.length ? Object.entries(groups).map(([g, es]) => `<h2 class="section-h">${g}</h2><ul class="rows">${es.map(jRow).join("")}</ul>`).join("") : journalList("empty");
+  }
+  return `<main class="screen"><h1 class="display page-title" tabindex="-1" data-focus>Journal</h1>
+    <p class="caption">Saved on this phone only. <a href="#/settings" style="font-weight:600">Back up</a></p>${body}${tabbar("journal")}</main>`;
+}
+function journalDetail(jid) {
+  const e = journalEntries().find(x => x.id === jid);
+  if (!e) return `<main class="screen"><div class="empty">${icon("help", "xl")}<h1 class="sheet-title" tabindex="-1" data-focus>That scan isn't in your journal.</h1><p></p><button class="btn primary" type="button" data-go="#/journal">Open Journal</button></div>${tabbar("journal")}</main>`;
+  const key = e.key || e.id;
+  const mine = `<section class="rblock"><div class="group" style="padding:14px 16px">
+      <p class="label" id="rl">Your rating</p>${starsHtml(key)}
+      <label class="label" for="notes" style="margin-top:12px">Notes</label><textarea class="field" id="notes" data-key="${key}">${esc(state.notes[key] || "")}</textarea>
+      <p class="caption" id="nstat" role="status" style="margin-top:6px"></p></div></section>`;
+  const meta = `<section class="rblock foot"><p>Scanned ${esc(e.when)} · ${esc(e.method)}${e.form ? ` · ${esc(e.form)}` : ""}</p></section>`;
+  const del = `<section class="rblock"><button class="btn tertiary" style="color:var(--color-danger)" type="button" data-act="delete" data-id="${e.id}">${icon("trash", "sm")}Delete from journal</button></section>`;
+  const top = `<div class="appbar"><button class="icon-btn" type="button" data-go="#/journal" aria-label="Back to Journal">${icon("back")}</button>${e.strain ? `<button class="icon-btn" type="button" data-act="share" data-key="${e.strain}" aria-label="Share link">${icon("share")}</button>` : ""}</div>`;
+  if (!e.strain) {
+    return `<main class="screen flush"><div style="padding:0 20px">${top}
+      <div class="group" style="padding:20px"><p class="hero-class" style="margin:0">${icon("help", "lg")}<span class="display" style="font-size:var(--text-title)">Unidentified scan</span></p>
+      <p class="foot" style="margin-top:8px">We couldn't match this one.</p><p class="foot">What we read: <q>${esc(e.read)}</q></p>
+      <button class="btn secondary" style="margin-top:14px" type="button" data-act="search-text" data-q="${esc(e.read)}">${icon("search", "sm")}Search for it</button></div></div>
+      ${mine}${meta}${del}<p class="result-foot">Effects vary person to person. Start low, go slow.</p>${tabbar("journal")}</main>`;
+  }
+  const r = resultView(e.strain, { mode: "journal", facts: { package_says: e.pkg, product_form: e.form } });
+  return `<main class="screen flush"><div style="padding:0 20px">${top}${r.hero.replace(/<h1 /, '<h1 ')}</div>
+    ${r.lead}${mine}${r.rest.replace('<p class="result-foot">', `${meta}${jid === "j2" ? `<section class="rblock foot"><p>This is how it looked when you saved it. <a href="#/s/${e.strain}">See today's version</a></p></section>` : ""}${del}<p class="result-foot">`)}${tabbar("journal")}</main>`;
+}
+function settingsScreen() {
+  const th = ["System", "Dark", "Light"].map(t => `<button type="button" role="radio" aria-checked="${state.theme === t.toLowerCase()}" data-act="theme" data-theme="${t.toLowerCase()}">${t}</button>`).join("");
+  const haptics = "vibrate" in navigator ? `<div class="set"><span id="hap-l">Haptics</span><button class="switch" type="button" role="switch" aria-checked="true" aria-labelledby="hap-l" data-act="switch"></button></div>` : "";
+  return `<main class="screen"><h1 class="display page-title" tabindex="-1" data-focus>Settings</h1>
+    <h2 class="section-h">Appearance</h2><div class="group"><div class="set"><span id="th-l">Theme</span><div class="seg" role="radiogroup" aria-labelledby="th-l">${th}</div></div></div>
+    <h2 class="section-h">Scanning</h2><div class="group"><button class="set" type="button" data-act="cycle-mode"><span>Default mode</span><span class="v">${state.mode}${icon("chev", "sm")}</span></button>${haptics}</div>
+    ${"vibrate" in navigator ? "" : `<p class="caption" style="margin-top:6px">Haptics aren't available in this browser, so the setting is hidden.</p>`}
+    <h2 class="section-h">Your data</h2><p class="caption" style="margin:-2px 0 8px">${journalEntries().length} scans saved on this phone · Last backup: Oct 20</p>
+    <div class="group"><button class="set" type="button" data-act="backup">${icon("download", "sm")}<span>Back up journal</span><span class="v">${icon("chev", "sm")}</span></button>
+      <button class="set" type="button" data-go="#/settings/restored">${icon("upload", "sm")}<span>Restore from backup</span><span class="v">${icon("chev", "sm")}</span></button>
+      <button class="set danger" type="button" data-go="#/settings/erase">${icon("alert", "sm")}<span>Erase all data</span></button></div>
+    <p class="caption" style="margin-top:8px">Your browser may clear saved scans when space runs low. Back up to keep them.</p>
+    <h2 class="section-h">About</h2><div class="group">
+      <a class="set" href="#/about/classification"><span>How FlowerScan works</span><span class="v">${icon("chev", "sm")}</span></a>
+      <a class="set" href="#/about/privacy"><span>Privacy</span><span class="v">${icon("chev", "sm")}</span></a>
+      <a class="set" href="#/about/responsible-use"><span>Responsible use</span><span class="v">${icon("chev", "sm")}</span></a></div>
+    <p class="caption" style="margin-top:12px">Data version 2026.10 (sample) · App 0.1 · Mockup with fictional data</p>${tabbar("settings")}</main>`;
+}
+function settingsSheet(kind) {
+  if (kind === "erase") return `<div class="dialog-wrap"><div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="er-h" aria-describedby="er-p">
+    <h2 id="er-h">Erase everything on this phone?</h2><p id="er-p">Your journal, remembered barcodes and settings will be deleted. This can't be undone.</p>
+    <div class="btn-row"><button class="btn secondary" type="button" data-go="#/settings" data-replace data-focus>Cancel</button><button class="btn danger" type="button" data-act="erase">Erase everything</button></div></div></div>`;
+  if (kind === "restored") return sheetShell(`<p class="foot" style="margin-bottom:6px">Restored 38 scans.</p><p class="foot">2 were already here (we kept the newer one). 1 couldn't be read.</p>
+    <p class="caption" style="margin:10px 0 18px">Sample numbers. The real summary comes from the merge.</p>
+    <div class="btn-stack"><button class="btn primary block" type="button" data-go="#/journal">View journal</button><button class="btn tertiary" type="button" data-go="#/settings/wrongfile" data-replace>Prototype: show the wrong-file message</button></div>`, { title: "Backup restored", announce: "Backup restored. 38 scans" });
+  if (kind === "wrongfile") return sheetShell(`<p class="foot" style="margin-bottom:18px">Nothing changed.</p><button class="btn primary block" type="button" data-act="close-sheet">OK</button>`, { title: "That file isn't a FlowerScan backup.", announce: "That file isn't a FlowerScan backup. Nothing changed." });
+  return "";
+}
+function aboutScreen() {
+  const treeOnly = `<ul class="tree" aria-label="Worked example family tree">${treeNode("kestrel-haze", 0, true)}</ul>`;
+  return `<main class="screen about"><div class="appbar"><button class="icon-btn" type="button" data-act="back" aria-label="Back">${icon("back")}</button></div>
+    <h1 class="display page-title" tabindex="-1" data-focus>About FlowerScan</h1>
+    <nav class="toc" aria-label="On this page"><a href="#/about" data-scroll="classification">How it works</a><a href="#/about" data-scroll="limits">What it can't tell you</a><a href="#/about" data-scroll="sources">Our data</a><a href="#/about" data-scroll="tags">Tags</a><a href="#/about" data-scroll="privacy">Privacy</a><a href="#/about" data-scroll="responsible-use">Responsible use</a></nav>
+    <h2 id="classification">How classification works</h2>
+    <p>We look up the strain's family tree in our database and average how its ancestors are usually classified, back to traditional landraces where we can. The result is a <b>lineage estimate</b>: a number from 0 (indica) to 100 (sativa), and a label.</p>
+    <p class="caption">Worked example with fictional strains:</p><div class="group" style="padding:8px 14px">${treeOnly}</div>
+    <table class="bands" aria-label="Label bands"><tbody><tr><td>${pill({ label: "indica" })}</td><td>0–20</td></tr><tr><td>${pill({ label: "hybrid" })} Indica-dominant</td><td>21–40</td></tr>
+      <tr><td>${pill({ label: "hybrid" })} Balanced</td><td>41–59</td></tr><tr><td>${pill({ label: "hybrid" })} Sativa-dominant</td><td>60–79</td></tr><tr><td>${pill({ label: "sativa" })}</td><td>80–100</td></tr></tbody></table>
+    <ul class="plain"><li><b>Lineage traced:</b> every branch reaches sourced data.</li><li><b>Partly traced:</b> some branches end early, so we use how sources describe those strains.</li><li><b>Breeder's label:</b> no family tree yet, only how it's described.</li><li><b>Unknown lineage:</b> not enough data, so we don't estimate.</li></ul>
+    <h2 id="limits">What it can't tell you</h2>
+    <p><b>We match the name on the package. We can't confirm what's inside.</b></p>
+    <p>Indica and sativa describe plant families, not how you'll feel. Effects vary person to person.</p>
+    <p>Research finds the market labels "indica" and "sativa" track aroma more than overall genetics, so treat the label as a guide to family history.</p>
+    <p>When sources disagree about a strain's parents, we show the best-supported version and mark it "lineage disputed".</p>
+    <h2 id="sources">Where our data comes from</h2>
+    <p>Breeder sites, published books, lab data and open datasets we're allowed to use. Every fact cites a source, and a person on our team checks each strain before it's marked verified.</p>
+    <p><b>No brand pays for results. No ads.</b></p>
+    <h2 id="tags">What the tags mean</h2>
+    <p>Tags show what sources commonly report for a strain. They aren't promises, and effects vary person to person.</p>
+    <ul class="plain"><li><b>Uplifted:</b> often described as a brighter, more upbeat mood.</li><li><b>Relaxed:</b> often described as feeling loose and unhurried.</li><li><b>Dry mouth:</b> a commonly reported downside.</li></ul>
+    <p class="caption">Sample descriptions for the mockup. The real list renders from the taxonomy (T-003).</p>
+    <h2 id="privacy">Privacy</h2>
+    <p><b>Your camera images never leave your phone.</b> Text reading, matching and your journal all happen on this phone. We don't store photos. No account, no ads, no trackers.</p>
+    <p>Some packages print potency numbers. We keep them with your saved scan on this phone, and we don't show them.</p>
+    <p>Erase all data in Settings deletes everything.</p>
+    <h2 id="responsible-use">Responsible use</h2>
+    <p>FlowerScan is for adults 21 and older. Effects vary person to person. Start low, go slow. Don't drive after using cannabis. Follow your state's laws.</p>
+    <p class="caption">Draft copy for legal review (Q10).</p>${tabbar("settings")}</main>`;
+}
+
+/* ========================================================================== Events */
+document.addEventListener("click", ev => {
+  const el = ev.target.closest("[data-go],[data-act],[data-scroll]");
+  if (!el || el.closest("#proto")) return;
+  if (el.dataset.scroll) { ev.preventDefault(); const t = document.getElementById(el.dataset.scroll); if (t) t.scrollIntoView({ behavior: document.documentElement.classList.contains("rm") ? "auto" : "smooth" }); return; }
+  if (el.dataset.go) { ev.preventDefault(); go(el.dataset.go, el.hasAttribute("data-replace")); return; }
+  const a = el.dataset.act;
+  if (a === "shutter") { state.shutter === "slow" ? go("#/scan/slow") : state.shutter === "download" ? go("#/scan/download") : go("#/scan/reading"); }
+  else if (a === "lock") { if (document.querySelector(".scanner .topbar") && state.mode !== "Text") go("#/scan/lock"); }
+  else if (a === "mode") { state.mode = el.dataset.mode; route(); }
+  else if (a === "torch") { state.torch = !state.torch; el.setAttribute("aria-pressed", state.torch); el.setAttribute("aria-label", state.torch ? "Turn off torch" : "Turn on torch"); document.querySelector(".feed").style.filter = state.torch ? "brightness(1.35)" : ""; }
+  else if (a === "close-sheet") closeSheet();
+  else if (a === "detent") { const sh = el.closest(".sheet"); const big = sh.dataset.detent !== "large"; sh.dataset.detent = big ? "large" : (sh.dataset.base || "medium"); el.setAttribute("aria-expanded", big); el.setAttribute("aria-label", big ? "Collapse" : "Expand"); }
+  else if (a === "explain") { const t = document.getElementById(el.getAttribute("aria-controls")); const open = el.getAttribute("aria-expanded") !== "true"; el.setAttribute("aria-expanded", open); t.hidden = !open; }
+  else if (a === "how") { const t = document.getElementById(el.getAttribute("aria-controls")); const open = el.getAttribute("aria-expanded") !== "true"; el.setAttribute("aria-expanded", open); t.hidden = !open; }
+  else if (a === "open-how") {
+    const u = el.dataset.how, b = document.getElementById(u + "-howbtn"), t = document.getElementById(u + "-how");
+    b.setAttribute("aria-expanded", "true"); t.hidden = false;
+    const sh = el.closest(".sheet"); if (sh) { sh.dataset.detent = "large"; }
+    setTimeout(() => document.getElementById(u + "-howsec").scrollIntoView({ behavior: "smooth", block: "start" }), 340);
+  }
+  else if (a === "more") { const l = document.getElementById(el.dataset.list); const ex = l.classList.toggle("expanded"); el.textContent = ex ? "Show fewer" : `+${el.dataset.n} more`; }
+  else if (a === "save") doSave(el.dataset.key, el);
+  else if (a === "share") doShare(el.dataset.key);
+  else if (a === "rate") { const k = el.dataset.key, n = +el.dataset.n; state.ratings[k] = state.ratings[k] === n ? 0 : n; el.closest(".stars").outerHTML = starsHtml(k); say(state.ratings[k] ? `Rated ${state.ratings[k]} of 5` : "Rating cleared"); }
+  else if (a === "pick") { if (el.dataset.id === "marsh-wren-4") state.learnNote = true; go(`#/scan/result/${el.dataset.id === "marsh-wren-4" ? "partial" : el.dataset.id}`); }
+  else if (a === "search-read") { const v = $("#readtext"); state.q = v ? v.value : ""; go("#/search"); }
+  else if (a === "search-text") { state.q = el.dataset.q; go("#/search"); }
+  else if (a === "request") toast("Request noted on this phone.");
+  else if (a === "save-anyway") { const id = "u" + Date.now(); state.extraJournal.unshift({ id, strain: null, read: ($("#readtext") || {}).value || "PREMIUM FLOWER", group: "Today", when: "Just now", method: "Read from the label", form: "Flower" }); toast("Saved to Journal as unidentified", "Undo", () => { state.deleted[id] = true; }); say("Saved to Journal as unidentified"); }
+  else if (a === "scan-label") { go("#/scan/textshot", true); setTimeout(() => { const s = document.querySelector(".shutter"); if (s && !document.documentElement.classList.contains("rm")) s.animate([{ transform: "scale(1)" }, { transform: "scale(1.12)" }, { transform: "scale(1)" }], { duration: 500 }); }, 300); }
+  else if (a === "open-link") toast("Opens lab-results.example in a new tab (prototype).");
+  else if (a === "keepwaiting") { later(() => go(shutterTarget().replace("slow", "traced"), true), 900); const h = $("#hint"); if (h) { h.className = "hint"; h.textContent = "Still reading. Hold on…"; } }
+  else if (a === "retry-denied") { const n = $("#cam-note"); if (n) n.textContent = "Still off. Change the setting, then try again."; }
+  else if (a === "copy-link") toast("Link copied");
+  else if (a === "back") { if (history.length > 1) history.back(); else go("#/scan"); }
+  else if (a === "clear-q") { const q = $("#q"); q.value = ""; q.dispatchEvent(new Event("input")); q.focus(); }
+  else if (a === "theme") { state.theme = el.dataset.theme; applyTheme(); route(); }
+  else if (a === "switch") { el.setAttribute("aria-checked", el.getAttribute("aria-checked") !== "true"); }
+  else if (a === "cycle-mode") { const m = ["Auto", "Text", "Barcode", "QR"]; state.mode = m[(m.indexOf(state.mode) + 1) % 4]; route(); }
+  else if (a === "backup") toast("Backup saved to your downloads");
+  else if (a === "erase") { state.extraJournal = []; state.saved = {}; go("#/age", true); }
+  else if (a === "delete") { const id = el.dataset.id; state.deleted[id] = true; state.keepToast = true; go("#/journal"); setTimeout(() => toast("Deleted", "Undo", () => { delete state.deleted[id]; route(); }), 50); }
+});
+document.addEventListener("input", ev => {
+  if (ev.target.id === "notes") { const k = ev.target.dataset.key; state.notes[k] = ev.target.value; clearTimeout(window.__n); const st = $("#nstat"); if (st) st.textContent = ""; window.__n = setTimeout(() => { const s2 = $("#nstat"); if (s2) s2.textContent = "Saved"; }, 600); }
+});
+document.addEventListener("keydown", ev => {
+  if (ev.key === "Escape" && sheetRoot.innerHTML) closeSheet();
+  if (ev.key === "Enter" && ev.target.id === "readtext") { state.q = ev.target.value; go("#/search"); }
+});
+function closeSheet() {
+  const h = location.hash;
+  if (h.startsWith("#/settings/")) go("#/settings", true); else go("#/scan", true);
+}
+function doSave(key, el) {
+  const id = "s" + Date.now();
+  state.saved[key] = true;
+  state.extraJournal.unshift({ id, key, strain: key, group: "Today", when: "Just now", method: "Read from the label", form: (Object.values(V).find(v => v.id === key) || { facts: {} }).facts.product_form });
+  buzz([10, 40, 10]);
+  const bar = document.getElementById("act-" + key);
+  if (bar) { bar.outerHTML = actionsHtml(key, true); const b = document.querySelector(`#act-${CSS.escape(key)} .btn.primary`); if (b) { b.classList.add("pop"); b.focus(); } }
+  const rr = document.getElementById("rate-" + key); if (rr) rr.hidden = false;
+  say("Saved to Journal");
+  toast("Saved to Journal", "Undo", () => { state.saved[key] = false; state.deleted[id] = true; const b2 = document.getElementById("act-" + key); if (b2) b2.outerHTML = actionsHtml(key, false); const r2 = document.getElementById("rate-" + key); if (r2) r2.hidden = true; say("Removed from Journal"); });
+}
+async function doShare(key) {
+  const url = `https://flowerscan.example/s/${key}`;
+  try { if (navigator.share) { await navigator.share({ title: S[key].name, url }); return; } } catch (e) { if (e && e.name === "AbortError") return; }
+  try { await navigator.clipboard.writeText(url); } catch (e) { /* prototype: ignore */ }
+  toast("Link copied"); say("Link copied");
+}
+/* Swipe down on a sheet's top area to dismiss (the close button and grabber are the non-drag alternatives) */
+let drag = null;
+document.addEventListener("pointerdown", ev => { const sh = ev.target.closest(".sheet"); if (!sh || ev.target.closest("button,a,input,textarea")) return; const sc = sh.querySelector(".sheet-scroll"); if (sc && sc.scrollTop > 0) return; drag = { y: ev.clientY, sh }; });
+document.addEventListener("pointermove", ev => { if (!drag) return; const dy = Math.max(0, ev.clientY - drag.y); drag.sh.style.transform = `translateY(${dy}px)`; drag.dy = dy; });
+document.addEventListener("pointerup", () => { if (!drag) return; const { sh, dy } = drag; drag = null; if (dy > 90) closeSheet(); else sh.style.transform = ""; });
+
+/* ========================================================================== Theme, motion, prototype menu */
+function applyTheme() {
+  const t = state.theme === "system" ? (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark") : state.theme;
+  document.documentElement.dataset.theme = t;
+}
+if (matchMedia("(prefers-reduced-motion: reduce)").matches) document.documentElement.classList.add("rm");
+const PROTO = [
+  ["First run", [["Age gate", "#/age"], ["Leave → exit screen", "#/leave"], ["Camera card", "#/camera-card"], ["Start camera (re-prompt)", "#/scan/start"]]],
+  ["Scanner", [["Live", "#/scan"], ["Coaching: move closer", "#/scan/coach"], ["Coaching: more light", "#/scan/coach-light"], ["Barcode lock-on", "#/scan/lock"], ["Reading", "#/scan/reading"], ["Still reading → slow", "#/scan/slow"], ["Read failed", "#/scan/readfail"], ["Text reading download", "#/scan/download"], ["Download failed", "#/scan/download-fail"], ["Offline, OCR not cached", "#/scan/offline-ocr"], ["Recent", "#/scan/recent"]]],
+  ["Camera problems", [["Denied", "#/camera/denied"], ["No camera", "#/camera/notfound"], ["Camera busy", "#/camera/busy"], ["Browser can't", "#/camera/unsupported"]]],
+  ["Result sheet", [["Traced", "#/scan/result/traced"], ["Partly traced + close + disputed", "#/scan/result/partial"], ["Breeder's label", "#/scan/result/reported"], ["Unknown lineage", "#/scan/result/unknown"], ["Zero tags", "#/scan/result/zero-tags"], ["Many tags", "#/scan/result/many"], ["Package disagrees", "#/scan/result/disagree"], ["Out of space on save", "#/scan/quota"]]],
+  ["Close call, no match, codes", [["Which one?", "#/scan/which"], ["A x B cross label", "#/scan/cross"], ["No match", "#/scan/nomatch"], ["Nothing read", "#/scan/nothing-read"], ["Unknown barcode", "#/scan/barcode-unknown"], ["Tracking code", "#/scan/tracking"], ["Lab-results QR", "#/scan/coa"]]],
+  ["Pages", [["Strain page (deep link)", "#/s/kestrel-haze"], ["Unknown strain link", "#/s/does-not-exist"], ["Search", "#/search"], ["Journal", "#/journal"], ["Journal empty", "#/journal-empty"], ["Journal unavailable", "#/journal-unavailable"], ["Journal detail", "#/journal/j1"], ["Older snapshot", "#/journal/j2"], ["Unidentified detail", "#/journal/j4"], ["Settings", "#/settings"], ["Erase dialog", "#/settings/erase"], ["Restore summary", "#/settings/restored"], ["About", "#/about"]]],
+];
+function protoMenu() {
+  const shutterOpts = [["traced", "Result: traced"], ["partial", "Result: partly traced"], ["reported", "Result: breeder's label"], ["unknown", "Result: unknown lineage"], ["zero-tags", "Result: zero tags"], ["many", "Result: many tags"], ["disagree", "Result: package disagrees"], ["which", "Which one?"], ["cross", "A x B cross"], ["nomatch", "No match"], ["nothing-read", "Nothing read"], ["readfail", "Read failed"], ["slow", "Slow reading"], ["download", "First-use download"], ["offline-ocr", "Offline, not cached"]];
+  const codeOpts = [["remembered", "Remembered barcode → result"], ["unknown", "Unknown barcode"], ["tracking", "Tracking code"], ["coa", "Lab-results QR"]];
+  return `<div style="display:flex;justify-content:space-between;align-items:center"><b style="font-size:17px">Prototype controls</b><button class="pbtn" type="button" data-proto="close">Close</button></div>
+    <p class="disc">Not part of the design. Fictional sample data: every strain, lineage, tag and source count here is invented. Tokens are placeholders until Roy's identity lands (Q11). Tap the package's barcode on the scanner to simulate a code coming into view; tap the shutter to read text.</p>
+    <h2>Simulation</h2><p class="disc"><label>Shutter leads to <select data-proto="shutter">${shutterOpts.map(([v, l]) => `<option value="${v}" ${state.shutter === v ? "selected" : ""}>${l}</option>`).join("")}</select></label></p>
+    <p class="disc"><label>Barcode tap leads to <select data-proto="code">${codeOpts.map(([v, l]) => `<option value="${v}" ${state.code === v ? "selected" : ""}>${l}</option>`).join("")}</select></label></p>
+    <div class="links"><button class="pbtn" type="button" data-proto="theme">Theme: ${document.documentElement.dataset.theme}</button><button class="pbtn" type="button" data-proto="rm">Reduced motion: ${document.documentElement.classList.contains("rm") ? "on" : "off"}</button><button class="pbtn" type="button" data-proto="hide">Hide this button</button></div>
+    ${PROTO.map(([g, ls]) => `<h2>${g}</h2><div class="links">${ls.map(([l, h]) => `<a href="${h}" data-proto="nav">${l}</a>`).join("")}</div>`).join("")}`;
+}
+const pbtn = $("#proto-btn"), proto = $("#proto");
+pbtn.onclick = () => { proto.innerHTML = protoMenu(); proto.hidden = false; pbtn.setAttribute("aria-expanded", "true"); };
+proto.addEventListener("click", ev => {
+  const t = ev.target.closest("[data-proto]"); if (!t) return;
+  const k = t.dataset.proto;
+  if (k === "close" || k === "nav") { proto.hidden = true; pbtn.setAttribute("aria-expanded", "false"); }
+  if (k === "theme") { state.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark"; applyTheme(); proto.innerHTML = protoMenu(); route(); }
+  if (k === "rm") { document.documentElement.classList.toggle("rm"); proto.innerHTML = protoMenu(); }
+  if (k === "hide") { proto.hidden = true; pbtn.hidden = true; }
+});
+proto.addEventListener("change", ev => { const t = ev.target; if (t.dataset.proto === "shutter") state.shutter = t.value; if (t.dataset.proto === "code") state.code = t.value; });
+
+window.addEventListener("hashchange", route);
+applyTheme();
+route();
+</script>
+</body>
+</html>
