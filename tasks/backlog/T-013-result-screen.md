@@ -15,7 +15,12 @@ The result sheet and the `/s/:strainId` page, driven by real built data, showing
 ## Requirements
 - Data loader: fetch `latest.json` → content-hashed `strains.json`, build the in-memory index once, expose `useStrain(id)`.
 - Hero: name, label + sublabel, `ClassificationMeter`, `ConfidenceChip`.
-- Package-says callout only when it differs from the label. Package facts only those present.
+- Package-says callout **only when directions are opposite** (P8, docs/08). "Lineage estimate, not a lab test"
+  under the meter, plus "Close to the line" within ±2 of a band edge (P8).
+- Package facts: product form only. **Never render potency** (P2). Add a test that fails if any THC/CBD value
+  reaches the DOM.
+- Disputed ancestors are marked "lineage disputed" in the family tree (P9).
+- Strain names render as plain text, with no styling keyed to the name (P12).
 - `TagList` per facet. A facet with no tags renders nothing. All facets empty → no tags section at all.
 - "How we know": `explainLineage` tree (3 generations), `unknown` parents shown as "Unknown parent", source count.
 - Responsible-use footer.

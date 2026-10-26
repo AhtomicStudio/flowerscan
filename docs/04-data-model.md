@@ -31,15 +31,16 @@ Every node in the family tree is one note in the vault.
 | `schema_version` | int | ✔ | Currently `1`. |
 | `name` | string | ✔ | Display name exactly as commonly written, e.g. `Gorilla Glue #4`. |
 | `aliases` | string[] | | Native Obsidian property. Other names for **the same plant**: abbreviations, renames (trademark or regulator), nicknames, common misspellings: `["GG4", "Original Glue"]`. Used by the matcher. **Not** for sibling phenos or other cuts (`Chem 91` is not an alias of `Chemdawg`; `Gelato #33` is not an alias of `Gelato`), and not for names used inconsistently across markets. Those stay separate nodes or go to "Which one?". |
-| `parents` | (wikilink \| `"unknown"`)[] | ✔ (may be `[]` for landraces) | e.g. `["[[Strain A]]", "[[Strain B]]"]`. Use `"unknown"` for an undisclosed parent. One parent = a selection/pheno/S1. |
+| `parents` | (wikilink \| `"unknown"`)[] | ✔ (may be `[]` for landraces) | e.g. `["[[Strain A]]", "[[Strain B]]"]`. Use `"unknown"` for an undisclosed parent. A numbered pheno lists the **seed line's parents** when they're sourced (P7). |
 | `parent_weights` | number[] | | Same length as `parents`, sums to 1. Omit for equal weights. |
+| `derivation` | `cross \| s1 \| cut \| pheno` | ✔ if one parent | Default `cross` for 2+ parents. Single-parent nodes must say which: `s1` (selfed seeds), `cut` (a clone of the parent), `pheno` (a selection whose only parent is its seed line). Drives generation decay (docs/05, P7). |
 | `reported_type` | `indica \| indica-dominant \| balanced \| sativa-dominant \| sativa \| unknown` | ✔ | What the breeder or reliable sources *say*. Used when lineage is incomplete, and shown for comparison. |
-| `base_sativa_pct` | 0–100 | landrace only | Curator-assigned, with a source. |
+| `base_sativa_pct` | `10 \| 25 \| 50 \| 75 \| 90` | landrace only | Coarse scale only, following `data/vault/LANDRACE-RUBRIC.md`, with two sources (P10). No fitting source → leave it empty. No ruderalis landraces in v1 (P1). |
 | `breeder` | wikilink | | `"[[Breeder Name]]"` |
 | `effects` | taxonomy slug[] | | Facet `effect`. Only with a source in `sources` that `supports: [effects]`. |
 | `flavors` | taxonomy slug[] | | Facet `flavor`. Same provenance rule. |
 | `terpenes` | taxonomy slug[] | | Facet `terpene`. Commonly reported dominant terpenes; same rule. |
-| `typical_thc_pct` | `{min, max}` | | Only if sourced. Display as "commonly reported". |
+| `typical_thc_pct` | `{min, max}` | | Only if sourced. **Internal only, never displayed** (P2). It may later be filled from the potency table. |
 | `sources` | Source[] | ✔ for `verified` | See below. |
 | `verification` | `unverified \| verified \| disputed` | ✔ | Only `verified` and `disputed` nodes ship to the app by default. Policy is in T-006. |
 | `created` / `updated` | ISO date | ✔ | |
@@ -102,8 +103,9 @@ See [09-compliance-and-privacy.md](09-compliance-and-privacy.md).
 
 - `manifest.json`: `{ data_version, built_at, algo_version, taxonomy_version, counts, hash }`
 - `strains.json`: the array of searchable nodes (strains plus landraces) with `id, name, aliases, kind,
-  parents (as ids), reported_type, breeder_id, effects, flavors, terpenes, typical_thc_pct,
-  verification, lineage{…}, source_count`. Crosses are inlined as lineage tree nodes, not search entries.
+  parents (as ids), derivation, reported_type, breeder_id, effects, flavors, terpenes, verification,
+  lineage{…}, source_count`. Crosses are inlined as lineage tree nodes, not search entries.
+  `typical_thc_pct` is **not** shipped (P2: potency is never user-facing).
 - `taxonomy.json`
 - `build-report.md` (not shipped): warnings such as missing parents, unresolved links, unsourced tags,
   near-duplicate names, cycles (cycles are errors).
@@ -140,8 +142,8 @@ Algorithm: [05-classification-algorithm.md](05-classification-algorithm.md).
 | `lineage` | lineage object | Snapshot at scan time, so exports stay stable when the data updates |
 | `data_version` | string | Which dataset produced the result |
 | `match_score` | 0–1 | |
-| `package_says` | `indica \| sativa \| hybrid \| null` | Label claim read from the package |
-| `thc_pct` / `cbd_pct` | number \| null | Read from the package (batch-specific) |
+| `package_says` | `indica \| sativa \| hybrid \| null` | Label claim read from the package. Three values only (P3): "dominant" variants map to `hybrid`. |
+| `potency_readings` | PotencyReading[] | Every potency figure printed on the package, **exactly as printed** (P2). Batch-specific. **Never shown in the UI.** |
 | `brand` | string \| null | If detected or entered |
 | `product_form` | `flower \| pre-roll \| vape \| edible \| concentrate \| other \| null` | |
 | `barcode` | string \| null | Raw value |
@@ -153,10 +155,23 @@ Algorithm: [05-classification-algorithm.md](05-classification-algorithm.md).
 
 Scan images are **not** stored by default. An opt-in "keep photo" setting may come later.
 
+### PotencyReading
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `analyte` | `total_thc \| thca \| delta9_thc \| thc_unspecified \| total_cbd \| cbda \| cbd \| total_cannabinoids` | What the label called it. `thc_unspecified` when it just says "THC". |
+| `value` | number \| null | null for `ND` / `<LOQ` |
+| `qualifier` | `exact \| nd \| below_loq \| less_than` | How it was printed (`<1%` → `less_than`) |
+| `unit` | `percent \| mg_per_g` | As printed. Never converted. |
+| `raw` | string | The exact OCR text it came from |
+
+Never computed (no Total THC from THCa), never rounded, never shown to users.
+
 ### Local barcode memory
 
-`{ barcode, barcode_format, strain_id, confirmed_at, times_seen }`. Used to skip OCR next time.
-Phase 2 can optionally contribute these to a shared, moderated mapping.
+`{ barcode, barcode_format, strain_id, confirmed_at, times_seen, learnable }`. Used to skip OCR next time.
+Track-and-trace UIDs are never stored. Other Code 128 values become `learnable` only after a second, separate
+scan (P13, docs/06). Phase 2 can optionally contribute these to a shared, moderated mapping.
 
 ### Settings
 
@@ -167,6 +182,37 @@ Phase 2 can optionally contribute these to a shared, moderated mapping.
 `flowerscan-backup-YYYY-MM-DD.json`: `{ format: "flowerscan-backup", schema_version, exported_at,
 scans: Scan[], barcode_memory: BarcodeMemory[], settings: Settings }`. Restoring validates it with zod, merges
 by `id` (newer `date_scanned` wins on conflict), and never silently drops records.
+
+---
+
+## Back-of-house data (internal, never shipped to the app)
+
+### Potency observations (`data/observations/potency/`, P2)
+
+An internal table of reported potency per strain, across brands, states and time, for our own database and
+future projects. **Not user-facing**, and `vault-build` never ships it.
+
+One YAML file per observation, `YYYY-MM-DD-<strain-id>-<brand-slug>.yaml`:
+
+| Field | Type | Notes |
+| --- | --- | --- |
+| `id` | string | `obs_<ulid>` |
+| `strain_id` | string | Must resolve in the vault |
+| `name_on_package` | string | Exactly as printed |
+| `brand` | string \| null | As printed |
+| `state` | US state code \| null | Where the package was sold |
+| `product_form` | as in Scan | |
+| `observed_on` | ISO date | When the package was recorded |
+| `packaged_on` / `batch` | string \| null | If printed |
+| `readings` | PotencyReading[] | Exactly as printed |
+| `source` | `founder_record \| eval_set \| user_opt_in` | `user_opt_in` only exists from Phase 2 |
+| `recorded_by` | string | Founder name or `eval-import` |
+| `evidence` | string \| null | Path to a golden-set photo, if any. Never a user photo. |
+
+**Sources:** now, only packages the founders record: golden-set photos (`data/eval`) and founders' own scans,
+imported from a founder's journal backup file. Phase 2 adds an anonymous, explicit **user opt-in** (no photo,
+no identity, no location finer than state). See [09-compliance-and-privacy.md](09-compliance-and-privacy.md).
+Tooling: T-025.
 
 ---
 

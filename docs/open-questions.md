@@ -8,30 +8,30 @@ Record each answer here with a date, and write an ADR if it affects architecture
 | # | Question | Blocks | Default if unanswered |
 | --- | --- | --- | --- |
 | Q8 | **GitHub org/repo, Vercel team, domain registrar?** | T-001 CI, T-019 | Create when T-001 starts |
-| Q10 | **Legal review before public launch: who, and when?** Not covered by the small monthly budget (Q9). | T-019 | Required before public launch; not before a private beta |
+| Q10 | **Legal review before public launch: who, and when?** Not covered by the small monthly budget (Q9). Scope must include candy-like strain names (P12) and name/trademark clearance (T-023). | T-019 | Required before public launch; not before a private beta |
 | Q11 | **Final brand name and visual identity** (Roy). See [12-naming.md](12-naming.md) and [13-creative-brief.md](13-creative-brief.md). | T-004 final tokens, T-017 copy, T-019 domain | Build under "FlowerScan" with swappable tokens |
 
-## Domain proposals from T-022 (pending tech-lead / founder decision)
+## Domain decisions from T-022 (decided 2026-10-26 by the tech lead)
 
-From the cannabis domain review ([research/2026-10-26-domain-review.md §6](research/2026-10-26-domain-review.md#6-proposals-needing-a-decision)).
-Recommended default: **accept all.** Each one makes the product more honest or prevents a false accept.
+Proposals from the cannabis domain review ([research/2026-10-26-domain-review.md §6](research/2026-10-26-domain-review.md#6-proposals-needing-a-decision)).
+Specs and tasks were updated to match in the same change.
 
-| # | Proposal (short) | Blocks |
-| --- | --- | --- |
-| P1 | Ruderalis has no default 50: return unknown (or exclude autoflowers in v1) | T-005, T-007 |
-| P2 | Scan stores `thc_basis` (total / thca / delta9 / unspecified), as printed, never computed | **T-002** |
-| P3 | Keep the full package label ("Indica-dominant hybrid"), not just the indica/sativa/hybrid word | **T-002**, T-011 |
-| P4 | "A x B" cross labels never auto-accept a single parent | T-008, T-007 |
-| P5 | Numbers are identity: `#4` ≠ `#5`. A mismatch blocks auto-accept | T-008 |
-| P6 | Match before stripping lexicon words (so Cookies, Runtz, Hash Plant survive) | T-011 |
-| P7 | Cuts/clones get no generation decay; numbered phenos take the seed line's parents | T-005, T-007 |
-| P8 | "Package says" callout only when the *direction* differs; "lineage estimate, not a lab test" copy | T-013, docs/08 |
-| P9 | Confidence capped at medium when any ancestor is disputed | T-005 |
-| P10 | Landrace values: coarse fixed scale, written rubric, two sources each | T-007 |
-| P11 | Golden set covers CA, MI, NY, WA, CO labels plus one hemp THCa package | T-012 |
-| P12 | Legal review (Q10) to cover youth-appeal risk of candy-like strain names in the UI | T-019 |
-| P13 | Don't learn barcode memory for track-and-trace UIDs | T-010, T-015 |
-| P14 | Result copy: "We match the name on the package. We can't confirm what's inside" | T-013 |
+| # | Topic | Decision | Applied in |
+| --- | --- | --- | --- |
+| P1 | Ruderalis / autoflowers | **Exclude autoflowers from v1.** No ruderalis landraces or autoflower strains in the vault, so no invented 50/50 value. Revisit in v2. | docs/05, T-005, T-006, T-007 |
+| P2 | THC on packages | **Record every potency figure exactly as printed, with its type** (Total THC, THCa, Δ9-THC, CBD…). Never compute totals. **Not user-facing:** users never see THC numbers. Readings feed a **back-of-house potency table** (strain × brand × state over time) for our own database and future projects. **Source now:** packages the founders record (eval photo set, founder scans). **Later (Phase 2):** anonymous user opt-in. | docs/04, docs/06, docs/08, docs/09, T-002, T-011, T-013, T-025 |
+| P3 | Package label wording | **Keep the 3 words only** (`indica` / `sativa` / `hybrid`). "Indica-dominant hybrid" and similar variants map to `hybrid`. | docs/06, T-011 |
+| P4 | "A x B" cross labels | **Never auto-accept a single parent.** Cross notation stays a marker token. A cross sold under an "A x B" name is curated as its own `strain` node, otherwise "Which one?". | docs/06, T-007, T-008 |
+| P5 | Numbers in names | **Numbers are identity.** A number mismatch blocks auto-accept. A missing number caps the outcome at "Which one?". | docs/06, T-008 |
+| P6 | Brand/product words inside strain names | **Match before stripping.** Lexicon words are down-weighted, not deleted, inside a longer strain-name match. | docs/06, T-011 |
+| P7 | Clones and numbered phenos | **Cuts (clones) get no generation decay. Numbered phenos take the seed line's parents** when sourced. S1s keep the decay. | docs/04, docs/05, T-002, T-005, T-007 |
+| P8 | "Package says" callout | **Only when direction is opposite** (indica-side vs. sativa-side). Result copy says "Lineage estimate, not a lab test", plus a "close to the line" note within ±2 of a band edge. | docs/08, T-013 |
+| P9 | Disputed lineage | **No confidence cap.** Disputed ancestors are marked in the family tree ("lineage disputed") instead. | docs/05, docs/08, T-005, T-013 |
+| P10 | Landrace base values | **Coarse scale (10 / 25 / 50 / 75 / 90), a written rubric, two sources each.** No source means no value. Place-named seed lines are `strain` nodes with a landrace parent. Founders approve every value. | docs/04, docs/05, T-007 |
+| P11 | Golden photo set | **Cover CA, MI, NY, WA, CO labels plus one hemp THCa package** before launch. | data/eval, T-012 |
+| P12 | Candy-like strain names | **Show them as plain text** (no candy imagery or playful styling around them), and **add the question to the legal review scope** (Q10). | docs/09, T-017, T-019 |
+| P13 | Tracking barcodes | **Don't learn barcode memory for track-and-trace UIDs.** Only UPC/EAN, plus Code 128 values seen more than once. | docs/06, T-010, T-015 |
+| P14 | "Can't confirm what's inside" | **About page only** ("We match the name on the package. We can't confirm what's inside."), not on the result screen. | docs/08, T-017 |
 
 ## Answered (2026-10-25)
 

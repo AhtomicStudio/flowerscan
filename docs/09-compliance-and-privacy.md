@@ -8,6 +8,9 @@
   different legal age (for example parts of Canada), the gate reads the age from a market config.
 - Nothing that could appeal to minors: no cartoon mascots aimed at kids, no candy-style imagery, no
   youth slang or meme formats in marketing.
+- **Candy-like strain names** (Zkittlez, Candyland, Girl Scout Cookies…) are real strain names. We show them as
+  **plain text only**, with no candy imagery, playful styling or emoji around them, and never feature them in
+  marketing. Whether showing them at all is OK is part of the legal review scope (Q10, P12).
 
 ## Claims
 **Never** state or imply that a strain treats, cures, prevents, or helps with any medical condition.
@@ -42,6 +45,11 @@
 - **Privacy page** in plain language: what stays on the device, what (if anything) is sent, and why.
 - Phase 2 accounts: data minimization, Firestore security rules scoped per user, account deletion that
   actually deletes.
+- **Potency data (P2):** potency figures read from packages are stored on the user's own scan (on-device) but
+  **never displayed**. The internal potency table (`data/observations/`) holds **only data the founders record
+  themselves** (the golden set and founders' own scans). User readings can join it only through a Phase 2
+  **explicit, anonymous opt-in**: readings plus strain, brand, product form and state; no photo, no OCR text, no
+  identity, no precise location; off by default and revocable. The privacy page must describe it before it ships.
 
 ## Data & IP
 - See the sourcing policy in [04-data-model.md](04-data-model.md#data-sourcing--licensing-policy).

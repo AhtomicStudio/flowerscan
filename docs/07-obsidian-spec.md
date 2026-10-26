@@ -165,6 +165,8 @@ Rating: ★★★★☆
 ```
 
 - `thc_pct` / `cbd_pct` come from the package (this batch), not from the strain.
+  *(2026-10-26, P2: potency is not user-facing in the MVP, and the scan stores `potency_readings` instead. If this
+  Phase 2 export ships, revisit whether potency belongs in user notes at all.)*
 - An unidentified scan has `strain_id: null`, `strain: null`, `classification: unknown`, and its body
   shows the raw text we read. It never contains guessed values.
 

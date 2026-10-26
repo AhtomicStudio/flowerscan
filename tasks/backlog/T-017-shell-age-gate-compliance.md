@@ -16,7 +16,9 @@ Everything a public visitor sees outside the core loop, compliant and polished.
 - Age gate: 21+, US (Q3 answered), with the age in a single constant. Remembered locally, blocks all routes, including deep links.
 - Copy voice comes from Roy's brand voice (docs/13) once delivered. Compliance rules (docs/09) override it.
 - First-run intro card. Navigation between scan / journal / settings.
-- `/about`: how classification works (plain-language version of docs/05), data sources, privacy, responsible use.
+- `/about`: how classification works (plain-language version of docs/05, including "a lineage estimate, not a lab
+  test"), data sources, privacy, responsible use, and "We match the name on the package. We can't confirm what's
+  inside." (P14).
 - `/settings`: theme, haptics, default mode, backup / restore journal (from T-016), erase all data.
 - All user-facing strings collected in `copy.ts` files per feature (easier to review, and to translate later).
 - Full compliance review against the checklist in docs/09.

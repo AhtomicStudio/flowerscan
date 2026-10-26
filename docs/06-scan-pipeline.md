@@ -45,29 +45,34 @@ Everything from **Extract** onward is pure `core` code and is unit-tested with r
 ## 3. Extract (core/scan/extract)
 
 ### From OCR text: `parseLabelText(lines) → LabelFacts`
-- **Strip noise lines/tokens** using lexicons in `core/scan/lexicon/`:
+- **Match before stripping (P6, decided).** Lexicons in `core/scan/lexicon/` *tag* tokens rather than delete
+  them up front. Candidates are generated with every token present. A lexicon token is **down-weighted**, and only
+  dropped when it isn't part of a longer strain-name match (so `Cookies`, `Runtz`, `Hash Plant` and
+  `Gelato Cake` survive). Lexicons:
   - units and quantities: `3.5g`, `1/8 oz`, `28g`, `net wt`, `mg`
   - potency patterns: `THC 24.1%`, `Total THC`, `THCa`, `THC-A`, `Δ9-THC`, `Total Cannabinoids`, `CBD <1%`,
-    `ND`, `<LOQ`, `241 mg/g`, which are **captured**, then stripped. Labels often print THC, THCa, and Total THC
-    side by side; keep what was printed and don't compute totals (basis field: domain review P2).
+    `ND`, `<LOQ`, `241 mg/g`. Every reading is **captured exactly as printed, with its analyte** (P2, decided).
+    Labels often print THC, THCa, and Total THC side by side: keep each one and never compute totals.
+    Potency is **never shown to users**. It's stored on the scan for the back-of-house potency table (docs/04).
   - category words: `indica`, `sativa`, `hybrid`, plus variants such as `indica-dominant`, `sativa hybrid`,
     `hybrid (i)`, and single letters **only** in brackets (`(I)`, `(S)`, `(H)`). These are **captured as
-    `package_says`**, then stripped. (The sublabel is currently lost: domain review P3.)
+    `package_says`** using **three values only** (P3, decided): bare `indica` / `sativa` / `hybrid` map to
+    themselves, and every "dominant" or "hybrid (x)" variant maps to `hybrid`.
   - product forms: `flower`, `smalls`, `shake`, `pre-roll`, `pre-rolls`, `joint`, `blunt`, `cart`, `pod`,
-    `disposable`, `vape`, `live resin`, `rosin`, `badder`… Careful: some double as strain tokens (`hash` in
-    Hash Plant). See domain review P6.
+    `disposable`, `vape`, `live resin`, `rosin`, `badder`… Some double as strain tokens (`hash` in
+    Hash Plant), which is why matching happens before stripping.
   - compliance boilerplate: state warning blocks, e.g. `government warning`, `schedule i controlled substance`,
     `keep out of reach of children`, `contains marijuana`, `may be habit forming`, `poison control`,
     `1-800-222-1222`, `for use only by persons 21`. Include the spelling `marihuana` (Michigan).
-  - known brand names (a list we grow over time): **captured as `brand`**, then stripped. Some brands are also
-    strain tokens (`Cookies`, `Runtz`); don't strip those inside a longer strain-name match.
+  - known brand names (a list we grow over time): **captured as `brand`**. Some brands are also
+    strain tokens (`Cookies`, `Runtz`), so they follow the match-before-strip rule above.
   - dates (`PKG: 02/23/19`), lot/batch/harvest-batch numbers, license numbers (e.g. CA `C11-0000512-LIC`,
     `CCL22-0001771`; MI `AU-R-000524`; WA 9-digit UBI), and track-and-trace IDs (Metrc package UIDs are 24
     characters and have been observed to start with `1A4`). Full lexicon proposals with sources:
     [research/2026-10-26-domain-review.md §4](research/2026-10-26-domain-review.md#4-label-parser-lexicon-additions-for-t-011).
 - **Candidate generation:** from each remaining line, all contiguous 1–5 token n-grams, plus a
   cross-line join of adjacent large lines (names wrap: "BLUE / DREAM").
-- Output: `{ candidates: [{ text, weight }], package_says, thc_pct, cbd_pct, brand, product_form }`.
+- Output: `{ candidates: [{ text, weight }], package_says, potency_readings, brand, product_form }`.
   The candidate weight blends OCR confidence and relative line height.
 
 ### From QR: `classifyQr(payload) → QrFacts`
@@ -84,20 +89,27 @@ Everything from **Extract** onward is pure `core` code and is unit-tested with r
 - Validate check digits for UPC/EAN. Reject invalid values (they were misreads).
 - Look up local barcode memory → `strain_id` if known. Otherwise mark it "unknown barcode" and offer
   text scan or search. Once the user confirms a strain, remember the mapping.
-- Note: a Code 128 on a cannabis label is often a **per-package track-and-trace UID** (states require the UID on
-  each unit's label) or a store's own POS sticker, not a product code. A UID never repeats across purchases, so
-  remembering it doesn't help. Whether to skip learning those values is domain review P13.
+- A Code 128 on a cannabis label is often a **per-package track-and-trace UID** (states require the UID on
+  each unit's label) or a store's own POS sticker, not a product code. A UID never repeats across purchases.
+- **What gets learned (P13, decided):** UPC/EAN values with valid check digits are learnable. Values matching a
+  track-and-trace UID pattern (for example 24-character Metrc UIDs) are recognized and **never** stored in barcode
+  memory. Any other Code 128 value is stored as a candidate, and becomes learnable only once it's been seen on a
+  second, separate scan.
 
 ## 4. Normalize (core/match/normalize)
 
 Applied identically to strain names/aliases at index time and to candidates at query time:
 - Unicode NFKD, strip diacritics, lowercase.
-- `#4` → `4`, `&` → `and`, `×` / ` x ` (cross notation) → space.
-  - ⚠️ **Open (domain review P4):** folding cross notation into a space lets `Wedding Cake x Gelato 33`
-    fuzzy-match one parent strongly, which is a false-accept risk. The proposal keeps it as a marker token and
-    never auto-accepts a single parent. Don't confuse it with quantity "x" (`5 x 0.5g`, `1x1g`).
-  - Number tokens are part of a strain's identity (`Gorilla Glue #4` ≠ `#5`, `Gelato #33` ≠ `#41`). Number
-    handling in scoring is domain review P5.
+- `#4` → `4`, `&` → `and`.
+- **Cross notation (P4, decided):** `×` and a standalone ` x ` between two name-like spans become a **`⟨x⟩`
+  marker token**, not a space. Quantity "x" (`5 x 0.5g`, `1x1g`) is a unit, not a cross. A candidate containing
+  the marker sets `cross_label: true`. It may match a curated `strain` whose name *is* that cross
+  (`Wedding Cake x Gelato 33`), but it **never auto-accepts a single parent**. Without a curated cross, the
+  outcome is "Which one?" at best.
+- **Numbers are identity (P5, decided):** `Gorilla Glue #4` ≠ `#5`, and `Gelato #33` ≠ `#41`. Split letter–digit
+  boundaries (`GG4` → `gg 4`) and index both forms. In `decide()`:
+  - a **number mismatch** between candidate and entry blocks auto-accept;
+  - a **missing number** (candidate `gorilla glue`, entries `#4` and `#5`) caps the outcome at "Which one?".
 - Collapse punctuation and whitespace.
 - OCR confusion folding for **scoring only** (a secondary key, not the display text): `0↔o`, `1↔l↔i`,
   `5↔s`, `8↔b`, `rn↔m`, `vv↔w`.
@@ -121,7 +133,7 @@ Applied identically to strain names/aliases at index time and to candidates at q
 
 | Condition | Outcome |
 | --- | --- |
-| top ≥ 0.90 **and** (top − second) ≥ 0.15 | **Auto-accept** → result |
+| top ≥ 0.90 **and** (top − second) ≥ 0.15, **and** no number mismatch, missing number, single-parent-of-a-cross, or generic-token-only candidate | **Auto-accept** → result |
 | top ≥ 0.60 | **"Which one?" sheet** with up to 3 candidates (+ "None of these") |
 | otherwise | **No match** → show what we read, an editable text field, search, and "We don't have this strain yet" |
 
@@ -131,13 +143,16 @@ didn't return, and never generate lineage or tags for an unmatched name.
 ## 7. Result (apps/web/features/result)
 
 Covered in [08-ux-and-design.md](08-ux-and-design.md). The result receives a `ScanOutcome`:
-`{ strain_id | null, candidates, match_score, method, facts: { package_says, thc_pct, cbd_pct, brand,
-product_form, barcode, barcode_format, qr_payload, ocr_text } }`.
+`{ strain_id | null, candidates, match_score, method, facts: { package_says, potency_readings, brand,
+product_form, barcode, barcode_format, qr_payload, ocr_text } }`. The result screen never displays
+`potency_readings` (P2).
 
 ## Evaluation harness (T-012)
 
 - `data/eval/packages/`: real package photos (taken by us, or with permission) plus `expected.yaml`
-  (`file, strain_id, package_says?, thc_pct?`).
+  (`file, strain_id, state, package_says?, potency_readings?`). Coverage before launch (P11, decided): labels
+  from **CA, MI, NY, WA and CO**, plus at least one **hemp THCa** package. The eval set's potency readings also
+  seed the back-of-house potency table (docs/04).
 - `pnpm eval:scan` runs the core pipeline on stored OCR outputs (fast, deterministic), and optionally
   re-runs OCR on the images (slow, for engine comparison).
 - Reports top-1/top-3 accuracy, no-match rate, false-accept rate (auto-accepted wrong strain, **the worst

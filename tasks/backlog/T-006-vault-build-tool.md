@@ -17,6 +17,10 @@ docs: [tools/vault-build/README.md, docs/04-data-model.md, docs/decisions/0003-o
   structured errors (file, field, message).
 - Wikilink resolution by filename (case-insensitive, with or without `.md`, aliases **not** used for resolution).
 - Shipping policy: ship `verified` + `disputed`. `unverified` ships only with `--include-unverified` (dev builds).
+- Never ship internal data: `typical_thc_pct` is stripped, and `data/observations/` is never read by the app build (P2).
+- Warn on possible autoflower/ruderalis nodes (name, aliases or region mentioning "auto", "autoflower" or "ruderalis", P1).
+  Flag every landrace `base_sativa_pct` for founder review, and error on values outside 10/25/50/75/90 (P10).
+- Error when a single-parent node has no `derivation` (P7).
 - Output content-hashed folder plus `apps/web/public/data/latest.json` pointing to it.
 - `build-report.md` with counts, errors, warnings, and a classification diff vs. the previous build.
 - Fixture vault in `tools/vault-build/test/fixtures/` covering: a valid tree, an unresolved link, a cycle,

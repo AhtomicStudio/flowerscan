@@ -48,17 +48,18 @@ Found new work? Create a new task file (next free ID). Don't silently expand the
 | T-017 | App shell, age gate & compliance pass | M4 | ui-engineer → reviewer | T-013 |
 | T-018 | PWA offline & performance budget | M4 | ui-engineer | T-011, T-013 |
 | T-019 | Deploy & launch checklist | M4 | core-engineer | all M4 |
-| T-020 | Benchmark apps & design standards research | M0 | researcher | — |
+| T-020 | Benchmark apps & design standards research ✅ | M0 | researcher | — |
 | T-021 | Design spec & clickable mockups | M0 | product-designer | T-020 |
-| T-022 | Cannabis domain review of specs | M0 | cannabis-expert | — |
+| T-022 | Cannabis domain review of specs ✅ | M0 | cannabis-expert | — |
 | T-023 | Brand name shortlist with availability checks | M0 | marketing → Roy | — |
 | T-024 | Test plan & device matrix | M0 | qa-tester | — |
+| T-025 | Back-of-house potency observations table (internal, P2) | M1 | core-engineer | T-002 |
 
 Roles are defined in [.claude/agents/README.md](../.claude/agents/README.md). Every user-facing task also goes
 through **qa-tester** and then **reviewer** before it moves to `done/`.
 
 ## Parallel lanes
-**Wave 1 (ready now, no file overlap):** T-020 research · T-022 domain review · T-023 name shortlist · T-024 test plan.
+**Wave 1 (done):** T-020 ✅ · T-022 ✅ · T-023 waits on Roy's pick · T-024 waits on the real-phone check.
 Then T-021 design (after T-020) and T-002 schemas (after T-022).
 
 Once T-002 is done, these can run at the same time with no file overlap:

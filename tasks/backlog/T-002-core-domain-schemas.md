@@ -17,8 +17,12 @@ Zod schemas and inferred TypeScript types for every entity in docs/04, exported 
   `TaxonomyTerm`, `Lineage`, `Scan`, `BarcodeMemory`, `Settings`, plus `BuildManifest` and `StrainRecord` (build output).
 - Field names and enums exactly as in docs/04. Shared enums (`ReportedType`, `ClassificationLabel`,
   `Sublabel`, `ConfidenceLevel`, `LineageMethod`, `ScanMethod`, `ProductForm`, `Facet`) are exported constants.
-- Refinements: `parent_weights` length equals `parents` and sums to 1 (±0.001); `base_sativa_pct` required
-  for landraces and forbidden otherwise; `id` matches `^[a-z0-9]+(-[a-z0-9]+)*$`; `verified` requires sources
+- Domain decisions (docs/open-questions.md P1–P14) are already in docs/04. In particular: `derivation`
+  (required when there's one parent, P7), `base_sativa_pct` limited to 10/25/50/75/90 (P10), `package_says`
+  with three values (P3), `PotencyReading` and `potency_readings` on Scan (P2), `BarcodeMemory.learnable` (P13),
+  and the internal `PotencyObservation` schema (P2, used by T-025).
+- Refinements: `parent_weights` length equals `parents` and sums to 1 (±0.001); `base_sativa_pct` is
+  allowed only on landraces and only from the coarse scale (it may be empty); `id` matches `^[a-z0-9]+(-[a-z0-9]+)*$`; `verified` requires sources
   backing `parents` and `reported_type`.
 - `slugify(name)` and `sanitizeFilename(name)` per the docs/04 ID rules, with tests (including `Gorilla Glue #4`).
 

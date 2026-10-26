@@ -17,7 +17,8 @@ Production deploy on the chosen domain, with preview deploys per PR and a comple
 - Security headers: CSP (allowing only our origin plus the WASM/worker needs), `Permissions-Policy: camera=(self)`,
   HSTS, `Referrer-Policy: strict-origin-when-cross-origin`.
 - Privacy-friendly analytics wired to the aggregate events in docs/09 (if Q9 allows), or none.
-- `docs/launch-checklist.md`: device matrix pass, eval numbers, compliance sign-off, legal review status (Q10),
+- `docs/launch-checklist.md`: device matrix pass, eval numbers, compliance sign-off, legal review status (Q10,
+  including candy-like strain names (P12) and name/trademark clearance),
   domain/trademark check (Q1), privacy page live, rollback plan.
 
 ## Acceptance criteria

@@ -18,8 +18,12 @@ so the vertical slice runs on real data. (Launch target: 150–300, follow-up ta
 - Choose the 50 strains by how commonly they appear on dispensary menus (document the method in `SOURCES.md`).
 - Every `parents` and `reported_type` value cites a source the curator actually read. Prefer breeder sites
   and published references. Respect site terms. No scraping where prohibited.
-- Landrace `base_sativa_pct` values: document the reasoning and source for each in the note body.
-  This is the most sensitive data in the system. Flag every value for human review.
+- Landrace `base_sativa_pct` values: follow `data/vault/LANDRACE-RUBRIC.md` (coarse scale 10/25/50/75/90, two
+  sources each, P10). Finalize the rubric wording with sources as part of this task. Document the reasoning in
+  each note body. This is the most sensitive data in the system. Flag every value for founder review.
+- Decisions to follow: no ruderalis landraces or autoflower strains (P1). Crosses sold under an "A x B" name are
+  curated as searchable `strain` nodes (P4). Single-parent nodes set `derivation`, and numbered phenos list the
+  seed line's parents when sourced (P7). Aliases cover only the same plant (docs/04).
 - Disputed lineages: `verification: disputed`, both versions documented in the body.
 - Tags only where a usable source supports them. Leaving `effects: []` is fine and expected.
 - `SOURCES.md`: list of sources used, their license/terms notes, and how each was used.

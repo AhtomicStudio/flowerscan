@@ -20,6 +20,9 @@ classification in core.
 - `classifyQr(payload)`: own deep link / COA-style URL / other URL (slug candidates) / plain text, per docs/06.
 - `classifyBarcode(value, format)`: UPC/EAN check-digit validation.
 - Local barcode memory lookup through a `BarcodeMemoryRepository` (Dexie implementation + in-memory fake).
+- Learning rule (P13): never store track-and-trace UIDs (e.g. 24-character Metrc UIDs). UPC/EAN are learnable.
+  Other Code 128 values become learnable only after a second, separate scan.
+- QR kinds include `traceability` (Metrc Retail ID), which is never a strain decision (docs/06).
 - Lock-on animation (reticle to bounding box) and haptic tick where supported.
 
 ## Acceptance criteria

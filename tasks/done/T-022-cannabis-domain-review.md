@@ -2,7 +2,7 @@
 id: T-022
 title: Cannabis domain review of specs
 milestone: M0
-status: review
+status: done
 owner: cannabis-expert
 depends_on: []
 touches: [docs/research/, docs/04-data-model.md, docs/05-classification-algorithm.md, docs/06-scan-pipeline.md, docs/glossary.md]
@@ -100,3 +100,5 @@ Writing vault data (T-007). Final taxonomy (T-003).
 - Status → `review`. The acceptance boxes are checked for the note's content. Source quality varies: state rules
   were read in full where possible, while many strain-naming facts come from trade or retailer pages and are
   marked "excerpt" or "secondary" in the note. Those need data-curator verification before any vault use.
+2026-10-26 · coordinator (Claude Code): reviewed and accepted by the tech lead.
+  Decisions P1–P14 recorded in docs/open-questions.md and applied to docs/04, 05, 06, 08, 09 and the affected tasks.

@@ -20,6 +20,10 @@ Given candidate strings (from OCR, QR slugs, or typed search), return ranked str
 - `match(index, candidates[]) → RankedMatch[]` with the score formula in docs/06 §5. Exact name/alias hit → 1.0.
 - `decide(ranked) → { kind: "accept" | "choose" | "none", … }` with thresholds as exported constants.
 - Pure, synchronous, no dependencies beyond core.
+- Decisions to implement (docs/06 §4–6): the cross-notation marker token, never auto-accepting a single parent (P4);
+  numbers as identity, where a mismatch blocks accept and a missing number caps at choose (P5); generic-token-only
+  candidates never auto-accept.
+- Use the ≥ 30 naming test cases in docs/research/2026-10-26-domain-review.md §2.4 as table-driven tests.
 
 ## Acceptance criteria
 - [ ] Tests: exact, alias (`GG4`), `#` handling, OCR confusions (`G0RILLA GLU3`), wrapped names, brand noise

@@ -7,7 +7,7 @@ Measures how well the scanner identifies real packages. Spec:
 data/eval/
 ├── packages/        photos: <slug>-<n>.jpg (our own photos or used with permission; not published)
 ├── ocr-cache/       stored OCR outputs per photo + engine, so match evals are fast and deterministic
-├── expected.yaml    - file, strain_id (or null for "not in DB"), package_says?, thc_pct?, notes?
+├── expected.yaml    - file, strain_id (or null for "not in DB"), state, package_says?, potency_readings?, notes?
 └── history.md       one line per eval run: date, data_version, engine, top1, top3, false_accept, no_match
 ```
 
@@ -16,4 +16,8 @@ data/eval/
 - Include hard cases on purpose: brand name bigger than strain name, stylized fonts, strains not in our DB
   (expected `null`, to test that we *don't* false-accept).
 - Strip EXIF location before committing.
+- **Required state coverage before launch (P11):** labels from **CA, MI, NY, WA and CO**, plus at least one
+  **hemp THCa** package. Record the state in `expected.yaml`.
+- Record every potency figure printed on the label in `expected.yaml`. It doubles as input to the internal
+  potency table (`data/observations/`, T-025).
 - Start with 50 photos, then grow to 200+.

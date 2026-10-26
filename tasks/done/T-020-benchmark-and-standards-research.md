@@ -2,7 +2,7 @@
 id: T-020
 title: Benchmark apps & design standards research
 milestone: M0
-status: review
+status: done
 owner: researcher
 depends_on: []
 touches: [docs/research/]
@@ -65,3 +65,5 @@ Designing screens (T-021). Brand naming (T-023).
     and the original `tasks/backlog/T-020-benchmark-and-standards-research.md` still exists and needs
     deleting.
   - Status set to `review`.
+2026-10-26 · coordinator (Claude Code): reviewed against the acceptance criteria. Closed as research input.
+  Corrections handed to T-021 (it owns docs/08).

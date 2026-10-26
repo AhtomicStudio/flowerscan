@@ -10,7 +10,7 @@
 | `/scan/result` | Scan result (strain result plus package facts, Save) |
 | `/search` | Manual search |
 | `/journal`, `/journal/:scanId` | Journal list / scan detail |
-| `/about` | How classification works · data sources · privacy · responsible use |
+| `/about` | How classification works · data sources · privacy · responsible use · "We match the name on the package. We can't confirm what's inside." (P14) |
 | `/settings` | Theme, haptics, default mode, backup / restore journal, erase all data |
 
 ## Core flows
@@ -26,12 +26,19 @@
 2. A barcode or QR comes into view → the reticle snaps to it (lock-on), with a haptic tick → result sheet springs up.
 3. Or the user taps the shutter → frame freeze + "Reading label…" shimmer (≤ 1.5 s) → result sheet.
 4. **Result sheet** (bottom sheet, drag up for full screen):
-   - **Hero:** strain name, big classification label, sativa↔indica meter with the percentage.
+   - **Hero:** strain name, big classification label, sativa↔indica meter with the percentage, and the line
+     "Lineage estimate, not a lab test." When the value is within ±2 of a band edge (e.g. 19–22, 58–61), add
+     "Close to the line" (P8).
    - **Confidence chip:** "Lineage traced" / "Partly traced" / "Breeder's label" / "Unknown lineage".
-   - **Package-says callout** (only if it differs): "Package says **Indica**. The family tree leans **Sativa-dominant**."
-   - **Package facts** (only those read): THC %, CBD %, form.
+   - **Package-says callout** (P8): **only when the directions are opposite**, i.e. the package is on one side
+     (Indica) and the lineage leans the other way (Sativa or Sativa-dominant), or the reverse. "Indica" vs.
+     "Hybrid · Indica-dominant" agrees, so no callout. A package saying "Hybrid" never triggers it.
+     Copy: "Package says **Indica**. The family tree leans **Sativa-dominant**."
+   - **Package facts:** product form only. **Potency (THC/CBD) is never shown** (P2): it's stored for our
+     internal potency table, not displayed.
    - **Tags:** effect / flavor / terpene chips, only those that exist. Zero tags → the section is not rendered.
-   - **"How we know" (collapsed):** family tree, sources count, link to /about#classification.
+   - **"How we know" (collapsed):** family tree, sources count, link to /about#classification. Disputed
+     ancestors carry a "lineage disputed" marker (P9). Where the tree ends, say so ("Origins of Chemdawg are unknown").
    - **Actions:** [Save] [Share link]
    - **Footer:** "Effects vary person to person. Start low, go slow."
 
@@ -57,6 +64,8 @@
 - **ConfidenceChip** maps `confidence_level` + `method` to copy. Tapping it explains in one sentence.
 - **ResultSheet** is the same component for scans and deep links. Package facts are optional props.
 - Every numeric or tag value on screen traces back to the data or the scan. Reviewers check this.
+- **Strain names render as plain text** (P12). No candy imagery, playful fonts, emoji or color treatment keyed
+  to names like "Zkittlez" or "Candyland".
 
 ## Quality bar: what "modern and professional" means here
 

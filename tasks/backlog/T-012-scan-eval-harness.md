@@ -21,6 +21,7 @@ package photos, and the decision thresholds are tuned from those results.
 
 ## Acceptance criteria
 - [ ] ≥ 50 labeled photos, ≥ 10 of them deliberately hard, ≥ 5 not in the DB.
+- [ ] State coverage (P11): labels from CA, MI, NY, WA and CO, plus at least one hemp THCa package. Each entry records `state`.
 - [ ] Fast mode runs in CI and fails if false-accept ≥ 1%.
 - [ ] Current numbers recorded in `history.md`.
 

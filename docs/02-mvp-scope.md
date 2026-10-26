@@ -15,7 +15,8 @@ MoSCoW for v1. If something isn't listed under **Must**, it doesn't block launch
 - Name normalization + fuzzy matching against strain names **and aliases**.
 - Decision rule: auto-accept confident matches, show a "Which one?" sheet for close calls, and an honest
   no-match screen otherwise.
-- Capture of extra package facts when OCR finds them: label claim (indica/sativa/hybrid), THC %, CBD %.
+- Capture of extra package facts when OCR finds them: label claim (indica/sativa/hybrid) and product form,
+  shown to the user; potency readings exactly as printed, **stored but never shown** (P2).
 - QR handling: our deep links → result; any other URL → stored as `qr_payload` and scanned for a strain name.
 - Barcode handling: decoded and stored; a local memory of "this barcode = this strain" after the user confirms.
 
