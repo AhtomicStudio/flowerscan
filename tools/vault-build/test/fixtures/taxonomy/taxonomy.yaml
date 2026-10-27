@@ -1,0 +1,33 @@
+# Fixture vocabulary for vault-build tests (fictional, shaped like data/taxonomy/taxonomy.yaml).
+taxonomy_version: 1
+
+terms:
+  - slug: relaxed
+    facet: effect
+    label: Relaxed
+    polarity: positive
+    description: "Often described as a loose, unwound feeling in the body."
+    synonyms: ["chill"]
+    status: active
+
+  - slug: dry-mouth
+    facet: effect
+    label: Dry mouth
+    polarity: negative
+    description: "Commonly reported as a dry, cottony feeling in the mouth."
+    status: active
+
+  - slug: mellow
+    facet: effect
+    label: Mellow
+    polarity: positive
+    description: "An older label, replaced by Relaxed."
+    status: deprecated
+    replaced_by: relaxed
+
+  - slug: lemon
+    facet: flavor
+    label: Lemon
+    polarity: neutral
+    description: "A sharp lemon note."
+    status: active

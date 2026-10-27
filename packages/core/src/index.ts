@@ -1,6 +1,5 @@
 // Public API of @flowerscan/core. Anything not exported here is internal.
-// Schemas follow docs/04-data-model.md exactly. Lineage, match, scan, markdown and backup logic arrive
-// with T-003 onward.
+// Schemas follow docs/04-data-model.md exactly. Scan and backup logic arrive with later tasks.
 
 export { sanitizeFilename, slugify } from "./ids/id-rules";
 export {
@@ -24,6 +23,20 @@ export {
   REPORTED_CONFIDENCE,
   REPORTED_VALUE,
 } from "./lineage";
+export {
+  NOTE_KINDS,
+  type NoteParts,
+  type ParsedNote,
+  parseNote,
+  parseWikilink,
+  type Result,
+  ROOT_FIELD,
+  splitFrontmatter,
+  type ValidationIssue,
+  type VaultNote,
+  type Wikilink,
+  type YamlParser,
+} from "./markdown";
 export {
   ACCEPT_BLOCKERS,
   ACCEPT_MIN_GAP,
@@ -179,3 +192,20 @@ export { type Scan, type ScanBarcodeFormat, ScanSchema } from "./schema/scan";
 export { type Settings, SettingsSchema } from "./schema/settings";
 export { isSupported, type Source, SourceSchema } from "./schema/source";
 export { type TaxonomyTerm, TaxonomyTermSchema } from "./schema/taxonomy-term";
+export {
+  assertNoBannedTerms,
+  BANNED_LISTS,
+  type BannedEntry,
+  type BannedHit,
+  type BannedList,
+  BannedTermError,
+  type BannedTerms,
+  findBannedTerms,
+  getTerm,
+  loadBannedTerms,
+  loadTaxonomy,
+  type ResolvedTerm,
+  resolveTerm,
+  type Taxonomy,
+  type TermMatch,
+} from "./taxonomy";

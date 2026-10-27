@@ -50,7 +50,7 @@ Every node in the family tree is one note in the vault.
 | `terpenes` | taxonomy slug[] | | Facet `terpene`. Commonly reported dominant terpenes; same rule. |
 | `typical_thc_pct` | `{min, max}` | | Percent, 0–100, `min ≤ max`. Only if sourced. **Internal only, never displayed or shipped** (P2). It may later be filled from the potency table. |
 | `sources` | Source[] | ✔ for `verified` | See below. |
-| `verification` | `unverified \| verified \| disputed` | ✔ | Only `verified` and `disputed` nodes ship to the app by default. Policy is in T-006. |
+| `verification` | `unverified \| verified \| disputed` | ✔ | Only `verified` and `disputed` nodes ship to the app by default (shipping policy under "Build output"). |
 | `created` / `updated` | ISO date | ✔ | `updated` is not earlier than `created`. |
 
 The note body is free Markdown (curator notes, history, disputes). It does not ship to the app in MVP.
@@ -121,14 +121,29 @@ See [09-compliance-and-privacy.md](09-compliance-and-privacy.md).
   `data_version` is a non-blank string (e.g. `2026.10.25-a1b2c3`), `built_at` an ISO datetime, `algo_version`
   and `taxonomy_version` ints ≥ 1, `counts` is `{ strains, landraces, crosses, taxonomy_terms }` (ints ≥ 0), and
   `hash` is the lowercase hex content hash (8–64 characters).
+  The build (T-006) sets `hash` to the first 12 hex characters of a SHA-256 over `strains.json`, `breeders.json`
+  and `taxonomy.json` (the manifest itself isn't hashed), `built_at` to the latest `created`/`updated` date in the
+  vault at 00:00 UTC unless `--built-at` is given (so the same vault gives byte-identical output), and
+  `data_version` to `YYYY.MM.DD-<first 6 of hash>`, with `-dev` appended for `--include-unverified` builds.
+  `crosses` counts the distinct crosses inlined into shipped records.
+- **Shipping policy** (T-006): `verified` and `disputed` nodes ship; `unverified` ones ship only in dev builds
+  (`--include-unverified`). Lineage is computed over the shipped nodes only, so a parent that doesn't ship is
+  written as `"unknown"` (the build warns), and unreviewed values never shape a shipped result.
 - `strains.json` (`StrainRecord[]`, ids unique): the array of searchable nodes (strains plus landraces) with
   `id, name, aliases, kind, parents, parent_weights, derivation, reported_type, breeder_id, effects, flavors,
   terpenes, verification, lineage{…}, source_count`. Crosses are inlined as lineage tree nodes, not search
   entries. `typical_thc_pct` is **not** shipped (P2: potency is never user-facing), and neither are
   `sources`, `base_sativa_pct`, or `region`.
-- `taxonomy.json`
-- `build-report.md` (not shipped): warnings such as missing parents, unresolved links, unsourced tags,
-  near-duplicate names, cycles (cycles are errors).
+- `breeders.json`: `{ id, name }[]`, sorted by id: every breeder a shipped record's `breeder_id` names, so the UI
+  can display breeder names (T-006).
+- `taxonomy.json`: `{ taxonomy_version, terms }`. Every term (deprecated ones too) with `slug, facet, label,
+  polarity, description, status, replaced_by` (`null` when active). `synonyms` are import inputs and don't ship.
+- `latest.json` (in `apps/web/public/data/`, next to the hashed folders): `{ data_version, hash, manifest }`,
+  where `manifest` is `"<hash>/manifest.json"`. Written last, so the app never points at a half-written build.
+- `build-report.md` (not shipped; `tools/vault-build/build-report.md`, gitignored): counts, errors and warnings
+  such as unresolved links, unsourced tags, near-duplicate names and cycles (cycles are errors), the founder
+  review list of landrace values, and the classification diff vs. the previous build. Full list:
+  [tools/vault-build/README.md](../tools/vault-build/README.md).
 
 `StrainRecord` fields (every key present):
 

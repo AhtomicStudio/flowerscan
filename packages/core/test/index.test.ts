@@ -51,6 +51,27 @@ describe("@flowerscan/core public API", () => {
     ]);
   });
 
+  it("exports the note parser (T-006)", () => {
+    for (const name of ["parseNote", "splitFrontmatter", "parseWikilink"]) {
+      expect(typeof (core as Record<string, unknown>)[name], name).toBe("function");
+    }
+    expect(core.NOTE_KINDS).toEqual(["landrace", "strain", "cross", "breeder"]);
+  });
+
+  it("exports the taxonomy module and the banned-term check (T-003, T-006)", () => {
+    for (const name of [
+      "loadTaxonomy",
+      "loadBannedTerms",
+      "getTerm",
+      "resolveTerm",
+      "findBannedTerms",
+      "assertNoBannedTerms",
+      "BannedTermError",
+    ]) {
+      expect(typeof (core as Record<string, unknown>)[name], name).toBe("function");
+    }
+  });
+
   it("exports the name matcher (T-008)", () => {
     for (const name of ["normalize", "buildIndex", "search", "match", "decide"]) {
       expect(typeof (core as Record<string, unknown>)[name], name).toBe("function");

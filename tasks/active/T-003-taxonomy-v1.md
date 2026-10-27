@@ -19,12 +19,13 @@ a banned-terms list the build enforces.
 - `banned.yaml`: medical conditions and therapeutic phrases (pain, insomnia, anxiety relief, depression,
   stress relief, nausea, PTSD, migraine, seizure, inflammation, "treats", "cures", "heals", "relief"…),
   matched case-insensitively as whole words or phrases.
-- `core/taxonomy`: `loadTaxonomy(yamlString)`, `assertNoBannedTerms(text)`, and lookup by slug.
+- `core/taxonomy`: `loadTaxonomy(parsed, banned)` (already-parsed YAML; core has no YAML parser), `loadBannedTerms(parsed)`,
+  `assertNoBannedTerms(text, banned)` / `findBannedTerms`, and lookup by slug (`getTerm`) or slug/label/synonym (`resolveTerm`).
 - Version field at the top of the file (`taxonomy_version: 1`).
 
 ## Acceptance criteria
 - [x] 35–50 active terms, none banned, all descriptions hedged.
-- [ ] Unit tests: banned term in a description fails; synonyms resolve; deprecated terms resolve to `replaced_by`.
+- [x] Unit tests: banned term in a description fails; synonyms resolve; deprecated terms resolve to `replaced_by`.
 - [ ] Compliance reviewer sign-off noted in the Log.
 
 ## Out of scope
@@ -141,3 +142,15 @@ Founder answers to the "Needs a decision" list, recorded in docs/open-questions.
    synonym and the 50-term cap no longer block anything.
 6. Polarity re-files: still waiting on the cannabis-expert.
 The banned.yaml header note moves to T-027. The core loader/check (box 2) lands with T-006.
+
+### 2026-10-27 (core-engineer, via T-006)
+**Box 2 done.** `packages/core/src/taxonomy/` landed with T-006: `loadBannedTerms`, `findBannedTerms`,
+`assertNoBannedTerms` (throws `BannedTermError`), `loadTaxonomy(parsed, banned)`, `getTerm`, `resolveTerm`. Tests in
+`packages/core/test/taxonomy/` (33): a banned term in a description, label, synonym or slug fails; synonyms and labels
+resolve (case, whitespace and hyphen-insensitive); deprecated terms resolve to `replaced_by`, following chains.
+`loadTaxonomy` also enforces the suggested extra checks: unique slugs, and every slug, label and synonym names one
+term only (slugs are claimed first, so no synonym can equal another term's slug); `replaced_by` must exist, stay in
+its facet, and not loop. Matching follows the banned.yaml header, with one clarification: an apostrophe in an entry
+also matches the typographic ones (’ ‘ ʼ). A vault-build test loads the real `taxonomy.yaml` and `banned.yaml`: both
+pass, with no banned hits. Requirements wording updated (the loader takes the parsed object plus the banned list).
+Box 3 (compliance reviewer sign-off) is still open.

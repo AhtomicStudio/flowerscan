@@ -64,8 +64,8 @@ pnpm format         # Biome auto-fix
 pnpm test           # Vitest, all packages
 pnpm test:e2e       # Playwright (builds + previews on https://localhost:4173)
 pnpm build          # production build
-pnpm vault:check    # validate data/vault          (stub until T-006)
-pnpm vault:build    # compile data/vault → app data (stub until T-006)
+pnpm vault:check    # validate data/vault (exit 1 on errors; writes nothing)
+pnpm vault:build    # compile data/vault → apps/web/public/data (+ --include-unverified for dev data)
 ```
 `pnpm eval:scan` arrives with T-012.
 

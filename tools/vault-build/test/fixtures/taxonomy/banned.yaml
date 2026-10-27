@@ -1,0 +1,13 @@
+# Fixture banned list for vault-build tests. Same shape and matching rules as data/taxonomy/banned.yaml.
+banned_version: 1
+conditions:
+  - insomnia
+  - pain
+claims:
+  - cures
+  - pain relief
+  - treats
+pharmacology:
+  - analgesic
+safety:
+  - safe
