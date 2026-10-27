@@ -19,7 +19,7 @@ sources:
     supports: [base_sativa_pct, reported_type]
 verification: unverified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Afghan landrace
@@ -28,8 +28,8 @@ updated: 2026-10-26
 The traditional drug-type population of Afghanistan, used here wherever a pedigree says "Afghan", "Afghani"
 or "Afghan indica" without naming a specific seed line.
 
-**Why 10 (founder review needed).** Rubric value 10 covers a broad-leaf drug type of the Afghanistan/Pakistan
-hashish region.
+**Why 10 (founder-approved value 2026-10-26, awaiting `verified`).** Rubric value 10 covers a broad-leaf drug
+type of the Afghanistan/Pakistan hashish region, with no documented narrow-leaf influence in the line cited.
 - McPartland & Small (2020) treat the vernacular "Indica" as *C. sativa* subsp. *indica* var. *afghanica*: a
   Central Asian, wide-leaflet domesticate, generally early maturing, whose range before the 1970s was limited to
   Afghanistan, Pakistan and Turkestan (neotype and epitype from Ghazni and Kandahar).

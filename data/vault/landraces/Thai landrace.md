@@ -19,7 +19,7 @@ sources:
     supports: [base_sativa_pct, reported_type]
 verification: unverified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Thai landrace
@@ -28,13 +28,13 @@ updated: 2026-10-26
 The traditional drug-type population of Thailand, used wherever a pedigree says "Thai" without naming a
 specific seed line (for example Sensi Seeds' Northern Lights, "Thai x Afghan").
 
-**Why 90 (founder review needed).** Rubric value 90: narrow-leaf drug type, long flowering, tropical origin.
+**Why 90 (founder-approved value 2026-10-26, decision L4; awaiting `verified`).** Rubric value 90: narrow-leaf
+drug type, long flowering, and no documented broad-leaf influence in the line cited.
 - McPartland & Small (2020) treat the vernacular "Sativa" as var. *indica*, a South Asian narrow-leaflet domesticate
   that is generally late maturing and spread early to Southeast Asia.
 - ACE Seeds describes its Chiang Mai line as a traditional pure tropical sativa (listed 100% sativa) with narrow
   leaves and a 3 to 4 month flowering period, and says genetic analysis shows low variability.
 
-**Closest-look flag.** McPartland & Small also report that Central Asian (broad-leaf) landraces were introduced
-into Thailand in the 1970s. I read the rubric's "documented broad-leaf influence" as applying to the line being
-described, and ACE's line shows none, so I used 90 rather than 75. If founders read it as applying to the whole
-country, the value would be 75.
+**Context that doesn't change the value (L1).** McPartland & Small also report that Central Asian (broad-leaf)
+landraces were introduced into Thailand in the 1970s. That is a country-level report. The rubric judges the
+specific line cited (L1), and ACE's Chiang Mai line shows no broad-leaf influence, so the value is 90, not 75.

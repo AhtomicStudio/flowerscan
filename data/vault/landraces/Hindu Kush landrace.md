@@ -27,7 +27,7 @@ sources:
     supports: [reported_type]
 verification: unverified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Hindu Kush landrace
@@ -37,14 +37,15 @@ The traditional drug-type population of the Hindu Kush range on the Afghanistan/
 Sensi Seeds sells as "Hindu Kush" would be a separate `strain` node with this landrace as its parent (not created
 in this pass).
 
-**Why 10 (founder review needed).** Rubric value 10: broad-leaf drug type of the Afghanistan/Pakistan hashish region.
+**Why 10 (founder-approved value 2026-10-26, decision L3; awaiting `verified`).** Rubric value 10: broad-leaf drug
+type of the Afghanistan/Pakistan hashish region, with no documented narrow-leaf influence in the line cited.
 - McPartland & Small (2020) place var. *afghanica* (wide-leaflet, early maturing, the vernacular "Indica") in
   Afghanistan, Pakistan and Turkestan.
 - ACE Seeds describes its Pakistan Chitral Kush line as a 100% indica landrace from Chitral in the Pakistani Hindu
   Kush, with wide leaves and a short flowering time. High Times (2014) and Sensi Seeds describe Hindu Kush as a pure
   or landrace indica.
 
-**Closest-look flag.** McPartland & Small also say intermediate forms are common in herbarium specimens from
-Pakistan, which they call the subspecies' centre of diversity. The rubric's 25 ("mostly broad-leaf, with documented
-narrow-leaf influence") could be argued for the region. I kept 10 because the specific line described (ACE's
-Chitral Kush) shows no narrow-leaf influence. Founders should decide which level the rubric judges.
+**Context that doesn't change the value (L1).** McPartland & Small also say intermediate forms are common in
+herbarium specimens from Pakistan, which they call the subspecies' centre of diversity. That is a country-level
+report. The rubric judges the specific line cited (L1), and ACE's Chitral Kush line (wide leaves, 8 to 9 weeks
+indoors) shows no narrow-leaf influence, so the value is 10, not 25.

@@ -1,15 +1,22 @@
 # FlowerScan banned terms (T-003). Policy: docs/09-compliance-and-privacy.md "Claims", docs/04 "Banned from
 # the taxonomy entirely", and docs/research/2026-10-26-domain-review.md section 5.
 #
-# What it's for
-#   The build (vault-build) and the core `assertNoBannedTerms` check fail if any entry below appears in text we
-#   author: taxonomy slugs, labels, descriptions and synonyms, vault tags, UI copy (`copy.ts`), rendered
-#   result screens, and exports. It stops medical-condition and therapeutic-claim wording from shipping.
+# What it's for (decision C2, 2026-10-26)
+#   The build (vault-build) and the core `assertNoBannedTerms` check fail if any entry below appears in:
+#     - taxonomy terms: slugs, labels, descriptions and synonyms;
+#     - vault strain notes: tags and the note text we write;
+#     - rendered result screens.
+#   It stops medical-condition and therapeutic-claim wording from shipping. Other app copy (backup, privacy,
+#   settings and so on) is not checked automatically; it gets a human/reviewer compliance pass instead, so
+#   ordinary wording like "keep your backup file safe" isn't blocked.
 #
 # What it is NOT for
-#   OCR text read from packages. Package warnings legitimately say things like "patients" (MI), so scan input is
-#   never checked against this list (domain review section 5, scope note).
-#   Strain names are proper nouns we don't author. Whether they are exempt is still open (see the T-003 Log).
+#   - OCR text read from packages. Package warnings legitimately say things like "patients" (MI), so scan input
+#     is never checked against this list (domain review section 5, scope note).
+#   - Strain names and aliases (decision C1, 2026-10-26). They're proper nouns we don't author, so `name` and
+#     `aliases` are exempt. How they're displayed is still covered by P12 (plain text, no candy styling).
+#
+# "anxiety" stays banned as a bare word (decision C3, 2026-10-26). The negative effect tag is `anxious`.
 #
 # How matching works (for whoever implements the check)
 #   - Case-insensitive.
