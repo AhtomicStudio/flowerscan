@@ -3,6 +3,27 @@
 // with T-003 onward.
 
 export { sanitizeFilename, slugify } from "./ids/id-rules";
+export {
+  ALGO_VERSION,
+  CONFIDENCE_THRESHOLDS,
+  type ConfidenceThreshold,
+  computeAll,
+  computeLineage,
+  confidenceLevelFor,
+  createLineageGraph,
+  explainLineage,
+  findCycles,
+  GENERATION_DECAY,
+  LABEL_BANDS,
+  type LabelBand,
+  type LineageExplanation,
+  type LineageGraph,
+  type LineageNode,
+  labelFor,
+  NO_DECAY_DERIVATIONS,
+  REPORTED_CONFIDENCE,
+  REPORTED_VALUE,
+} from "./lineage";
 export { BACKUP_FORMAT, type BackupFile, BackupFileSchema } from "./schema/backup";
 export {
   type BarcodeMemory,

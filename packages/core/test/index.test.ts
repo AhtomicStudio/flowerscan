@@ -31,4 +31,17 @@ describe("@flowerscan/core public API", () => {
     expect(core.slugify("Gorilla Glue #4")).toBe("gorilla-glue-4");
     expect(core.sanitizeFilename("Gorilla Glue #4")).toBe("Gorilla Glue 4");
   });
+
+  it("exports the lineage engine (T-005)", () => {
+    for (const name of [
+      "computeLineage",
+      "computeAll",
+      "findCycles",
+      "explainLineage",
+      "createLineageGraph",
+    ]) {
+      expect(typeof (core as Record<string, unknown>)[name], name).toBe("function");
+    }
+    expect(core.ALGO_VERSION).toBe(1);
+  });
 });

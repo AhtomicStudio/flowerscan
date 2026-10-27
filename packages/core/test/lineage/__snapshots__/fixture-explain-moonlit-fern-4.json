@@ -1,0 +1,129 @@
+{
+  "id": "moonlit-fern-4",
+  "name": "Moonlit Fern 4",
+  "kind": "strain",
+  "derivation": "pheno",
+  "verification": "verified",
+  "value": 70,
+  "weight": 1,
+  "lineage": {
+    "sativa_pct": 70,
+    "indica_pct": 30,
+    "label": "hybrid",
+    "sublabel": "sativa-dominant",
+    "confidence": 0.9413365,
+    "confidence_level": "high",
+    "method": "traced",
+    "algo_version": 1
+  },
+  "children": [
+    {
+      "id": "moonlit-fern",
+      "name": "Moonlit Fern",
+      "kind": "strain",
+      "derivation": "cross",
+      "verification": "verified",
+      "value": 70,
+      "weight": 1,
+      "lineage": {
+        "sativa_pct": 70,
+        "indica_pct": 30,
+        "label": "hybrid",
+        "sublabel": "sativa-dominant",
+        "confidence": 0.9413365,
+        "confidence_level": "high",
+        "method": "traced",
+        "algo_version": 1
+      },
+      "children": [
+        {
+          "id": "copper-kite-x-harbor-lantern",
+          "name": "Copper Kite X Harbor Lantern",
+          "kind": "cross",
+          "derivation": "cross",
+          "verification": "unverified",
+          "value": 50,
+          "weight": 0.5,
+          "lineage": {
+            "sativa_pct": 50,
+            "indica_pct": 50,
+            "label": "hybrid",
+            "sublabel": "balanced",
+            "confidence": 0.9409,
+            "confidence_level": "high",
+            "method": "traced",
+            "algo_version": 1
+          },
+          "children": [
+            {
+              "id": "copper-kite",
+              "name": "Copper Kite",
+              "kind": "strain",
+              "derivation": "cross",
+              "verification": "verified",
+              "value": 57.5,
+              "weight": 0.5,
+              "lineage": {
+                "sativa_pct": 58,
+                "indica_pct": 42,
+                "label": "hybrid",
+                "sublabel": "balanced",
+                "confidence": 0.97,
+                "confidence_level": "high",
+                "method": "traced",
+                "algo_version": 1
+              },
+              "children": [],
+              "truncated": true
+            },
+            {
+              "id": "harbor-lantern",
+              "name": "Harbor Lantern",
+              "kind": "strain",
+              "derivation": "cross",
+              "verification": "verified",
+              "value": 42.5,
+              "weight": 0.5,
+              "lineage": {
+                "sativa_pct": 43,
+                "indica_pct": 57,
+                "label": "hybrid",
+                "sublabel": "balanced",
+                "confidence": 0.97,
+                "confidence_level": "high",
+                "method": "traced",
+                "algo_version": 1
+              },
+              "children": [],
+              "truncated": true
+            }
+          ],
+          "truncated": false
+        },
+        {
+          "id": "coastal-reed",
+          "name": "Coastal Reed",
+          "kind": "landrace",
+          "derivation": null,
+          "verification": "verified",
+          "value": 90,
+          "weight": 0.5,
+          "lineage": {
+            "sativa_pct": 90,
+            "indica_pct": 10,
+            "label": "sativa",
+            "sublabel": null,
+            "confidence": 1,
+            "confidence_level": "high",
+            "method": "traced",
+            "algo_version": 1
+          },
+          "children": [],
+          "truncated": false
+        }
+      ],
+      "truncated": false
+    }
+  ],
+  "truncated": false
+}

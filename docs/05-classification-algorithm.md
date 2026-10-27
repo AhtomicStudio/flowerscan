@@ -60,7 +60,9 @@ Let `S(n)` return `{ value: number | null, confidence: number }` for node `n`.
 S(n):
   if n is memoized → return memo
   if n is "unknown":            return { value: null, confidence: 0 }
-  if n.kind == landrace:        return { value: n.base_sativa_pct, confidence: 1.0 }
+  if n.kind == landrace and n.base_sativa_pct != null:
+                                return { value: n.base_sativa_pct, confidence: 1.0 }
+  # A landrace with no sourced base value falls through: parents is [], so fallback(n) applies.
 
   if n.parents is empty:        → fallback(n)
 
@@ -97,7 +99,9 @@ fallback(n):
 ```
 
 Then: `sativa_pct = round(value)`, `indica_pct = 100 - sativa_pct`, apply the label bands and confidence levels.
-If `value` is null: `label = unknown` and every number is null.
+If `value` is null, the result is unknown: `sativa_pct`, `indica_pct` and `sublabel` are null, `label` and
+`method` are `unknown`, `confidence` is `0` (not null) and `confidence_level` is `none`, as `LineageSchema`
+and the docs/04 lineage object require.
 
 ### Rules and edge cases
 
