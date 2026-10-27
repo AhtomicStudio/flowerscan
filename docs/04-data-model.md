@@ -256,7 +256,8 @@ validates it with zod, merges by `id` (newer `date_scanned` wins on conflict), a
 ### Potency observations (`data/observations/potency/`, P2)
 
 An internal table of reported potency per strain, across brands, states and time, for our own database and
-future projects. **Not user-facing**, and `vault-build` never ships it.
+future projects. **Not user-facing**, and `vault-build` never ships it. The folder is gitignored (the repo is
+public), so observations live only on founder machines until we pick a private store.
 
 One YAML file per observation, `YYYY-MM-DD-<strain-id>-<brand-slug>.yaml`:
 

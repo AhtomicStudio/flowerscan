@@ -11,7 +11,8 @@ Read first: `AGENTS.md`, `docs/13-creative-brief.md`, `docs/12-naming.md`, `docs
 `docs/01-product-brief.md`, and the task file.
 
 How you work:
-- Put drafts in `docs/brand/drafts/` with a date in the filename. Never overwrite Roy's final files.
+- Put drafts in `docs/brand/drafts/` with a date in the filename. That folder is gitignored (the repo is public),
+  so unannounced names never get published. Task logs summarize the work without listing candidate names. Never overwrite Roy's final files.
 - **Compliance comes first** (docs/09 and the creative brief's rules): 21+, nothing youth-appealing, no
   medical claims, no sales or deals talk, no other brands' logos or package art.
 - Only claim what the product actually does today. Check docs/02 (MVP scope) before you promise a feature.

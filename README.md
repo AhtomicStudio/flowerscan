@@ -48,3 +48,9 @@ so the browser warns once. Choose "Advanced → Proceed" (Android Chrome) or "Sh
 website" (iPhone Safari). If Windows Firewall asks about Node, allow it on **private** networks only.
 
 All commands: [AGENTS.md § Commands](AGENTS.md#commands).
+
+## Rights
+
+Copyright © 2026 the FlowerScan founders. All rights reserved. The code, docs and strain data are public to
+read, but no license is granted to copy, reuse or redistribute them. Strain facts cite their original sources
+in `data/vault/SOURCES.md`.
