@@ -19,6 +19,8 @@ package photos, and the decision thresholds are tuned from those results.
 - Output: a summary table, per-photo failures with the top-3 candidates, and a line appended to `history.md`.
 - Tune the `decide()` thresholds. Record before/after numbers in the Log and update docs/06 if they change.
 
+- Follow-up from T-008: labels that print the strain name plus its lineage ("Runtz (Gelato x Zkittlez)") currently get "Which one?". Include such labels in the golden set and tune whether the curated name should win.
+
 ## Acceptance criteria
 - [ ] ≥ 50 labeled photos, ≥ 10 of them deliberately hard, ≥ 5 not in the DB.
 - [ ] State coverage (P11): labels from CA, MI, NY, WA and CO, plus at least one hemp THCa package. Each entry records `state`.

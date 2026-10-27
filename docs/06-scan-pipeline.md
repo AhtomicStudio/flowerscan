@@ -100,23 +100,40 @@ Everything from **Extract** onward is pure `core` code and is unit-tested with r
 
 Applied identically to strain names/aliases at index time and to candidates at query time:
 - Unicode NFKD, strip diacritics, lowercase.
-- `#4` → `4`, `&` → `and`.
+- `#4` → `4`, `&` → `and`. Dotted abbreviations join (`M.A.C.` → `mac`). Apostrophes are dropped, not spaced
+  (`Chem's` → `chems`).
 - **Cross notation (P4, decided):** `×` and a standalone ` x ` between two name-like spans become a **`⟨x⟩`
   marker token**, not a space. Quantity "x" (`5 x 0.5g`, `1x1g`) is a unit, not a cross. A candidate containing
   the marker sets `cross_label: true`. It may match a curated `strain` whose name *is* that cross
   (`Wedding Cake x Gelato 33`), but it **never auto-accepts a single parent**. Without a curated cross, the
   outcome is "Which one?" at best.
+  - *T-008 rule:* an `x` is a cross when the tokens since the previous marker contain a letter and the next
+    token starts with a letter (`Gelato #33 x Zkittlez` is a cross). A following number makes it a quantity.
+  - *T-008 rule:* a strain is a **parent of a cross** (`parent_of_cross`) when one of its names or aliases sits
+    inside one side of a marker candidate. `decide()` never auto-accepts a parent.
 - **Numbers are identity (P5, decided):** `Gorilla Glue #4` ≠ `#5`, and `Gelato #33` ≠ `#41`. Split letter–digit
   boundaries (`GG4` → `gg 4`) and index both forms. In `decide()`:
   - a **number mismatch** between candidate and entry blocks auto-accept;
   - a **missing number** (candidate `gorilla glue`, entries `#4` and `#5`) caps the outcome at "Which one?".
+  - *T-008 clarifications:* both spellings (`gg4`, `GG 4`) normalize to the same split key, so indexing that key
+    covers both. Leading zeros are stripped (`#04` → `4`). Numbers are compared as sets of digit tokens between the
+    candidate and the **name or alias that matched**, not the canonical name (`Original Glue` carries no number,
+    so it doesn't "miss" GG4's `4`). Mismatch: both sides have numbers and they differ. Missing: exactly one side
+    has a number.
+  - *T-008 exception:* OCR-confusable digits (`0 1 5 8`) inside or at the start of a word with at least three
+    letters stay glued (`g0rilla`, `b1ue`, `5unset`), so a misread letter never becomes a number. Folding then
+    scores them as letters. Trailing digits always split (`gg5`, `mac1`), and so do short quantity words (`1x1g`,
+    `10oz`, `8th`).
 - Collapse punctuation and whitespace.
 - OCR confusion folding for **scoring only** (a secondary key, not the display text): `0↔o`, `1↔l↔i`,
-  `5↔s`, `8↔b`, `rn↔m`, `vv↔w`.
+  `5↔s`, `8↔b`, `rn↔m`, `vv↔w`. (T-008 folds toward the letter: `0→o`, `1→l`, `i→l`, `5→s`, `8→b`, `rn→m`,
+  `vv→w`.)
 - Keep a list of meaningful short tokens that must not be dropped: `og`, `gg`, `gsc`, `gmo`, `mac`, `gdp`,
   `nl`, `ak`, `sfv`, `bx`, `s1`, `f1`, `ibl`, and single-letter cut suffixes after a name (`chem d`). A candidate
-  made only of a generic token (`og`, `kush`, `haze`, `glue`, `cookies`, `z`) should not auto-accept (verify
-  with the T-008 tests and tune in T-012). Naming test cases
+  made only of a generic token (`og`, `kush`, `haze`, `glue`, `cookies`, `cake`, `z`) should not auto-accept (verify
+  with the T-008 tests and tune in T-012). *T-008:* "made only of a generic token" means a **one-token** candidate
+  that is a generic token or any single letter (`OG Kush` still accepts); `cake` comes from the domain review
+  §2.2. The normalizer never drops a token. Naming test cases
   for T-008: [research/2026-10-26-domain-review.md §2.4](research/2026-10-26-domain-review.md#24-naming-test-cases-for-t-008--30).
 
 ## 5. Match (core/match)
@@ -126,8 +143,21 @@ Applied identically to strain names/aliases at index time and to candidates at q
 - **Score** each (candidate, entry) pair:
   `score = 0.45·trigramJaccard + 0.35·jaroWinkler + 0.10·tokenOverlap + 0.10·candidateWeight`,
   with an exact name/alias hit (after normalization) → `1.0`.
+  - *T-008 definitions:* `trigramJaccard` uses the distinct trigrams of the key padded with one space on each
+    side. `jaroWinkler` is standard (prefix scale 0.1, up to 4 characters). `tokenOverlap` is the Jaccard index of
+    the distinct normalized tokens. `candidateWeight` is clamped to 0–1. The formula runs on the normalized keys
+    and on the confusion-folded keys, and the higher result counts, so a folded-exact hit scores
+    `0.90 + 0.10·candidateWeight`.
+- **Longest exact match wins (T-008, follows from P6):** when a candidate hits a name or alias exactly (or exactly
+  after folding), the shorter candidates contained in it don't count for any other strain. `GELATO #33` doesn't
+  also match `Gelato`, `White Runtz` doesn't also match `Runtz`, and `THIN MINT GSC` doesn't also match `GSC`.
 - Tiny popularity prior (≤ 0.03) only to break near-ties. It must never overturn a clearly better text match.
+  *T-008:* entries carry an optional `popularity` (0–1). The ranking key is `score + 0.03·popularity`. The
+  reported `score`, and so `decide()`, never include the prior.
 - Return the top 5 distinct strains with scores.
+  *T-008:* only pairs that could still reach 0.60 (by the trigram, length and token bounds) are scored, and pairs
+  scoring at least `MATCH_MIN_SCORE` = 0.50 are returned, so "Which one?" can offer near misses. Neither cut can
+  change a `decide()` outcome.
 
 ## 6. Decide (core/match/decide)
 
@@ -139,6 +169,11 @@ Applied identically to strain names/aliases at index time and to candidates at q
 
 Thresholds are constants and get tuned against the eval set (T-012). **Never** show a strain the matcher
 didn't return, and never generate lineage or tags for an unmatched name.
+
+*T-008:* the flags are those of the top match's best pair. Comparisons are inclusive (`≥`), with a 1e-9
+floating-point slack. "Which one?" offers the top 3 ranked matches, and `decide()` reports why it didn't accept
+(`blocked_by`: `below_accept_threshold`, `small_gap`, `number_mismatch`, `missing_number`, `parent_of_cross`,
+`generic_only`).
 
 ## 7. Result (apps/web/features/result)
 

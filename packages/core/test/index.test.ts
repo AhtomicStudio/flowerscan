@@ -44,4 +44,10 @@ describe("@flowerscan/core public API", () => {
     }
     expect(core.ALGO_VERSION).toBe(1);
   });
+
+  it("exports the name matcher (T-008)", () => {
+    for (const name of ["normalize", "buildIndex", "search", "match", "decide"]) {
+      expect(typeof (core as Record<string, unknown>)[name], name).toBe("function");
+    }
+  });
 });
