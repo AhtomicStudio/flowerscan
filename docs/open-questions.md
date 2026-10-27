@@ -7,7 +7,7 @@ Record each answer here with a date, and write an ADR if it affects architecture
 
 | # | Question | Blocks | Default if unanswered |
 | --- | --- | --- | --- |
-| Q8 | **Vercel team and domain registrar?** GitHub is answered (below). | T-019 | Domain waits for the final name (Q11) |
+| Q8 | **Domain registrar and domain?** GitHub and Vercel are answered (below). | T-019 | Domain waits for the final name (Q11) |
 | Q10 | **Legal review before public launch: who, and when?** Not covered by the small monthly budget (Q9). Scope must include candy-like strain names (P12) and name/trademark clearance (T-023). | T-019 | Required before public launch; not before a private beta |
 | Q11 | **Final brand name and visual identity** (Roy). See [12-naming.md](12-naming.md) and [13-creative-brief.md](13-creative-brief.md). | T-004 final tokens, T-017 copy, T-019 domain | Build under "FlowerScan" with swappable tokens |
 
@@ -95,6 +95,7 @@ Specs and tasks were updated to match in the same change.
 | # | Question | Answer | Effect on the plan |
 | --- | --- | --- | --- |
 | Q8a | GitHub home and visibility? | **Public repo at [github.com/AhtomicStudio/flowerscan](https://github.com/AhtomicStudio/flowerscan)**, all rights reserved (no license). History was rewritten before the first push to use the GitHub no-reply email. | Kept local and gitignored: `docs/brand/drafts/` (unannounced names), `data/observations/` (P2 potency data), eval package photos. The strain vault is public. Vercel builds from `vercel.json`: previews include unverified notes, production uses the default shipping policy. |
+| Q8b | Vercel? | **The tech lead's personal Vercel account**, project `flowerscan`, Root Directory = repo root. Production: [flowerscan-vgh8.vercel.app](https://flowerscan-vgh8.vercel.app). Branch and PR previews are behind Vercel login (Deployment Protection). | Every push to `main` deploys production; every PR gets a preview. |
 
 ## Answered (2026-10-25)
 
