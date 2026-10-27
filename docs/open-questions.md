@@ -7,7 +7,7 @@ Record each answer here with a date, and write an ADR if it affects architecture
 
 | # | Question | Blocks | Default if unanswered |
 | --- | --- | --- | --- |
-| Q8 | **GitHub org/repo, Vercel team, domain registrar?** | T-001 CI, T-019 | Create when T-001 starts |
+| Q8 | **Vercel team and domain registrar?** GitHub is answered (below). | T-019 | Domain waits for the final name (Q11) |
 | Q10 | **Legal review before public launch: who, and when?** Not covered by the small monthly budget (Q9). Scope must include candy-like strain names (P12) and name/trademark clearance (T-023). | T-019 | Required before public launch; not before a private beta |
 | Q11 | **Final brand name and visual identity** (Roy). See [12-naming.md](12-naming.md) and [13-creative-brief.md](13-creative-brief.md). | T-004 final tokens, T-017 copy, T-019 domain | Build under "FlowerScan" with swappable tokens |
 
@@ -89,6 +89,12 @@ Specs and tasks were updated to match in the same change.
 | P12 | Candy-like strain names | **Show them as plain text** (no candy imagery or playful styling around them), and **add the question to the legal review scope** (Q10). | docs/09, T-017, T-019 |
 | P13 | Tracking barcodes | **Don't learn barcode memory for track-and-trace UIDs.** Only UPC/EAN, plus Code 128 values seen more than once. | docs/06, T-010, T-015 |
 | P14 | "Can't confirm what's inside" | **About page only** ("We match the name on the package. We can't confirm what's inside."), not on the result screen. | docs/08, T-017 |
+
+## Answered (2026-10-27)
+
+| # | Question | Answer | Effect on the plan |
+| --- | --- | --- | --- |
+| Q8a | GitHub home and visibility? | **Public repo at [github.com/AhtomicStudio/flowerscan](https://github.com/AhtomicStudio/flowerscan)**, all rights reserved (no license). History was rewritten before the first push to use the GitHub no-reply email. | Kept local and gitignored: `docs/brand/drafts/` (unannounced names), `data/observations/` (P2 potency data), eval package photos. The strain vault is public. Vercel builds from `vercel.json`: previews include unverified notes, production uses the default shipping policy. |
 
 ## Answered (2026-10-25)
 
