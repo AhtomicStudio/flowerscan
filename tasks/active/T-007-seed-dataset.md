@@ -74,3 +74,9 @@ UI. Barcode mappings.
   - **Not run:** `pnpm vault:check` (stub until T-006). Frontmatter was written against
     `packages/core/src/schema/genetic-node.ts` and `breeder.ts` by hand; every wikilink was checked against a filename.
   - **Remaining boxes:** vault:check (after T-006), founder verification (Q4), lineage snapshot (after T-005).
+
+### 2026-10-26 (coordinator, founder decisions)
+Landrace values decided (open-questions L1–L5): specific-line rule; South African 90 (rubric's sub-tropical
+clause removed); Hindu Kush 10; Thai 90; Acapulco Gold Sativa per Jeeter, pending a breeder/seed-bank source.
+Vault edits are T-027. Flavors and terpenes are not tagged in the MVP (D3), so later seed batches tag effects only.
+Notes stay `unverified` until a founder sets `verified` in Obsidian.

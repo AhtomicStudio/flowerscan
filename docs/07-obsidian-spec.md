@@ -50,7 +50,7 @@ name: "Gorilla Glue #4"
 aliases:
   - GG4
   - Original Glue
-classification: hybrid
+classification: indica
 classification_detail: indica-dominant
 sativa_pct: 35
 indica_pct: 65
@@ -70,11 +70,11 @@ flavors:
 terpenes:
   - caryophyllene
 data_version: "2026.10.25-a1b2c3"
-algo_version: 1
+algo_version: 2
 source_url: "https://<our-domain>/s/gorilla-glue-4"
 tags:
   - flowerscan/strain
-  - type/hybrid
+  - type/indica
   - type/indica-dominant
   - effect/relaxed
   - effect/euphoric
@@ -86,7 +86,7 @@ updated: 2026-10-25
 
 # Gorilla Glue #4
 
-**Hybrid · Indica-dominant** · 65% indica / 35% sativa · confidence: high (lineage fully traced)
+**Indica · Indica-dominant** · 65% indica / 35% sativa · confidence: high (lineage fully traced)
 
 ## Lineage
 - [[Parent Strain A]]
@@ -124,7 +124,7 @@ schema_version: 1
 strain_name: "Gorilla Glue #4"
 strain: "[[Gorilla Glue 4]]"
 strain_id: gorilla-glue-4
-classification: hybrid
+classification: indica
 classification_detail: indica-dominant
 sativa_pct: 35
 lineage_confidence: high
@@ -144,17 +144,17 @@ effects:
 rating: 4
 date_scanned: 2026-10-25T18:42:11-07:00
 data_version: "2026.10.25-a1b2c3"
-algo_version: 1
+algo_version: 2
 tags:
   - flowerscan/scan
-  - type/hybrid
+  - type/indica
   - effect/relaxed
   - effect/euphoric
 ---
 
 # Gorilla Glue #4 · scanned 2026-10-25
 
-**Hybrid · Indica-dominant** (35% sativa) · Package says: **Indica** · THC 26.4%
+**Indica · Indica-dominant** (35% sativa) · Package says: **Indica** · THC 26.4%
 
 Strain note: [[Gorilla Glue 4]]
 
@@ -169,6 +169,10 @@ Rating: ★★★★☆
   Phase 2 export ships, revisit whether potency belongs in user notes at all.)*
 - An unidentified scan has `strain_id: null`, `strain: null`, `classification: unknown`, and its body
   shows the raw text we read. It never contains guessed values.
+- `classification` is the lineage `label` and `classification_detail` is its `sublabel` (null when the
+  sublabel is null). *(2026-10-27, D15: bands are now < 50 Indica, exactly 50 Hybrid, > 50 Sativa, so the
+  35% examples above read `indica` / `indica-dominant` at `algo_version: 2`. How the body headline shows the
+  detail, given D14, is open for the export task.)*
 
 ## Re-export and merge (idempotency)
 

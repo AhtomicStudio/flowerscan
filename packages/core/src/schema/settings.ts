@@ -1,12 +1,15 @@
 import { z } from "zod";
 import { IsoDateTimeSchema } from "./common";
-import { ScanModeSchema, ThemeSchema } from "./enums";
+import { ThemeSchema } from "./enums";
 
-/** App settings (docs/04 "Settings"). `age_confirmed_at: null` means the age gate hasn't been passed. */
+/**
+ * App settings (docs/04 "Settings"). `age_confirmed_at: null` means the age gate hasn't been passed.
+ * `age_declined_at` records a Leave tap; the app stays closed for 24 hours after it (D8).
+ */
 export const SettingsSchema = z.strictObject({
   age_confirmed_at: IsoDateTimeSchema.nullable(),
+  age_declined_at: IsoDateTimeSchema.nullable(),
   theme: ThemeSchema,
-  default_mode: ScanModeSchema,
   haptics: z.boolean(),
   last_backup_at: IsoDateTimeSchema.nullable(),
 });

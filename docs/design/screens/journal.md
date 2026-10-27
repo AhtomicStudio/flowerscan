@@ -17,7 +17,7 @@ A personal, private record: what you tried, what it was, and what you thought. C
 │ TODAY                        │  section header (caption, uppercase)
 │ ┌──────────────────────────┐ │
 │ │▌☼ Kestrel Haze        ›  │ │  row 72 px: 4 px class-color edge + icon,
-│ │▌ Hybrid · Sativa-dom… ★★★★☆│ │  name, class text, rating (if any)
+│ │▌ Sativa          ★★★★☆   │ │  name, class word only (D14), rating (if any)
 │ │▌ Pre-roll · 2:14 PM      │ │  product form (if any) · time · method icon
 │ └──────────────────────────┘ │
 │ THIS WEEK                    │
@@ -52,19 +52,21 @@ A personal, private record: what you tried, what it was, and what you thought. C
 
 ```
 ┌──────────────────────────────┐
-│ [← Journal]         [Share]  │  app bar
-│ (same hero as the result:    │  ResultSheet in page mode, from the
-│  class fill, name, class     │  lineage SNAPSHOT saved with the scan (X-08)
-│  word, meter, chip)          │
+│ [← Journal]                  │  app bar (no Share: cut 2026-10-26)
+│ (same hero as the strain     │  strain-page layout, from the
+│  page: rounded class block,  │  lineage SNAPSHOT saved with the scan (X-08)
+│  class word; no sublabel)    │
+│ Leans sativa (sativa-dom…).  │  lean line (detail, D14), if any
+│ Lineage traced: an estimate… │  basis line
 │ ┌──────────────────────────┐ │
 │ │ Your rating  ☆☆☆☆☆        │ │  5 stars, 48 px hit areas (see Rating note)
 │ │ Notes                    │ │
 │ │ [ textarea …           ] │ │  autosaves; status "Saved" under it
 │ └──────────────────────────┘ │
-│ Scanned Oct 26, 2:14 PM      │  meta: date, method ("Read from label text"),
-│ Read from the label · Pre-roll│  product form, package says
-│ Package says Indica          │
-│ ▸ How we know  (as result)   │
+│ Commonly reported [Uplifted]…│  effects, as on the result (if any)
+│ ▸ How we know  (as result)   │  includes "Package says Indica." when read
+│ Scanned Oct 26, 2:14 PM      │  meta: date, method, product form (if any)
+│ Read from the label · Pre-roll│
 │ Data from Oct 2026. [See today's version] │ only if data_version differs
 │ Delete from journal          │  destructive text button
 │ Effects vary person to person. Start low, go slow.
@@ -88,8 +90,8 @@ A personal, private record: what you tried, what it was, and what you thought. C
 | State | Behavior |
 | --- | --- |
 | Identified | As above. |
-| **Unidentified** | No hero, no meter, no class. Header (surface-2): `circle-help` icon, **"Unidentified scan"**, "We couldn't match this one." "What we read: “PREMIUM FLOWER”". [Search for it] → `/search?q=…`. Rating and notes work. |
-| Unknown lineage | Gray hero as in the result sheet. |
+| **Unidentified** | No hero, no basis line, no class. Header (surface-2): `circle-help` icon, **"Unidentified scan"**, "We couldn't match this one." "What we read: “PREMIUM FLOWER”". [Search for it] → `/search?q=…`. Rating and notes work. |
+| Unknown lineage | Gray hero, as on the strain page. |
 | Not found (`/journal/bad-id`) | "That scan isn't in your journal." [Open Journal] |
 | Save failed (quota) | Notes status line: "Couldn't save. Your phone is out of space." (`role="alert"`) |
 
@@ -100,7 +102,7 @@ A personal, private record: what you tried, what it was, and what you thought. C
 - Unidentified: Unidentified scan / We couldn't match this one.
 
 ## Accessibility
-- List rows are links; accessible name: "Kestrel Haze, hybrid, sativa-dominant, rated 4 of 5, today 2:14 PM".
+- List rows are links; accessible name: "Kestrel Haze, sativa, rated 4 of 5, today 2:14 PM".
 - Section headers are `<h2>`.
 - Stars: `role="radiogroup"` "Your rating", radios "1 star" … "5 stars"; arrow keys change the value.
 - Textarea has a visible label "Notes".

@@ -154,15 +154,18 @@ reported_type, verification, lineage }`, with the same `parents` rules, recursiv
 | --- | --- | --- |
 | `sativa_pct` | 0–100 int \| null | null when unknown |
 | `indica_pct` | 0–100 int \| null | `100 - sativa_pct`; null exactly when `sativa_pct` is |
-| `label` | `indica \| hybrid \| sativa \| unknown` | `unknown` exactly when `sativa_pct` is null |
-| `sublabel` | `indica-dominant \| balanced \| sativa-dominant \| null` | Set for `hybrid`, null otherwise |
+| `label` | `indica \| hybrid \| sativa \| unknown` | The lean (D15, 2026-10-27): rounded `sativa_pct` < 50 → `indica`, exactly 50 → `hybrid`, > 50 → `sativa`. `unknown` exactly when `sativa_pct` is null. The only class the immediate result shows (D14). |
+| `sublabel` | `indica-dominant \| balanced \| sativa-dominant \| null` | How strong the lean is, shown only in the strain detail (D14). Must agree with `label`: `hybrid` → `balanced`; `indica` → null (≤ 20) or `indica-dominant` (21–49); `sativa` → `sativa-dominant` (51–79) or null (≥ 80); `unknown` → null. |
 | `confidence` | 0–1 | `0` when unknown (not null) |
 | `confidence_level` | `high \| medium \| low \| none` | `none` exactly when `confidence` is 0 |
 | `method` | `traced \| partial \| reported \| unknown` | How the number was produced; `unknown` exactly when `sativa_pct` is null |
 | `algo_version` | int ≥ 1 | |
 
-The schema checks these consistency rules only. Label bands and confidence thresholds are product-tunable
-constants in `core/src/lineage/constants.ts` (T-005), so they're tested there, not in the schema.
+The schema checks these consistency rules only, including which sublabels each label allows. The band
+numbers themselves (docs/05) and the confidence thresholds are product-tunable constants in
+`core/src/lineage/constants.ts` (T-005), so they're tested there, not in the schema. Most `ALGO_VERSION` 1
+results (before D15, when 21–79 was `hybrid` with a sublabel) don't pass this check: a v1 `hybrid` with
+`indica-dominant` or `sativa-dominant` is rejected. Recompute them rather than storing them.
 
 Algorithm: [05-classification-algorithm.md](05-classification-algorithm.md).
 
@@ -219,10 +222,10 @@ Phase 2 can optionally contribute these to a shared, moderated mapping.
 
 ### Settings
 
-`{ age_confirmed_at, theme, default_mode, haptics, last_backup_at }`: `age_confirmed_at` (ISO datetime, or `null`
-until the age gate is passed), `theme` (`system | dark | light`), `default_mode` (`auto | text | barcode | qr`,
-the scanner modes in docs/02), `haptics` (boolean), `last_backup_at` (ISO datetime or `null`). Defaults belong
-to T-017.
+`{ age_confirmed_at, age_declined_at, theme, haptics, last_backup_at }`: `age_confirmed_at` (ISO datetime, or `null`
+until the age gate is passed), `age_declined_at` (ISO datetime of the last Leave tap, or `null`; the app stays
+closed for 24 hours after it, D8), `theme` (`system | dark | light`), `haptics` (boolean), `last_backup_at` (ISO datetime or `null`). Defaults belong
+to T-017. There is no scan-mode setting: the scanner is Auto only (D7, 2026-10-26).
 
 ### Journal backup file
 

@@ -129,3 +129,15 @@ because current result/About copy uses it as a verb ("treat it as an estimate");
 someone with `docs/` scope should point it at `taxonomy.yaml` as the source of truth, or update the list.
 
 Status → `review`. Awaiting cannabis-expert and compliance reviewer sign-off. The core work is a separate follow-up.
+
+### 2026-10-26 (coordinator, founder decisions)
+Founder answers to the "Needs a decision" list, recorded in docs/open-questions.md (C1–C4):
+1. Strain names (and aliases) are **exempt** from `assertNoBannedTerms` (C1).
+2. and 3. The automated check runs on taxonomy terms, vault strain notes and rendered result screens only (C2).
+   Other app copy gets a reviewer compliance pass, so "safe", "good for", "prevent" and "immune" can stay on the
+   list without blocking UI copy like "keep your backup file safe".
+4. "anxiety" **stays banned** (C3).
+5. and 7. Flavors and terpenes are **kept in v1 but not shown or tagged in the MVP** (D3/C4), so the "candy"
+   synonym and the 50-term cap no longer block anything.
+6. Polarity re-files: still waiting on the cannabis-expert.
+The banned.yaml header note moves to T-027. The core loader/check (box 2) lands with T-006.

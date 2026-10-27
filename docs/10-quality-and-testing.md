@@ -7,7 +7,7 @@
 | Unit | Vitest | `packages/core`: lineage, normalize, match, decide, extract, markdown | ≥ 90% line coverage on core; every bug fix adds a test |
 | Golden files | Vitest | Lineage snapshot of the seed dataset, journal backup format | Diffs reviewed deliberately |
 | Data | `vault-build --check` | Schema validity, link resolution, cycles, banned terms, unsourced tags | Zero errors to merge; warnings tracked |
-| Component | Vitest + Testing Library | TagList (0/1/4/12 tags), ClassificationMeter (null/edges), ResultSheet states | All states from 08-ux-and-design.md |
+| Component | Vitest + Testing Library | TagList (0/1/4/12 tags), ClassHero (every label, null), ResultSheet states | All states from 08-ux-and-design.md |
 | E2E | Playwright (Chromium with a fake camera feed from `.y4m`/`.mjpeg` fixtures; WebKit for layout) | Scan barcode → result; shutter → OCR → result; close call; no match; permission denied; export | Runs in CI on every PR |
 | Eval | `pnpm eval:scan` | OCR + match accuracy on `data/eval` | Top-1 ≥ 85%, top-3 ≥ 95%, false-accept < 1% |
 | Device | Manual checklist | Real iPhone (Safari + installed PWA) and a mid-range Android (Chrome) | Before every release |

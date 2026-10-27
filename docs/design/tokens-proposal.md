@@ -4,14 +4,15 @@
 > T-004 turns into `apps/web/src/styles/tokens.css`. When Roy delivers, swap the values, re-run the contrast
 > table, and nothing else should change. **No Cannapickforme tokens are used** (Q1).
 >
-> Owner: product-designer (T-021) · Date: 2026-10-26 · Consumers: T-004, T-009, T-013, T-015, T-017
+> Owner: product-designer (T-021) · Date: 2026-10-26, class hues revised the same day after founder review ·
+> Consumers: T-004, T-009, T-013, T-015, T-017
 
 ## What Roy's identity replaces, and what it doesn't
 
 | Token group | Swappable by Roy? | Fixed by product rules |
 | --- | --- | --- |
 | Brand accent, neutrals, surfaces | Yes | Every text pair must still pass the contrast table below. |
-| Classification hues (Indica / Hybrid / Sativa / Unknown) | Yes, the exact hue | The **direction** (violet / green / amber / gray, docs/08) and the rule that color is always paired with a word and an icon. |
+| Classification hues (Indica / Hybrid / Sativa / Unknown) | Yes, the exact hue | The **direction** (violet / green / orange / gray, docs/08), **bright and solid** (founder, 2026-10-26: "a solid Indica bright color, or Sativa bright color, and the occasional Hybrid Green"), and the rule that color is always paired with a word and an icon. |
 | Display and UI typefaces | Yes | At most 2 families. Body ≥ 16 px (we use 17). Must be web-licensable and **self-hosted in production** (see Fonts). |
 | Type scale, spacing, radii, motion | Roy can restyle | Minimums: 48 px targets, 12 px between adjacent targets, 72 px shutter, reduced-motion fallbacks. |
 | Logo / app icon | Yes | Works at 48 px and as a maskable icon (T-018). |
@@ -54,17 +55,32 @@ scanner is always dark** (it sits on a camera feed), whatever the theme.
 | `--color-text-3` | `#8C9690` | Tertiary text (timestamps, captions) |
 | `--color-accent` | `#5CE1FF` | Placeholder brand accent ("signal cyan"): primary buttons, links, focus ring, lock-on |
 | `--color-on-accent` | `#04161B` | Text on accent buttons |
-| `--color-accent-tint` | `#1B2C2D` | Callout background (accent 10% over surface-1) |
+| `--color-accent-tint` | `#1B2C2D` | Info note background (accent 10% over surface-1) |
 | `--color-danger` | `#FF6B5E` | Destructive text and buttons |
 | `--color-on-danger` | `#0B0D0C` | Text on danger buttons |
-| `--color-class-indica` | `#A88BFF` | Indica fill and dark-theme text |
-| `--color-class-hybrid` | `#3EDB7A` | Hybrid fill and dark-theme text |
-| `--color-class-sativa` | `#FFB547` | Sativa fill and dark-theme text |
+| `--color-class-indica` | `#A07CFF` | Indica fill and dark-theme text (was `#A88BFF`) |
+| `--color-class-hybrid` | `#1FE08A` | Hybrid fill and dark-theme text (was `#3EDB7A`) |
+| `--color-class-sativa` | `#FF9419` | Sativa fill and dark-theme text (was `#FFB547`) |
 | `--color-class-unknown` | `#A3ACA7` | Unknown lineage fill and text |
 | `--color-on-class` | `#0B0D0C` | All text and icons on a class fill |
 | `--color-scrim` | `rgba(0,0,0,0.6)` | Behind any text on the camera feed, and behind modal sheets |
 
-Why a cyan accent: the three classification hues own violet, green and amber, so the brand accent must not
+### Why these class hues (revised 2026-10-26)
+
+The founder asked for the hero to be "a solid … bright color". The first placeholders were a little pastel
+(lavender, mint, sand), so all three were pushed brighter and more saturated, and sativa moved from amber toward
+orange so it separates from hybrid green for red-green colorblind users. Measured as CIELAB ΔE on Machado (2009)
+full-severity simulations (script run on these exact hexes):
+
+| Pair | Normal (old → new) | Deuteranopia | Protanopia | Tritanopia |
+| --- | --- | --- | --- | --- |
+| Indica / Hybrid | 133.5 → 140.7 | 86.8 → 87.9 | 100.7 → 101.8 | 51.1 → 54.6 |
+| Indica / Sativa | 120.5 → 134.1 | 119.9 → 134.7 | 119.0 → 129.8 | 46.4 → 62.5 |
+| Hybrid / Sativa | 83.3 → 106.0 | 33.3 → **47.9** | 20.0 → **34.6** | 84.4 → 103.2 |
+
+Hybrid / sativa is still the closest pair for protanopes, which is why the word and icon are never optional.
+
+Why a cyan accent: the three classification hues own violet, green and orange, so the brand accent must not
 read as a classification. Cyan is the free, high-energy hue left. Roy may pick another, as long as it can't be
 mistaken for a class color.
 
@@ -118,39 +134,44 @@ heading below AA.
 | accent | surface-2 | 10.62 | 4.5 | Pass |
 | accent | surface-3 (toast action) | 9.27 | 4.5 | Pass |
 | on-accent `#04161B` | accent | 12.04 | 4.5 | Pass |
-| text | accent-tint `#1B2C2D` (callout) | 13.13 | 4.5 | Pass |
+| text | accent-tint `#1B2C2D` (info note) | 13.13 | 4.5 | Pass |
 | text-2 | accent-tint | 7.55 | 4.5 | Pass |
 | danger `#FF6B5E` | surface-1 | 6.41 | 4.5 | Pass |
 | on-danger `#0B0D0C` | danger | 6.98 | 4.5 | Pass |
 | text | danger-tint `#352420` | 13.31 | 4.5 | Pass |
-| class-indica `#A88BFF` (text) | surface-1 | 6.66 | 4.5 | Pass |
-| class-indica | surface-2 | 6.06 | 4.5 | Pass |
-| class-hybrid `#3EDB7A` | surface-1 | 9.91 | 4.5 | Pass |
-| class-hybrid | surface-2 | 9.03 | 4.5 | Pass |
-| class-sativa `#FFB547` | surface-1 | 10.20 | 4.5 | Pass |
-| class-sativa | surface-2 | 9.29 | 4.5 | Pass |
+| class-indica `#A07CFF` (text) | surface-1 | 5.82 | 4.5 | Pass |
+| class-indica | surface-2 | 5.30 | 4.5 | Pass |
+| class-hybrid `#1FE08A` | surface-1 | 10.31 | 4.5 | Pass |
+| class-hybrid | surface-2 | 9.39 | 4.5 | Pass |
+| class-sativa `#FF9419` | surface-1 | 8.11 | 4.5 | Pass |
+| class-sativa | surface-2 | 7.38 | 4.5 | Pass |
 | class-unknown `#A3ACA7` | surface-1 | 7.69 | 4.5 | Pass |
 | class-unknown | surface-2 | 7.01 | 4.5 | Pass |
 | border-strong `#6B746F` (UI) | surface-1 | 3.71 | 3 | Pass |
 | border-strong (UI) | surface-2 | 3.38 | 3 | Pass |
 | accent (toggle on, focus ring) | surface-2 | 10.62 | 3 | Pass |
 | accent (focus ring) | bg | 12.69 | 3 | Pass |
-| sativa (filled star) | surface-1 | 10.20 | 3 | Pass |
+| sativa (filled star) | surface-1 | 8.11 | 3 | Pass |
 
-### Class fills (both themes): text on the hero flood, pills, and mini pills
+### Class fills (both themes): text on the solid hero, pills, and mini pills
 
 | Foreground | Background | Ratio | Need | Result |
 | --- | --- | --- | --- | --- |
-| on-class `#0B0D0C` | indica `#A88BFF` | 7.24 | 4.5 | Pass |
-| on-class | hybrid `#3EDB7A` | 10.79 | 4.5 | Pass |
-| on-class | sativa `#FFB547` | 11.10 | 4.5 | Pass |
+| on-class `#0B0D0C` | indica `#A07CFF` | 6.33 | 4.5 | Pass (lowest fill pair; don't darken indica further) |
+| on-class | hybrid `#1FE08A` | 11.22 | 4.5 | Pass |
+| on-class | sativa `#FF9419` | 8.82 | 4.5 | Pass |
 | on-class | unknown `#A3ACA7` | 8.37 | 4.5 | Pass |
-| on-class | ink 12% chip over indica `#957CE2` | 5.81 | 4.5 | Pass |
-| on-class | ink 12% chip over hybrid `#38C26D` | 8.45 | 4.5 | Pass |
-| on-class | ink 12% chip over sativa `#E2A140` | 8.73 | 4.5 | Pass |
-| on-class | ink 12% chip over unknown `#919994` | 6.67 | 4.5 | Pass |
-| on-class focus ring (UI) | any class fill | ≥ 7.24 | 3 | Pass |
-| ink 72% (rejected) | indica | 4.59 | 4.5 | Barely passes. **Rule: no translucent text on a class fill.** Use full ink and vary size/weight instead. |
+| on-class focus ring (UI) | any class fill | ≥ 6.33 | 3 | Pass |
+| class color label on an ink button (result view's Scan another) | ink `#0B0D0C` | 6.33 (indica) · 11.22 · 8.82 · 8.37 | 4.5 | Pass (the same pairs, reversed) |
+| ink 2 px outline (result view's Save) and ink stars (UI) | any class fill | ≥ 6.33 | 3 | Pass |
+
+**The flood (D13, 2026-10-27).** The full-screen result uses the same four fills over the whole viewport, with
+only ink on top. Nothing new needs measuring, and nothing translucent is allowed on the flood. The light and dark
+themes don't change it; the details panel below the fold uses the theme surfaces.
+
+**Rule: no translucent text on a class fill.** Use full ink and vary size and weight instead. The "ink 12% chip
+over a class fill" rows were removed with the confidence chip (2026-10-26): nothing sits on the hero except
+full-ink text and icons.
 
 ### Light theme
 
@@ -184,7 +205,6 @@ heading below AA.
 | border-strong `#7C8681` (UI) | surface-1 | 3.76 | 3 | Pass |
 | border-strong (UI) | surface-2 | 3.31 | 3 | Pass |
 | accent (focus ring) | bg | 5.45 | 3 | Pass |
-| class fills as meter track | surface-1 white | 1.76–2.69 | 3 | **Fail → the light-theme track gets a 1 px `border-strong` outline (3.76:1).** |
 
 ### Camera overlays (always dark)
 
@@ -199,18 +219,12 @@ The feed is unpredictable (a white label, a dark jar), so overlays are designed 
 | Lock-on: accent stroke + ink outline | mid-gray feed `#808080` | 4.94 (outline) | 3 | Accent alone is 2.57 on mid-gray, so the ink outline is required. |
 | Shutter: white ring + ink outline | any | ≥ 19.5 | 3 | Same double-stroke rule. |
 
-### Meter marker
-
-The marker is a white knob with a 2 px ink ring. Ink ring vs. every track color ≥ 7.24:1, white knob vs. ink ring
-19.50:1, so it meets 1.4.11 anywhere on the gradient. The **number is always printed as text**, so the meter
-never carries meaning by position or color alone.
-
 ## Typography
 
 | Role | Placeholder family | Settings | Why |
 | --- | --- | --- | --- |
-| Display (classification word, strain names, big numbers) | **Archivo** (Google Fonts, variable `wdth` 62–125, `wght` 100–900) | `font-stretch: 75%`, weight 800 | A heavy condensed face that reads at arm's length, from one variable file. |
-| UI (everything else) | **Inter** (Google Fonts, variable `opsz`, `wght`) | weights 400 / 500 / 600 / 700, `font-feature-settings: "tnum"` on numbers | Excellent small-size legibility, tabular figures for percentages. |
+| Display (classification word, strain names) | **Archivo** (Google Fonts, variable `wdth` 62–125, `wght` 100–900) | `font-stretch: 75%`, weight 800 | A heavy condensed face that reads at arm's length, from one variable file. |
+| UI (everything else) | **Inter** (Google Fonts, variable `opsz`, `wght`) | weights 400 / 500 / 600 / 700, `font-feature-settings: "tnum"` on numbers | Excellent small-size legibility, tabular figures for counts and times. |
 
 Fallbacks: `system-ui, -apple-system, "Segoe UI", Roboto, sans-serif`. Condensed fallback:
 `"Arial Narrow", "Roboto Condensed", system-ui`.
@@ -230,11 +244,12 @@ unitless. No fixed heights on anything containing text (SC 1.4.12).
 
 | Token | Size | Line height | Weight | Use |
 | --- | --- | --- | --- | --- |
-| `--text-display` | 2.75 rem (44 px) | 1.05 | Archivo 800, 75% width | Classification word in the hero |
+| `--text-display` | 3.25 rem (52 px) | 1.0 | Archivo 800, 75% width | Class word in the strain-page and journal hero (was 44 px: with the meter gone, the word is the whole answer). "Unknown lineage" uses 2.25 rem (36 px). Wraps between words, never inside one, never truncates. |
+| `--text-answer` | `min(23cqw, 7.5rem)` (≈ 104 px at 390 wide with Archivo) | 0.92 | Archivo 800, 75% width | The answer word on the full-screen result (D13). Width-bound so it never overflows, at any text size. "Unknown lineage": `min(16cqw, 4.5rem)`. |
 | `--text-title` | 1.625 rem (26 px) | 1.15 | Archivo 800, 75% width | Strain name in the hero, screen titles |
-| `--text-headline` | 1.25 rem (20 px) | 1.3 | Inter 600 | Section headings, sheet titles, big percentage label |
+| `--text-headline` | 1.25 rem (20 px) | 1.3 | Inter 600 | Section headings, sheet titles, hybrid sublabel |
 | `--text-body` | 1.0625 rem (17 px) | 1.5 | Inter 400 / 600 | Body, buttons, list rows, inputs (≥ 16 px stops iOS input zoom) |
-| `--text-footnote` | 0.9375 rem (15 px) | 1.45 | Inter 400 / 500 | Secondary lines, chips, captions under meters |
+| `--text-footnote` | 0.9375 rem (15 px) | 1.45 | Inter 400 / 500 | Secondary lines, chips, the basis line |
 | `--text-caption` | 0.8125 rem (13 px) | 1.4 | Inter 500 | Timestamps, tab labels, overlines (never for sentences people must read to act) |
 
 The tab label at 13 px is above Apple's 11 pt minimum and matches the platform tab-bar convention.
@@ -285,14 +300,15 @@ Dark themes show depth with lighter surfaces, not shadows. Shadows are for thing
 | `--motion-fast` | 180 ms, `cubic-bezier(.2,.9,.3,1.2)` (slight overshoot) | Lock-on corner snap, chip pop |
 | `--motion-standard` | 260 ms, `cubic-bezier(.2,.8,.2,1)` | Screen and sheet transitions, crossfades |
 | `--motion-sheet` | 420 ms spring (`linear()` spring, or `cubic-bezier(.16,1.1,.3,1)` fallback) | Result sheet rising |
-| `--motion-meter` | 400 ms, `cubic-bezier(.2,.8,.2,1)` | Meter fill from center to value |
+| `--motion-flood` | 340 ms, `cubic-bezier(.2,.8,.2,1)` | Result view: a class-color circle grows (`transform: scale`) from the lock-on point or shutter to cover the screen; content fades in from 200 ms and the answer word rises 8 px. Reduced motion: 150 ms crossfade. |
+| `--motion-reveal` | 260 ms, `cubic-bezier(.2,.9,.3,1.2)`, 120 ms delay | Result reveal: class icon turns in (−20° → 0°, 0.8 → 1), class word slides up 8 px. Replaces `--motion-meter`. |
 | `--motion-stagger` | 30 ms | Tag chips staggering in (cap at 10 items, so ≤ 300 ms total) |
 | `--motion-shimmer` | 1.2 s loop | "Reading label…" sweep. **Stops after 5 s** (SC 2.2.2): the copy changes instead. |
 
 Rules:
 - Animate only `transform` and `opacity`.
 - `prefers-reduced-motion: reduce` (Apple HIG Reduce Motion; WCAG 2.3.3, which is AAA, and we meet it anyway):
-  springs become 150 ms crossfades, the meter appears at its value, the shimmer becomes a static
+  springs become 150 ms crossfades, the hero appears at rest, the shimmer becomes a static
   "Reading label…" label, tags appear together, no z-axis or scale effects. The 10 ms haptic stays.
 - Haptics: 10 ms tick on lock-on, `[10, 40, 10]` on save. Android Chromium only (`navigator.vibrate` needs a prior
   tap; it doesn't exist on iOS). Gated by the Settings toggle.
@@ -301,12 +317,13 @@ Rules:
 
 Lucide, 1.75 px stroke at 24 px, always with a text label on primary actions. Class icons (placeholders):
 Indica `moon`, Hybrid `circle-half` (Lucide `contrast`), Sativa `sun`, Unknown `circle-help`. Disputed marker:
-`git-fork` plus the words "Lineage disputed". Package-says callout: `split` (two diverging arrows).
+`git-fork` plus the words "Lineage disputed". Scan another: `scan-line`. Save: `bookmark`.
 
 ## Open for Roy
 
 1. Brand accent (cyan is a placeholder chosen to avoid the class hues).
-2. Final class hues. Keep violet / green / amber / gray directions and re-run this table.
+2. Final class hues. Keep violet / green / orange / gray directions, keep them bright, and re-run this table
+   (including the colorblind ΔE check above).
 3. Display and UI families (Archivo + Inter are placeholders). Must be self-hostable.
-4. Whether the hero flood is solid (proposed, predictable contrast) or a gradient of the class hue.
+4. ~~Whether the hero flood is solid or a gradient.~~ **Decided by the founders (2026-10-26): solid.**
 5. Logo lockup for the age gate and the scanner's top bar (the mockups use a plain wordmark).

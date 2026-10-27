@@ -2,12 +2,12 @@
   "northvale-highland": {
     "sativa_pct": 25,
     "indica_pct": 75,
-    "label": "hybrid",
+    "label": "indica",
     "sublabel": "indica-dominant",
     "confidence": 1,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "coastal-reed": {
     "sativa_pct": 90,
@@ -17,7 +17,7 @@
     "confidence": 1,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "amber-steppe": {
     "sativa_pct": 10,
@@ -27,27 +27,27 @@
     "confidence": 1,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "river-delta": {
     "sativa_pct": 75,
     "indica_pct": 25,
-    "label": "hybrid",
+    "label": "sativa",
     "sublabel": "sativa-dominant",
     "confidence": 1,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "cloud-terrace": {
     "sativa_pct": 70,
     "indica_pct": 30,
-    "label": "hybrid",
+    "label": "sativa",
     "sublabel": "sativa-dominant",
     "confidence": 0.5,
     "confidence_level": "medium",
     "method": "reported",
-    "algo_version": 1
+    "algo_version": 2
   },
   "salt-plain": {
     "sativa_pct": null,
@@ -57,27 +57,27 @@
     "confidence": 0,
     "confidence_level": "none",
     "method": "unknown",
-    "algo_version": 1
+    "algo_version": 2
   },
   "copper-kite": {
     "sativa_pct": 58,
     "indica_pct": 42,
-    "label": "hybrid",
-    "sublabel": "balanced",
+    "label": "sativa",
+    "sublabel": "sativa-dominant",
     "confidence": 0.97,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "harbor-lantern": {
     "sativa_pct": 43,
     "indica_pct": 57,
-    "label": "hybrid",
-    "sublabel": "balanced",
+    "label": "indica",
+    "sublabel": "indica-dominant",
     "confidence": 0.97,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "copper-kite-x-harbor-lantern": {
     "sativa_pct": 50,
@@ -87,37 +87,37 @@
     "confidence": 0.9409,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "moonlit-fern": {
     "sativa_pct": 70,
     "indica_pct": 30,
-    "label": "hybrid",
+    "label": "sativa",
     "sublabel": "sativa-dominant",
     "confidence": 0.9413365,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "moonlit-fern-4": {
     "sativa_pct": 70,
     "indica_pct": 30,
-    "label": "hybrid",
+    "label": "sativa",
     "sublabel": "sativa-dominant",
     "confidence": 0.9413365,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "moonlit-fern-s1": {
     "sativa_pct": 70,
     "indica_pct": 30,
-    "label": "hybrid",
+    "label": "sativa",
     "sublabel": "sativa-dominant",
     "confidence": 0.913096405,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "velvet-comet": {
     "sativa_pct": 15,
@@ -127,7 +127,7 @@
     "confidence": 0.5,
     "confidence_level": "medium",
     "method": "reported",
-    "algo_version": 1
+    "algo_version": 2
   },
   "velvet-comet-cut": {
     "sativa_pct": 15,
@@ -137,37 +137,37 @@
     "confidence": 0.5,
     "confidence_level": "medium",
     "method": "partial",
-    "algo_version": 1
+    "algo_version": 2
   },
   "quiet-orchard": {
     "sativa_pct": 33,
     "indica_pct": 67,
-    "label": "hybrid",
+    "label": "indica",
     "sublabel": "indica-dominant",
     "confidence": 0.485,
     "confidence_level": "low",
     "method": "partial",
-    "algo_version": 1
+    "algo_version": 2
   },
   "paper-moth": {
     "sativa_pct": 43,
     "indica_pct": 57,
-    "label": "hybrid",
-    "sublabel": "balanced",
+    "label": "indica",
+    "sublabel": "indica-dominant",
     "confidence": 0.47045,
     "confidence_level": "low",
     "method": "partial",
-    "algo_version": 1
+    "algo_version": 2
   },
   "cloud-runner": {
     "sativa_pct": 64,
     "indica_pct": 36,
-    "label": "hybrid",
+    "label": "sativa",
     "sublabel": "sativa-dominant",
     "confidence": 0.71295,
     "confidence_level": "medium",
     "method": "partial",
-    "algo_version": 1
+    "algo_version": 2
   },
   "salt-runner": {
     "sativa_pct": 13,
@@ -177,7 +177,7 @@
     "confidence": 0.7275,
     "confidence_level": "medium",
     "method": "partial",
-    "algo_version": 1
+    "algo_version": 2
   },
   "mystery-haze": {
     "sativa_pct": null,
@@ -187,26 +187,26 @@
     "confidence": 0,
     "confidence_level": "none",
     "method": "unknown",
-    "algo_version": 1
+    "algo_version": 2
   },
   "backcross-kite": {
     "sativa_pct": 54,
     "indica_pct": 46,
-    "label": "hybrid",
-    "sublabel": "balanced",
+    "label": "sativa",
+    "sublabel": "sativa-dominant",
     "confidence": 0.9267864999999998,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "heavy-kite": {
     "sativa_pct": 42,
     "indica_pct": 58,
-    "label": "hybrid",
-    "sublabel": "balanced",
+    "label": "indica",
+    "sublabel": "indica-dominant",
     "confidence": 0.97,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   }
 }

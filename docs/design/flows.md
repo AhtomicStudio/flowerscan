@@ -1,12 +1,15 @@
 # Flows
 
-Owner: product-designer (T-021) · Date: 2026-10-26 · Status: draft for founder review
+Owner: product-designer (T-021) · Date: 2026-10-26 · Status: revised after two founder reviews (2026-10-26: simplified result, no scan modes, no Share, no Request it,
+24-hour Leave; 2026-10-27: full-screen answer, no dominance on the answer, Indica / Hybrid (= 50) / Sativa bands,
+D13–D15)
 
 These flows are what T-009, T-010, T-011, T-013, T-014, T-015 and T-017 build. Screen-level detail (layout,
 every state, copy, accessibility) is in [screens/](screens/). The clickable version is
 [mockups/index.html](mockups/index.html). Diagrams are Mermaid (GitHub and Obsidian render them).
 
-**Words used below:** a *sheet* is a modal bottom sheet over the frozen scanner. A *screen* is a full route.
+**Words used below:** a *sheet* is a modal bottom sheet over the frozen scanner. The *result view* is the
+full-screen answer over the paused scanner (D13). A *screen* is a full route.
 Every sheet has a close button and a tappable grabber, and browser back closes it (each sheet pushes one
 history entry).
 
@@ -21,10 +24,12 @@ flowchart LR
     settings["/settings Settings"]
   end
   scan -- "Search button" --> search["/search"]
-  scan -- "lock-on / shutter" --> sheet["Result sheet (/scan/result)"]
+  scan -- "lock-on / shutter" --> sheet["Result view, full screen (/scan/result)"]
+  sheet -- "Scan another" --> scan
   scan --> which["'Which one?' sheet"]
   scan --> nomatch["No-match sheet"]
-  search --> strain["/s/:id Strain result"]
+  search --> strain["/s/:id Strain page"]
+  sheet -- "family-tree row" --> strain
   journal --> detail["/journal/:scanId"]
   settings --> about["/about"]
   sheet -- "How classification works" --> about
@@ -41,13 +46,15 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-  A([Opens any URL: /, /scan, /s/:id, /journal…]) --> B{age_confirmed_at saved?}
+  A([Opens any URL: /, /scan, /s/:id, /journal…]) --> X0{Left within the last 24 h?<br/>age_declined_at}
+  X0 -- yes --> L
+  X0 -- no --> B{age_confirmed_at saved?}
   B -- yes --> R([Original route])
   B -- no --> G["Age gate: Are you 21 or older?"]
   G -- "I'm 21 or older" --> S[Save age_confirmed_at] --> D{Was it a deep link?}
   D -- "yes (/s/:id, /journal…)" --> R
   D -- "no (/ or /scan)" --> P{Camera permission state}
-  G -- Leave --> L["Exit screen: FlowerScan is for adults 21+.<br/>No content. Gate stays for this session."]
+  G -- Leave --> L["Exit screen: FlowerScan is for adults 21+.<br/>No content. Every route shows it for 24 hours on this device."]
   P -- granted --> LIVE([Scanner, live])
   P -- "prompt / unknown" --> C["Camera card: Point at a package…<br/>Photos never leave your phone.<br/>[Continue] · Type a name instead"]
   P -- denied --> DEN([Camera-off state, see §5])
@@ -66,18 +73,18 @@ Decisions (docs/08 updated):
 - **One primary button, "Continue", not "Allow"** (HIG Privacy). We add a secondary text link to a non-camera
   path because web.dev's permission guidance asks for one. This breaks HIG's "no escape" rule for native
   pre-alerts on purpose: a PWA user who doesn't want the camera should still get value.
-- **Deep links skip the camera card.** Someone opening a shared `/s/:id` link wants that strain, not a camera.
-  They meet the card the first time they open the Scan tab.
+- **Deep links skip the camera card.** Someone opening a `/s/:id` URL (bookmarked or typed; Share is cut) wants
+  that strain, not a camera. They meet the card the first time they open the Scan tab.
 - **[Leave]** goes to an in-app exit screen with no content (not an external site, which would be a
-  cross-origin navigation we don't need). For the rest of the browser session the app shows only that screen
-  (`sessionStorage`); a new session asks again. Founder/legal check: Q-D1 in the screen spec.
+  cross-origin navigation we don't need). **For 24 hours on this device** every route shows only that screen
+  (`age_declined_at`, stored with settings); after that the gate asks again. Founder decision Q-D1, 2026-10-26.
 
 ## 2. Scan → result (happy paths)
 
 ```mermaid
 flowchart TD
-  LIVE([Scanner live, mode Auto]) --> X{What happens?}
-  X -- "Code in view (Auto, Barcode, QR)" --> ST{Stable in 2 of 3 frames?}
+  LIVE([Scanner live, Auto only]) --> X{What happens?}
+  X -- "Code in view (not muted)" --> ST{Stable in 2 of 3 frames?}
   ST -- no --> LIVE
   ST -- yes --> PICK["Pick one code (priority below)"] --> LOCK["Lock-on: corners snap to the code (180 ms),<br/>haptic tick, live region: Barcode found"]
   LOCK --> K{Code kind}
@@ -86,17 +93,21 @@ flowchart TD
   K -- "Other URL QR with a slug" --> MATCH
   K -- "Unknown UPC/EAN, other Code 128" --> UB([Unknown-barcode sheet, §4b])
   K -- "Tracking UID / COA / Retail ID QR" --> TC([Not-a-strain-code sheet, §4b])
-  X -- "Shutter tap (Auto, Text)" --> FR["Frame freezes, 8% white flash.<br/>Shimmer over reticle: Reading label…"]
+  X -- "Shutter tap" --> FR["Frame freezes, 8% white flash.<br/>Shimmer over reticle: Reading label…"]
   FR --> OCR{OCR}
   OCR -- "text in ≤ 1.5 s" --> MATCH[Match + decide]
   OCR -- "slow / fails" --> SLOW([§2b])
-  MATCH -- "auto-accept" --> RES["Result sheet rises (spring), meter fills (400 ms),<br/>tags stagger in. Live region announces the result."]
+  MATCH -- "auto-accept" --> RES["Result view: the whole screen floods with the class color (340 ms circle),<br/>name + icon + one huge word: Indica / Sativa / Hybrid. No dominance (D14).<br/>Details below the fold. Live region: Result: name. Sativa."]
   MATCH -- "close call" --> WH([Which one? §3])
   MATCH -- "no match" --> NM([No match §4])
   RES --> ACT{User}
   ACT -- Save --> SV["Button becomes Saved ✓ (double haptic), toast: Saved to Journal · Undo.<br/>Optional rating row appears."]
-  ACT -- "Share link" --> SH[Web Share sheet, or Link copied toast]
-  ACT -- "Close / swipe down / back" --> LIVE
+  SV --> ACT
+  ACT -- "Details ⌄ or scroll" --> DET["Details panel: basis line, effects,<br/>How we know (lean line, family tree, sources)"]
+  DET --> ACT
+  ACT -- "Scan another (primary)" --> AGAIN["View closes, frame unfreezes, reticle breathes once.<br/>Focus on the shutter. Live region: Ready to scan.<br/>The code just used is muted until out of view 1.5 s."]
+  AGAIN --> LIVE
+  ACT -- "Close / Escape / back" --> AGAIN
 ```
 
 ### 2a. Several codes in view (test-plan gap 6, proposal for T-010)
@@ -111,7 +122,9 @@ stability gate within the same 3-frame window and picks **one**, in this order:
 5. Everything else (COA or tracking QRs, unrecognized Code 128).
 
 The reticle locks to the winner only, so the user sees which code was used. No chooser: asking "which code?"
-would be a question the user can't answer. In **Barcode** or **QR** mode, only that kind is considered.
+would be a question the user can't answer. There are no Barcode-only or QR-only modes any more (cut
+2026-10-26); a muted code (same-code cooldown, [screens/scanner.md](screens/scanner.md#same-code-cooldown)) is
+skipped and the next one in priority wins.
 
 ### 2b. OCR slow or failing (test-plan gap 7)
 
@@ -134,14 +147,15 @@ flowchart TD
   M["Decide: top ≥ 0.60 but not auto-accept<br/>(close scores, number missing, A x B label, generic token)"] --> W["Which one? sheet<br/>We read 'STRAIN A'. Pick the one on your package."]
   W --> C1["Candidate row (≤ 3): name, breeder if any, mini class pill"]
   C1 -- tap --> CONF{Was a barcode involved?}
-  CONF -- yes --> MEM["Remember barcode → strain (if learnable, P13)"] --> RES([Result sheet])
+  CONF -- yes --> MEM["Remember barcode → strain (if learnable, P13)"] --> RES([Result view])
   CONF -- no --> RES
   W -- "None of these" --> NM([No-match sheet, prefilled with what we read])
   W -- "Close / back" --> LIVE([Scanner])
 ```
 
-- The sheet **replaces its own content** with the result after a pick (one sheet at a time, HIG), and back
-  returns to the list.
+- After a pick, the sheet closes and the **result view floods in** (one modal at a time, HIG). Back returns to the
+  list.
+- Candidate pills show the class word only (D14), using the D15 labels.
 - Numbers are identity (P5): when candidates differ only by a number, the number is set in the display face so
   it stands out ("Strain A **#4**", "Strain A **#5**").
 - An "A x B" label (P4) shows the curated cross only if it exists. Otherwise the sheet title becomes "That looks
@@ -155,23 +169,22 @@ flowchart TD
   D["Decide: top < 0.60"] --> N["No-match sheet: We couldn't find a strain in that label."]
   N --> E["What we read (editable, prefilled with the best line)"]
   E -- "Edit + Search" --> S([/search?q=…])
-  N -- "Try again" --> LIVE([Scanner, Text mode for one shot])
-  N -- "We don't have this strain yet → Request it" --> RQ["Saved on this phone (Could). Toast: Request noted"]
+  N -- "Try again" --> LIVE([Scanner: Now tap to read the strain name])
   N -- "Save anyway" --> UN["Unidentified scan saved with product form and what we read.<br/>No classification anywhere."]
 ```
 
-Never show a classification, meter, tag, or "close" strain here. The editable text is the *only* thing derived
+Never show a classification, tag, or "close" strain here. "Request it" is cut from the MVP (Q-D6). The editable text is the *only* thing derived
 from the package.
 
 ### 4b. Barcode and QR dead ends (test-plan gap 4)
 
 | Code | Sheet title | Body | Actions |
 | --- | --- | --- | --- |
-| Unknown UPC/EAN, or a Code 128 not seen before | "We don't know this barcode yet" | "Cannabis barcodes aren't in any public list, so we learn them on your phone. Scan the strain name once and we'll remember it next time." | **[Scan the label]** (Text mode, shutter pulses) · [Search by name] |
+| Unknown UPC/EAN, or a Code 128 not seen before | "We don't know this barcode yet" | "Cannabis barcodes aren't in any public list, so we learn them on your phone. Scan the strain name once and we'll remember it next time." | **[Scan the label]** (code muted, shutter pulses) · [Search by name] |
 | Tracking UID (e.g. a 24-character package tag) | "That's a tracking code" | "It's unique to this one package, so it can't tell us the strain. Scan the strain name instead." | **[Scan the label]** · [Search by name] |
 | COA or Retail-ID QR | "That QR is for lab results" (COA) / "That QR is a tracking code" (Retail ID) | "It doesn't name the strain. Scan the strain name instead." Shows the link's domain in plain text. | **[Scan the label]** · [Search by name] · "Open link" (opens the domain shown, in a new tab, only on tap) |
 
-After the user picks a strain from a learnable barcode's follow-up (scan or search), the result sheet shows the
+After the user picks a strain from a learnable barcode's follow-up (scan or search), the result view's details show the
 one-line note "We'll recognize this barcode next time (on this phone)."
 
 ## 5. Camera unavailable (permission denied, plus test-plan gap 1)
@@ -206,7 +219,6 @@ flowchart TD
   W -- "Shutter, OCR cached" --> OK3[Works.]
   W -- "Shutter, OCR not cached" --> MSG["Text reading needs a one-time download.<br/>Barcodes and search work offline."]
   W -- "Search / Journal / Settings" --> OK4[Work.]
-  W -- "Share link" --> SH["Web Share still opens (the link is just a URL). Copy fallback works."]
   W -- "Open link on a COA QR" --> NET["Toast: You're offline. Try the link later."]
   W -- "First-ever visit while offline" --> NONE[Browser's own offline page. Nothing we can do.]
 ```
@@ -224,7 +236,7 @@ flowchart TD
   SAVE[Tap Save] --> DB{IndexedDB write}
   DB -- ok --> T1["Saved ✓ · toast: Saved to Journal [Undo] (6 s)"]
   DB -- "QuotaExceededError" --> Q["Sheet: Your phone is out of space for saved scans.<br/>Back up your journal and delete old scans, or free up space.<br/>[Open Journal] [Back up]"]
-  DB -- "IndexedDB unavailable (private mode, blocked)" --> P["Toast: Saving isn't available in this browser mode, like private browsing. You can still share the link. [Share]"]
+  DB -- "IndexedDB unavailable (private mode, blocked)" --> P["Toast: Saving isn't available in this browser mode, like private browsing."]
   T1 --> FIRST{First save ever?}
   FIRST -- yes --> PERS["Call storage.persist(). If refused, Settings shows: Your browser may clear saved scans when space runs low. Back up to keep them."]
 ```

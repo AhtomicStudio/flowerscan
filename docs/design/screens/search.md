@@ -21,7 +21,7 @@ faster to type. Must work offline and feel instant.
 │ ───────── typing "kes" ──────│
 │ 3 results                    │  caption, also announced
 │ Kestrel Haze                 │  result row 64 px+: name (match highlighted
-│ [◐ Hybrid · Sativa-dominant] │   in bold, not color), full ClassPill
+│ [☼ Sativa]                   │   in bold, not color), ClassPill (class word only, D14)
 │ Kestrel Haze #2              │
 │ Also called “KH2” · [☾ Indica]│ alias line when the hit was an alias
 └──────────────────────────────┘
@@ -29,7 +29,8 @@ faster to type. Must work offline and feel instant.
 ```
 
 - Pushed screen under the Scan tab (tab bar stays). Back returns to the scanner (or wherever the user came from).
-- Results: top 20 from the same matcher as scanning. Tap → `/s/:id`.
+- Results: top 20 from the same matcher as scanning. Tap → `/s/:id` (the strain page: hero, basis line, effects,
+  How we know, Save).
 - An alias hit shows "Also called “{alias}”" so the user understands why it matched.
 
 ## States
@@ -40,7 +41,7 @@ faster to type. Must work offline and feel instant.
 | Empty query, empty journal | Only the tip, plus "Or scan a package" link back to the scanner. |
 | Typing | Results update on each keystroke (debounce 80 ms; matching is ≤ 50 ms). No spinner. |
 | Prefilled (`?q=` from no-match) | Field contains the text with the cursor at the end; results already shown. |
-| No results | "No strains match “{q}”." "Check the spelling, or try fewer words." Divider. "We don't have this strain yet? **Request it**" (Could; same local behavior as no-match). |
+| No results | "No strains match “{q}”." "Check the spelling, or try fewer words." Nothing else ("Request it" is cut from the MVP, Q-D6). |
 | Data still loading (first visit) | 3 skeleton rows (only if > 300 ms). The field is usable; results appear when data arrives. |
 | Data failed | "Strain data didn't load. Check your connection and try again." [Try again] |
 | Offline | Works. No banner. |

@@ -13,7 +13,7 @@ Docs, ADRs, task backlog, agent rules, folder skeleton.
 | **M0 Foundation** | Repo builds, research and design done, types and tokens exist | T-001 scaffold ✅ · T-020 benchmark research · T-022 domain review · T-023 name shortlist · T-024 test plan · T-021 design spec & mockups · T-002 domain schemas · T-003 taxonomy v1 · T-004 design tokens & UI primitives |
 | **M1 Data & engine** | Real strains compile into a real lineage result | T-005 lineage engine · T-006 vault build · T-007 seed dataset · T-008 matcher |
 | **M2 Scanner** | Camera → text/barcode/QR → candidates | T-009 camera · T-010 barcode/QR · T-011 OCR + label parser · T-012 eval harness |
-| **M3 Result & journal** | The full loop a user sees | T-013 result screen · T-014 search & "Which one?" · T-015 journal · T-016 share link & journal backup |
+| **M3 Result & journal** | The full loop a user sees | T-013 result screen · T-014 search & "Which one?" · T-015 journal · T-016 journal backup |
 | **M4 Ship** | Public, compliant, fast, offline | T-017 shell, age gate & compliance pass · T-018 PWA & performance · T-019 deploy & launch checklist |
 
 **Vertical-slice checkpoint (end of M1 + T-013 stub):** typing a strain name shows a real, lineage-derived
@@ -21,6 +21,7 @@ result from the seed data. Demo this to Roy before building the scanner.
 
 ## Phase 2: Accounts & community
 - Firebase Auth (anonymous → email/Apple/Google) + Firestore journal sync across devices.
+- Share a strain as a link (cut from the MVP, D5).
 - Shared barcode → strain mappings (submitted on confirm, moderated, confidence by agreement count).
 - "Request a strain" queue that feeds the data-curator workflow.
 - Opt-in cloud OCR/vision engine for hard labels (returns text only).

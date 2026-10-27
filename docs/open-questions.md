@@ -11,6 +11,62 @@ Record each answer here with a date, and write an ADR if it affects architecture
 | Q10 | **Legal review before public launch: who, and when?** Not covered by the small monthly budget (Q9). Scope must include candy-like strain names (P12) and name/trademark clearance (T-023). | T-019 | Required before public launch; not before a private beta |
 | Q11 | **Final brand name and visual identity** (Roy). See [12-naming.md](12-naming.md) and [13-creative-brief.md](13-creative-brief.md). | T-004 final tokens, T-017 copy, T-019 domain | Build under "FlowerScan" with swappable tokens |
 
+## Design, landrace and taxonomy decisions (decided 2026-10-26 by the tech lead)
+
+From the founder review of the T-021 mockup, the T-007 landrace values, and the T-003 compliance questions.
+
+**Design (T-021).** The direction is approved **with changes**: simplify hard. T-004 starts once the founder
+signs off on the revised mockup.
+
+| # | Topic | Decision | Applied in |
+| --- | --- | --- | --- |
+| D1 | Result hero | **A solid, bright class color** (Indica / Sativa / Hybrid green) with the strain name and the class word. Keep the result simple. | docs/02, docs/08, docs/design, T-004, T-013 |
+| D2 | Percentage | **No % meter and no percentages shown to users.** The engine still computes `sativa_pct` for the label and confidence. Makes Q-D3 moot and removes risk M1 (reading % as potency). | docs/02, docs/08, T-004, T-013 |
+| D3 | Flavors and terpenes | **Not shown, and not tagged in the MVP.** The vocabulary stays in taxonomy v1 for later. Effect tags (including negatives) stay. | docs/02, docs/04, T-007 follow-ups, T-013 |
+| D4 | "Package says" callout | **Cut from the result.** Supersedes P8's callout. The printed claim is still stored with the scan and may appear as one plain line in "How we know". | docs/02, docs/08, T-013 |
+| D5 | Share | **No Share button in the MVP.** Strain pages (`/s/<id>`) stay, reached from search and the family tree. | docs/02, docs/03, T-013, T-016 |
+| D6 | Scan another | **Add a "Scan another" action** on the result that goes straight back to the live scanner. | docs/02, docs/08, T-013 |
+| D7 | Scanner modes | **Auto only.** No Auto / Text / Barcode / QR control and no "Default mode" setting. | docs/02, docs/08, T-009 |
+| D8 | Age gate Leave (Q-D1) | **Blocks the app for 24 hours on this device**, then the gate shows again. Legal review (Q10) may change it. | docs/design, T-017 |
+| D9 | "Request it" (Q-D6) | **Cut from the MVP.** | docs/02, T-014 |
+| D10 | Reported-only results (Q-D2) | Call them **"Reported type"**, not "Breeder's label". | docs/design, T-013 |
+| D11 | Intro card (Q-D5) | **Keep it merged** with the camera card. | docs/08 |
+| D12 | Hallway test (Q-D7) | **Keep the pass criteria**, and run it (T-026). | docs/design/hallway-test.md, T-026 |
+| D13 | Full-screen answer | **The result takes over the screen in its class color** (Indica / Sativa / Hybrid), so the answer is obvious at a glance. Details sit below the fold or one tap away. | docs/08, docs/design, T-004, T-013 |
+| D14 | No "dominant" on the result | **The immediate result shows only Indica, Sativa or Hybrid.** Dominance and other detail appear only when the user opens the strain ("How we know" / strain page). | docs/08, docs/design, T-013 |
+| D15 | Hybrid means exactly 50/50 | **Label bands change (ALGO_VERSION 2):** rounded `sativa_pct` < 50 → Indica, exactly 50 → Hybrid, > 50 → Sativa. The old five bands survive only as the detail `sublabel`: ≤ 20 none, 21–49 indica-dominant, 50 balanced, 51–79 sativa-dominant, ≥ 80 none. Supersedes the docs/05 bands. | docs/04, docs/05, core lineage, T-005 follow-up |
+
+**Waiting on the founder** (from the revised mockup, 2026-10-27; details in docs/design/README.md): Scan another as the
+primary button over Save; negative effects as one "Also reported" line; the designer's extra cuts (Q-D8); the new
+Scan another hallway-test criterion; product form kept in the journal but off the result.
+From the D13–D15 round (2026-10-27): packages printing "Hybrid" will usually show Sativa or Indica, with only a
+"Package says" line in the details (Q-D9); the designer's extra changes (Q-D10, e.g. lists drop dominance, the strain
+page keeps a color block instead of a full flood); and whether P3 should now map a package's "Indica-dominant" to
+`indica` (not `hybrid`) to match D15.
+
+**Landrace values (T-007, P10).** These set the values in the vault. Each note stays `unverified` until a
+founder sets `verification: verified` in Obsidian (agents never do).
+
+| # | Topic | Decision | Applied in |
+| --- | --- | --- | --- |
+| L1 | How "documented influence" is judged | **By the specific seed line cited**, not the whole country. | LANDRACE-RUBRIC.md |
+| L2 | South African landrace | **90.** The rubric's "sub-tropical origin → 75" clause is removed, so 75 now means only documented broad-leaf influence in the line. | LANDRACE-RUBRIC.md, vault (T-027) |
+| L3 | Hindu Kush landrace | **10.** | vault |
+| L4 | Thai landrace | **90** (follows from L1). | vault |
+| L5 | Acapulco Gold | **Sativa**, citing Jeeter's product information as `reported_type`. T-027 found a seed-bank source (The Landrace Team) and **proposes `base_sativa_pct` 90**, pending founder approval. | vault (T-027) |
+
+**Taxonomy compliance (T-003).**
+
+| # | Topic | Decision | Applied in |
+| --- | --- | --- | --- |
+| C1 | Strain names vs. banned terms | **Strain names are exempt** from `assertNoBannedTerms` (they're proper nouns). P12 still covers how they're displayed. | banned.yaml, docs/09, T-006, test plan X-03 |
+| C2 | Where the automated check runs | **Taxonomy terms, vault strain notes, and rendered result screens.** Other app copy (backup, privacy, settings) gets a human/reviewer compliance pass instead, so "keep your backup file safe" isn't blocked. | docs/09, T-006, T-013, test plan |
+| C3 | "anxiety" | **Stays banned** as a bare word. The negative tag is `anxious`. | banned.yaml |
+| C4 | Flavors and terpenes | **Kept in taxonomy v1, not tagged in the MVP** (same as D3). | taxonomy.yaml, T-007 follow-ups |
+
+Still open from T-003, for the cannabis-expert: the polarity re-files (sleepy, hungry, talkative, tingly, giggly →
+neutral). The 50-term cap and the "candy" synonym matter less now that flavors aren't shown.
+
 ## Domain decisions from T-022 (decided 2026-10-26 by the tech lead)
 
 Proposals from the cannabis domain review ([research/2026-10-26-domain-review.md §6](research/2026-10-26-domain-review.md#6-proposals-needing-a-decision)).
@@ -25,7 +81,7 @@ Specs and tasks were updated to match in the same change.
 | P5 | Numbers in names | **Numbers are identity.** A number mismatch blocks auto-accept. A missing number caps the outcome at "Which one?". | docs/06, T-008 |
 | P6 | Brand/product words inside strain names | **Match before stripping.** Lexicon words are down-weighted, not deleted, inside a longer strain-name match. | docs/06, T-011 |
 | P7 | Clones and numbered phenos | **Cuts (clones) get no generation decay. Numbered phenos take the seed line's parents** when sourced. S1s keep the decay. | docs/04, docs/05, T-002, T-005, T-007 |
-| P8 | "Package says" callout | **Only when direction is opposite** (indica-side vs. sativa-side). Result copy says "Lineage estimate, not a lab test", plus a "close to the line" note within ±2 of a band edge. | docs/08, T-013 |
+| P8 | "Package says" callout | **Superseded by D4 (2026-10-26): the callout is cut from the result.** Original decision: **only when direction is opposite** (indica-side vs. sativa-side). Result copy says "Lineage estimate, not a lab test", plus a "close to the line" note within ±2 of a band edge. | docs/08, T-013 |
 | P9 | Disputed lineage | **No confidence cap.** Disputed ancestors are marked in the family tree ("lineage disputed") instead. | docs/05, docs/08, T-005, T-013 |
 | P10 | Landrace base values | **Coarse scale (10 / 25 / 50 / 75 / 90), a written rubric, two sources each.** No source means no value. Place-named seed lines are `strain` nodes with a landrace parent. Founders approve every value. | docs/04, docs/05, T-007 |
 | P11 | Golden photo set | **Cover CA, MI, NY, WA, CO labels plus one hemp THCa package** before launch. | data/eval, T-012 |
@@ -41,7 +97,7 @@ Specs and tasks were updated to match in the same change.
 | Q2 | Existing strain database? | **No. Build from scratch.** | T-007 curates our own vault: landraces + the 50 most common strains first, 150–300 by launch. |
 | Q3 | Launch market? | **US, 21+.** | Age gate is a fixed 21+. Keep the age in one constant so other markets are possible later. |
 | Q4 | Who approves data? | **AI drafts, founders approve.** | The data-curator agent researches with sources and sets `unverified`/`disputed`. Only a founder sets `verified`. |
-| Q5 | Who is Obsidian for? | **Just us (curation).** | The Obsidian vault stays the database source (ADR-0003). **End-user Obsidian export leaves the MVP.** Users get a share link and a journal backup file instead (T-016 rewritten). User-facing Markdown export moves to Phase 2 as an option. |
+| Q5 | Who is Obsidian for? | **Just us (curation).** | The Obsidian vault stays the database source (ADR-0003). **End-user Obsidian export leaves the MVP.** Users get a journal backup file instead (T-016 rewritten). The share link was later cut from the MVP (D5). User-facing Markdown export moves to Phase 2 as an option. |
 | Q6 | Monetization? | **Free for now.** | No ads, sponsorships, affiliates, or payments in the MVP. Revisit after real usage. |
 | Q7 | Team and tools? | **Tech lead** (the user) builds with Claude Code + Gemini. **Roy** owns marketing and creative and uses Grok. | AGENTS.md targets Claude and Gemini coding agents. Roy's deliverables (name, identity, voice, launch assets) are scoped in [13-creative-brief.md](13-creative-brief.md). No GROK.md needed, since Roy isn't working in the code. |
 | Q9 | Budget? | **Small monthly budget** (about $20–50/month). | Covers a domain plus privacy-friendly cookieless analytics, and Vercel Pro if we outgrow hobby limits. Cloud OCR stays out unless the eval (T-012) proves it's needed and it fits the budget. Legal review is outside this budget (see Q10). |

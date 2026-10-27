@@ -32,9 +32,9 @@ worst failure (false accept < 1%), so this sheet must be fast to answer and hone
 
 - Up to **3** candidates, in matcher order. No scores shown (users have no model for them; benchmark note).
 - Rows are full-width buttons, ≥ 64 px tall, 12 px apart.
-- Mini ClassPill shows only the label word (Indica / Hybrid / Sativa / Unknown lineage), from the candidate's
+- The ClassPill shows only the label word (Indica / Hybrid / Sativa / Unknown lineage, D15 labels), from the candidate's
   lineage. It helps people recognize the right one ("the package says indica, so probably #5"), but it isn't a
-  result: no meter, no percentage.
+  result: no percentage, no tags.
 
 ## States
 
@@ -45,7 +45,7 @@ worst failure (false accept < 1%), so this sheet must be fast to answer and hone
 | Candidates differ only by number (P5) | The number is set in the display face (`#4`) so the difference is visible at a glance. |
 | "A x B" label with no curated cross (P4) | Title "That looks like a cross of two strains". Body "We don't have this cross yet. Here are its parents." Rows show the parents with the line "Parent, not a match". Tap → that parent's `/s/:id` page (not a scan result, nothing remembered). "None of these" stays. |
 | Barcode involved | Footnote under the list: "We'll remember your pick for this barcode, on this phone." Only for learnable codes (P13). |
-| Pick | Sheet content crossfades to the result (same sheet, one history entry). Back returns to the list. |
+| Pick | The sheet closes and the full-screen result view floods in (one history entry). Back returns to the list. |
 | None of these | Opens the no-match sheet with the read text prefilled. |
 | Close / back / Escape | Back to the live scanner. Nothing saved, nothing remembered. |
 | Offline | Works (all local). |

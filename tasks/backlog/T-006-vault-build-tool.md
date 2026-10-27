@@ -23,6 +23,8 @@ docs: [tools/vault-build/README.md, docs/04-data-model.md, docs/decisions/0003-o
 - Error when a single-parent node has no `derivation` (P7).
 - Output content-hashed folder plus `apps/web/public/data/latest.json` pointing to it.
 - `build-report.md` with counts, errors, warnings, and a classification diff vs. the previous build.
+- Banned-term check (C1, C2, 2026-10-26): run `assertNoBannedTerms` over taxonomy terms and vault note text
+  (body and tag descriptions). **Strain names and aliases are exempt.**
 - Fixture vault in `tools/vault-build/test/fixtures/` covering: a valid tree, an unresolved link, a cycle,
   a banned tag, an unsourced tag, a duplicate alias.
 

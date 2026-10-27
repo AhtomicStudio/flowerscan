@@ -23,6 +23,6 @@ Typed search as a first-class path, plus the choose and no-match outcomes of the
 - [ ] Keyboard and screen-reader pass on search (results announced via aria-live).
 
 ## Out of scope
-"Request this strain" (Could). Remote search.
+"Request this strain" (cut, D9). Remote search.
 
 ## Log

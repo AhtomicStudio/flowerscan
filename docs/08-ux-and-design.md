@@ -5,13 +5,13 @@
 | Route | Screen |
 | --- | --- |
 | `/` | Age gate (first visit) → Scanner |
-| `/scan` | Scanner (camera viewport, mode control, shutter, search button, recents) |
-| `/s/:strainId` | Strain result (also the shareable deep link) |
-| `/scan/result` | Scan result (strain result plus package facts, Save) |
+| `/scan` | Scanner (camera viewport, shutter, search button, recents). Auto only: no mode control. |
+| `/s/:strainId` | Strain page, reached from Search and from family-tree rows (no Share in the MVP) |
+| `/scan/result` | Scan result: a **full-screen answer** in the class color (Save, Scan another), details below the fold (D13) |
 | `/search` | Manual search |
 | `/journal`, `/journal/:scanId` | Journal list / scan detail |
 | `/about` | How classification works · data sources · privacy · responsible use · "We match the name on the package. We can't confirm what's inside." (P14) |
-| `/settings` | Theme, haptics, default mode, backup / restore journal, erase all data |
+| `/settings` | Theme, haptics, backup / restore journal, erase all data |
 
 ## Core flows
 
@@ -21,64 +21,76 @@ docs carry the detail.
 
 ### First run
 1. **Age gate:** "Are you 21 or older?" [I'm 21 or older] / [Leave]. Remembered locally. [Leave] goes to an
-   in-app exit screen with no content for the rest of the browser session ([design/screens/age-gate.md](design/screens/age-gate.md)).
+   in-app exit screen with no content, and every route shows only that screen **for 24 hours on this device**;
+   then the gate asks again (founder decision Q-D1, 2026-10-26; [design/screens/age-gate.md](design/screens/age-gate.md)).
 2. **One camera card** (shown once): "Point at a package. We'll show you what's in its family tree." plus "We use
    your camera to read labels. Photos never leave your phone." [Continue] → browser prompt. A "Type a name
    instead" link is the skip. *(T-021 merged the intro card and the priming screen into one card: one less
    tap before the first answer.)*
-   - Deep links (`/s/:id`) skip the card; it appears the first time the Scan tab opens.
+   - Opening a `/s/:id` URL directly skips the card; it appears the first time the Scan tab opens.
    - Denied → the scanner becomes a "Camera is off" panel with [Search by name] and browser-specific steps to
      turn the camera on. No camera, camera busy, and "this browser can't open the camera" (in-app browsers) get
      the same panel with their own copy ([design/flows.md §5](design/flows.md#5-camera-unavailable-permission-denied-plus-test-plan-gap-1)).
 
 ### Scan → result (happy path)
-1. Scanner opens straight to a live viewport. Mode **Auto**. The shutter is the big thumb-zone button.
-2. A barcode or QR comes into view → the reticle snaps to it (lock-on), with a haptic tick → result sheet springs up.
-   With a UPC and a QR both in view, Auto picks one by priority (our deep link, a remembered barcode, a QR with a
+1. Scanner opens straight to a live viewport. There is **no mode control** (cut 2026-10-26): it always looks for
+   barcodes and QR codes, and the shutter, the big thumb-zone button, reads label text.
+2. A barcode or QR comes into view → the reticle snaps to it (lock-on), with a haptic tick → the result view floods in.
+   With a UPC and a QR both in view, the scanner picks one by priority (our deep link, a remembered barcode, a QR with a
    slug, then an unknown UPC) and locks onto that one ([design/flows.md §2a](design/flows.md#2a-several-codes-in-view-test-plan-gap-6-proposal-for-t-010)).
-3. Or the user taps the shutter → frame freeze + "Reading label…" shimmer (≤ 1.5 s) → result sheet. Slower: the
+3. Or the user taps the shutter → frame freeze + "Reading label…" shimmer (≤ 1.5 s) → result view. Slower: the
    copy changes at 1.5 s, the shimmer stops at 5 s with [Keep waiting] [Search instead], and at 15 s (or a worker
    crash) "We couldn't read that label." ([design/flows.md §2b](design/flows.md#2b-ocr-slow-or-failing-test-plan-gap-7)).
-4. **Result sheet** (modal bottom sheet; opens at medium height, the grabber button or a drag takes it to full
-   screen; a close button, swipe down, Escape, and browser back all dismiss it):
-   - **Hero:** strain name, big classification label (and the hybrid sublabel), the parents in one line when
-     known ("Strain A × Strain B"), then the sativa↔indica meter with the percentage, and the line
-     "Lineage estimate, not a lab test." When the value is within ±2 of a band edge (edges at 20.5, 40.5, 59.5,
-     79.5, so 19–22, 39–42, 58–61, 78–81), add "Close to the line" (P8).
-     For `method: reported` the meter shades the reported band and shows **no number** ("Based on how it's
-     described, not its family tree."), because the 85/70/50/30/15 values are a convention, not a measurement.
-   - **Confidence chip:** "Lineage traced" / "Partly traced" / "Breeder's label". Unknown lineage gets no chip: the
-     hero already says "Unknown lineage". Landrace pages say "Landrace". Tapping explains in one sentence, worded
-     by method and `confidence_level` ([design/screens/result-sheet.md](design/screens/result-sheet.md)).
-   - **Package-says callout** (P8): **only when the directions are opposite**, i.e. the package is on one side
-     (Indica) and the lineage leans the other way (Sativa or Sativa-dominant), or the reverse. "Indica" vs.
-     "Hybrid · Indica-dominant" agrees, so no callout. A package saying "Hybrid" never triggers it.
-     Copy: "Package says **Indica**. The family tree leans **Sativa-dominant**."
-   - **Package facts:** product form only ("From the package: Pre-roll"). **Potency (THC/CBD) is never shown**
-     (P2): it's stored for our internal potency table, not displayed. The label claim itself is listed inside
-     "How we know" ("Package says Hybrid."), so docs/02's "label claim shown" holds without a callout for
-     agreeing labels.
-   - **Tags:** "Commonly reported" effect / flavor / terpene chips, only those that exist, with negative-polarity
-     effects in their own "Also reported" row. Zero tags → the section is not rendered.
-   - **"How we know" (collapsed):** family tree, sources count, "Sources describe it as …" (reported type, never
-     averaged with ours), link to /about#classification. Disputed ancestors carry a "lineage disputed" marker (P9),
-     and the collapsed row counts them. Where the tree ends, say so ("Origins of Chemdawg are unknown").
-   - **Actions:** [Save] [Share link], sticky at the bottom of the sheet. Save becomes "✓ Saved" with an Undo toast
-     and an optional rating row.
-   - **Footer:** "Effects vary person to person. Start low, go slow."
+4. **Result view** (a **full-screen** modal view over the paused scanner, not a sheet; a close button, Escape and
+   browser back dismiss it). Simplified after the founder reviews on 2026-10-26 and 2026-10-27 (open-questions
+   D1–D15; [design/screens/result-sheet.md](design/screens/result-sheet.md)):
+   - **The answer (D13):** the **whole screen floods with the solid class color**: Indica purple, Sativa orange,
+     Hybrid green, gray for Unknown lineage. On it: the strain name, the class icon, and **one huge class word**.
+     The goal is that people can say the answer within 2 seconds. At least 91% of the first screen is flat class
+     color (measured in the mockup). The flood grows from the lock-on point (reduced motion: a crossfade), and
+     `theme-color` follows it.
+   - **No dominance on the answer (D14):** no "Sativa-dominant" or other sublabel on the answer or in lists. The
+     detail line "Leans sativa (sativa-dominant)" appears only inside How we know and on the strain page and journal
+     detail.
+   - **Labels (D15):** Indica if the rounded estimate is below 50, Hybrid at exactly 50, Sativa above 50. Hybrid is
+     rare by design.
+   - **Always reachable without scrolling:** a bottom bar on the flood with the footer line, **[Scan another]**
+     (primary) and [Save] (secondary). Everything below sits under the fold, reached by "Details ⌄" or a scroll.
+   - **No percentage anywhere.** There is no meter, no number, and no "close to the line" badge. The label is the
+     answer; `sativa_pct` stays internal.
+   - **Basis line** (first thing in the details), e.g. "**Lineage traced:** an estimate from its family tree,
+     not a lab test." The terms are "Lineage traced" / "Partly traced" / "**Reported type**" (replaces "Breeder's
+     label") / "Landrace". Unknown lineage: "We don't have enough of its family tree to say." Not a chip, not
+     tappable.
+   - **Effects only:** "Commonly reported" chips from the `effect` facet, then negative-polarity effects as one
+     plain line ("Also reported: dry mouth."). No flavors, no terpenes. Zero effect tags → the section is not
+     rendered.
+   - **"How we know" (collapsed, in the details):** first the lean line (if any), then a summary row with the parents ("Strain A × Strain B"), sources count and any
+     disputed count. Inside: the method explanation and "lineage estimate, not a DNA or lab test", the family tree
+     with **class pills only** (no numbers), "Lineage disputed" markers (P9), "Origins of Chemdawg are unknown"
+     where the tree ends, "Reported type: …" when sources describe it, the package's printed claim as one plain
+     line ("Package says Indica."), sources, and a link to /about#classification.
+   - **Package facts:** no "From the package" row and no package-says callout (both cut). The label claim appears
+     only as the plain line inside How we know, which keeps docs/02's "label claim shown". **Potency (THC/CBD) is
+     never shown** (P2). Product form is still stored with the scan and shown in the journal.
+   - **Actions:** [Save] (secondary) and **[Scan another]** (primary), in the bottom bar on the flood. Scan
+     another closes the view straight to the live scanner, and the code just used is muted until it leaves the
+     view, so the same result doesn't reopen. Save becomes "✓ Saved" with an Undo toast and an optional rating
+     row. On `/s/:id` the only action is Save. **No Share** anywhere in the MVP.
+   - **Footer:** "Effects vary person to person. Start low, go slow." Always visible in the bottom bar.
 
 ### Close call
-- "Which one?" sheet with up to 3 candidates (name, breeder if any, mini classification pill) plus
+- "Which one?" sheet with up to 3 candidates (name, breeder if any, class pill with the word only) plus
   [None of these → edit text / search]. Picking one confirms it (and teaches local barcode memory if a
   barcode was involved). No scores are shown. When candidates differ only by a number (P5), the number is
   emphasized. An "A x B" label with no curated cross shows the two parents as "Parent, not a match" (P4).
 
 ### No match
 - "We couldn't find a strain in that label." Show what we read as editable text, then [Search], [Try again],
-  and "We don't have this strain yet" (Could: [Request it]).
+  and [Save anyway]. ("Request it" is cut from the MVP, Q-D6.)
 - **Never** show a classification here. "Save anyway" stores an unidentified scan with the package facts.
-- **Unknown barcode** (not in local memory): "We don't know this barcode yet", with [Scan the label] (Text mode for
-  one shot) and [Search by name]. A tracking UID, COA QR, or Retail ID QR says what it is ("That's a tracking
+- **Unknown barcode** (not in local memory): "We don't know this barcode yet", with [Scan the label] (mutes that
+  code and pulses the shutter) and [Search by name]. A tracking UID, COA QR, or Retail ID QR says what it is ("That's a tracking
   code") and offers the same two actions ([design/flows.md §4b](design/flows.md#4b-barcode-and-qr-dead-ends-test-plan-gap-4)).
 
 ### Offline
@@ -95,16 +107,22 @@ docs carry the detail.
 
 ## Component rules
 
-- **TagList** takes `tags: Term[]` and renders 0..n chips. Wraps to new lines; collapses past 8 with
-  "+N more". There is **no** prop for a minimum count and no placeholder chip. Zero tags returns `null`.
-  Tag chips are display-only (not tappable); the hedged descriptions live on /about#tags.
-- **ClassificationMeter** takes the `lineage` object. `sativa_pct` null renders "Unknown lineage", never a
-  50/50 bar. `method: reported` shades the band with no number.
-- **ConfidenceChip** maps `confidence_level` + `method` to copy. Tapping it reveals a one-sentence explanation
-  inline (no floating popover, so it reflows at 200% and 320 px).
+- **TagList** takes `tags: Term[]` and renders 0..n chips. The result passes the `effect` facet only. Wraps to
+  new lines; collapses past 8 with "+N more". Negative-polarity effects render as one plain "Also reported" line.
+  There is **no** prop for a minimum count and no placeholder chip. Zero tags returns `null`. Tag chips are
+  display-only (not tappable); the hedged descriptions live on /about#tags.
+- **ResultView** (scan result) floods the whole viewport with the class color and shows the name, icon and answer
+  word; **ClassHero** (strain page, journal) is the rounded block version. Neither shows a sublabel (D14).
+  `sativa_pct` null renders gray "Unknown lineage", never a 50/50 or any value.
+- **LeanLine** maps the detail `sublabel` to "Leans indica (indica-dominant)" / "An even mix (balanced)" / "Leans
+  sativa (sativa-dominant)", for traced and partial lineages only. Detail views only.
+- **ClassPill** (lists, tree, Which one?) shows the class word only.
+- **BasisLine** maps `method` (and landrace `kind`) to one line of copy. It never renders a number. (The
+  ClassificationMeter and ConfidenceChip were removed on 2026-10-26.)
 - **Sheet** (every bottom sheet): a visible close button, a grabber that is a ≥ 48 px button cycling the
   heights, Escape and browser back close it. Modal, focus trapped and returned (SC 2.5.7, 2.4.11).
-- **ResultSheet** is the same component for scans and deep links. Package facts are optional props.
+- The result view and the strain page share the details (basis line, effects, How we know). The package claim
+  and the Scan another action are scan-only.
 - Every numeric or tag value on screen traces back to the data or the scan. Reviewers check this.
 - **Strain names render as plain text** (P12). No candy imagery, playful fonts, emoji or color treatment keyed
   to names like "Zkittlez" or "Candyland".
@@ -116,8 +134,7 @@ read, organized**, following published platform standards, and **fun and catchy*
 *want* to use it. Concretely:
 
 **Principle: calm by default, playful in moments.** The everyday UI is quiet, clear, and consistent.
-Personality is concentrated in a few signature moments (lock-on, result reveal, "package says" callout,
-save). Fun never costs clarity or speed.
+Personality is concentrated in a few signature moments (lock-on, result reveal, save, scan another). Fun never costs clarity or speed.
 
 ### Standards we follow
 | Area | Standard | Our rule |
@@ -132,7 +149,7 @@ save). Fun never costs clarity or speed.
 
 ### Visual system rules
 - **Type:** at most 2 typefaces. Body ≥ 16 px (also stops iOS from zooming into inputs; we use 17 px, the iOS
-  default), line height 1.4–1.6, a type scale of about 5 steps. Tabular figures for percentages. Fonts are
+  default), line height 1.4–1.6, a type scale of about 5 steps. Tabular figures for counts and times. Fonts are
   self-hosted (a font CDN would send the user's IP to a third party).
 - **Spacing:** a 4/8 px grid. Generous whitespace. One column on phones.
 - **Hierarchy:** one primary action per screen. The most important thing is the biggest thing.
@@ -140,7 +157,7 @@ save). Fun never costs clarity or speed.
 - **Color:** a small palette: neutrals plus 1–2 brand accents plus the 3 classification colors. Dark and
   light themes are both first-class.
 - **Iconography:** one icon set (Lucide), one stroke weight, always paired with a label on primary actions.
-- **Copy:** plain language, sentence case, buttons are verbs ("Scan", "Save", "Share"). Error messages say
+- **Copy:** plain language, sentence case, buttons are verbs ("Scan", "Save", "Search"). Error messages say
   what happened and what to do next.
 - **States:** every screen has designed loading (skeletons, never spinners for < 1 s), empty, error,
   offline, and permission-denied states before it's considered done.
@@ -156,8 +173,8 @@ to avoid: [research/2026-10-26-benchmark-apps.md](research/2026-10-26-benchmark-
 - A design review against this section plus the Nielsen heuristics, before any screen task is done.
 - Hallway tests: 5 people try the 3 core flows (scan → result, close call, no match). We measure task
   success and time. Anything 2+ people stumble on gets fixed before launch. Script, pass criteria and results
-  template: [design/hallway-test.md](design/hallway-test.md). It also checks that people don't read the meter as
-  potency and that they understand the chip wording.
+  template: [design/hallway-test.md](design/hallway-test.md). It also checks that people understand the basis-line
+  terms ("Lineage traced", "Reported type") and can get from a result to the next scan with Scan another.
 
 ## Design direction
 
@@ -165,8 +182,9 @@ The target is **bold, vibrant, high-contrast**, on a dark base:
 
 - **The camera UI is dark by necessity** (a viewport plus overlays). Use near-black surfaces and vivid,
   saturated accents for controls. That's where "punchy" lives.
-- **The result is the color moment.** The classification hero floods the sheet header with the
-  classification color, with big type and a tactile meter.
+- **The result is the color moment, and it takes the whole screen.** "I want the whole screen to light up indica
+  sativa or hybrid colors so the answer is immediately evident" (founder, 2026-10-27). Solid color, no gradient,
+  no meter, one huge word.
 - FlowerScan is a **separate brand** (open-questions Q1). Cannapickforme's tokens don't apply. Roy owns the
   final identity ([13-creative-brief.md](13-creative-brief.md)). Until it lands, build with swappable tokens
   in `apps/web/src/styles/tokens.css`, so the rebrand is a token change, not a refactor.
@@ -177,13 +195,13 @@ Use the convention people already know, made colorblind-safe by always pairing c
 
 | Class | Hue direction | Icon idea | Text always shown |
 | --- | --- | --- | --- |
-| Indica | deep violet | moon | "Indica" |
-| Hybrid | vivid green | half-circle / leaf | "Hybrid · Sativa-dominant" etc. |
-| Sativa | warm amber/orange | sun | "Sativa" |
+| Indica | bright violet | moon | "Indica" |
+| Hybrid | vivid green | half-circle / leaf | "Hybrid" (only for an exactly balanced lineage, D15) |
+| Sativa | bright orange | sun | "Sativa" |
 | Unknown | neutral gray | question mark | "Unknown lineage" |
 
-The meter is a gradient from violet through green to amber, with faint ticks at the band edges and a white
-knob with an ink ring at the percentage. Contrast: we hold all text to ≥ 4.5:1, even large display text (AA
+All three hues must read as bright and clearly distinct, including under red-green colorblindness (measured in
+the tokens proposal). Contrast: we hold all text to ≥ 4.5:1, even large display text (AA
 allows 3:1), so a token swap can't silently fail. Text on a class color is always full-strength ink, never
 translucent. Placeholder hexes and the measured pairs: [design/tokens-proposal.md](design/tokens-proposal.md#contrast-table-measured).
 The brand accent must not be one of the class hues (the placeholder is cyan).
@@ -198,9 +216,9 @@ Roy's identity work replaces them. Tokens, type scale, spacing, radii, motion an
 - **Lock-on:** reticle corners spring to the detected code's bounding box (≈ 180 ms), then a pulse.
 - **Shutter:** press scales to 0.92 with a spring, the frame freezes with a quick white flash at 8% opacity.
 - **Reading:** a shimmer sweeps across the reticle while OCR runs. No spinners. It stops after 5 s (SC 2.2.2).
-- **Result reveal:** the sheet rises with a spring, the meter fills from center to value (400 ms),
-  tags stagger in 30 ms apart.
-- **Package says:** after the meter settles, the callout slides up 8 px with a small tilt of its icon.
+- **Result flood:** a class-color circle grows from the lock-on point (or the shutter) to fill the screen (340 ms,
+  `transform` only), then the name, icon and word fade in and the word rises 8 px. Reduced motion: a 150 ms crossfade.
+- **Scan another:** the result view closes, the frame unfreezes, and the reticle corners take one quick "ready" breath.
 - **Save:** the button morphs to "✓ Saved" with a small pop, and the optional rating row appears.
 - **Haptics:** a 10 ms tick on lock-on, a double-tick on save (Android Chromium only, after the user's first tap;
   silently skipped elsewhere).
@@ -209,7 +227,8 @@ Roy's identity work replaces them. Tokens, type scale, spacing, radii, motion an
 ### Ergonomics
 - One-thumb: primary actions sit in the bottom 40% of the screen. Shutter ≥ 72 px, other targets ≥ 48 px.
 - Usable at arm's length in a dim dispensary: large type, torch button, high contrast.
-- Supports dynamic type / zoom up to 200% without breaking the result sheet.
+- Supports dynamic type / zoom up to 200% without breaking the result view (the answer word is sized by width, so it
+  can't overflow).
 
 ## Copy voice
 

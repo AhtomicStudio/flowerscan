@@ -12,8 +12,7 @@ A short, grouped, boring-on-purpose list. Every setting persists across reloads 
 │ Settings                     │  large title
 │ APPEARANCE                   │
 │ Theme      [System|Dark|Light]│  segmented, 48 px
-│ SCANNING                     │
-│ Default mode         Auto  › │  menu: Auto / Text / Barcode / QR
+│ SCANNING                     │  whole group hidden when Haptics is
 │ Haptics                 [●]  │  toggle; ROW HIDDEN where vibrate is unsupported
 │ YOUR DATA                    │
 │ 42 scans saved on this phone │  caption
@@ -32,12 +31,15 @@ A short, grouped, boring-on-purpose list. Every setting persists across reloads 
 
 Rows ≥ 52 px, full-width hit areas, grouped on `surface-2` cards with section headers.
 
+**Default mode is gone** (2026-10-26): the scanner has no modes. With it, the Scanning group holds only Haptics,
+so on browsers without vibration (iOS, Firefox) the whole group, header included, isn't rendered.
+
 ## States
 
 | State | Behavior |
 | --- | --- |
 | Theme change | Applies instantly (crossfade 150 ms). "System" follows `prefers-color-scheme`. The scanner stays dark. |
-| Haptics unsupported (iOS, Firefox) | The row is **not rendered** (a toggle that does nothing is worse than none). |
+| Haptics unsupported (iOS, Firefox) | The row, and so the whole Scanning group, is **not rendered** (a toggle that does nothing is worse than none). |
 | Back up | Downloads the file. Toast "Backup saved to your downloads" (iOS: "…to Files"). Updates "Last backup". |
 | Back up, empty journal | Still allowed (it also backs up settings and barcode memory). |
 | Restore: valid file | Summary sheet: "Restored {n} scans. {d} already here (kept the newer one). {x} couldn't be read." [View journal]. Counts from the real merge. |

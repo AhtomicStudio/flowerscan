@@ -1,7 +1,11 @@
-# Lineage Classification Algorithm (v1)
+# Lineage Classification Algorithm (v2)
 
 Implemented as pure functions in `packages/core/src/lineage/`. Deterministic: the same graph always gives
-the same output. `ALGO_VERSION = 1`. Bump it whenever the output for any input can change.
+the same output. `ALGO_VERSION = 2`. Bump it whenever the output for any input can change.
+
+**Changelog.** v2 (D15, 2026-10-27): new label bands. **Hybrid means exactly 50.** Below 50 is Indica and
+above 50 is Sativa. The old five bands survive only as the detail `sublabel`. Values, confidence and
+everything else are unchanged from v1.
 
 ## What the number means (read before writing copy)
 
@@ -39,15 +43,20 @@ A `lineage` object: `sativa_pct`, `indica_pct`, `label`, `sublabel`, `confidence
 | `indica` | 15 |
 | `unknown` | — (no value) |
 
-**Label bands** on the final `sativa_pct`:
+**Label bands** on the final rounded `sativa_pct` (D15, 2026-10-27; supersedes the v1 bands):
 
 | sativa_pct | label | sublabel |
 | --- | --- | --- |
-| ≥ 80 | `sativa` | — |
-| 60 – 79 | `hybrid` | `sativa-dominant` |
-| 41 – 59 | `hybrid` | `balanced` |
-| 21 – 40 | `hybrid` | `indica-dominant` |
-| ≤ 20 | `indica` | — |
+| ≥ 80 | `sativa` | — (null) |
+| 51 – 79 | `sativa` | `sativa-dominant` |
+| 50 | `hybrid` | `balanced` |
+| 21 – 49 | `indica` | `indica-dominant` |
+| ≤ 20 | `indica` | — (null) |
+
+The `label` is the lean: < 50 → `indica`, exactly 50 → `hybrid`, > 50 → `sativa`. The `sublabel` says how
+strong the lean is. The immediate result shows only the label; the sublabel appears only in the strain
+detail ("How we know" / strain page, D14). Under these bands the reported-type values land in their own
+lean: `indica-dominant` (30) → Indica, `balanced` (50) → Hybrid, `sativa-dominant` (70) → Sativa.
 
 **Confidence:** `GENERATION_DECAY = 0.97` per generation, `REPORTED_CONFIDENCE = 0.5`.
 Levels: high ≥ 0.75, medium ≥ 0.5, low > 0, none = 0.
@@ -98,7 +107,10 @@ fallback(n):
   return { value: r, confidence: REPORTED_CONFIDENCE, method: reported }
 ```
 
-Then: `sativa_pct = round(value)`, `indica_pct = 100 - sativa_pct`, apply the label bands and confidence levels.
+Then: `sativa_pct = round(value)`, `indica_pct = 100 - sativa_pct`, and apply the label bands to the
+**rounded** `sativa_pct`: < 50 → `indica`, exactly 50 → `hybrid`, > 50 → `sativa`, with the sublabel from
+the same table (D15). So 49.6 rounds to 50 and is a hybrid, and 50.8 rounds to 51 and is a sativa. Then
+apply the confidence levels.
 If `value` is null, the result is unknown: `sativa_pct`, `indica_pct` and `sublabel` are null, `label` and
 `method` are `unknown`, `confidence` is `0` (not null) and `confidence_level` is `none`, as `LineageSchema`
 and the docs/04 lineage object require.
@@ -145,11 +157,11 @@ Landrace K  (base_sativa_pct 10)      Landrace T (base 90)      Landrace C (base
                       Strain B = A × C  → 0.5·50 + 0.5·90 = 70
 ```
 
-- Strain A: 50% → `hybrid / balanced`, confidence 0.97 → high
-- Strain B: 70% → `hybrid / sativa-dominant`, confidence 0.97 · (0.5·0.97 + 0.5·1.0) ≈ 0.955 → high
+- Strain A: 50% → **Hybrid** (detail `balanced`), confidence 0.97 → high
+- Strain B: 70% → **Sativa** (detail `sativa-dominant`), confidence 0.97 · (0.5·0.97 + 0.5·1.0) ≈ 0.955 → high
 - A clone of B (`derivation: cut`): 70%, confidence ≈ 0.955 (no decay). An S1 of B: 70%, confidence ≈ 0.927.
 - If C were `"unknown"` and B had `reported_type: sativa-dominant` (70):
-  B = 0.5·50 + 0.5·70 = 60 → `hybrid / sativa-dominant`, confidence 0.97 · (0.5·0.97 + 0.5·0.5) ≈ 0.713 → medium, method `partial`.
+  B = 0.5·50 + 0.5·70 = 60 → **Sativa** (detail `sativa-dominant`), confidence 0.97 · (0.5·0.97 + 0.5·0.5) ≈ 0.713 → medium, method `partial`.
 
 ## Required unit tests (T-005)
 
@@ -160,7 +172,10 @@ Landrace K  (base_sativa_pct 10)      Landrace T (base 90)      Landrace C (base
 - Backcross through a cross node.
 - One unknown parent with and without `reported_type`.
 - All parents unknown → reported fallback → `unknown`.
-- Every band boundary: 20/21, 40/41, 59/60, 79/80.
+- Every band boundary (D15): 20/21, 49/50, 50/51, 79/80, plus 0 and 100, and rounding next to 50
+  (a value that rounds to 50 is a hybrid, one that rounds to 49 or 51 isn't).
+- `LineageSchema` accepts exactly the label/sublabel pairs in the band table (plus `unknown` / null) and
+  rejects every other pair.
 - Cycle detection (build) and the runtime guard.
 - Memoization: a 5,000-node random DAG completes in < 50 ms on CI.
 - Snapshot: the full seed dataset's outputs, so any algorithm change shows up as a reviewable diff.

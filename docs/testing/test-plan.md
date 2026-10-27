@@ -41,7 +41,7 @@ automation can't reach (real camera, real share sheet, real install).
 | M-03 | Permission-priming screen | **E** init-script spy on `getUserMedia`: zero calls until the priming CTA is tapped; **E** priming copy says photos stay on the phone; **M** real browser prompt appears only after priming | T-009 |
 | M-04 | Live barcode + QR decoding (Auto) | **U** stability gate (2 of 3 frames, alternating values never accept); **E** `qr-deeplink`, `upc-a-unknown`, `ean-13-unknown` fixtures decode in Auto; `qr-flicker` never accepts; **M** iPhone polyfill path decodes UPC-A + QR ≤ 300 ms | T-010 |
 | M-05 | Tap-to-read OCR (Text) | **U** `parseLabelText` (≥ 15 messy outputs); **EV** top-1/top-3/false-accept; **E** shutter → fake `OcrEngine` output → result (fast, every PR); **E** `label-happy` fixture through real Tesseract (slow, tagged `@slow`); **M** warm OCR ≤ 1200 ms on Android reference device | T-011, T-012 |
-| M-06 | Mode control Auto / Text / Barcode / QR, Auto default | **C** default is Auto; **E** switch to Barcode, reload → still Barcode (persisted); QR mode ignores a UPC fixture; Barcode mode ignores a QR fixture; Text mode doesn't auto-detect | T-009 |
+| M-06 | Auto only (D7): no mode control | **E** the scanner has no mode control and Settings has no default-mode row; a UPC and a QR fixture both decode live; the shutter reads text; after Scan another, the same code doesn't reopen its result until it has been out of view for 1.5 s | T-009, T-010 |
 | M-07 | Manual search, one tap from scanner | **E** from `/scan`, one tap → `/search` with focused input; **E** keyboard-only path; **C** results announced via `aria-live` | T-009 (button), T-014 |
 
 ### Identification
@@ -58,7 +58,7 @@ automation can't reach (real camera, real share sheet, real install).
 
 | # | Must item | Tests | Task |
 | --- | --- | --- | --- |
-| M-13 | Classification hero: label + meter + confidence | **U** lineage engine (docs/05 required tests, worked example); **C** `ClassificationMeter` at 0/20/21/50/79/80/100/null (null → "Unknown lineage", never 50/50); **C** `ConfidenceChip` all 4 copies, tap explains; **E** `/s/<seed-id>` renders label from built data; **R** text not color alone | T-005, T-004, T-013 |
+| M-13 | Classification hero: label + class color (no %, D2) | **U** lineage engine (docs/05 required tests, worked example); **C** `ClassHero` fills the viewport for every label and null, and shows no sublabel (D13, D14); **U** bands 49/50/51 (D15) (null → "Unknown lineage", never a default class); **C** no "%" in the result DOM; **C** method explanation in "How we know" for traced / partial / reported type / unknown; **E** `/s/<seed-id>` renders label from built data; **R** text not color alone | T-005, T-004, T-013 |
 | M-14 | "How we know": expandable family tree with sources | **U** `explainLineage` depth 3, unknown parents; **C** collapsed by default, "Unknown parent" rows, source count; **E** expand on `/s/<seed-id>`, link to `/about#classification` resolves | T-005, T-013 |
 | M-15 | "Package says X" when the package disagrees | **C** differs → callout; same → none; `package_says` null → none; **E** `label-disagree` fixture → callout shows both words | T-013 |
 | M-16 | Dynamic tags only from verified data, 0..n | **D** build strips unsourced tags (T-006 fixture); **C** `TagList` 0/1/4/8/9/12 (0 → `null`, > 8 → "+N more"); **C** all facets empty → no tags section; **E** a zero-tag seed strain has no tags heading in the DOM | T-003, T-006, T-004, T-013 |
@@ -69,7 +69,7 @@ automation can't reach (real camera, real share sheet, real install).
 | # | Must item | Tests | Task |
 | --- | --- | --- | --- |
 | M-18 | Save to journal; list, view, delete, rating, notes | **U** `JournalRepository` fake + Dexie (fake-indexeddb), migrations; **E** scan → save → in list → rate → reload → still there → delete; **E** unidentified scan listed and labeled; **E** empty journal state | T-015 |
-| M-19 | Share link `/s/<id>` via Web Share, copy fallback | **U** shared URL contains only the strain id (no rating, notes, scan data); **E** desktop: `navigator.share` absent → copy + toast (clipboard permission granted in context); **E** stubbed `navigator.share` receives `{title, url}`; **M** Android + iPhone share sheet opens | T-016 |
+| M-19 | ~~Share link~~ cut from the MVP (D5). Strain pages `/s/<id>` stay | **E** no Share control on the result, strain page or journal detail; `/s/<id>` renders from built data | T-013 |
 | M-20 | Backup download + restore | **U** round trip journal → backup → erase → restore = identical; merge: duplicate ids, newer wins, invalid records reported, wrong file rejected; **G** backup format; **E** download (`page.waitForEvent("download")`, filename `flowerscan-backup-YYYY-MM-DD.json`) → erase → restore via `setInputFiles` → summary → journal restored; **M** iPhone Safari download lands in Files and restores from Files | T-016 |
 
 ### Data
@@ -84,7 +84,7 @@ automation can't reach (real camera, real share sheet, real install).
 
 | # | Must item | Tests | Task |
 | --- | --- | --- | --- |
-| M-24 | 21+ age gate | **E** first visit to each route (`/`, `/scan`, `/s/<id>`, `/journal`, `/search`) → gate; [I'm 21+] → original route (deep link preserved); reload → no gate; [Leave] → not the app; **C** age comes from the single constant; **R** | T-017 |
+| M-24 | 21+ age gate | **E** first visit to each route (`/`, `/scan`, `/s/<id>`, `/journal`, `/search`) → gate; [I'm 21+] → original route (deep link preserved); reload → no gate; [Leave] → exit screen, and every route stays on it for 24 hours (clock injected), then the gate shows again (D8); **C** age comes from the single constant; **R** | T-017 |
 | M-25 | Privacy page, about / "how classification works" | **E** `/about` renders the sections, `#classification` anchor works, reachable from the result; **R** plain-language privacy copy matches actual behavior (cross-check X-01) | T-017 |
 | M-26 | PWA: installable, shell + strain data offline | **E** after first load and SW `activated`: `context.setOffline(true)` → reload → shell + `/s/<id>` + search work; OCR-not-cached copy shown on shutter; **E** manifest fields + maskable icon present; Lighthouse CI installable; **M** airplane mode on both phones; install on both phones | T-018 |
 | M-27 | Deployed on Vercel at a real domain over HTTPS | **E** smoke against the preview/production URL; headers check (CSP, `Permissions-Policy: camera=(self)`, HSTS, Referrer-Policy); **M** device checklist runs against the production URL | T-019 |
@@ -101,19 +101,19 @@ automation can't reach (real camera, real share sheet, real install).
 | F-06 | **Happy path, barcode/QR lock-on** → haptic → result sheet | **E** `qr-deeplink` → lock-on class/state → result; `navigator.vibrate` stub called once (10 ms) where present; **M** feel of lock-on and haptic on Android | T-010, T-013 |
 | F-07 | **Happy path, shutter** → freeze + "Reading label…" shimmer (≤ 1.5 s) → result | **E** fake OCR with a 1 s delay: shimmer visible, no spinner; result appears; **M** timing on device | T-009, T-011 |
 | F-08 | **Result sheet**: hero, chip, package-says, facts, tags, How we know, actions, footer | M-13 to M-17; **E** drag up to full screen, swipe down to dismiss, browser back closes the sheet | T-013 |
-| F-09 | **Confidence chip** variants: Lineage traced / Partly traced / Breeder's label / Unknown lineage | **C** each `method` + level → copy; tap → one-sentence explanation | T-004, T-013 |
-| F-10 | **Unknown lineage** | **C** meter null → "Unknown lineage", gray, `?` icon, no percentage; **E** a seed strain with `unknown` lineage shows no number anywhere | T-013 |
+| F-09 | **Basis line** variants: Lineage traced / Partly traced / Reported type / Landrace / Unknown lineage (D10) | **C** each `method` + level → its basis-line copy; "How we know" carries the full explanation | T-004, T-013 |
+| F-10 | **Unknown lineage** | **C** lineage null → "Unknown lineage", gray, `?` icon, never a default class; **E** a seed strain with `unknown` lineage shows no number anywhere | T-013 |
 | F-11 | **Zero tags** | M-16 (section absent from the DOM, not just hidden) | T-013 |
 | F-12 | **Close call** "Which one?" ≤ 3 candidates + None of these | **E** `label-close-call` (or fake OCR text) → sheet with ≤ 3 rows, each with name, breeder if any, mini pill; pick → result; with a barcode → memory written; "None of these" → editable text / search; **H** | T-014 |
-| F-13 | **No match** | **E** `label-no-match` → "We couldn't find a strain in that label.", editable text, [Search] [Try again]; **no** classification, meter, or tags in the DOM; edit text → re-match; [Save anyway] → unidentified scan with facts; **H** | T-014 |
+| F-13 | **No match** | **E** `label-no-match` → "We couldn't find a strain in that label.", editable text, [Search] [Try again]; **no** classification or tags in the DOM; edit text → re-match; [Save anyway] → unidentified scan with facts; **H** | T-014 |
 | F-14 | **Offline** shell + data; OCR not cached message | M-26 | T-018 |
 | F-15 | **Unknown strain id** deep link → friendly 404 with search | **E** `/s/does-not-exist` → 404 copy + search, no classification | T-013 |
 | F-16 | **Journal** list / detail / empty / unidentified | M-18 | T-015 |
-| F-17 | **Settings**: theme, haptics, default mode, backup/restore, erase all | **E** each setting persists across reload; erase all (with confirmation) clears journal, barcode memory, settings, caches → age gate shows again | T-015, T-016, T-017 |
+| F-17 | **Settings**: theme, haptics, backup/restore, erase all (no default mode, D7) | **E** each setting persists across reload; erase all (with confirmation) clears journal, barcode memory, settings, caches → age gate shows again | T-015, T-016, T-017 |
 | F-18 | **Restore from backup** | M-20; **E** invalid file → clear message, nothing changed; partial rejects listed | T-016 |
 | F-19 | **Every screen's loading / empty / error / offline / permission-denied states** | **C** per screen; **E** skeletons, never spinners for < 1 s; design review per T-021 spec | each screen task |
 | F-20 | **Navigation**: bottom tab bar (Scan, Journal, Settings), back always works | **E** tabs on every top-level route; browser back from result, sheet, search returns to the previous screen | T-017 |
-| F-21 | **Share** | M-19 | T-016 |
+| F-21 | ~~Share~~ cut (D5) | M-19 | T-013 |
 | F-22 | **Hallway test** of scan → result, close call, no match | **H** 5 people, task success + time; fix anything 2+ stumble on | script: T-021; run: **unowned** (see gaps) |
 
 ## 3. Cross-cutting checks (automated wherever possible)
@@ -122,8 +122,8 @@ automation can't reach (real camera, real share sheet, real install).
 | --- | --- | --- | --- |
 | X-01 | **Privacy:** nothing leaves the device (images, OCR text, scans, barcodes) | **E** a shared `networkGuard` fixture on every e2e test: records every request; fails on any cross-origin request, any non-GET to our origin, any request body or URL containing a barcode value, OCR text, or `data:image` / image MIME. Allow-list only the analytics endpoint (if Q9 adds one) with payload keys `event, method, outcome, latency_bucket` | T-009 adds the fixture; every feature task uses it |
 | X-02 | **No filler**: no invented values, no default 50/50, no "N/A" | **E** `noFiller` assertion on every rendered result: page text has no `N/A`, `undefined`, `null`, `NaN`, `[object`, `TBD`, `Lorem`; unknown lineage shows no `%`; **C** state matrix; **R** each value traces to data or scan | T-013, reviewer |
-| X-03 | **No medical wording / hedged effects** | **E** collect `innerText` of every route and every result state; run `assertNoBannedTerms` (core, T-003) over it; **U** on all `copy.ts` files; **R** docs/09 checklist | T-003, T-017 |
-| X-04 | **Accessibility (WCAG 2.2 AA)** | **E** `@axe-core/playwright` scan on each route and sheet state (new dev dep, justify in the task that adds it); **E** keyboard-only path: search → result → share; focus trapped in sheets and returned on close; **E** `emulateMedia({ reducedMotion: "reduce" })` → no transform animations (crossfades only); **E** 200% text zoom (root `font-size: 200%` and a 320 px viewport) → no clipped hero text, no horizontal scroll; **E** touch targets: every interactive element ≥ 48×48 px, shutter ≥ 72 px; **M** VoiceOver + TalkBack pass | T-004, T-013, T-014, T-017 |
+| X-03 | **No medical wording / hedged effects** | **E** collect `innerText` of every result state (strain names excluded, C1); run `assertNoBannedTerms` (core, T-003) over it; **R** reviewer pass on every other route and all `copy.ts` files against the docs/09 checklist (C2) | T-003, T-017 |
+| X-04 | **Accessibility (WCAG 2.2 AA)** | **E** `@axe-core/playwright` scan on each route and sheet state (new dev dep, justify in the task that adds it); **E** keyboard-only path: search → result → Save, and scanner → result → Scan another → shutter focused; focus trapped in sheets and returned on close; **E** `emulateMedia({ reducedMotion: "reduce" })` → no transform animations (crossfades only); **E** 200% text zoom (root `font-size: 200%` and a 320 px viewport) → no clipped hero text, no horizontal scroll; **E** touch targets: every interactive element ≥ 48×48 px, shutter ≥ 72 px; **M** VoiceOver + TalkBack pass | T-004, T-013, T-014, T-017 |
 | X-05 | **Contrast** | **C/E** axe color-contrast rule in dark and light themes; T-004 lists measured pairs | T-004 |
 | X-06 | **Performance budgets** (docs/10, docs/06) | **CI** bundle size check (scanner route ≤ 170 KB gz, data ≤ 1 MB gz); **E** OCR assets absent from the initial-load network log; Lighthouse CI mobile ≥ 90, LCP ≤ 2.0 s, CLS ≤ 0.1; **E** match + decide ≤ 50 ms via `performance.measure`; **M** stage budgets on the Android reference device (camera ready ≤ 800 ms, detect ≤ 300 ms, OCR ≤ 1200 ms, result ≤ 100 ms, INP ≤ 200 ms) | T-018, T-009, T-010, T-011 |
 | X-07 | **Safe areas, one-thumb layout** | **E** WebKit iPhone project: primary actions in the bottom 40% of the viewport; **M** notch/home-indicator overlap on iPhone, installed PWA | T-004, T-017 |

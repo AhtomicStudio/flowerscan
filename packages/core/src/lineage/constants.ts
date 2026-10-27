@@ -8,8 +8,11 @@ import type {
   Sublabel,
 } from "../schema/enums";
 
-/** Version of the algorithm in docs/05. Bump it whenever the output for any input can change. */
-export const ALGO_VERSION = 1;
+/**
+ * Version of the algorithm in docs/05. Bump it whenever the output for any input can change.
+ * 2: D15 (2026-10-27) label bands. Hybrid means exactly 50; the old five bands live on as the sublabel.
+ */
+export const ALGO_VERSION = 2;
 
 /** Sativa value used when we fall back on what sources say. `unknown` has no value. */
 export const REPORTED_VALUE: Readonly<Record<ReportedType, number | null>> = {
@@ -40,12 +43,16 @@ export interface LabelBand {
   readonly sublabel: Sublabel | null;
 }
 
-/** Label bands on the final rounded `sativa_pct`, highest first. */
+/**
+ * Label bands on the final rounded `sativa_pct`, highest first (D15, 2026-10-27). The label is the lean:
+ * < 50 indica, exactly 50 hybrid, > 50 sativa. The sublabel says how strong the lean is and is shown only
+ * in the strain detail (D14): null at the ends (≤ 20, ≥ 80), `*-dominant` in between, `balanced` at 50.
+ */
 export const LABEL_BANDS: readonly LabelBand[] = [
   { min: 80, label: "sativa", sublabel: null },
-  { min: 60, label: "hybrid", sublabel: "sativa-dominant" },
-  { min: 41, label: "hybrid", sublabel: "balanced" },
-  { min: 21, label: "hybrid", sublabel: "indica-dominant" },
+  { min: 51, label: "sativa", sublabel: "sativa-dominant" },
+  { min: 50, label: "hybrid", sublabel: "balanced" },
+  { min: 21, label: "indica", sublabel: "indica-dominant" },
   { min: 0, label: "indica", sublabel: null },
 ];
 

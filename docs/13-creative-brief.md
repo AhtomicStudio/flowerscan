@@ -7,8 +7,9 @@ as context.
 ## The product in one breath
 FlowerScan *(working name)* is a free, mobile web app. Point your phone at a cannabis package and in about
 two seconds it tells you whether the strain is **Indica, Sativa, or Hybrid**, worked out from the strain's
-actual family tree, with a percentage ("62% sativa"), how sure we are, and the tree that proves it. When the
-package label disagrees with the genetics, we say so.
+actual family tree, shown as one bold color (Indica, Sativa, or the occasional Hybrid green), with how sure we
+are and the tree that proves it. (Updated 2026-10-26: the result no longer shows a percentage or a
+package-disagrees note; see open-questions D1–D4.)
 
 **Personality:** honest, fast, a little cheeky. "We show our work." Bold, vibrant, high-contrast, snappy.
 **Separate brand** from Cannapickforme (cross-promotion possible later).

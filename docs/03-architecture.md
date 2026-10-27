@@ -26,7 +26,7 @@
 │                         strains.json (cached by service worker) ───────────────────────────────┤                                  │
 │                                                                                                ▼                                  │
 │                                              Result screen  ──save──▶ Dexie (IndexedDB journal) ──backup──▶ JSON file            │
-│                                                   └──share──▶ /s/<strain-id> link                                                │
+│                                                   └──scan another──▶ scanner                                                     │
 └───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -103,15 +103,15 @@ packages are wired, are in [ADR-0006](decisions/0006-toolchain-versions.md).
 apps/web/src/
 ├── app/            shell, routes, providers, age gate, error boundary
 ├── features/
-│   ├── scan/       viewport, reticle, mode control, shutter, scan-session store
+│   ├── scan/       viewport, reticle, shutter, scan-session store (Auto only, D7)
 │   ├── result/     classification hero, lineage tree, tag list, package-says
 │   ├── search/     manual search, "Which one?" sheet
 │   ├── journal/    list, detail, rating/notes
-│   └── share/      share link + journal backup/restore
-├── platform/       camera, detectors, ocr, storage, clipboard, share — browser adapters
+│   └── backup/     journal backup/restore
+├── platform/       camera, detectors, ocr, storage, clipboard — browser adapters
 ├── workers/        detection.worker.ts, ocr.worker.ts
 ├── data/           strain data loader + in-memory index (built from strains.json)
-├── ui/             design-system components (Badge, Sheet, Button, Meter…)
+├── ui/             design-system components (Badge, Sheet, Button, ClassHero…)
 └── styles/         tokens.css, tailwind entry
 ```
 

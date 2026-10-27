@@ -12,6 +12,7 @@ const balanced = {
   ...tracedLineage,
   sativa_pct: 50,
   indica_pct: 50,
+  label: "hybrid",
   sublabel: "balanced",
   confidence: 0.97,
 };

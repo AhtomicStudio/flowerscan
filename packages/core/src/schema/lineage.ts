@@ -1,18 +1,39 @@
 import { z } from "zod";
 import { UnitIntervalSchema } from "./common";
 import {
+  type ClassificationLabel,
   ClassificationLabelSchema,
   ConfidenceLevelSchema,
   LineageMethodSchema,
+  type Sublabel,
   SublabelSchema,
 } from "./enums";
 
 const PercentSchema = z.int().min(0).max(100);
 
 /**
+ * Which sublabels each label allows (D15, 2026-10-27). The sublabel is how strong the lean is: a hybrid
+ * (exactly 50) is always `balanced`, an indica or sativa is `*-dominant` or null at the ends of the scale.
+ */
+const ALLOWED_SUBLABELS: Readonly<Record<ClassificationLabel, readonly (Sublabel | null)[]>> = {
+  indica: [null, "indica-dominant"],
+  hybrid: ["balanced"],
+  sativa: [null, "sativa-dominant"],
+  unknown: [null],
+};
+
+const SUBLABEL_RULE: Readonly<Record<ClassificationLabel, string>> = {
+  indica: "an indica's sublabel is null or indica-dominant",
+  hybrid: "a hybrid's sublabel is balanced",
+  sativa: "a sativa's sublabel is null or sativa-dominant",
+  unknown: "an unknown result has no sublabel",
+};
+
+/**
  * The computed lineage result (docs/04 "lineage object", docs/05 Output). Used in build output and in
- * scan snapshots. Only structural consistency is checked here; label bands and confidence thresholds
- * are product-tunable constants that live with the algorithm (T-005).
+ * scan snapshots. Only structural consistency is checked here, including which sublabels each label
+ * allows; the label bands themselves and confidence thresholds are product-tunable constants that live
+ * with the algorithm (T-005).
  */
 export const LineageSchema = z
   .strictObject({
@@ -48,10 +69,8 @@ export const LineageSchema = z
         issue("method", "method can't be unknown with a sativa_pct");
     }
 
-    if (lineage.label === "hybrid" && lineage.sublabel === null) {
-      issue("sublabel", "a hybrid needs a sublabel");
-    } else if (lineage.label !== "hybrid" && lineage.sublabel !== null) {
-      issue("sublabel", "sublabel is only for hybrid");
+    if (!ALLOWED_SUBLABELS[lineage.label].includes(lineage.sublabel)) {
+      issue("sublabel", SUBLABEL_RULE[lineage.label]);
     }
 
     if ((lineage.confidence === 0) !== (lineage.confidence_level === "none")) {

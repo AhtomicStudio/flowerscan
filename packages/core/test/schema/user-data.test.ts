@@ -161,7 +161,11 @@ describe("Settings", () => {
     expectValid(SettingsSchema, settings);
     expectValid(
       SettingsSchema,
-      withFields(settings, { age_confirmed_at: null, theme: "system", default_mode: "text" }),
+      withFields(settings, {
+        age_confirmed_at: null,
+        age_declined_at: "2026-10-26T21:05:00Z",
+        theme: "system",
+      }),
     );
     expectValid(
       SettingsSchema,
@@ -175,7 +179,10 @@ describe("Settings", () => {
 
   it("rejects bad fields", () => {
     expectIssue(SettingsSchema, withFields(settings, { theme: "neon" }), ["theme"]);
-    expectIssue(SettingsSchema, withFields(settings, { default_mode: "search" }), ["default_mode"]);
+    expectIssue(SettingsSchema, withFields(settings, { age_declined_at: "yesterday" }), [
+      "age_declined_at",
+    ]);
+    expectIssue(SettingsSchema, withFields(settings, { default_mode: "auto" }), []);
     expectIssue(SettingsSchema, withFields(settings, { haptics: "on" }), ["haptics"]);
     expectIssue(SettingsSchema, withFields(settings, { age_confirmed_at: undefined }), [
       "age_confirmed_at",

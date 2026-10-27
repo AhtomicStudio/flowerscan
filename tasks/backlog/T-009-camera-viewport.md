@@ -17,7 +17,7 @@ torch (where supported), and a search button. It can hand off a cropped frame or
 - `CameraService` interface in `platform/camera` (start, stop, capabilities, setTorch, grabFrame, frameStream), plus a fake for tests.
 - Priming screen before the first permission prompt. Denied → manual search route with re-enable instructions.
 - Pause the stream on `visibilitychange` hidden and while a full-screen sheet is open.
-- Mode control: Auto / Text / Barcode / QR, persisted in settings. Auto is the default.
+- **Auto only** (D7): no mode control and no mode setting. Barcodes/QR decode live; the shutter reads label text.
 - Shutter: press animation, frame freeze, emits a reticle-cropped `ImageBitmap`.
 - Zustand `scanSession` store: `idle → priming → live → capturing → processing → result | choose | none`.
 - Playwright e2e with a fake camera feed: priming → live → shutter emits a frame.

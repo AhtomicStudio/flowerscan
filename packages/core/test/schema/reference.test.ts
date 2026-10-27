@@ -178,18 +178,59 @@ describe("Lineage", () => {
     expectIssue(L, withFields(tracedLineage, { method: "unknown" }), ["method"]);
   });
 
-  it("sublabel is set exactly for hybrids", () => {
-    expectIssue(L, withFields(tracedLineage, { sublabel: null }), ["sublabel"]);
+  // D15 (2026-10-27): the sublabel is how strong the lean is, so it must agree with the label.
+  const at = (sativa: number) =>
+    withFields(tracedLineage, { sativa_pct: sativa, indica_pct: 100 - sativa });
+  const ALLOWED = [
+    ["indica", null, 10],
+    ["indica", "indica-dominant", 35],
+    ["hybrid", "balanced", 50],
+    ["sativa", "sativa-dominant", 70],
+    ["sativa", null, 85],
+  ] as const;
+  const ALL_SUBLABELS = [null, "indica-dominant", "balanced", "sativa-dominant"] as const;
+
+  it.each(ALLOWED)("accepts %s / %s", (label, sublabel, sativa) => {
+    expectValid(L, withFields(at(sativa), { label, sublabel }));
+  });
+
+  it("accepts unknown / null", () => {
+    expectValid(L, unknownLineage);
+  });
+
+  it.each(
+    (["indica", "hybrid", "sativa"] as const).flatMap((label) =>
+      ALL_SUBLABELS.filter(
+        (sublabel) => !ALLOWED.some((ok) => ok[0] === label && ok[1] === sublabel),
+      ).map((sublabel) => [label, sublabel] as const),
+    ),
+  )("rejects %s / %s", (label, sublabel) => {
+    expectIssue(L, withFields(tracedLineage, { label, sublabel }), ["sublabel"]);
+  });
+
+  it.each(ALL_SUBLABELS.filter((sublabel) => sublabel !== null))(
+    "rejects unknown / %s",
+    (sublabel) => {
+      expectIssue(L, withFields(unknownLineage, { sublabel }), ["sublabel"]);
+    },
+  );
+
+  it("names the rule in the message", () => {
     expectIssue(
       L,
-      withFields(tracedLineage, {
-        sativa_pct: 85,
-        indica_pct: 15,
-        label: "sativa",
-        sublabel: "sativa-dominant",
-      }),
+      withFields(tracedLineage, { label: "hybrid", sublabel: null }),
       ["sublabel"],
+      "balanced",
     );
+    expectIssue(
+      L,
+      withFields(tracedLineage, { sublabel: "sativa-dominant" }),
+      ["sublabel"],
+      "indica-dominant",
+    );
+  });
+
+  it("rejects a sublabel outside the enum", () => {
     expectIssue(L, withFields(tracedLineage, { sublabel: "mostly-indica" }), ["sublabel"]);
   });
 

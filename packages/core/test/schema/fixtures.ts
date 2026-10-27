@@ -132,12 +132,12 @@ export const term = {
 export const tracedLineage = {
   sativa_pct: 35,
   indica_pct: 65,
-  label: "hybrid",
+  label: "indica",
   sublabel: "indica-dominant",
   confidence: 0.94,
   confidence_level: "high",
   method: "traced",
-  algo_version: 1,
+  algo_version: 2,
 };
 
 export const unknownLineage = {
@@ -148,7 +148,7 @@ export const unknownLineage = {
   confidence: 0,
   confidence_level: "none",
   method: "unknown",
-  algo_version: 1,
+  algo_version: 2,
 };
 
 export const reading = {
@@ -192,8 +192,8 @@ export const barcodeMemory = {
 
 export const settings = {
   age_confirmed_at: "2026-10-25T18:40:00-07:00",
+  age_declined_at: null,
   theme: "dark",
-  default_mode: "auto",
   haptics: true,
   last_backup_at: null,
 };

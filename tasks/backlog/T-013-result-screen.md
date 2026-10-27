@@ -14,26 +14,30 @@ The result sheet and the `/s/:strainId` page, driven by real built data, showing
 
 ## Requirements
 - Data loader: fetch `latest.json` → content-hashed `strains.json`, build the in-memory index once, expose `useStrain(id)`.
-- Hero: name, label + sublabel, `ClassificationMeter`, `ConfidenceChip`.
-- Package-says callout **only when directions are opposite** (P8, docs/08). "Lineage estimate, not a lab test"
-  under the meter, plus "Close to the line" within ±2 of a band edge (P8).
-- Package facts: product form only. **Never render potency** (P2). Add a test that fails if any THC/CBD value
-  reaches the DOM.
+- **Simplified result (D1–D6, 2026-10-26; follow the revised docs/design specs):**
+  - **Full-screen class color** (D13) with the name and the label only. The sublabel (dominance) appears only in
+    "How we know" and on the strain page (D14). Labels follow the 50/50 rule (D15, ALGO_VERSION 2). **No percentage anywhere user-facing** (D2):
+    no meter, no numbers in the family tree. Add a test that fails if a "%" reaches the result DOM.
+  - The method/confidence explanation ("Lineage traced", "Partly traced", "Reported type" (D10)) lives in "How we know".
+  - No package-says callout (D4, supersedes P8). No product-form row. No Share button (D5).
+- **Never render potency** (P2). Add a test that fails if any THC/CBD value reaches the DOM.
 - Disputed ancestors are marked "lineage disputed" in the family tree (P9).
 - Strain names render as plain text, with no styling keyed to the name (P12).
-- `TagList` per facet. A facet with no tags renders nothing. All facets empty → no tags section at all.
+- `TagList` for **effects only** (D3; flavors and terpenes aren't shown). No effect tags → no tags section at all.
 - "How we know": `explainLineage` tree (3 generations), `unknown` parents shown as "Unknown parent", source count.
 - Responsible-use footer.
-- Actions row (Save / Share link) as slots; wired in T-015/T-016.
+- Actions: Save (wired in T-015) and **Scan another** (D6), which closes the result and returns to the live scanner.
+- Run `assertNoBannedTerms` over the rendered result text, excluding the strain name (C1, C2).
 - Unknown strain id → a friendly 404 with search.
 - **Vertical-slice stub first:** a plain text input → `search` → result, to demo before M2 lands.
 
 ## Acceptance criteria
-- [ ] Component tests: traced, partial, reported-only, unknown lineage, zero tags, many tags, package disagrees.
+- [ ] Component tests: traced, partial, reported-only, unknown lineage, zero tags, many tags.
+- [ ] E2E: result → Scan another → live scanner.
 - [ ] E2E: `/s/<seed-strain-id>` renders the classification from built data.
 - [ ] Reviewer confirms no rendered value lacks a data or scan source.
 
 ## Out of scope
-Saving (T-015). Sharing (T-016).
+Saving (T-015). Sharing (cut from the MVP, D5).
 
 ## Log

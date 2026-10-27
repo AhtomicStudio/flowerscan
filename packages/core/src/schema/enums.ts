@@ -152,10 +152,6 @@ export const THEMES = ["system", "dark", "light"] as const;
 export const ThemeSchema = z.enum(THEMES);
 export type Theme = z.infer<typeof ThemeSchema>;
 
-export const SCAN_MODES = ["auto", "text", "barcode", "qr"] as const;
-export const ScanModeSchema = z.enum(SCAN_MODES);
-export type ScanMode = z.infer<typeof ScanModeSchema>;
-
 /** USPS two-letter codes: the 50 states, DC, and the inhabited territories. */
 export const US_STATE_CODES = [
   "AL",

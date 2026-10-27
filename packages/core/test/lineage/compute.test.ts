@@ -55,7 +55,7 @@ describe("docs/05 worked example (fictional strains)", () => {
   ]);
   const all = computeAll(graph);
 
-  it("Strain A = K × T: 50%, hybrid / balanced, confidence 0.97 (high)", () => {
+  it("Strain A = K × T: 50%, hybrid (detail balanced), confidence 0.97 (high)", () => {
     expect(all.get("strain-a")).toEqual({
       sativa_pct: 50,
       indica_pct: 50,
@@ -68,12 +68,12 @@ describe("docs/05 worked example (fictional strains)", () => {
     });
   });
 
-  it("Strain B = A × C: 70%, hybrid / sativa-dominant, confidence ≈ 0.955 (high)", () => {
+  it("Strain B = A × C: 70%, sativa (detail sativa-dominant), confidence ≈ 0.955 (high)", () => {
     const b = all.get("strain-b");
     expect(b).toMatchObject({
       sativa_pct: 70,
       indica_pct: 30,
-      label: "hybrid",
+      label: "sativa",
       sublabel: "sativa-dominant",
       confidence_level: "high",
       method: "traced",
@@ -99,7 +99,7 @@ describe("docs/05 worked example (fictional strains)", () => {
     );
   });
 
-  it("with C unknown and B reported sativa-dominant: 60%, ≈ 0.713 (medium), partial", () => {
+  it("with C unknown and B reported sativa-dominant: 60%, sativa, ≈ 0.713 (medium), partial", () => {
     const result = lineageOf(
       [
         landrace("landrace-k", 10),
@@ -112,7 +112,7 @@ describe("docs/05 worked example (fictional strains)", () => {
     expect(result).toMatchObject({
       sativa_pct: 60,
       indica_pct: 40,
-      label: "hybrid",
+      label: "sativa",
       sublabel: "sativa-dominant",
       confidence_level: "medium",
       method: "partial",
@@ -135,7 +135,7 @@ describe("crosses", () => {
       "x",
     );
     expect(result.sativa_pct).toBe(30); // 0.75·10 + 0.25·90
-    expect(result.sublabel).toBe("indica-dominant");
+    expect(result).toMatchObject({ label: "indica", sublabel: "indica-dominant" });
     expect(result.confidence).toBeCloseTo(GENERATION_DECAY, 12);
   });
 

@@ -26,6 +26,10 @@
 - The classification label describes **genetics**, not effects. Copy must not say "Indica = sleepy" as a fact.
 - The taxonomy (`data/taxonomy/taxonomy.yaml`) excludes medical terms. The build fails if a banned term
   appears (banned list maintained in T-003).
+- **Where the automated banned-term check runs** (C2, 2026-10-26): taxonomy terms, vault strain notes, and the
+  rendered result screens. **Strain names and aliases are exempt** (C1): they're proper nouns, and P12 governs how
+  they're displayed. Other app copy (backup, privacy, settings, about) gets a compliance review by the reviewer
+  instead, so plain lines like "keep your backup file safe" aren't blocked. Those reviews still apply this doc's Don'ts.
 - Every result shows the responsible-use footer.
 
 ## Commerce & advertising

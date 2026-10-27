@@ -25,6 +25,9 @@ classification in core.
 - QR kinds include `traceability` (Metrc Retail ID), which is never a strain decision (docs/06).
 - Lock-on animation (reticle to bounding box) and haptic tick where supported.
 
+- After a result sheet opened from a code closes (Scan another or close), ignore that same code until it has been out
+  of view for 1.5 s, so the result doesn't reopen while the package is still in frame (docs/design/screens/scanner.md, D6).
+
 ## Acceptance criteria
 - [ ] Unit tests for `classifyQr` and `classifyBarcode` (valid/invalid check digits, every QR kind).
 - [ ] E2E: fake camera feed with a QR of our deep link → result route opens.

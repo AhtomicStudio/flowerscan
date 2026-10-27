@@ -42,7 +42,13 @@ describe("@flowerscan/core public API", () => {
     ]) {
       expect(typeof (core as Record<string, unknown>)[name], name).toBe("function");
     }
-    expect(core.ALGO_VERSION).toBe(1);
+    expect(core.ALGO_VERSION).toBe(2);
+    // D15: hybrid is exactly 50; either side of it is the lean.
+    expect([49, 50, 51].map((pct) => core.labelFor(pct).label)).toEqual([
+      "indica",
+      "hybrid",
+      "sativa",
+    ]);
   });
 
   it("exports the name matcher (T-008)", () => {

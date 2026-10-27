@@ -6,7 +6,8 @@ out to the docs. Don't duplicate them.
 ## What we're building
 A mobile-first PWA that scans a cannabis package (OCR text, 1D barcode, or QR), identifies the strain
 against our curated database, and shows an honest **Indica / Sativa / Hybrid** result **derived from
-lineage**, with a percentage, a confidence level, the family tree, and only the tags our data verifies.
+lineage**, as a bold class color with a confidence level, the family tree with sources, and only the effect
+tags our data verifies. (The engine computes a percentage, but users don't see it: open-questions D2.)
 Full context: [docs/README.md](docs/README.md).
 
 **Team:** the tech lead builds with Claude Code and Gemini (the agents reading this file). Roy owns

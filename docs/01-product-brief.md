@@ -30,7 +30,7 @@ or Hybrid, plus the family tree that proves it.
 1. **Two-second answer.** From tapping the shutter (or holding up a barcode) to a result in ≤ 2 s on a
    mid-range phone.
 2. **The database decides.** OCR and AI read text. Only our curated data can say what a strain *is*.
-3. **Show the work.** Percentage, confidence, family tree, sources. The trust comes from the transparency.
+3. **Show the work.** Confidence, family tree, sources (no percentage on screen, D2). The trust comes from the transparency.
 4. **Never fill silence with fiction.** No synthetic tags, no guessed lineage, no fake confidence. If we
    don't know, say so and offer the next step.
 5. **Private by default.** Processing happens on the device. Scan history stays on the device unless the
@@ -42,9 +42,9 @@ or Hybrid, plus the family tree that proves it.
 ## MVP promise (what "done" means for v1)
 
 A 21+ visitor opens the site on their phone, grants camera access, and points it at a package. They get
-the right strain on the first try for most mainstream strains, see a lineage-derived classification with
-a percentage and confidence, see whichever verified tags exist, and can save it to a local journal or
-share it as a link. When something fails, they always have a clear path forward (pick from
+the right strain on the first try for most mainstream strains, see a lineage-derived classification as a
+bold class color with a confidence level, see whichever verified effect tags exist, and can save it to a
+local journal or scan another package right away. When something fails, they always have a clear path forward (pick from
 candidates, type the name, or see an honest "we don't have this strain yet").
 
 Full in/out list: [02-mvp-scope.md](02-mvp-scope.md).

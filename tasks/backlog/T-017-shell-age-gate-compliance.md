@@ -13,7 +13,7 @@ docs: [docs/09-compliance-and-privacy.md, docs/08-ux-and-design.md, docs/open-qu
 Everything a public visitor sees outside the core loop, compliant and polished.
 
 ## Requirements
-- Age gate: 21+, US (Q3 answered), with the age in a single constant. Remembered locally, blocks all routes, including deep links.
+- Age gate: 21+, US (Q3 answered), with the age in a single constant. Remembered locally, blocks all routes, including deep links. **Leave** blocks the app for 24 hours on this device, then the gate shows again (D8).
 - Copy voice comes from Roy's brand voice (docs/13) once delivered. Compliance rules (docs/09) override it.
 - First-run intro card. Navigation between scan / journal / settings.
 - `/about`: how classification works (plain-language version of docs/05, including "a lineage estimate, not a lab

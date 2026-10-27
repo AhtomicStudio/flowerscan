@@ -9,12 +9,12 @@
   "lineage": {
     "sativa_pct": 70,
     "indica_pct": 30,
-    "label": "hybrid",
+    "label": "sativa",
     "sublabel": "sativa-dominant",
     "confidence": 0.9413365,
     "confidence_level": "high",
     "method": "traced",
-    "algo_version": 1
+    "algo_version": 2
   },
   "children": [
     {
@@ -28,12 +28,12 @@
       "lineage": {
         "sativa_pct": 70,
         "indica_pct": 30,
-        "label": "hybrid",
+        "label": "sativa",
         "sublabel": "sativa-dominant",
         "confidence": 0.9413365,
         "confidence_level": "high",
         "method": "traced",
-        "algo_version": 1
+        "algo_version": 2
       },
       "children": [
         {
@@ -52,7 +52,7 @@
             "confidence": 0.9409,
             "confidence_level": "high",
             "method": "traced",
-            "algo_version": 1
+            "algo_version": 2
           },
           "children": [
             {
@@ -66,12 +66,12 @@
               "lineage": {
                 "sativa_pct": 58,
                 "indica_pct": 42,
-                "label": "hybrid",
-                "sublabel": "balanced",
+                "label": "sativa",
+                "sublabel": "sativa-dominant",
                 "confidence": 0.97,
                 "confidence_level": "high",
                 "method": "traced",
-                "algo_version": 1
+                "algo_version": 2
               },
               "children": [],
               "truncated": true
@@ -87,12 +87,12 @@
               "lineage": {
                 "sativa_pct": 43,
                 "indica_pct": 57,
-                "label": "hybrid",
-                "sublabel": "balanced",
+                "label": "indica",
+                "sublabel": "indica-dominant",
                 "confidence": 0.97,
                 "confidence_level": "high",
                 "method": "traced",
-                "algo_version": 1
+                "algo_version": 2
               },
               "children": [],
               "truncated": true
@@ -116,7 +116,7 @@
             "confidence": 1,
             "confidence_level": "high",
             "method": "traced",
-            "algo_version": 1
+            "algo_version": 2
           },
           "children": [],
           "truncated": false
