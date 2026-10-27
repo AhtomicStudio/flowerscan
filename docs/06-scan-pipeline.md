@@ -57,7 +57,9 @@ Everything from **Extract** onward is pure `core` code and is unit-tested with r
   - category words: `indica`, `sativa`, `hybrid`, plus variants such as `indica-dominant`, `sativa hybrid`,
     `hybrid (i)`, and single letters **only** in brackets (`(I)`, `(S)`, `(H)`). These are **captured as
     `package_says`** using **three values only** (P3, decided): bare `indica` / `sativa` / `hybrid` map to
-    themselves, and every "dominant" or "hybrid (x)" variant maps to `hybrid`.
+    themselves; a variant that names a lean maps to that side (`indica-dominant`, `indica hybrid`, `hybrid (i)`,
+    `(I)` → `indica`, and the sativa equivalents → `sativa`); bare `hybrid`, `balanced` and `(H)` → `hybrid`
+    (D18, 2026-10-27, revising P3 to match the D15 bands).
   - product forms: `flower`, `smalls`, `shake`, `pre-roll`, `pre-rolls`, `joint`, `blunt`, `cart`, `pod`,
     `disposable`, `vape`, `live resin`, `rosin`, `badder`… Some double as strain tokens (`hash` in
     Hash Plant), which is why matching happens before stripping.

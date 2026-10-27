@@ -35,14 +35,15 @@ signs off on the revised mockup.
 | D13 | Full-screen answer | **The result takes over the screen in its class color** (Indica / Sativa / Hybrid), so the answer is obvious at a glance. Details sit below the fold or one tap away. | docs/08, docs/design, T-004, T-013 |
 | D14 | No "dominant" on the result | **The immediate result shows only Indica, Sativa or Hybrid.** Dominance and other detail appear only when the user opens the strain ("How we know" / strain page). | docs/08, docs/design, T-013 |
 | D15 | Hybrid means exactly 50/50 | **Label bands change (ALGO_VERSION 2):** rounded `sativa_pct` < 50 → Indica, exactly 50 → Hybrid, > 50 → Sativa. The old five bands survive only as the detail `sublabel`: ≤ 20 none, 21–49 indica-dominant, 50 balanced, 51–79 sativa-dominant, ≥ 80 none. Supersedes the docs/05 bands. | docs/04, docs/05, core lineage, T-005 follow-up |
+| D16 | Result actions | **Scan another sits next to Save** in the always-visible bar (Scan another primary). Approved 2026-10-27. | docs/design, T-013 |
+| D17 | "Also reported" (negative effects) | **Only in the details**, away from the answer screen. Approved 2026-10-27. | docs/design, T-013 |
+| D18 | Package "X-dominant" wording | **A lean on the package maps to that side** (revises P3, 2026-10-27): "Indica-dominant", "indica hybrid", "hybrid (i)" and "(I)" → `indica`; the sativa equivalents → `sativa`; bare "hybrid", "balanced" and "(H)" → `hybrid`. Matches D15. | docs/06, T-011 |
 
-**Waiting on the founder** (from the revised mockup, 2026-10-27; details in docs/design/README.md): Scan another as the
-primary button over Save; negative effects as one "Also reported" line; the designer's extra cuts (Q-D8); the new
-Scan another hallway-test criterion; product form kept in the journal but off the result.
-From the D13–D15 round (2026-10-27): packages printing "Hybrid" will usually show Sativa or Indica, with only a
-"Package says" line in the details (Q-D9); the designer's extra changes (Q-D10, e.g. lists drop dominance, the strain
-page keeps a color block instead of a full flood); and whether P3 should now map a package's "Indica-dominant" to
-`indica` (not `hybrid`) to match D15.
+**Still waiting on the founder** (details in docs/design/README.md): final sign-off on the T-021 design so T-004 can
+start; the designer's extra cuts (Q-D8, Q-D10, e.g. lists drop dominance, the strain page keeps a color block
+instead of a full flood); the new Scan another and "answer within 2 s" hallway-test criteria; product form kept in
+the journal but off the result; Q-D9 (packages printing "Hybrid" will usually show Sativa or Indica, with only a
+"Package says" line in the details).
 
 **Landrace values (T-007, P10).** These set the values in the vault. Each note stays `unverified` until a
 founder sets `verification: verified` in Obsidian (agents never do).
@@ -53,7 +54,7 @@ founder sets `verification: verified` in Obsidian (agents never do).
 | L2 | South African landrace | **90.** The rubric's "sub-tropical origin → 75" clause is removed, so 75 now means only documented broad-leaf influence in the line. | LANDRACE-RUBRIC.md, vault (T-027) |
 | L3 | Hindu Kush landrace | **10.** | vault |
 | L4 | Thai landrace | **90** (follows from L1). | vault |
-| L5 | Acapulco Gold | **Sativa**, citing Jeeter's product information as `reported_type`. T-027 found a seed-bank source (The Landrace Team) and **proposes `base_sativa_pct` 90**, pending founder approval. | vault (T-027) |
+| L5 | Acapulco Gold | **Sativa**, citing Jeeter's product information as `reported_type`. T-027 found a seed-bank source (The Landrace Team); **`base_sativa_pct` 90 approved 2026-10-27** (90 = strongly sativa on the 10–90 landrace scale). | vault (T-027) |
 
 **Taxonomy compliance (T-003).**
 
@@ -76,7 +77,7 @@ Specs and tasks were updated to match in the same change.
 | --- | --- | --- | --- |
 | P1 | Ruderalis / autoflowers | **Exclude autoflowers from v1.** No ruderalis landraces or autoflower strains in the vault, so no invented 50/50 value. Revisit in v2. | docs/05, T-005, T-006, T-007 |
 | P2 | THC on packages | **Record every potency figure exactly as printed, with its type** (Total THC, THCa, Δ9-THC, CBD…). Never compute totals. **Not user-facing:** users never see THC numbers. Readings feed a **back-of-house potency table** (strain × brand × state over time) for our own database and future projects. **Source now:** packages the founders record (eval photo set, founder scans). **Later (Phase 2):** anonymous user opt-in. | docs/04, docs/06, docs/08, docs/09, T-002, T-011, T-013, T-025 |
-| P3 | Package label wording | **Keep the 3 words only** (`indica` / `sativa` / `hybrid`). "Indica-dominant hybrid" and similar variants map to `hybrid`. | docs/06, T-011 |
+| P3 | Package label wording | **Keep the 3 words only** (`indica` / `sativa` / `hybrid`). **Revised by D18 (2026-10-27):** a dominant/lean variant maps to its side; only bare "hybrid"-style wording maps to `hybrid`. | docs/06, T-011 |
 | P4 | "A x B" cross labels | **Never auto-accept a single parent.** Cross notation stays a marker token. A cross sold under an "A x B" name is curated as its own `strain` node, otherwise "Which one?". | docs/06, T-007, T-008 |
 | P5 | Numbers in names | **Numbers are identity.** A number mismatch blocks auto-accept. A missing number caps the outcome at "Which one?". | docs/06, T-008 |
 | P6 | Brand/product words inside strain names | **Match before stripping.** Lexicon words are down-weighted, not deleted, inside a longer strain-name match. | docs/06, T-011 |

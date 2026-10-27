@@ -18,7 +18,7 @@ Shutter → OCR in a worker → `parseLabelText` → candidates + package facts 
 - Preprocessing per docs/06 §2 (grayscale, contrast, upscale, rotation retry).
 - `parseLabelText(lines)` in core, with lexicons in `core/scan/lexicon/` (units, potency, category words,
   product forms, compliance boilerplate, brands, lot/license patterns).
-- Captures `package_says` (three values; "dominant" variants map to `hybrid`, P3), `potency_readings`
+- Captures `package_says` (three values; a lean variant such as "Indica-dominant" maps to its side, bare "hybrid" to `hybrid`; D18 revising P3), `potency_readings`
   (every figure exactly as printed, with analyte, qualifier and unit, never computed, P2), `brand`, `product_form`.
 - **Match before stripping** (P6): lexicon tokens are tagged and down-weighted, not deleted, inside a longer
   strain-name match (Cookies, Runtz, Hash Plant).

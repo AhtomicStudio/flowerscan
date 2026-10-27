@@ -72,7 +72,7 @@ Record both in the note's `sources:` with `supports: [base_sativa_pct]`, and exp
 | Thai landrace | 90 | McPartland & Small 2020 | ACE Seeds (Thai Chiang Mai) | Founder-approved value 2026-10-26 (L4), awaiting `verified` | 1970s introductions are country-level (L1) |
 | Colombian Gold | 90 | McPartland & Small 2020 | World of Seeds (Colombian Gold) | Founder-approved value 2026-10-26, awaiting `verified` | Regional source only; the line lists 65–75 days indoors |
 | South African landrace | 90 | McPartland & Small 2020 | ACE Seeds / Khalifa Genetics (Durban Poison 80s) | Founder-approved value 2026-10-26 (L2), awaiting `verified` | Dutch Passion's line names an indica parent: a `strain`-level dispute |
-| Acapulco Gold | 90 | McPartland & Small 2020 | The Landrace Team (Acapulco Gold) | **Proposed in T-027, not yet founder-approved** (L5 set only the type) | Regional source only; other seed lines differ (see note) |
+| Acapulco Gold | 90 | McPartland & Small 2020 | The Landrace Team (Acapulco Gold) | Founder-approved value 2026-10-27, awaiting `verified` | Regional source only; other seed lines differ (see note) |
 
 ## Out of scope
 - **Ruderalis / autoflower:** excluded from v1 (P1). No values, no notes.

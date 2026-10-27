@@ -50,7 +50,7 @@ Jeeter's own product pages for its Acapulco Gold pre-rolls, cartridge and all-in
 and say the strain comes from the area around Acapulco. Jeeter is a product brand describing its own products, so
 it backs `reported_type` only, not the base value. High Times and The Landrace Team also call it a sativa.
 
-**Why 90 (proposed in T-027, needs founder approval; L5 decided only the type).** Rubric value 90: narrow-leaf
+**Why 90 (proposed in T-027, value approved by the founders 2026-10-27).** Rubric value 90: narrow-leaf
 drug type, late maturing, and no documented broad-leaf influence in the line cited.
 - McPartland & Small (2020): the South Asian narrow-leaflet domesticate (var. *indica*, the vernacular "Sativa",
   generally late maturing) spread early to the Americas. The paper doesn't discuss Mexican landraces, so this is
