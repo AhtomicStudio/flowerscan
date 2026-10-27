@@ -45,6 +45,6 @@ updated: 2026-10-26
 Both High Times pieces call the history largely legend. The unknown parent is left `unknown` rather than picking
 one candidate.
 
-Type: Wikipedia calls it a sativa-dominant hybrid, and High Times (2018) treats it as a sativa. I used the more
+Type: Wikipedia calls it a sativa-dominant hybrid, and High Times (2018) calls it a sativa. I used the more
 cautious `sativa-dominant`. Danko also lists "NYC Diesel" as an early name. It is left out of the aliases until
 a source confirms that name isn't also used for a different plant (docs/04 aliases rule).

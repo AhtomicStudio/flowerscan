@@ -1,8 +1,9 @@
 # Vault sources
 
 Every source used in the vault, its terms, and how it was used. Facts only: no descriptions, reviews or images were
-copied. All sources were read one page at a time on 2026-10-26 (T-007) and 2026-10-26/27 (T-027), with no bulk or
-automated crawling. T-027's full search log (including dead ends) is in the Log of task T-027 (`T-027-landrace-decisions.md` under `tasks/`).
+copied. All sources were read one page at a time on 2026-10-26 (T-007) and 2026-10-26/27 (T-027), and 2026-10-27 (T-028), with no
+bulk or automated crawling. In T-028 about 20 of the pages already read were downloaded again, one at a time with
+pauses, only to check the exact effect and lineage wording. T-027's full search log (including dead ends) is in the Log of task T-027 (`T-027-landrace-decisions.md` under `tasks/`).
 
 ## How the seed strains were chosen (T-007)
 
@@ -45,6 +46,19 @@ Gelato Cake (the one listing found returned 404 when opened). Single-list strain
 Result: 30 sold-list strains, plus well-known classics that are also ancestors (OG Kush, Girl Scout Cookies,
 Granddaddy Purple, Chemdawg, Skunk #1, Haze, Blueberry) and the ancestors needed to trace them.
 
+## Batch 2 (T-028, 2026-10-27)
+
+Same selection lists: first the strains T-007 dropped for lack of a source, then the single-list strains, in the
+task's order. 20 sold strains added: Gelato Cake, Blueberry Muffin, Brownie Scout, Mule Fuel, Lilac Diesel,
+Crescendo, Glueball, Gush Mints, Layer Cake, Cherry Limeade, Gas Face, Kush Cake, LA Kush Cake, Orange 43, Golden
+Pineapple, King Louis, Strawberry Banana, Gastro Pop, Glitter Bomb, Jenny Kush (sold total now 50). Skipped, and why,
+is in the T-028 task log.
+
+**Effect tags (T-028 rule, for founder review).** An effect slug is tagged only when at least two different pages,
+by different authors, name it in their own text (the taxonomy label or a listed synonym, or the same word stem such
+as "relaxation" for `relaxed`). Effect words quoted from another site (e.g. a review quoting Leafly) don't count.
+Seeds Here Now blog pages aren't used for effects (they mix in medical claims). Flavors and terpenes aren't tagged (D3).
+
 ## Sources used in notes
 
 | Source | Type | Terms checked | Used for |
@@ -56,18 +70,23 @@ Granddaddy Purple, Chemdawg, Skunk #1, Haze, Blueberry) and the ancestors needed
 | World of Seeds: Colombian Gold | Breeder | Not checked | Landrace line description (Colombian Gold) |
 | Dutch Passion: Durban Poison | Breeder | No terms-of-use page found; disclaimer only | Durban Poison dispute. Since T-027 it no longer backs the South African landrace value (its line names an indica parent) |
 | Sensi Seeds (sensiseeds.com): blog posts (31 Best Strains; Sam the Skunkman; Sensi at 40; 13 Best Haze; 7 Best Cheese; Jack Herer grow report) and seed pages (Skunk #1, Northern Lights, Jack Herer) | Breeder | Terms page not found in search | Lineage and type of classics; Afghan line; Skunk #1 structure |
-| High Times (hightimes.com): articles 2014–2023 and strain profiles (GG4, GMO, Durban Poison, Lemon Cherry Gelato) | Magazine | Terms restrict copying and derivative works; no scraping clause. Facts only, nothing copied | Most lineages, types, aliases, origin stories |
+| High Times (hightimes.com): articles 2014–2023 and strain profiles (GG4, GMO, Durban Poison, Lemon Cherry Gelato) | Magazine | Terms restrict copying and derivative works; no scraping clause. Facts only, nothing copied | Most lineages, types, aliases, origin stories. T-028: Brownie Scout (2019, 2022 cup), Cherry Limeade (2022), Kosher Kush name (2016) |
 | Cannabis Now (cannabisnow.com): Blue Dream (2014), Purple Punch (2018), OG Kush (2025) | Magazine | Terms page not reachable (403) | Blue Dream dispute and type; Purple Punch; OG Kush versions |
 | Sherbinskis (sherbinskis.com) | Breeder | Not checked | Gelato parents, Gelato #41 alias, spelling "Sherbert" |
-| DNA Genetics (dnagenetics.com): Holy Grail Kush guide | Breeder | Not checked | OG #18 as an OG Kush phenotype |
+| DNA Genetics (dnagenetics.com): Holy Grail Kush guide; Strawberry Banana page (T-028) | Breeder | T-028: Terms & Conditions ("Copyright and proprietary rights") say site content "is for personal use only" and bar copying or redistribution; no scraping or database clause. Same open question as Jeeter (note below) | OG #18 as an OG Kush phenotype; Strawberry Banana parents, type and one effect (the note says what changes if DNA is excluded) |
+| Theory Wellness (theorywellness.org): dispensary product pages (T-028) | Dispensary / producer (MA, ME, VT) | Footer links a Terms of Service page, but its text didn't load (only labels came back). Not checked | Lineage, type and effect wording for many batch-2 strains. Note bodies call it "Theory (theorywellness.org)" because "wellness" is a banned word |
+| Humboldt Seed Company (humboldtseedcompany.com): 2026 Seed Guide PDF (T-028) | Breeder | No terms page found (FAQ and privacy pages only). Its HTML pages returned a firewall block page, which was not worked around | Blueberry Muffin parents and type |
+| Willamette Week (wweek.com): Orange 43 review, 2017 (T-028) | Newspaper (Portland) | No terms page found | Orange 43 parents, type; Franchise Genetics former name |
+| Klutch Cannabis (klutchcannabis.com): Orange 43 strain page (T-028) | Producer (Ohio) | Terms §4 require permission to reproduce site content; no scraping or database clause. Facts only | Orange 43 parents (second version) and type |
+| Swamp Boys Seeds (swampboysseeds.com): Past Strain Archive (T-028) | Breeder | No terms link on the page | Breeder note only (no Layer Cake entry) |
 | Dinafem (dinafem.org): OG Kush | Breeder | Not checked | OG Kush version and type (its own seed line) |
 | G13 Labs (g13labs.com): Pineapple Express | Breeder | Not checked | Pineapple Express dispute |
 | 3rd Coast Genetics (3rdcoastgenetics.com) | Breeder | Not checked | OOOZE lineage (context for Oreoz) |
 | Seed Junky Genetics (seedjunkygenetics.com) | Breeder | Not checked | Breeder website only (no strain data on the page) |
-| Seeds Here Now (seedsherenow.com): blog reviews and listings | Seed retailer | Terms page not found (404) | Several lineages and types; marked as weak in notes |
+| Seeds Here Now (seedsherenow.com): blog reviews and listings | Seed retailer | Terms page not found (404) | Several lineages and types; marked as weak in notes. T-028: Gelato Cake, LA Kush Cake, Gushers, Glitter Bomb parents; never for effects |
 | Neptune Seed Bank (neptuneseedbank.com): product listings | Seed retailer | Terms cover orders/privacy only | Wedding Cake alias, Kush Mints, Zkittlez, Oreoz; marked as weak |
-| MiCannaCast (micannacast.com): Super Boof | Michigan cannabis media | Terms page empty when read | Super Boof lineage |
-| The Highest Critic (thehighestcritic.com): Cereal Milk | Review blog | Not checked | Cereal Milk lineage (single source) |
+| MiCannaCast (micannacast.com): Super Boof; Gastro Pop (T-028) | Michigan cannabis media | Terms page empty when read | Super Boof lineage; Gastro Pop parents and breeder |
+| The Highest Critic (thehighestcritic.com): Cereal Milk; about 35 strain reviews (T-028) | Review blog | T-028: no terms page found (`/terms-of-use/` is 404; the footer link goes to an unrelated DNA Genetics page) | Cereal Milk lineage (single source). T-028: the main source for batch-2 lineages, category tags (used as weak `reported_type`) and effect words |
 | Wikipedia: Sour Diesel; List of cannabis strains; Acapulco Gold (T-027) | Encyclopedia | CC BY-SA | Sour Diesel type; Acapulco Gold name origin; Acapulco Gold context only (its type sentence is uncited) |
 
 "Not checked" means I didn't find or open a terms page for that site. For breeders' own pages this is low risk
@@ -92,5 +111,9 @@ and Acapulco Gold's `reported_type` still rests on High Times and The Landrace T
 | Weedmaps | Not used (retail listings; terms not confirmed). In T-027 the Jeeter Acapulco Gold search returned only Weedmaps menus; none were opened. |
 | Barney's Farm (barneysfarm.com) | T-027: its Acapulco Gold pages (feminised and regular) were read before the terms. Terms (effective 2023-09-27) bar "using the Site for anything other than private, personal, family or household use" and reproducing content without consent. Not cited. The Acapulco Gold note says only that a differing stabilised line exists, so founders can weigh it. |
 | MasterSeeds (masterseeds.net) | T-027: its Acapulco Gold page was read. It is a retailer page (the breeder isn't clear), gives "Acapulco Gold x Landrace" as the genetics while calling it a landrace, and states no ratio. Not a usable line description; terms not checked. Not cited. |
+| Ethos Genetics (ethosgenetics.com) | T-028: its home page and terms were read. Terms ("Authorized Platform Use") bar accessing the site "by any means other than through the interface" provided and making derivative works from it. Its genetics catalog didn't render as text anyway. No strain data used; the breeder note lists only the website. |
+| JointCommerce blog (jointcommerce.com) | T-028: appears for almost every strain in search, but its "comprehensive strain guides" look like generated SEO copy with unsourced claims. Not opened, not cited. |
+| Westword (westword.com) | T-028: its Bubba Fett article returned 403. Not read, not cited. |
+| GrowDiaries, AllBud, Weedmaps menus, Leafly.ca | T-028: seen in search results only. Not opened (Leafly and Weedmaps per the rows above; the others not reviewed). |
 | Cookies (cookies.co) | Couldn't be read: expired TLS certificate. Worth retrying, as it's the first-party source for Cookies genetics. |
 | Hillig 2005; Clarke & Merlin 2013; Lynch et al. 2016 | Not read (PDF text not readable, or rate-limited). Listed so nobody assumes they were checked. |
