@@ -1,0 +1,253 @@
+# FlowerScan banned terms (T-003). Policy: docs/09-compliance-and-privacy.md "Claims", docs/04 "Banned from
+# the taxonomy entirely", and docs/research/2026-10-26-domain-review.md section 5.
+#
+# What it's for
+#   The build (vault-build) and the core `assertNoBannedTerms` check fail if any entry below appears in text we
+#   author: taxonomy slugs, labels, descriptions and synonyms, vault tags, UI copy (`copy.ts`), rendered
+#   result screens, and exports. It stops medical-condition and therapeutic-claim wording from shipping.
+#
+# What it is NOT for
+#   OCR text read from packages. Package warnings legitimately say things like "patients" (MI), so scan input is
+#   never checked against this list (domain review section 5, scope note).
+#   Strain names are proper nouns we don't author. Whether they are exempt is still open (see the T-003 Log).
+#
+# How matching works (for whoever implements the check)
+#   - Case-insensitive.
+#   - Whole words or whole phrases only. An entry matches where the characters just before and after it are
+#     not letters or digits. So `pain` matches "pain" and "pain-free", but not "paint" or "Spain".
+#   - A space inside a phrase matches any run of whitespace.
+#   - No stemming and no fuzzy matching: every inflection we want to catch is listed explicitly.
+#   - Hyphenated and unhyphenated spellings are listed separately where both are common.
+#   - All four lists are checked the same way. The grouping only makes review easier.
+#
+# Deliberately NOT listed (they would break legitimate copy or vocabulary; review before adding):
+#   - "treat": current result and About copy uses it as a verb ("treat it as an estimate"). "treats",
+#     "treating" and "treatment" are listed.
+#   - "stress", "sleep", "appetite", "calm": everyday words and taxonomy vocabulary. Only the claim phrases are
+#     listed ("stress relief", "sleep aid", "appetite stimulant").
+#   - "add" / "ms": acronyms that collide with ordinary words.
+#
+# Entries are lowercase. Keep each list alphabetical.
+
+banned_version: 1
+
+# Medical conditions, diagnoses and symptoms.
+conditions:
+  - addiction
+  - adhd
+  - alzheimer's
+  - alzheimers
+  - anorexia
+  - anxiety
+  - anxiety disorder
+  - appetite loss
+  - arthritic
+  - arthritis
+  - asthma
+  - autism
+  - back pain
+  - bipolar
+  - cachexia
+  - cancer
+  - chemotherapy
+  - chronic pain
+  - chronic stress
+  - cramps
+  - crohn's
+  - crohns
+  - dementia
+  - depressed
+  - depression
+  - depressive
+  - diabetes
+  - disease
+  - diseases
+  - disorder
+  - disorders
+  - eating disorder
+  - epilepsy
+  - epileptic
+  - fibromyalgia
+  - glaucoma
+  - headache
+  - headaches
+  - hiv
+  - ibs
+  - illness
+  - inflammation
+  - inflammatory
+  - insomnia
+  - irritable bowel
+  - joint pain
+  - loss of appetite
+  - menstrual cramps
+  - migraine
+  - migraines
+  - mood disorder
+  - multiple sclerosis
+  - muscle pain
+  - muscle spasms
+  - nausea
+  - nauseous
+  - nerve pain
+  - neuropathic
+  - neuropathy
+  - ocd
+  - opioid withdrawal
+  - pain
+  - pains
+  - panic attack
+  - panic attacks
+  - panic disorder
+  - parkinson's
+  - parkinsons
+  - post-traumatic stress
+  - ptsd
+  - schizophrenia
+  - seizure
+  - seizures
+  - sleep disorder
+  - sleep disorders
+  - sleeplessness
+  - spasms
+  - spasticity
+  - stress disorder
+  - symptom
+  - symptoms
+  - tourette's
+  - tourettes
+  - tumor
+  - tumors
+  - vomiting
+  - withdrawal
+
+# Therapeutic claims: verbs and phrases that say or imply a product treats, cures or helps with something.
+claims:
+  - alleviate
+  - alleviates
+  - alleviating
+  - anxiety relief
+  - appetite stimulant
+  - clinically
+  - clinically proven
+  - curative
+  - cure
+  - cured
+  - cures
+  - curing
+  - detox
+  - doctor recommended
+  - doctor-recommended
+  - good for
+  - great for
+  - heal
+  - healed
+  - healing
+  - heals
+  - health benefit
+  - health benefits
+  - helps with
+  - helps you sleep
+  - immune
+  - immunity
+  - medical
+  - medically
+  - medication
+  - medications
+  - medicinal
+  - medicine
+  - medicines
+  - mood stabilizer
+  - muscle relaxant
+  - pain relief
+  - pain reliever
+  - painkiller
+  - painkillers
+  - patients
+  - prescribe
+  - prescribed
+  - prescription
+  - prevent
+  - prevention
+  - preventive
+  - prevents
+  - proven to
+  - recommended for
+  - relief
+  - relieve
+  - relieved
+  - reliever
+  - relieves
+  - relieving
+  - remedies
+  - remedy
+  - sleep aid
+  - sleep aids
+  - sleeping aid
+  - soothe
+  - soothes
+  - stimulates appetite
+  - stress relief
+  - stress reliever
+  - stress-relief
+  - therapeutic
+  - therapeutically
+  - therapies
+  - therapy
+  - treating
+  - treatment
+  - treatments
+  - treats
+  - wellness
+
+# Pharmacology words. Terpene descriptions are the usual place these creep in.
+pharmacology:
+  - analgesic
+  - analgesics
+  - anti-anxiety
+  - anti-bacterial
+  - anti-cancer
+  - anti-convulsant
+  - anti-depressant
+  - anti-emetic
+  - anti-inflammatory
+  - anti-spasmodic
+  - anti-tumor
+  - antianxiety
+  - antibacterial
+  - anticancer
+  - anticonvulsant
+  - antidepressant
+  - antiemetic
+  - antifungal
+  - antiinflammatory
+  - antimicrobial
+  - antioxidant
+  - antioxidants
+  - antipsychotic
+  - antispasmodic
+  - antitumor
+  - antiviral
+  - anxiolytic
+  - bronchodilator
+  - neuroprotective
+  - sedation
+  - sedative
+  - sedatives
+
+# Safety and harm claims (docs/09: never "safe" or "no side effects").
+safety:
+  - harmless
+  - healthier
+  - healthy
+  - no side effects
+  - non-addictive
+  - nonaddictive
+  - not addictive
+  - risk free
+  - risk-free
+  - safe
+  - safer
+  - safest
+  - side effect free
+  - side-effect free

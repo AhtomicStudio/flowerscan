@@ -1,0 +1,442 @@
+# FlowerScan controlled vocabulary (T-003). Field rules: docs/04-data-model.md "Taxonomy term".
+# Each entry in `terms` must satisfy TaxonomyTermSchema (packages/core/src/schema/taxonomy-term.ts).
+#
+# Rules
+# - Slugs are permanent. Never delete or rename one: set `status: deprecated` and `replaced_by: <slug>`.
+# - Descriptions are one hedged sentence ("Often described as...", "Some people report..."). Nothing medical,
+#   and nothing that appears in banned.yaml. Effect words describe how people report feeling, never a benefit.
+# - Terpene descriptions are aroma-only. No pharmacology.
+# - Synonyms are import inputs that map to the term. They are never displayed, and each one maps to one term only.
+# - Polarity for effects follows how users rate the experience. "Context-specific" effects (wanted by some people,
+#   avoided by others) are `neutral`. Flavors and terpenes are `neutral`.
+#
+# Sources (all retrieved 2026-10-26). The trailing `# src:` comment on each term lists the ones that back it.
+#   M  docs/04-data-model.md, starter vocabulary (internal, compliance-reviewed draft)
+#   D  docs/research/2026-10-26-domain-review.md section 5 (internal cannabis-expert review)
+#   G  Gilbert AN, DiVerdi JA (2018). Consumer perceptions of strain differences in Cannabis aroma.
+#      PLOS ONE 13(2):e0192247. doi:10.1371/journal.pone.0192247. CC BY 4.0. Table 1, 48 odor descriptors.
+#      https://pmc.ncbi.nlm.nih.gov/articles/PMC5798829/
+#   I  Isaacson SE et al. (2025). Beyond potency: a proposed lexicon for sensory differentiation of Cannabis
+#      sativa L. aroma. PLOS ONE 20(10):e0335125. doi:10.1371/journal.pone.0335125. CC BY 4.0. Table 1, 25 terms.
+#      https://pmc.ncbi.nlm.nih.gov/articles/PMC12539713/
+#   O  Oswald IWH et al. (2023). Minor, nonterpenoid volatile compounds drive the aroma differences of exotic
+#      Cannabis. ACS Omega 8(42):39203-39216. doi:10.1021/acsomega.3c04496. CC BY-NC-ND 4.0 (cited for facts only).
+#      https://pmc.ncbi.nlm.nih.gov/articles/PMC10601067/
+#   S  Stith SS et al. (2020). J Cannabis Res. doi:10.1186/s42238-020-00051-z. CC BY 4.0. (Full title omitted
+#      here because it contains banned.yaml terms.) Table 3: 47 session-reported effects, each classed
+#      positive / negative / context-specific. Used only for effect words and polarity, nothing else.
+#      https://pmc.ncbi.nlm.nih.gov/articles/PMC7819324/
+#   L  LaFrance EM et al. (2020). Overbaked: assessing and predicting acute adverse reactions to Cannabis.
+#      J Cannabis Res. doi:10.1186/s42238-019-0013-x. CC BY 4.0. Table 2, 26 acute adverse reactions.
+#      https://pmc.ncbi.nlm.nih.gov/articles/PMC7819287/
+#   C  Smith CJ et al. (2022). The phytochemical diversity of commercial Cannabis in the United States.
+#      PLOS ONE 17(5):e0267498. doi:10.1371/journal.pone.0267498. CC BY 4.0. Terpene names as measured.
+#      https://pmc.ncbi.nlm.nih.gov/articles/PMC9119530/
+#   P  PubChem compound records, "Odor" and description sections (NCBI). CIDs: limonene 22311, myrcene 31253,
+#      beta-caryophyllene 5281515, alpha-pinene 6654, linalool 6549, terpinolene 11463, beta-ocimene 18756.
+#      https://pubchem.ncbi.nlm.nih.gov/compound/<CID>
+#   W  Wikipedia, "Humulene" (CC BY-SA 4.0). https://en.wikipedia.org/wiki/Humulene
+#
+# Synonym rule: a synonym comes from a source above, or is a plain spelling variant of the label
+# (skunky, minty, couch locked).
+
+taxonomy_version: 1
+
+terms:
+  # ---------------------------------------------------------------- effect: positive (8)
+  - slug: relaxed
+    facet: effect
+    label: Relaxed
+    polarity: positive
+    description: "Often described as a loose, unwound feeling in the body."
+    synonyms: ["chill", "comfy"]
+    status: active # src: M, D, S (Relaxed, Chill, Comfy: positive)
+
+  - slug: calm
+    facet: effect
+    label: Calm
+    polarity: positive
+    description: "Often described as a quiet, settled state of mind."
+    synonyms: ["peaceful"]
+    status: active # src: M, D, S (Peaceful: positive)
+
+  - slug: uplifted
+    facet: effect
+    label: Uplifted
+    polarity: positive
+    description: "Often described as a lift in mood and outlook."
+    synonyms: ["optimistic"]
+    status: active # src: M, D, S (Optimistic: positive)
+
+  - slug: happy
+    facet: effect
+    label: Happy
+    polarity: positive
+    description: "Commonly reported as a cheerful, good-humored mood."
+    status: active # src: M, D, S (Happy: positive)
+
+  - slug: euphoric
+    facet: effect
+    label: Euphoric
+    polarity: positive
+    description: "Often described as a strong, elated high."
+    status: active # src: M, D
+
+  - slug: energetic
+    facet: effect
+    label: Energetic
+    polarity: positive
+    description: "Often described as feeling alert and ready to move."
+    synonyms: ["active"]
+    status: active # src: M, D, S (Energetic, Active: positive)
+
+  - slug: focused
+    facet: effect
+    label: Focused
+    polarity: positive
+    description: "Some people describe feeling locked in on a task."
+    status: active # src: M, D, S (Focused: positive)
+
+  - slug: creative
+    facet: effect
+    label: Creative
+    polarity: positive
+    description: "Often described as ideas flowing more freely."
+    status: active # src: M, D, S (Creative: positive)
+
+  # ---------------------------------------------------------------- effect: neutral (7)
+  # Context-specific: some people look for these, others avoid them.
+  - slug: talkative
+    facet: effect
+    label: Talkative
+    polarity: neutral
+    description: "Often described as feeling chatty and social."
+    synonyms: ["chatty"]
+    status: active # src: M, D, S (Talkative: context-specific)
+
+  - slug: giggly
+    facet: effect
+    label: Giggly
+    polarity: neutral
+    description: "Commonly reported as finding things funnier than usual."
+    synonyms: ["silly"]
+    status: active # src: M, D, S (Silly: context-specific)
+
+  - slug: tingly
+    facet: effect
+    label: Tingly
+    polarity: neutral
+    description: "Often described as a light buzzing or prickling on the skin."
+    status: active # src: M, D, S (Tingly: context-specific)
+
+  - slug: body-high
+    facet: effect
+    label: Body high
+    polarity: neutral
+    description: "Often described as a high felt mostly in the body rather than the head."
+    synonyms: ["body buzz", "heavy body", "body humming"]
+    status: active # src: D (added, synonyms), L (Body Humming), S (High: context-specific)
+
+  - slug: sleepy
+    facet: effect
+    label: Sleepy
+    polarity: neutral
+    description: "Commonly reported as feeling drowsy."
+    synonyms: ["drowsy"]
+    status: active # src: M, D, S (Sleepy: context-specific)
+
+  - slug: hungry
+    facet: effect
+    label: Hungry
+    polarity: neutral
+    description: "Often reported to bring on the munchies."
+    synonyms: ["munchies"]
+    status: active # src: M, D, S (Hungry: context-specific)
+
+  - slug: couch-lock
+    facet: effect
+    label: Couch-lock
+    polarity: neutral
+    description: "Often described as a heavy, hard-to-get-up feeling."
+    synonyms: ["couchlock", "couchlocked", "couch locked"]
+    status: active # src: M, D (re-filed as neutral), S (Couchlocked: context-specific)
+
+  # ---------------------------------------------------------------- effect: negative (7)
+  - slug: dry-mouth
+    facet: effect
+    label: Dry mouth
+    polarity: negative
+    description: "Commonly reported as a dry, cottony mouth."
+    status: active # src: M, D, S (Dry mouth: negative)
+
+  - slug: dry-eyes
+    facet: effect
+    label: Dry eyes
+    polarity: negative
+    description: "Commonly reported as dry or scratchy-feeling eyes."
+    status: active # src: M, D
+
+  - slug: dizzy
+    facet: effect
+    label: Dizzy
+    polarity: negative
+    description: "Some people report feeling dizzy or unsteady."
+    synonyms: ["dizziness", "light-headed", "off-balance", "unsteady"]
+    status: active # src: M, D, S (Dizzy: negative), L (Dizziness, Light-headed, Off-balance/Unsteady)
+
+  - slug: anxious
+    facet: effect
+    label: Anxious
+    polarity: negative
+    description: "Some people report feeling uneasy or on edge."
+    status: active # src: M, D, S (Anxious: negative)
+
+  - slug: paranoid
+    facet: effect
+    label: Paranoid
+    polarity: negative
+    description: "Some people report feeling suspicious or overly self-conscious."
+    synonyms: ["paranoia"]
+    status: active # src: M, D, S (Paranoid: negative), L (Paranoia)
+
+  - slug: racy
+    facet: effect
+    label: Racy
+    polarity: negative
+    description: "Some people report feeling jittery, restless, or aware of a racing heartbeat."
+    synonyms: ["jittery", "racing heart", "restless"]
+    status: active # src: D (added, synonyms), L (Racing Heart), S (Restless: negative)
+
+  - slug: foggy
+    facet: effect
+    label: Foggy
+    polarity: negative
+    description: "Some people report feeling hazy, scattered, or slow to think."
+    synonyms: ["groggy"]
+    status: active # src: S (Foggy: negative, 20% of sessions), D (groggy suggested as a negative)
+
+  # ---------------------------------------------------------------- flavor (20)
+  - slug: earthy
+    facet: flavor
+    label: Earthy
+    polarity: neutral
+    description: "Often described as smelling of damp soil or forest floor."
+    status: active # src: M, G (earthy), I (Earthy)
+
+  - slug: pine
+    facet: flavor
+    label: Pine
+    polarity: neutral
+    description: "Often described as fresh and resinous, like pine needles."
+    synonyms: ["piney"]
+    status: active # src: M, G (pine), I (in the Woody definition)
+
+  - slug: woody
+    facet: flavor
+    label: Woody
+    polarity: neutral
+    description: "Often described as smelling of cut wood."
+    status: active # src: M, G (woody), I (Woody)
+
+  - slug: citrus
+    facet: flavor
+    label: Citrus
+    polarity: neutral
+    description: "Often described as bright and zesty, like citrus peel."
+    synonyms: ["citrusy", "grapefruit", "lime"]
+    status: active # src: M, G (citrus, grapefruit, lime), I (Citrus), O (citrus)
+
+  - slug: lemon
+    facet: flavor
+    label: Lemon
+    polarity: neutral
+    description: "Often described as sharp and tart, like fresh lemon."
+    synonyms: ["lemony"]
+    status: active # src: M, G (lemon), I (in the Citrus definition)
+
+  - slug: orange
+    facet: flavor
+    label: Orange
+    polarity: neutral
+    description: "Often described as sweet and zesty, like orange or tangerine."
+    synonyms: ["tangerine"]
+    status: active # src: M, G (orange), O (tangerine descriptor)
+
+  - slug: berry
+    facet: flavor
+    label: Berry
+    polarity: neutral
+    description: "Often described as sweet and jammy, like mixed berries."
+    synonyms: ["mixed berry", "blueberry", "strawberry"]
+    status: active # src: M, D (mixed berry), G (berry, blueberry, strawberry), I (Berry)
+
+  - slug: grape
+    facet: flavor
+    label: Grape
+    polarity: neutral
+    description: "Often described as tasting of dark grapes."
+    status: active # src: M, G (grape), I (in the Fruity definition)
+
+  - slug: tropical
+    facet: flavor
+    label: Tropical
+    polarity: neutral
+    description: "Often described as ripe tropical fruit, such as mango or pineapple."
+    synonyms: ["tropical fruit", "mango", "pineapple"]
+    status: active # src: M, G (tropical fruit, mango, pineapple), I (Tropical), O (tropical fruit aroma)
+
+  - slug: sweet
+    facet: flavor
+    label: Sweet
+    polarity: neutral
+    description: "Often described as a general sweetness on the nose or the palate."
+    synonyms: ["honey", "vanilla", "candy"]
+    status: active # src: M, D (map candy here, never a slug), G (sweet, honey, vanilla), I (Candy), O (sweet)
+
+  - slug: floral
+    facet: flavor
+    label: Floral
+    polarity: neutral
+    description: "Often described as perfumed, like fresh flowers."
+    synonyms: ["flowery", "lavender", "rose", "violet"]
+    status: active # src: M, G (flowery, lavender, rose, violet), I (Floral)
+
+  - slug: herbal
+    facet: flavor
+    label: Herbal
+    polarity: neutral
+    description: "Often described as green and herb-like, such as sage or tea."
+    synonyms: ["sage", "tea", "black tea"]
+    status: active # src: M, G (herbal, sage, tea), I (Herbal, Black Tea)
+
+  - slug: mint
+    facet: flavor
+    label: Mint
+    polarity: neutral
+    description: "Often described as cool and minty."
+    synonyms: ["minty", "menthol"]
+    status: active # src: M, G (mint, menthol), I (in the Herbal definition)
+
+  - slug: spicy
+    facet: flavor
+    label: Spicy
+    polarity: neutral
+    description: "Often described as warm, like baking spices."
+    synonyms: ["baking spices"]
+    status: active # src: M, G (spicy), I (Baking spices)
+
+  - slug: pepper
+    facet: flavor
+    label: Pepper
+    polarity: neutral
+    description: "Often described as sharp, like cracked black pepper."
+    synonyms: ["peppery", "black pepper"]
+    status: active # src: M, G (pepper), I (Pepper)
+
+  - slug: diesel
+    facet: flavor
+    label: Diesel
+    polarity: neutral
+    description: "Often described as a sharp, diesel-fuel smell."
+    status: active # src: M, D (keep separate from gas), G (diesel), I (in the Fuel definition)
+
+  - slug: gas
+    facet: flavor
+    label: Gas
+    polarity: neutral
+    description: "Often described as a pungent, gasoline-like smell."
+    synonyms: ["fuel", "gassy", "gasoline", "jet fuel"]
+    status: active # src: M, D (fuel, gassy, jet fuel), I (Fuel; gassy), O (gas, short for gasoline)
+
+  - slug: skunk
+    facet: flavor
+    label: Skunk
+    polarity: neutral
+    description: "Often described as pungent and skunky."
+    synonyms: ["skunky", "funk"]
+    status: active # src: M, D (skunky, funk), G (skunk), I (Skunky)
+
+  - slug: cheese
+    facet: flavor
+    label: Cheese
+    polarity: neutral
+    description: "Often described as savory and funky, like aged cheese."
+    synonyms: ["cheesy", "blue cheese"]
+    status: active # src: M, G (cheese, blue cheese), I (Cheesy)
+
+  - slug: chemical
+    facet: flavor
+    label: Chemical
+    polarity: neutral
+    description: "Often described as a sharp, solvent-like smell, sometimes called chem."
+    synonyms: ["chem"]
+    status: active # src: D (added, synonym chem), G (chemical), I (Chemical), O (chemical aroma)
+
+  # ---------------------------------------------------------------- terpene (8)
+  # Aroma-only descriptions. Synonyms cover lab (COA) spellings.
+  - slug: myrcene
+    facet: terpene
+    label: Myrcene
+    polarity: neutral
+    description: "Often described as having a sweet, balsamic aroma."
+    synonyms: ["β-myrcene", "beta-myrcene"]
+    status: active # src: M, D (synonyms), C (myrcene, β-Myrcene), P 31253 (sweet balsamic aroma)
+
+  - slug: limonene
+    facet: terpene
+    label: Limonene
+    polarity: neutral
+    description: "Often described as having a lemon-like aroma."
+    synonyms: ["d-limonene"]
+    status: active # src: M, D (synonym), C (limonene), P 22311 (lemon-like)
+
+  - slug: caryophyllene
+    facet: terpene
+    label: Caryophyllene
+    polarity: neutral
+    description: "Often described as having a woody, spicy, clove-like aroma."
+    synonyms:
+      - "β-caryophyllene"
+      - "beta-caryophyllene"
+      - "b-caryophyllene"
+      - "trans-caryophyllene"
+      - "BCP"
+    status: active # src: M, D (synonyms), C (β-caryophyllene), P 5281515 (woody-spicy, clove-like)
+
+  - slug: pinene
+    facet: terpene
+    label: Pinene
+    polarity: neutral
+    description: "Often described as smelling of pine."
+    synonyms: ["α-pinene", "β-pinene", "alpha-pinene", "beta-pinene", "a-pinene"]
+    status: active # src: M, D (synonyms), C (α-pinene, β-pinene), P 6654 (odor of pine)
+
+  - slug: linalool
+    facet: terpene
+    label: Linalool
+    polarity: neutral
+    description: "Often described as floral, with a lavender-like note."
+    status: active # src: M, C (linalool), P 6549 (floral; similar to French lavender)
+
+  - slug: terpinolene
+    facet: terpene
+    label: Terpinolene
+    polarity: neutral
+    description: "Often described as having a sweet, piney aroma."
+    status: active # src: M, C (terpinolene), P 11463 (sweet, pine odor)
+
+  - slug: humulene
+    facet: terpene
+    label: Humulene
+    polarity: neutral
+    description: "Also found in hops, and often linked to a hoppy aroma."
+    synonyms: ["α-humulene", "alpha-humulene"]
+    status: active # src: M, D (synonym), C (α-humulene), W (hops; "hoppy" aroma)
+
+  - slug: ocimene
+    facet: terpene
+    label: Ocimene
+    polarity: neutral
+    description: "Often described as having a warm, herbaceous aroma."
+    synonyms: ["β-ocimene", "beta-ocimene", "trans-β-ocimene"]
+    status: active # src: M, D (synonyms), C (α-, β-, cis-, trans-ocimene), P 18756 (warm herbaceous aroma)
