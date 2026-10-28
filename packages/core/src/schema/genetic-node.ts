@@ -54,6 +54,8 @@ const nodeFields = {
   typical_thc_pct: vaultOptional(ThcRangeSchema),
   sources: vaultOptional(z.array(SourceSchema)),
   verification: VerificationSchema,
+  reviewed_by: vaultOptional(NonEmptyStringSchema),
+  reviewed_at: vaultOptional(IsoDateSchema),
   created: IsoDateSchema,
   updated: IsoDateSchema,
 };
@@ -121,6 +123,32 @@ function sourceIssues(node: NodeShape): Issue[] {
   return issues;
 }
 
+const isSet = (value: unknown) => value !== undefined && value !== null;
+
+/**
+ * Founder review (docs/04 "Founder review workflow"): `reviewed_by` and `reviewed_at` come together, and a
+ * `verified` node needs both. Only `vault:review` or a founder by hand writes them, never an agent.
+ */
+function reviewIssues(node: NodeShape): Issue[] {
+  const by = isSet(node.reviewed_by);
+  const at = isSet(node.reviewed_at);
+  if (node.verification === "verified" && !(by && at)) {
+    return (["reviewed_by", "reviewed_at"] as const)
+      .filter((field) => !isSet(node[field]))
+      .map((field) => ({
+        path: [field],
+        message: `a verified node needs reviewed_by and reviewed_at (a founder approves it with pnpm vault:review); ${field} is missing`,
+      }));
+  }
+  if (by && !at) {
+    return [{ path: ["reviewed_at"], message: "reviewed_at is required with reviewed_by" }];
+  }
+  if (at && !by) {
+    return [{ path: ["reviewed_by"], message: "reviewed_by is required with reviewed_at" }];
+  }
+  return [];
+}
+
 function dateIssues(node: NodeShape): Issue[] {
   // ISO dates compare correctly as strings.
   return node.updated < node.created
@@ -143,6 +171,7 @@ export const GeneticNodeSchema = z
     const issues = [
       ...lineageShapeIssues(shape, false),
       ...sourceIssues(node),
+      ...reviewIssues(node),
       ...dateIssues(node),
     ];
     for (const issue of issues) {

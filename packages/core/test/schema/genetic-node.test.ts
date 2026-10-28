@@ -270,12 +270,62 @@ describe("GeneticNode: verified needs sources", () => {
       sources: [source([])],
     });
     expectValid(S, undisclosed);
-    const verifiedLandrace = withFields(landrace, { verification: "verified" });
+    const verifiedLandrace = withFields(landrace, {
+      verification: "verified",
+      reviewed_by: "Fictional Founder",
+      reviewed_at: "2026-10-21",
+    });
     expectValid(S, verifiedLandrace);
   });
 
   it("applies only to verified (unverified and disputed may lack sources)", () => {
     expectValid(S, withFields(strain, { verification: "unverified", sources: [] }));
     expectValid(S, withFields(strain, { verification: "disputed", sources: undefined }));
+  });
+});
+
+describe("GeneticNode: founder review (reviewed_by, reviewed_at)", () => {
+  const unreviewed = withFields(strain, { reviewed_by: undefined, reviewed_at: undefined });
+
+  it("accepts notes without them unless verified (no vault note has them yet)", () => {
+    for (const verification of ["unverified", "disputed"]) {
+      expectValid(S, withFields(unreviewed, { verification }));
+      expectValid(
+        S,
+        withFields(unreviewed, { verification, reviewed_by: null, reviewed_at: null }),
+      );
+    }
+    expectValid(S, withFields(cross, { reviewed_by: null, reviewed_at: null }));
+  });
+
+  it("accepts a reviewed note of any verification", () => {
+    expect(expectValid(S, strain).reviewed_by).toBe("Fictional Founder");
+    const reviewed = { reviewed_by: "Fictional Founder", reviewed_at: "2026-10-27" };
+    expectValid(S, withFields(cross, reviewed));
+    expectValid(S, withFields(landrace, { ...reviewed, verification: "disputed" }));
+  });
+
+  it("rejects a verified note without them", () => {
+    expectIssue(S, unreviewed, ["reviewed_by"], "vault:review");
+    expectIssue(S, unreviewed, ["reviewed_at"], "vault:review");
+    expectIssue(S, withFields(strain, { reviewed_by: null }), ["reviewed_by"], "verified");
+    expectIssue(S, withFields(strain, { reviewed_at: undefined }), ["reviewed_at"], "verified");
+  });
+
+  it("requires them together", () => {
+    const byOnly = withFields(unreviewed, { verification: "disputed", reviewed_by: "Founder" });
+    expectIssue(S, byOnly, ["reviewed_at"], "required with reviewed_by");
+    const atOnly = withFields(unreviewed, {
+      verification: "unverified",
+      reviewed_at: "2026-10-27",
+    });
+    expectIssue(S, atOnly, ["reviewed_by"], "required with reviewed_at");
+  });
+
+  it("validates their values", () => {
+    expectIssue(S, withFields(strain, { reviewed_by: "  " }), ["reviewed_by"], "blank");
+    expectIssue(S, withFields(strain, { reviewed_by: 42 }), ["reviewed_by"]);
+    expectIssue(S, withFields(strain, { reviewed_at: "27 Oct 2026" }), ["reviewed_at"]);
+    expectIssue(S, withFields(strain, { reviewed_at: "2026-10-27T10:00:00Z" }), ["reviewed_at"]);
   });
 });

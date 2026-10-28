@@ -13,7 +13,8 @@
       "!**/public/data",
       "!**/*.md",
       "!pnpm-lock.yaml",
-      "!docs/design/mockups"
+      "!docs/design/mockups",
+      "!data/review"
     ]
   },
   "formatter": {

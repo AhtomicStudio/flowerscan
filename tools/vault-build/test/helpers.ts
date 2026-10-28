@@ -53,6 +53,8 @@ export const landrace = (name: string, id: string, extra: Record<string, unknown
     parents: [],
     reported_type: "indica",
     verification: "verified",
+    reviewed_by: "Fictional Founder",
+    reviewed_at: "2026-10-20",
     sources: [
       {
         url: "https://example.org/l",

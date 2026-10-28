@@ -188,6 +188,26 @@ export {
   type PotencyReading,
   PotencyReadingSchema,
 } from "./schema/potency";
+export {
+  PRECHECK_CLAIM_FIELDS,
+  PRECHECK_CLAIM_STATUSES,
+  PRECHECK_VERDICTS,
+  type PrecheckClaim,
+  type PrecheckClaimField,
+  PrecheckClaimFieldSchema,
+  PrecheckClaimSchema,
+  type PrecheckClaimStatus,
+  PrecheckClaimStatusSchema,
+  type PrecheckRecord,
+  PrecheckRecordSchema,
+  type PrecheckVerdict,
+  PrecheckVerdictSchema,
+  type ReviewFlag,
+  type ReviewFlagFile,
+  ReviewFlagFileSchema,
+  ReviewFlagSchema,
+  Sha256Schema,
+} from "./schema/review";
 export { type Scan, type ScanBarcodeFormat, ScanSchema } from "./schema/scan";
 export { type Settings, SettingsSchema } from "./schema/settings";
 export { isSupported, type Source, SourceSchema } from "./schema/source";

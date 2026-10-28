@@ -51,6 +51,8 @@ Every node in the family tree is one note in the vault.
 | `typical_thc_pct` | `{min, max}` | | Percent, 0–100, `min ≤ max`. Only if sourced. **Internal only, never displayed or shipped** (P2). It may later be filled from the potency table. |
 | `sources` | Source[] | ✔ for `verified` | See below. |
 | `verification` | `unverified \| verified \| disputed` | ✔ | Only `verified` and `disputed` nodes ship to the app by default (shipping policy under "Build output"). |
+| `reviewed_by` | string | ✔ for `verified` | The founder who reviewed the note (name as typed into `vault:review`). Written only by `vault:review` or by a founder by hand, **never by an agent**. On a `disputed` note it means a founder reviewed the dispute. |
+| `reviewed_at` | ISO date | ✔ for `verified` | Date of that review. `reviewed_by` and `reviewed_at` come together: one without the other is an error, on any `verification`. |
 | `created` / `updated` | ISO date | ✔ | `updated` is not earlier than `created`. |
 
 The note body is free Markdown (curator notes, history, disputes). It does not ship to the app in MVP.
@@ -67,6 +69,65 @@ only to build output and user exports, never back into `data/vault`.
 | `title` | string | |
 | `retrieved` | ISO date | |
 | `supports` | (`parents` \| `reported_type` \| `effects` \| `flavors` \| `terpenes` \| `typical_thc_pct` \| `aliases` \| `base_sativa_pct`)[] | Which fields this source backs. May be empty while drafting (the source then backs nothing). |
+
+### Founder review workflow (T-029, T-030)
+
+Only humans set `verified` (AGENTS.md rule 3). The workflow makes that human step fast without automating it.
+
+1. **Pre-check (agent).** The `fact-checker` agent reopens every cited source and records what it found in
+   `data/review/precheck/<node-id>.yaml`. It never edits the vault. Format:
+
+   ```yaml
+   id: blue-dream
+   note_sha256: <sha256 of the note file's bytes when checked>  # a different hash later means "stale"
+   checked_at: 2026-10-27
+   checker: fact-checker agent
+   verdict: ready            # ready | check | problem
+   claims:
+     - field: parents        # parents | reported_type | base_sativa_pct | effects | aliases | derivation
+       value: "Blueberry x Haze"
+       source: https://hightimes.com/strains/...   # the cited url or ref
+       status: confirmed     # confirmed | not_found | contradicted | unreachable | excluded_source
+       note: "Names Ed Rosenthal's 'Haze and DJ Short's Blueberry'."   # own words, short
+   summary: "Every claim is backed by a cited source; the Haze dispute is documented."
+   ```
+
+   - **ready:** every claim is confirmed by at least one cited source, nothing contradicts it, no excluded source is
+     relied on, and the note body has no compliance problem.
+   - **check:** something needs a human look (a claim not found, a source unreachable, only one weak source). Also a
+     note that is already `verification: disputed` and documents the contradiction accurately: the contradiction is
+     recorded on the claim (`contradicted`), and the verdict is `check`, not `problem`.
+   - **problem:** an undocumented contradiction, an excluded source relied on, or a compliance issue.
+
+   Schema (`PrecheckRecordSchema` in core, T-029): every key above is required except a claim's `note` (optional);
+   unknown keys are rejected. `id` is the node id and must match the file name; `note_sha256` is 64 lowercase hex
+   characters; `checked_at` is an ISO date; `checker`, `summary`, a claim's `source` and `note` are non-blank
+   strings; a claim's `value` is a non-blank string, a number (`25`), or a non-empty list of strings; `claims` may
+   be empty. A `ready` record must agree with its claims: no claim is `contradicted`, and every `field` it lists has
+   at least one `confirmed` claim (other sources for the same field may be `not_found` or `unreachable`).
+   `vault:review` shows a record as **stale** when `note_sha256` isn't the SHA-256 of the note file's current bytes,
+   and as **invalid** (treated as no record) when it fails the schema or its YAML.
+2. **Review (human).** `pnpm vault:review` shows the notes one at a time, highest impact first (landraces, then
+   nodes with the most descendants, then the rest), each with its facts, sources, computed label, pre-check verdict
+   and what changes if approved. **Approve** writes `verification: verified` (or keeps `disputed`), `reviewed_by`,
+   `reviewed_at` and bumps `updated`. **Flag** writes `data/review/flags/<node-id>.yaml` with the comment for a
+   curator. The tool refuses to run without an interactive terminal, so an agent can't use it to verify.
+   Usage and keys: [tools/vault-build/README.md](../tools/vault-build/README.md#vault-review-founders-only).
+
+   Approve edits only the lines of those four top-level keys (a missing `reviewed_by` / `reviewed_at` is inserted
+   after `verification`), so every other byte of the note stays the same. It refuses a note whose frontmatter it
+   can't edit that way, and it checks the result before and after writing (schema, the four values, every other
+   byte); a failed check after writing restores the original bytes.
+
+   **Flag file** (`ReviewFlagFileSchema`), one per node, new flags appended so none is lost:
+
+   ```yaml
+   id: blue-dream
+   flags:                      # at least one, oldest first
+     - reviewer: Adam Redfield # the name confirmed at the start of the session
+       date: 2026-10-27        # ISO date
+       comment: "Which Haze? Check the breeder page."
+   ```
 
 ### Breeder (`kind: breeder`)
 

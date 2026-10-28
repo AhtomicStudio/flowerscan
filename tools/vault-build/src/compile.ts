@@ -810,6 +810,8 @@ function ship({
       crosses: crosses.size,
       taxonomy_terms: taxonomyOut.terms.length,
     },
+    graph,
+    lineages,
     dataDate,
   };
 }

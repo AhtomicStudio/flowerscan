@@ -48,8 +48,9 @@ Gemini and other AIs: when a task's `owner:` names a role, read that role file a
 | `tools/vault-build/` | Vault → validated JSON for the app |
 | `data/vault/` | Obsidian vault: the strain database source |
 | `data/taxonomy/` | Controlled tag vocabulary + banned terms |
-| `data/eval/` | Golden package photos for scanner accuracy |
-| `.claude/agents/` | The agent team: 10 role prompts and the roster ([README](.claude/agents/README.md)) |
+| `data/eval/` | Golden package photos for scanner accuracy (photos stay local; OCR cache is committed) |
+| `data/review/` | Fact-checker pre-check records and founder review flags |
+| `.claude/agents/` | The agent team: 11 role prompts and the roster ([README](.claude/agents/README.md)) |
 | `docs/research/`, `docs/design/`, `docs/brand/` | Research notes, design specs and mockups, brand drafts and finals |
 
 ## Commands
@@ -66,6 +67,7 @@ pnpm test:e2e       # Playwright (builds + previews on https://localhost:4173)
 pnpm build          # production build
 pnpm vault:check    # validate data/vault (exit 1 on errors; writes nothing)
 pnpm vault:build    # compile data/vault → apps/web/public/data (+ --include-unverified for dev data)
+pnpm vault:review   # founders only: verify notes in an interactive terminal (refuses to run for agents)
 ```
 `pnpm eval:scan` arrives with T-012.
 

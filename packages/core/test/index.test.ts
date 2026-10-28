@@ -22,6 +22,8 @@ describe("@flowerscan/core public API", () => {
       "StrainRecordSchema",
       "StrainsFileSchema",
       "BuildManifestSchema",
+      "PrecheckRecordSchema",
+      "ReviewFlagFileSchema",
     ]) {
       expect(core, name).toHaveProperty(name);
     }

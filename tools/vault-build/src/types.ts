@@ -1,6 +1,8 @@
 // Shared types for the vault build. Field names follow docs/04 "Build output".
 import type {
   Facet,
+  Lineage,
+  LineageGraph,
   NodeKind,
   Polarity,
   StrainRecord,
@@ -120,6 +122,10 @@ export interface BuildData {
   readonly breeders: readonly BreederRecord[];
   readonly taxonomy: TaxonomyOutput;
   readonly counts: BuildCounts;
+  /** Shipped nodes (crosses too) with parents resolved to ids. For vault:review; never serialized. */
+  readonly graph: LineageGraph;
+  /** Every shipped node's computed result (`computeAll`), crosses included. */
+  readonly lineages: ReadonlyMap<string, Lineage>;
   /** The latest `created`/`updated` date in the vault: the default `built_at` (deterministic). */
   readonly dataDate: string;
 }

@@ -15,7 +15,8 @@
     "test": "pnpm -r test",
     "test:e2e": "pnpm --filter @flowerscan/web test:e2e",
     "vault:check": "pnpm --filter @flowerscan/vault-build check",
-    "vault:build": "pnpm --filter @flowerscan/vault-build build-data"
+    "vault:build": "pnpm --filter @flowerscan/vault-build build-data",
+    "vault:review": "pnpm --filter @flowerscan/vault-build review"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:"

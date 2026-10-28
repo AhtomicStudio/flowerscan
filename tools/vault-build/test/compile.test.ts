@@ -424,3 +424,43 @@ describe("fixture vocabulary", () => {
     expect(compile([noteFile("strains/x.md", {})]).issues[0]?.code).toBe("schema");
   });
 });
+
+describe("founder review fields (T-029)", () => {
+  it("errors on a verified note without reviewed_by and reviewed_at", () => {
+    const result = compile([
+      landrace("Northvale Highland", "northvale-highland", {
+        reviewed_by: undefined,
+        reviewed_at: null,
+      }),
+    ]);
+    expect(describeIssues(result.issues, "error")).toEqual([
+      expect.stringMatching(
+        /^schema vault\/landraces\/Northvale Highland\.md reviewed_by: a verified node needs/,
+      ),
+      expect.stringMatching(
+        /^schema vault\/landraces\/Northvale Highland\.md reviewed_at: a verified node needs/,
+      ),
+    ]);
+    expect(result.data).toBeNull();
+  });
+
+  it("accepts unreviewed unverified and disputed notes, and exposes the graph for vault:review", () => {
+    const result = compile(
+      [
+        landrace("Northvale Highland", "northvale-highland", {
+          verification: "unverified",
+          reviewed_by: null,
+          reviewed_at: null,
+        }),
+        strain("Quiet Fern", "quiet-fern", ["[[Northvale Highland]]", "unknown"]),
+      ],
+      { includeUnverified: true },
+    );
+    expect(codes(result.issues, "error")).toEqual([]);
+    expect(result.data?.graph.get("quiet-fern")?.parents).toEqual([
+      "northvale-highland",
+      "unknown",
+    ]);
+    expect(result.data?.lineages.get("northvale-highland")?.label).toBe("indica");
+  });
+});

@@ -35,7 +35,8 @@ resolve against the folder you ran the command from. Exit codes: 0 OK (warnings 
 ## Checks
 **Errors** (exit 1, each names file and field): unreadable taxonomy/banned file or invalid term; missing or
 unclosed frontmatter, invalid YAML; schema errors (unknown fields, P7 single parent without `derivation`,
-P10 `base_sativa_pct` off the 10/25/50/75/90 scale or with fewer than two sources, verified-node sourcing);
+P10 `base_sativa_pct` off the 10/25/50/75/90 scale or with fewer than two sources, verified-node sourcing, a
+`verified` note without `reviewed_by` and `reviewed_at`, or one of those two without the other);
 duplicate ids; unresolved/ambiguous/wrong-kind links; cycles; unknown tags; banned terms; an alias that is
 also another node's name or alias.
 
@@ -64,6 +65,56 @@ backing it and its verification.
 - `<out>/latest.json`: `{ data_version, hash, manifest: "<hash>/manifest.json" }`, written last.
 - The folder name is the first 12 hex characters of a SHA-256 over `strains.json`, `breeders.json` and
   `taxonomy.json`. The manifest isn't hashed, so `--built-at` doesn't change the folder.
+
+## vault:review (founders only)
+The founder verification tool (T-029, docs/04 "Founder review workflow"). **Only a person can verify**: it exits 1
+unless stdin and stdout are both an interactive terminal, and it has no option to skip that check. Agents never
+run it.
+
+```
+pnpm vault:review                          # every unreviewed note, highest impact first
+pnpm vault:review --kind landrace          # landrace | strain | cross
+pnpm vault:review --verdict ready          # pre-check verdict: ready | check | problem | none | stale
+pnpm vault:review --id blue-dream,haze     # only these notes (or repeat --id)
+pnpm vault:review --all                    # include notes already reviewed (re-review)
+pnpm vault:review --approve-ready-stubs    # batch: approve every ready stub after one typed confirmation
+```
+
+Also `--vault`, `--taxonomy` (as above) and `--review <dir>` (folder with `precheck/` and `flags/`, default
+`data/review`). Exit codes: 0 done, 1 refused (no terminal, vault errors, no name) or a batch approval failed,
+2 usage.
+
+1. It compiles the vault with every status included (as `--include-unverified`). Any error stops it: run
+   `pnpm vault:check` and fix them first.
+2. It asks your name (default: `git config user.name`; press Enter to take it) and asks you to confirm it. That
+   name and today's date are what approvals record.
+3. Queue: landraces first, then the nodes with the most descendants, then by name. Notes that already have
+   `reviewed_by` are left out unless `--all`.
+4. Each card shows the name, kind, verification, file, reported type, parents (with weights and derivation),
+   the computed label and detail under `ALGO_VERSION` 2 over the whole vault, effects, aliases, each source
+   (title, url or ref, supports), the pre-check verdict with each claim's status (`STALE` when the note's bytes
+   changed after the check; an invalid record counts as none), and the impact: how many descendants, whether
+   approving ships the note, and how many ancestors are still unverified. If approving would fail the schema, the
+   card says why.
+5. Type a key, then Enter:
+
+   | Key | Does |
+   | --- | --- |
+   | `y` | Approve: `verification: verified` (a `disputed` note stays `disputed`), `reviewed_by`, `reviewed_at` and `updated` (today). Only those four lines change. It refuses if the file changed since the session started, re-reads and re-validates the note after writing, and restores the original bytes if that fails. |
+   | `s` | Skip to the next note. |
+   | `f` | Flag: asks for a comment (empty cancels) and appends `{reviewer, date, comment}` to `data/review/flags/<id>.yaml`. |
+   | `o` | Open the note's source URLs in your browser (best effort). |
+   | `q` | Quit, with a summary of what you approved, flagged and skipped. |
+
+**Batch mode** (`--approve-ready-stubs`): lists the unreviewed stubs (every parent is `unknown`) whose pre-check is
+`ready` and not stale, and that would pass the schema once verified. Type exactly `approve <count>` (for example
+`approve 42`) to approve them all as `y` does; anything else cancels and writes nothing. It can't be combined with
+`--all` or `--verdict`.
+
+On Windows, use Windows Terminal or PowerShell. Old Git Bash (mintty) windows don't present a TTY to Node, so the
+tool refuses there; `winpty pnpm vault:review` works around it.
+
+After a session: `pnpm vault:check`, review `git diff data/vault data/review/flags`, and commit.
 
 ## Report contents (`build-report.md`, not shipped, gitignored)
 Counts by kind and verification · shipped counts · errors and warnings grouped by type · founder review of
