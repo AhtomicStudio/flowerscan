@@ -1,0 +1,22 @@
+id: oreoz
+note_sha256: e31b8c67e36110961345ca9911787e16b67f087f00a0e157a29a5c8bdb8adde6
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Cookies and Cream x Secret Weapon"
+    source: https://neptuneseedbank.com/product/oreoz-indica-grower-grade-flower/
+    status: confirmed
+    note: "Retailer listing gives Cookies and Cream x Secret Weapon on 3rd Coast stock; its header names Ocean Hills instead."
+  - field: parents
+    value: "Cookies and Cream x Secret Weapon"
+    source: https://3rdcoastgenetics.com/award-winning-genetics/
+    status: not_found
+    note: "Lists OOOZE (Secret Weapon x Cookies and Cream), not Oreoz; Oreoz appears only in an image filename. Cited with no supports, so only context."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://neptuneseedbank.com/product/oreoz-indica-grower-grade-flower/
+    status: confirmed
+    note: "Calls it an indica-leaning hybrid."
+summary: "Parents, type and breeder rest on one inconsistent retailer listing (weak); the breeder page only shows OOOZE with the same parents. Needs a breeder source."

@@ -1,0 +1,32 @@
+id: gelato-cake
+note_sha256: 073290c80a6017d52a408ed6174f5898efa7da5ede38436c86e68a8717f20f9e
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Wedding Cake x Gelato #33"
+    source: https://thehighestcritic.com/reviews/strain-review-gelato-cake-by-georgetown-flavors/
+    status: confirmed
+    note: "Wedding Cake x Gelato #33, Elev8 Seeds."
+  - field: parents
+    value: "Wedding Cake x Gelato #33"
+    source: https://thehighestcritic.com/reviews/strain-review-gelato-cake-by-f-r-i-t-z/
+    status: confirmed
+    note: "Wedding Cake x Gelato #33, Elev8 Seeds."
+  - field: parents
+    value: "Wedding Cake x Gelato #33"
+    source: https://seedsherenow.com/gelato-cake-strain-review/
+    status: confirmed
+    note: "Gelato #33 x Wedding Cake; origin called unclear."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/strain-review-gelato-cake-by-georgetown-flavors/
+    status: confirmed
+    note: "Category tag only."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/strain-review-gelato-cake-by-f-r-i-t-z/
+    status: confirmed
+    note: "Category tag only."
+summary: "Parents are solid, but the type rests only on review-site category tags while Seeds Here Now calls it a plain hybrid."

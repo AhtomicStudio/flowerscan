@@ -1,0 +1,17 @@
+id: gsc-forum-cut
+note_sha256: 070390814c4a88faf63bfc25c364173b71852c1bcfce259be7156ae22579d07c
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Girl Scout Cookies"
+    source: https://hightimes.com/strains/gmo/
+    status: confirmed
+    note: "Refers to the Forum cut of GSC used by Mamiko."
+  - field: derivation
+    value: "cut"
+    source: https://hightimes.com/strains/gmo/
+    status: confirmed
+    note: "A named cut (clone) of GSC."
+summary: "The cut and its parent are confirmed by the GMO profile; no type is claimed."

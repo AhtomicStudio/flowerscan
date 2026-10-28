@@ -1,0 +1,27 @@
+id: skunk-1
+note_sha256: 99243d21f310092c278e807ca412cb053ae6ed4d6c872120d43d42265fb9ffe1
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "(Afghan landrace x Colombian Gold) x Acapulco Gold"
+    source: https://sensiseeds.com/en/blog/sam-the-skunkman-the-evolution-of-hybrids/
+    status: confirmed
+    note: "Afghan indica x Colombian Gold first, then outcrossed to Acapulco Gold to shorten flowering; by Sam the Skunkman."
+  - field: parents
+    value: "(Afghan landrace x Colombian Gold) x Acapulco Gold"
+    source: https://hightimes.com/grow/25-greatest-strains-of-all-time/
+    status: confirmed
+    note: "Names Afghani, Mexican and Colombian landraces, without the order."
+  - field: parents
+    value: "(Afghan landrace x Colombian Gold) x Acapulco Gold"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Lists Acapulco Gold, Colombian Gold and Afghan."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://sensiseeds.com/en/regular-seeds/sensi-seeds/skunk-1
+    status: confirmed
+    note: "Seed page says 65% indica, 35% sativa."
+summary: "Three sources confirm the three landraces and one gives the two-step structure; type matches the seed page. The 40-years article (no supports) was unreachable."

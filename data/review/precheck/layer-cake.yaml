@@ -1,0 +1,47 @@
+id: layer-cake
+note_sha256: e4dd26197553cdacd917bb8a4dc7a79284edd2510270dfeafdcc35181316db54
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Wedding Cake x (GMO x (Triangle Kush x Skunk #1))"
+    source: https://theorywellness.org/product/layer-cake-strain/
+    status: confirmed
+    note: "Lists Wedding Cake x GMO/TK Skunk and credits Swamp Boy(s) Seeds."
+  - field: parents
+    value: "Wedding Cake x (GMO x (Triangle Kush x Skunk #1))"
+    source: https://thehighestcritic.com/reviews/strain-review-layer-cake-by-louis-vuchron/
+    status: confirmed
+    note: "Gives the nested form with GMO crossed to TK x Skunk, then to Wedding Cake."
+  - field: parents
+    value: "Wedding Cake x (GMO x (Triangle Kush x Skunk #1))"
+    source: https://thehighestcritic.com/reviews/strain-review-layer-cake-by-rythm/
+    status: confirmed
+    note: "Lists the four names flat and spells out Triangle Kush and Skunk #1."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://theorywellness.org/product/layer-cake-strain/
+    status: confirmed
+    note: "Calls it a hybrid that leans on its indica side."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/strain-review-layer-cake-by-louis-vuchron/
+    status: confirmed
+    note: "Filed under Indica Dominant."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/strain-review-layer-cake-by-rythm/
+    status: confirmed
+    note: "Filed under Indica Dominant."
+  - field: effects
+    value: "relaxed"
+    source: https://theorywellness.org/product/layer-cake-strain/
+    status: confirmed
+    note: "Lists calm and relaxed among likely effects."
+  - field: effects
+    value: "relaxed"
+    source: https://thehighestcritic.com/reviews/strain-review-layer-cake-by-louis-vuchron/
+    status: confirmed
+    note: "Reviewer reports marked body relaxation."
+summary: "All claims confirmed; as the note says, the nesting comes from one review and the TK/Skunk expansion from another, so a breeder source would firm it up."

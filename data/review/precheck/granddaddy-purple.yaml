@@ -1,0 +1,42 @@
+id: granddaddy-purple
+note_sha256: a7fa45844b3b0cf0341cb0bd034662b78cb6bb0c3215f4b513bad108934cf840
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Purple Urkle x Big Bud"
+    source: https://hightimes.com/grow/winter-weed-14-best-strains-to-get-you-through-the-cold/
+    status: confirmed
+    note: "Ken Estes combined Purple Urkel and Big Bud in 2003."
+  - field: parents
+    value: "Purple Urkle x Big Bud"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Purple Urkle x Big Bud."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Indica-dominant hybrid."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://hightimes.com/grow/25-greatest-strains-of-all-time/
+    status: confirmed
+    note: "Indica-dominant."
+  - field: aliases
+    value: "GDP"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Uses GDP."
+  - field: aliases
+    value: "GDP"
+    source: https://hightimes.com/grow/25-greatest-strains-of-all-time/
+    status: confirmed
+    note: "Uses GDP in the entry."
+  - field: aliases
+    value: "Grand Daddy Purple"
+    source: https://hightimes.com/grow/25-greatest-strains-of-all-time/
+    status: confirmed
+    note: "Entry is headed with this spelling."
+summary: "Parents, type and both aliases are confirmed by two independent sources."

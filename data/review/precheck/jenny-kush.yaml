@@ -1,0 +1,17 @@
+id: jenny-kush
+note_sha256: 07391c46b2150ec8b79e243491044fdc48516f90f40bd23ab60457a64b0c0b01
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Amnesia Haze x Rare Dankness #2"
+    source: https://thehighestcritic.com/reviews/strain-review-jenny-kush-by-aeriz/
+    status: confirmed
+    note: "Same pair, Rare Dankness Seeds; tagged sativa dominant."
+  - field: parents
+    value: "Amnesia Haze x Rare Dankness #2"
+    source: https://thehighestcritic.com/reviews/concentrate-review-jenny-kush-budder-by-aeriz/
+    status: confirmed
+    note: "Same pair, Rare Dankness Seeds; tagged indica dominant."
+summary: "Parents confirmed, but both sources are one review site covering one producer, so effectively a single weak source; unknown type is justified."

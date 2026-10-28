@@ -1,0 +1,17 @@
+id: chem-d
+note_sha256: c34e94adbf0d43ba0947323a4b2898aaa40522d4ed41d99b34a45918bc7d5c66
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Chemdawg"
+    source: https://hightimes.com/grow/25-years-of-chem-dog/
+    status: confirmed
+    note: "In 2001 three more original seeds were germinated as Chem Dog C, D and E; D was the keeper, known as Chem D (Danko, 2016-09-07)."
+  - field: derivation
+    value: pheno
+    source: https://hightimes.com/grow/25-years-of-chem-dog/
+    status: confirmed
+    note: "A selection from the original seed batch."
+summary: "Confirmed; the body's GMO / Mamiko Seeds remark isn't in this source and depends on the GMO note's own sources."

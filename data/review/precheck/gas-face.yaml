@@ -1,0 +1,32 @@
+id: gas-face
+note_sha256: 381120febf1528dd6622ff531721cf3e4c8af468a03121589d29bf1ee84970de
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "(Face Off OG x Kush Mints) x (Biscotti x Sherb BX1)"
+    source: https://thehighestcritic.com/marijuana/cultivar-review-gas-face-by-fenario-farms/
+    status: confirmed
+    note: "Gives that exact structure with \"Sherb bx\", breeder Seed Junky Genetics."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/marijuana/cultivar-review-gas-face-by-fenario-farms/
+    status: confirmed
+    note: "Tagged Indica Dominant."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://theorywellness.org/product/gas-face-strain/
+    status: confirmed
+    note: "Calls it an indica hybrid."
+  - field: effects
+    value: "relaxed"
+    source: https://thehighestcritic.com/marijuana/cultivar-review-gas-face-by-fenario-farms/
+    status: confirmed
+    note: "Reviewer calls it relaxing but not heavy."
+  - field: effects
+    value: "relaxed"
+    source: https://theorywellness.org/product/gas-face-strain/
+    status: confirmed
+    note: "Describes calm, relaxing body effects."
+summary: "Parents rest on one review; the dispensary page writes Face Mints x (Biscotti x Sherbet), which the body flags, so a founder should settle the second half and Face Mints."

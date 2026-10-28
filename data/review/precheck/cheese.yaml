@@ -1,0 +1,27 @@
+id: cheese
+note_sha256: a889b43367b981c85ab4821fe75fe4b1ce942ee0663e9496dbd19d1d9e0a4770
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Skunk #1"
+    source: https://sensiseeds.com/en/blog/7-best-cheese-strains-a-cheese-strain-guide/
+    status: confirmed
+    note: "The original Cheese is a Skunk #1 phenotype that appeared in southern England (first fetch returned HTTP 500; the retry worked)."
+  - field: derivation
+    value: pheno
+    source: https://sensiseeds.com/en/blog/7-best-cheese-strains-a-cheese-strain-guide/
+    status: confirmed
+    note: "Described as a phenotype of Skunk #1."
+  - field: reported_type
+    value: indica-dominant
+    source: https://sensiseeds.com/en/blog/7-best-cheese-strains-a-cheese-strain-guide/
+    status: confirmed
+    note: "Calls Cheese an indica-dominant hybrid; the 65/35 split it gives belongs to Skunk #1."
+  - field: aliases
+    value: "UK Cheese, Exodus Cheese"
+    source: https://sensiseeds.com/en/blog/7-best-cheese-strains-a-cheese-strain-guide/
+    status: confirmed
+    note: "Both names given; the Exodus Collective of Luton is credited with keeping the cut."
+summary: "Every claim matches the Sensi Seeds guide (M. Smith, updated 2024-07-31)."

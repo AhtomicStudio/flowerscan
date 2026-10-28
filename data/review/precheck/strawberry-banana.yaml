@@ -1,0 +1,32 @@
+id: strawberry-banana
+note_sha256: 49739008a5da5251188d760be1f7d4470a00a9a540d1c59c39035963df218384
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Banana Kush x Bubble Gum"
+    source: https://dnagenetics.com/strawberry-banana/
+    status: confirmed
+    note: "Breeder gives Crockett's Banana Kush x Strawberry Bubble Gum; its seed listing describes an S1-style product."
+  - field: parents
+    value: "Banana Kush x Bubble Gum"
+    source: https://theorywellness.org/product/strawberry-banana-strain/
+    status: confirmed
+    note: "Gives Banana Kush x Bubble Gum, credited to DNA Genetics x Serious Seeds."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://dnagenetics.com/strawberry-banana/
+    status: confirmed
+    note: "Calls it a 70:30 indica-dominant hybrid."
+  - field: effects
+    value: "creative"
+    source: https://dnagenetics.com/strawberry-banana/
+    status: confirmed
+    note: "Describes an uplifting, creative start."
+  - field: effects
+    value: "creative"
+    source: https://theorywellness.org/product/strawberry-banana-strain/
+    status: confirmed
+    note: "Lists creativity among possible effects."
+summary: "All claims confirmed, but type and one of the two effect sources depend on DNA Genetics (personal-use terms, open founder question), and that DNA page mixes in medical claims, the reason Seeds Here Now is barred for effects."

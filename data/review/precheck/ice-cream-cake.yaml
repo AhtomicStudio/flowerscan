@@ -1,0 +1,22 @@
+id: ice-cream-cake
+note_sha256: 03b6a71e48150be9fabb84a2f214dd21efa04d1b17bf247b11ad8771eb35aa6e
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Wedding Cake x Gelato #33"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Wedding Cake x Gelato #33, Seed Junky Genetics."
+  - field: parents
+    value: "Wedding Cake x Gelato #33"
+    source: https://seedsherenow.com/ice-cream-cake-strain-review/
+    status: confirmed
+    note: "Same pair in reverse order, originally bred by Seed Junky."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://seedsherenow.com/ice-cream-cake-strain-review/
+    status: confirmed
+    note: "Indica-dominant hybrid, no ratio."
+summary: "Parents confirmed twice, but the type rests only on one weak retailer blog."

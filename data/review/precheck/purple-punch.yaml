@@ -1,0 +1,22 @@
+id: purple-punch
+note_sha256: 31139722d446298a9e821b0f0b8ce8aff237780a0987c6f30bbe788adf7af235
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Larry OG x Granddaddy Purple"
+    source: https://cannabisnow.com/strain-review-purple-punch-swings-for-the-fences/
+    status: confirmed
+    note: "Lineage line reads Larry OG x Granddaddy Purple; Supernova Gardens bred it, Symbiotic released F2 seeds in 2017."
+  - field: parents
+    value: "Larry OG x Granddaddy Purple"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Same parents in reverse order, Supernova Gardens as breeder."
+  - field: reported_type
+    value: "indica"
+    source: https://cannabisnow.com/strain-review-purple-punch-swings-for-the-fences/
+    status: confirmed
+    note: "Listed as an indica."
+summary: "Two magazines agree on parents and breeder; type rests on one magazine review, with nothing contradicting it."

@@ -1,0 +1,17 @@
+id: glueball
+note_sha256: d0c737d6f2b018da515954c37b54bb38166e651e8a7b849064825ee7af0caefa
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Gorilla Glue #4 x Snowball"
+    source: https://theorywellness.org/product/glueball-strain
+    status: confirmed
+    note: "Gives GG4 x Snowball."
+  - field: reported_type
+    value: "sativa-dominant"
+    source: https://theorywellness.org/product/glueball-strain
+    status: confirmed
+    note: "Calls it a sativa dominant hybrid."
+summary: "Everything rests on one dispensary product page, as the body itself says."

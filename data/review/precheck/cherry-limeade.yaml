@@ -1,0 +1,22 @@
+id: cherry-limeade
+note_sha256: f11351ec2984e5534678223582fcf6727bdebd4fba9ae0ae7cb74f1564a76b35
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Black Lime Reserve x Cherry Pie"
+    source: https://hightimes.com/products/3-fuel-forward-strains-to-heat-up-summer/
+    status: confirmed
+    note: "Named as Mean Gene's Black Lime Reserve x Cherry Pie, in the Piescream entry."
+  - field: parents
+    value: "Black Lime Reserve x Cherry Pie"
+    source: https://thehighestcritic.com/reviews/strain-review-cherry-limeade-by-liontree-farms/
+    status: confirmed
+    note: "Gives Cherry Pie x Black Lime from Mean Gene of Aficionado Seeds; same pair, \"Reserve\" missing."
+  - field: reported_type
+    value: "balanced"
+    source: https://thehighestcritic.com/reviews/strain-review-cherry-limeade-by-liontree-farms/
+    status: confirmed
+    note: "Only a \"50/50\" category tag under Hybrids; High Times gives no type."
+summary: "Parents confirmed twice, but the balanced type rests on one review-site category tag, and Black Lime vs Black Lime Reserve is unresolved."

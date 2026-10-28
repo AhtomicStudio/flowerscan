@@ -1,0 +1,17 @@
+id: kush-mints
+note_sha256: 023d6e532e5aec7149308e292ad6dcd8fe29756bf0fda8ca88123d90b3a67fb2
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Bubba Kush x Animal Mints"
+    source: https://neptuneseedbank.com/product/kush-mints-concentrate-genetics-extract/
+    status: confirmed
+    note: "Retailer listing gives Bubba Kush x Animal Mints from a Seed Junky cut."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://neptuneseedbank.com/product/kush-mints-concentrate-genetics-extract/
+    status: confirmed
+    note: "Listing calls it an indica-leaning hybrid."
+summary: "Parents and type rest on one retailer listing (weak); the Seeds Here Now page only credits Seed Junky with releasing it. Needs a breeder source."

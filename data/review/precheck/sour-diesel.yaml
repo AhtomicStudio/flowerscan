@@ -1,0 +1,32 @@
+id: sour-diesel
+note_sha256: 8194851f6e12e3829e86ab764b6d234197dc00416d78008cb6ed57811caf5096
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Chem 91 x unknown"
+    source: https://hightimes.com/grow/25-years-of-chem-dog/
+    status: confirmed
+    note: "Accidental cross of Chem 91 and an unknown hermaphrodite, named Diesel by AJ in late 1994."
+  - field: parents
+    value: "Chem 91 x unknown"
+    source: https://hightimes.com/strains/facts-about-sour-diesel/
+    status: confirmed
+    note: "Subheading ties its lineage to Chemdawg 91; the body calls the other parent uncertain (Super Skunk, Skunk #1 or Northern Lights)."
+  - field: aliases
+    value: "AJ Sour Diesel, East Coast Sour Diesel"
+    source: https://hightimes.com/grow/25-years-of-chem-dog/
+    status: confirmed
+    note: "Says it became known as AJ Sour Diesel or East Coast Sour Diesel (and NYC Diesel, left out on purpose)."
+  - field: aliases
+    value: "Sour D"
+    source: https://hightimes.com/strains/facts-about-sour-diesel/
+    status: confirmed
+    note: "Uses Sour D as shorthand."
+  - field: reported_type
+    value: "sativa-dominant"
+    source: https://en.wikipedia.org/wiki/Sour_Diesel
+    status: confirmed
+    note: "Describes a hybrid of mainly sativa parentage; its Chemdawg x Super Skunk lineage is the documented second version."
+summary: "Parents, aliases and type each confirmed; the Wikipedia lineage differs but is cited only for type and is documented in the disputed note."

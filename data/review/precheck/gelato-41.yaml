@@ -1,0 +1,32 @@
+id: gelato-41
+note_sha256: 3cdbe8537741950e8e709da9080ed9bd9772eb3fb98b027bff35f324d325fb48
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Gelato (seed line)"
+    source: https://sherbinskis.com/gelato
+    status: confirmed
+    note: "Breeder lists Bacio Gelato #41 in the Gelato family."
+  - field: parents
+    value: "Gelato (seed line)"
+    source: https://hightimes.com/grow/4-minutes-and-20-seconds-with-sherbinski-iconic-strain-cultivator/
+    status: confirmed
+    note: "#41 is among the numbers out of the Gelato cross."
+  - field: derivation
+    value: "pheno"
+    source: https://hightimes.com/grow/4-minutes-and-20-seconds-with-sherbinski-iconic-strain-cultivator/
+    status: confirmed
+    note: "A numbered selection from that cross."
+  - field: aliases
+    value: "Bacio Gelato"
+    source: https://sherbinskis.com/gelato
+    status: confirmed
+    note: "Listed as Bacio Gelato, #41."
+  - field: aliases
+    value: "Bacio Gelato"
+    source: https://hightimes.com/strains/gelato-deserves-her-flowers/
+    status: confirmed
+    note: "Calls Gelato #41 aka Bacio Gelato."
+summary: "Parent, derivation and the Bacio Gelato alias are each confirmed, the alias by the breeder and High Times."

@@ -1,0 +1,32 @@
+id: girl-scout-cookies
+note_sha256: 32f57879c57c1f2cca145ef9684518603af0fa671a69f5363baffcdfe2886a00
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "OG Kush x F1 Durban"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Lists OG Kush x F1 Durban."
+  - field: parents
+    value: "OG Kush x F1 Durban"
+    source: https://hightimes.com/grow/inside-girl-scout-cookies/
+    status: confirmed
+    note: "Jigga's account: the F1 x Durban strain crossed with a Kush later called OG Kush."
+  - field: parents
+    value: "OG Kush x F1 Durban"
+    source: https://hightimes.com/grow/25-greatest-strains-of-all-time/
+    status: contradicted
+    note: "Calls OG Kush x Cherry Pie the most common belief and gives the F1/Durban story as the alternative; documented in the body."
+  - field: reported_type
+    value: "balanced"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Describes it as balanced."
+  - field: aliases
+    value: "GSC"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Uses GSC as the name."
+summary: "The chosen lineage, type and alias are confirmed and the Cherry Pie dispute is recorded accurately; founders need to pick or confirm the lineage."

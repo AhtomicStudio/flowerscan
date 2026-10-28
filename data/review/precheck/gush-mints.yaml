@@ -1,0 +1,52 @@
+id: gush-mints
+note_sha256: 29fd22411b92261d0461fdf2f148e3bdb709e671c00a7d08d0c12828b023448a
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Kush Mints x (F1 Durb x Gushers)"
+    source: https://theorywellness.org/product/gush-mints-strain/
+    status: confirmed
+    note: "Same structure, Purple City Genetics."
+  - field: parents
+    value: "Kush Mints x (F1 Durb x Gushers)"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gush-mints-by-pax-genetics/
+    status: confirmed
+    note: "Same structure, Purple City Genetics."
+  - field: parents
+    value: "Kush Mints x (F1 Durb x Gushers)"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gush-mints-by-moon-valley-cannabis/
+    status: confirmed
+    note: "Same structure, Purple City Genetics."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://theorywellness.org/product/gush-mints-strain/
+    status: confirmed
+    note: "Indica-dominant hybrid in its text."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gush-mints-by-pax-genetics/
+    status: confirmed
+    note: "Tagged Indica Dominant."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gush-mints-by-moon-valley-cannabis/
+    status: confirmed
+    note: "Tagged Indica Dominant."
+  - field: effects
+    value: "focused"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gush-mints-by-pax-genetics/
+    status: confirmed
+    note: "Reviewer reports increased focus on surroundings."
+  - field: effects
+    value: "focused"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gush-mints-by-moon-valley-cannabis/
+    status: confirmed
+    note: "A different reviewer reports a strong sense of focus."
+  - field: aliases
+    value: "Gush Mintz"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gush-mints-by-moon-valley-cannabis/
+    status: confirmed
+    note: "Written once, lowercase, for the same strain."
+summary: "Three sources agree on parents and type and two reviewers name focus; the alias rests on one in-text spelling but is accurate."

@@ -1,0 +1,27 @@
+id: blue-dream
+note_sha256: dd347330b9a1da8bf42d49afaf5159187576a3ddb0b1c02de273d9b7b824a7be
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Blueberry x Haze"
+    source: https://hightimes.com/strains/cannabeginners-celebrating-two-decades-of-blue-dream/
+    status: confirmed
+    note: "Cites Ed Rosenthal for Haze x DJ Short's Blueberry; growers lean to a Santa Cruz Haze; breeder unknown; the Blueberry parent is debated (Colbert, 2023-08-17)."
+  - field: parents
+    value: "Blueberry x Haze"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Listed as Blueberry x Haze."
+  - field: parents
+    value: "Blueberry x Haze"
+    source: https://cannabisnow.com/strain-review-blue-dream/
+    status: contradicted
+    note: "Names Super Silver Haze, not plain Haze. This is the dispute the note documents, but the source is tagged as supporting parents."
+  - field: reported_type
+    value: sativa-dominant
+    source: https://cannabisnow.com/strain-review-blue-dream/
+    status: confirmed
+    note: "Called a sativa-dominant cross (Dragonfly de la Luz, 2014-06-24)."
+summary: "The Haze dispute is documented and marked disputed, but Cannabis Now is tagged supports: [parents] while naming the other version, the type rests on that one 2014 review, and 'clone-only' in the body isn't stated by any cited source."

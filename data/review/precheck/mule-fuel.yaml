@@ -1,0 +1,17 @@
+id: mule-fuel
+note_sha256: 1aac8288d35d2afbdd4d1467abc6b8fc024a4150ef1f6485e59e2e80f6832e47
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "GMO x Mendo Montage"
+    source: https://thehighestcritic.com/marijuana/strain-review-mule-fuel-by-sugarbud/
+    status: confirmed
+    note: "Gives GMO x Mendo Montage with ThugPug Genetics as original breeder."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/marijuana/strain-review-mule-fuel-by-sugarbud/
+    status: confirmed
+    note: "Filed under Indica Dominant."
+summary: "Everything rests on one weak review page; the note itself flags this and a reported alternative father, so a breeder source is needed first."

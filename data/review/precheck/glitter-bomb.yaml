@@ -1,0 +1,27 @@
+id: glitter-bomb
+note_sha256: b75c0842f3ce8e52876158b57f929eed23022b7ed882f266bdc44d61473b53c3
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Grape Gasoline x OGKB Blueberry Headband"
+    source: https://seedsherenow.com/glitter-bomb-strain-review/
+    status: confirmed
+    note: "Own voice gives Grape Gas x OGKB Blueberry Headband; the #10 detail is attributed to Leafly."
+  - field: parents
+    value: "Grape Gasoline x OGKB Blueberry Headband"
+    source: https://thehighestcritic.com/reviews/cultivar-review-love-potion-by-smoken-promises/
+    status: confirmed
+    note: "Love Potion aka Glitter Bomb, same pair, Compound Genetics."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://seedsherenow.com/glitter-bomb-strain-review/
+    status: confirmed
+    note: "Usually described as indica-leaning, in its own voice."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/cultivar-review-love-potion-by-smoken-promises/
+    status: confirmed
+    note: "Tagged Indica Dominant."
+summary: "Claims are confirmed by two weak sources, but the body's \"Grape Gas #10\" detail and part of the breeder credit are relayed from Leafly (excluded) on that page."

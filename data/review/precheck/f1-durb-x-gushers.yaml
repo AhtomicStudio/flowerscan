@@ -1,0 +1,17 @@
+id: f1-durb-x-gushers
+note_sha256: 7d9887de19c40d3fc9013ca21309828aff2bf9d19dce4a9602ea62560da30a33
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "F1 Durb x Gushers"
+    source: https://theorywellness.org/product/gush-mints-strain/
+    status: confirmed
+    note: "Gush Mints listed as Kush Mints x (F1 Durb x Gushers)."
+  - field: parents
+    value: "F1 Durb x Gushers"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gush-mints-by-pax-genetics/
+    status: confirmed
+    note: "Same structure (toptierterpsma, 2022-11-21)."
+summary: "Two independent pages give the same bracketed father in the same order."

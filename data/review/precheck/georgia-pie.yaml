@@ -1,0 +1,12 @@
+id: georgia-pie
+note_sha256: a401829a0edf1d3b2c9541e374599a76ca33b3fcec65711daceba416ecb04d47
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Gelatti x Kush Mints"
+    source: https://seedsherenow.com/georgia-pie-strain-review/
+    status: confirmed
+    note: "Review text gives Gelatti and Kush Mints; no breeder in the text."
+summary: "Single weak retailer-blog source for the parents; the page only sells an Elite Clone S1 under the name, which is not this node."

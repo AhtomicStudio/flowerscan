@@ -1,0 +1,37 @@
+id: sunset-sherbet
+note_sha256: 06ca0681af56887535554619e4cee6fbba5bbed59717625eed03f8141d7da627
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Thin Mint GSC x Pink Panties"
+    source: https://hightimes.com/strains/gelato-deserves-her-flowers/
+    status: confirmed
+    note: "A Pink Panties male pollinated the Cookies phenotype Thin Mint Cookies in a Sunset district garage."
+  - field: parents
+    value: "Thin Mint GSC x Pink Panties"
+    source: https://seedsherenow.com/sunset-sherbet-strain-review/
+    status: confirmed
+    note: "Gives Girl Scout Cookies x Pink Panties (the family name, not the pheno), originally by Mr. Sherbinski."
+  - field: parents
+    value: "Thin Mint GSC x Pink Panties"
+    source: https://hightimes.com/grow/4-minutes-and-20-seconds-with-sherbinski-iconic-strain-cultivator/
+    status: confirmed
+    note: "Sherbinski says a Pink Panties male seedling pollinated the Cookies, giving the Sherbert seeds."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://seedsherenow.com/sunset-sherbet-strain-review/
+    status: confirmed
+    note: "Describes a hybrid with indica dominance."
+  - field: aliases
+    value: "Sunset Sherbert"
+    source: https://hightimes.com/strains/gelato-deserves-her-flowers/
+    status: confirmed
+    note: "Spells it Sunset Sherbert throughout."
+  - field: aliases
+    value: "Sunset Sherbert"
+    source: https://sherbinskis.com/gelato
+    status: confirmed
+    note: "Breeder site spells it Sunset Sherbert."
+summary: "Parents and alias well confirmed, but reported_type rests only on the Seeds Here Now blog, which SOURCES.md rates weak."

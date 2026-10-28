@@ -1,0 +1,32 @@
+id: gorilla-glue-4
+note_sha256: d172d30daf7296016e53309bce0de8f7601ee013480abc585d953bc5ab9d87ef
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "(Sour Dubb x Chem's Sister) x Chocolate Diesel"
+    source: https://hightimes.com/strains/gorilla-glue/
+    status: confirmed
+    note: "Same structure, from an accidental intersex pollination at GG Strains."
+  - field: parents
+    value: "(Sour Dubb x Chem's Sister) x Chocolate Diesel"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Same three parents, no cross order."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://hightimes.com/strains/gorilla-glue/
+    status: confirmed
+    note: "Indica-leaning hybrid."
+  - field: aliases
+    value: "GG4"
+    source: https://hightimes.com/strains/gorilla-glue/
+    status: confirmed
+    note: "Sold as GG4 after the trademark settlement."
+  - field: aliases
+    value: "Original Glue"
+    source: https://hightimes.com/strains/gorilla-glue/
+    status: confirmed
+    note: "Also sold as Original Glue."
+summary: "Every claim is confirmed by the High Times profile, with Sensi Seeds agreeing on the parents."

@@ -1,0 +1,42 @@
+id: durban-poison
+note_sha256: 5e4faed236a9180ce762b5c2a7aa9954980ecbfebadb854b1c877d7c17db6464
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "South African landrace"
+    source: https://hightimes.com/strains/durban-poison/
+    status: confirmed
+    note: "Profile calls it a pure South African sativa landrace from near Durban, reselected by many breeders."
+  - field: parents
+    value: "South African landrace"
+    source: https://hightimes.com/grow/25-greatest-strains-of-all-time/
+    status: confirmed
+    note: "Called a true landrace from South Africa."
+  - field: parents
+    value: "South African landrace"
+    source: https://sensiseeds.com/en/blog/sam-the-skunkman-the-evolution-of-hybrids/
+    status: confirmed
+    note: "Says it is from South Africa and Ed Rosenthal first collected the seeds in Amsterdam; does not use the word landrace. First fetch gave HTTP 500, second worked."
+  - field: parents
+    value: "South African landrace"
+    source: https://dutch-passion.com/en/cannabis-seeds/durban-poison
+    status: contradicted
+    note: "Its line is Durban x an unknown indica, while also calling it a landrace; the note documents this as the dispute."
+  - field: derivation
+    value: "pheno"
+    source: https://hightimes.com/strains/durban-poison/
+    status: confirmed
+    note: "Describes breeders stabilising and selecting their own versions of the population."
+  - field: reported_type
+    value: "sativa"
+    source: https://hightimes.com/strains/durban-poison/
+    status: confirmed
+    note: "Pure sativa."
+  - field: reported_type
+    value: "sativa"
+    source: https://hightimes.com/grow/25-greatest-strains-of-all-time/
+    status: confirmed
+    note: "Pure sativa."
+summary: "The chosen lineage and type are confirmed by High Times and the body records the Dutch Passion line accurately; the dispute itself needs a founder decision."

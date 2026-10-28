@@ -1,0 +1,22 @@
+id: jealousy
+note_sha256: abf33fa43d8a411072464714c701c822479e0501e55abb4030576ae168c638e9
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Sherb BX1 x Gelato #41"
+    source: https://seedsherenow.com/the-ultimate-guide-to-the-jealousy-cannabis-strain/
+    status: confirmed
+    note: "Sherbet Bx x Gelato 41; credits Sherbinski."
+  - field: parents
+    value: "Sherb BX1 x Gelato #41"
+    source: https://seedsherenow.com/permanent-marker-strain-review/
+    status: confirmed
+    note: "Sherbet Bx1 crossed with Gelato 41; credits Seed Junky."
+  - field: parents
+    value: "Sherb BX1 x Gelato #41"
+    source: https://hightimes.com/culture/cannabis-in-competition/
+    status: contradicted
+    note: "Reviews Jealousy by LitHouse as Gelato #41 x Sherbet (not the backcross); documented in the body."
+summary: "The chosen parents rest on two pages from one weak retailer blog, High Times gives plain Sherbet, and the breeder credit conflicts; all recorded in the body as a dispute."

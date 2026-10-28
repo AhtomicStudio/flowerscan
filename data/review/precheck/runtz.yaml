@@ -1,0 +1,17 @@
+id: runtz
+note_sha256: 15847b3c1274d7d8d7e2247f72bda04d5518346432adbe5f5d16bf0a7c0a9177
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Zkittlez x Gelato #33"
+    source: https://hightimes.com/culture/runtz-brings-its-iconic-strain-to-the-masses/
+    status: confirmed
+    note: "Grower Nick Corwin combined Zkittlez with Gelato 33; Ray Bama and Yung LB promoted it."
+  - field: parents
+    value: "Zkittlez x Gelato #33"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Gives Zkittlez and Gelato, without the pheno number."
+summary: "Two High Times pieces agree on the parents; type correctly left unknown and the empty breeder is explained."

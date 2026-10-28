@@ -1,0 +1,17 @@
+id: cereal-milk
+note_sha256: bcb12140c508f0f27a1c295b431838a218ca199d264d830f29068fe9ae93551a
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Y-Life x Snowman"
+    source: https://thehighestcritic.com/reviews/strain-review-cereal-milk-by-powerzzzup-genetics/
+    status: confirmed
+    note: "Y-Life (aka The Y) x Snowman, breeder Cookie Fam Genetics (Powerzzzup Genetics), grown by Cookies (thefirescale, 2020-07-18)."
+  - field: reported_type
+    value: sativa-dominant
+    source: https://thehighestcritic.com/reviews/strain-review-cereal-milk-by-powerzzzup-genetics/
+    status: confirmed
+    note: "Only a 'Sativa Dominant' category tag; the review text never states a type."
+summary: "Single review-blog source for both claims, and the type is only a category tag, as the body says."

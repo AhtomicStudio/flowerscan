@@ -1,0 +1,17 @@
+id: gelato-25
+note_sha256: 2b26ca3a42d368f75e4c074a03e4a855f3ae1b213f8692321f46c0cb7f3ff6c3
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Gelato (seed line)"
+    source: https://hightimes.com/grow/4-minutes-and-20-seconds-with-sherbinski-iconic-strain-cultivator/
+    status: confirmed
+    note: "#25 is among the numbers listed as coming out of the Gelato cross."
+  - field: derivation
+    value: "pheno"
+    source: https://hightimes.com/grow/4-minutes-and-20-seconds-with-sherbinski-iconic-strain-cultivator/
+    status: confirmed
+    note: "A numbered selection from that cross."
+summary: "Pheno of the Gelato line is confirmed; the 2019 list names Gelato #25 as a Biscotti parent, as the body says."

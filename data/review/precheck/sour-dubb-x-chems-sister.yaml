@@ -1,0 +1,12 @@
+id: sour-dubb-x-chems-sister
+note_sha256: 8a4b4b4a29030a098012ca1cb3a87319ab123e777ad0f109b5ccee2ee5396e4e
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Sour Dubb x Chem's Sister"
+    source: https://hightimes.com/strains/gorilla-glue/
+    status: confirmed
+    note: "GG4 lineage listed as (Sour Dubb x Chem's Sister) x Chocolate Diesel, from an accidental pollination in GG Strains' room."
+summary: "The inner cross matches High Times' structure exactly, and the body's accidental-pollination detail is in the source."

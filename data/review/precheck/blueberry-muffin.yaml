@@ -1,0 +1,22 @@
+id: blueberry-muffin
+note_sha256: 8f3bc2cf7ce06120432dc565366585b2122a1a38afd7bf01f96f38e2f423b490
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Purple Panty Dropper x Razzle Berry"
+    source: https://humboldtseedcompany.com/wp-content/uploads/2026/01/2026-HSC-Catalog-Digital.pdf
+    status: unreachable
+    note: "The PDF is over the fetch tool's 10 MB limit. Not downloaded, since saving a file needs the user's approval."
+  - field: parents
+    value: "Purple Panty Dropper x Razzle Berry"
+    source: https://theorywellness.org/?p=55622
+    status: confirmed
+    note: "Purple Panty Dropper x Razzle Berry, bred by Humboldt Seed Company."
+  - field: reported_type
+    value: indica-dominant
+    source: https://humboldtseedcompany.com/wp-content/uploads/2026/01/2026-HSC-Catalog-Digital.pdf
+    status: unreachable
+    note: "Same PDF; the 'Indica Dominant' wording couldn't be checked."
+summary: "Parents are confirmed only by the Theory dispensary page; the breeder PDF behind the type couldn't be opened, and Theory says 'an indica', so indica-dominant is unconfirmed here."

@@ -1,0 +1,17 @@
+id: garlic-breath
+note_sha256: abf6dccf24a9f610301af71cc28cb8c8e5837d30a0695b8a5c534c5b10bf94ba
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "GMO x Mendo Breath"
+    source: https://seedsherenow.com/shop/garlic-breath-clone-acc/
+    status: confirmed
+    note: "Genetics field gives GMO x Mendo Breath."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://seedsherenow.com/shop/garlic-breath-clone-acc/
+    status: confirmed
+    note: "Indica-dominant hybrid, 70/30."
+summary: "Only one weak seed-retailer listing; also, the listing's quick facts say \"Breeder: ACC\", so the body's claim that ACC is named only as the brand is inaccurate."

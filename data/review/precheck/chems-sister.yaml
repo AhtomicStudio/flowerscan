@@ -1,0 +1,17 @@
+id: chems-sister
+note_sha256: c4d2184703b439cfacdf3abf6c6a8cb9b6a6c95c0c2551424f68e1ab659b5548
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Chemdawg (seed line)"
+    source: https://hightimes.com/grow/25-years-of-chem-dog/
+    status: confirmed
+    note: "Chem Dog A is one of the first females from the original Dogbud seeds; the article names it Chem's Sister."
+  - field: derivation
+    value: "pheno"
+    source: https://hightimes.com/grow/25-years-of-chem-dog/
+    status: confirmed
+    note: "A selected female from the seed line, not a cross or a clone of another plant."
+summary: "Parent and pheno derivation match Danko's account; no type is claimed and the body is clean."

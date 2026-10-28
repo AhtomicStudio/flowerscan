@@ -1,0 +1,32 @@
+id: hindu-kush-landrace
+note_sha256: 69c704166ad72233b9238dff9ebb41dd7419d5cbf013de55b19e585bef535d4a
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: base_sativa_pct
+    value: "10"
+    source: https://pmc.ncbi.nlm.nih.gov/articles/PMC7148385
+    status: confirmed
+    note: "var. afghanica range includes Pakistan and Afghanistan. The paper's Pakistan intermediates and centre-of-diversity remark are reported in the body as country-level context."
+  - field: base_sativa_pct
+    value: "10"
+    source: https://www.aceseeds.org/en/seeds/pakistan-chitral-kush-regular-seeds/
+    status: confirmed
+    note: "100% landrace indica from Chitral, regular seeds, wide leaves, 8-9 weeks indoors, collected mid-1990s. Moderate variability and two colour phenotypes, no narrow-leaf influence named."
+  - field: reported_type
+    value: indica
+    source: https://www.aceseeds.org/en/seeds/pakistan-chitral-kush-regular-seeds/
+    status: confirmed
+    note: "100% indica."
+  - field: reported_type
+    value: indica
+    source: https://hightimes.com/grow/25-greatest-strains-of-all-time/
+    status: confirmed
+    note: "Hindu Kush called a landrace, pure indica (places it in Afghanistan)."
+  - field: reported_type
+    value: indica
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Hindu Kush genetics listed as landrace indica."
+summary: "Every claim is confirmed and the 10 fits the rubric for the regular-seed Chitral line; the Pakistan-intermediates caveat is documented under L1."

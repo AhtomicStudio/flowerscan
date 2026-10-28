@@ -1,0 +1,32 @@
+id: acapulco-gold
+note_sha256: 49bd262ce95002467a8d5cbba45a956833fc245b5726bda1306b1b119bba364e
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: base_sativa_pct
+    value: "90"
+    source: https://pmc.ncbi.nlm.nih.gov/articles/PMC7148385
+    status: confirmed
+    note: "Narrow-leaflet var. indica is generally late maturing and spread early to the Americas; Mexico itself is never discussed, so regional group only."
+  - field: base_sativa_pct
+    value: "90"
+    source: https://www.tltseeds.com/acapulco-gold/
+    status: confirmed
+    note: "Classic sativa from Guerrero, 16 N, 1500-2600 m, 12-17 weeks flowering, genetics listed only as Acapulco Gold, no hybrid influence named. Seed type, collector and year not given."
+  - field: reported_type
+    value: sativa
+    source: https://www.tltseeds.com/acapulco-gold/
+    status: confirmed
+    note: "Called a sativa."
+  - field: reported_type
+    value: sativa
+    source: https://hightimes.com/grow/25-greatest-strains-of-all-time/
+    status: confirmed
+    note: "Entry is titled Mexican Sativa; calls it a native North American landrace (Escondido, 2014-10-09)."
+  - field: reported_type
+    value: sativa
+    source: https://www.jeeter.com/products/acapulco-gold
+    status: confirmed
+    note: "Quad-infused pre-roll page lists Sativa and an Acapulco-area origin. Brand page, reported_type only; terms question still open (SOURCES.md)."
+summary: "Every claim is confirmed, but the 90 rests on a region-level paper that never names Mexico plus one seed bank page with no collection data, and the Jeeter terms question is still open."

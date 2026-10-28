@@ -1,0 +1,27 @@
+id: grape-gasoline
+note_sha256: 82b5f93185e580ccc4d9c0a27c418f4cab707cec558ad3f4f65dffac092cf20e
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Grape Pie x Jet Fuel Gelato"
+    source: https://thehighestcritic.com/reviews/cultivar-review-grape-gas-from-terpz-n-hunnitz/
+    status: confirmed
+    note: "Grape Pie x Jet Fuel Gelato, Compound Genetics."
+  - field: parents
+    value: "Grape Pie x Jet Fuel Gelato"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gastropop-by-strain-mason/
+    status: confirmed
+    note: "Lists Grape Gasoline as Grape Pie x Jet Fuel Gelato."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/cultivar-review-grape-gas-from-terpz-n-hunnitz/
+    status: confirmed
+    note: "Category tag only."
+  - field: aliases
+    value: "Grape Gas"
+    source: https://thehighestcritic.com/reviews/cultivar-review-grape-gas-from-terpz-n-hunnitz/
+    status: confirmed
+    note: "Says Grape Gas is formally known as Grape Gasoline."
+summary: "Parents and alias confirmed, but the type rests on one review's category tag and both sources are one review site."

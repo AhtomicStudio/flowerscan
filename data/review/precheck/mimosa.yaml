@@ -1,0 +1,17 @@
+id: mimosa
+note_sha256: d3246acb43f17e7bf4a897061fffa8cc129df8d0bc1bed6f6d08bbb9a65c6589
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Clementine x Purple Punch"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Names Clementine and Purple Punch as parents, by Symbiotic Genetics."
+  - field: reported_type
+    value: "sativa-dominant"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Calls it a sativa-dominant hybrid."
+summary: "One magazine source confirms parents, breeder and type; single-sourced, as the note says."

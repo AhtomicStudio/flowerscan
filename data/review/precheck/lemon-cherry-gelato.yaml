@@ -1,0 +1,22 @@
+id: lemon-cherry-gelato
+note_sha256: ae074dabc0886682fe81ada871c2f5525e489c963bdd3af39e26b6bb2ecc9669
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Gelato #33 x unknown"
+    source: https://hightimes.com/strains/lemon-cherry-gelato/
+    status: confirmed
+    note: "Bag seed from a 2016 Gelato #33 pack; pollen parent unknown; treats the Sunset Sherbet x GSC version as family shorthand."
+  - field: parents
+    value: "Gelato #33 x unknown"
+    source: https://hightimes.com/strains/gelato-deserves-her-flowers/
+    status: confirmed
+    note: "Calls it a Gelato #33 phenotype found as a bag seed in 2016."
+  - field: parents
+    value: "Gelato #33 x unknown"
+    source: https://hightimes.com/strains/the-best-strains-of-2022/
+    status: confirmed
+    note: "Backpack Boyz founder traces it to a bag seed in a 2016 Gelato #33 pack."
+summary: "Three High Times pages confirm the Gelato #33 bag-seed origin with an unknown father; type correctly left unknown (profile spans balanced to indica-leaning)."

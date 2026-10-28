@@ -1,0 +1,17 @@
+id: chem-91
+note_sha256: 4f88eaf15c4cad8ff8aeaae3c0b9745dee37b3ec9b679eb737e2961a2fc31662
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Chemdawg"
+    source: https://hightimes.com/grow/25-years-of-chem-dog/
+    status: confirmed
+    note: "Of three females from the first four Chem Dog seeds, the one first called Chem Dog is now known as Chem 91 (Danko, 2016-09-07)."
+  - field: derivation
+    value: pheno
+    source: https://hightimes.com/grow/25-years-of-chem-dog/
+    status: confirmed
+    note: "A selection from the original seed batch."
+summary: "Confirmed; the body's Sour Diesel link is in the article, which itself calls those origins disputed."

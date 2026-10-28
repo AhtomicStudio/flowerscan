@@ -1,0 +1,27 @@
+id: zkittlez
+note_sha256: 70278798e4b7d1a2861315ae0d7434ca69924595162c879ba7ebcb535d5d9cdf
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "(Grapefruit x Grape Ape) x unknown"
+    source: https://hightimes.com/grow/caeczars-list-top-10-seed-companies-2016/
+    status: confirmed
+    note: "Hedged: Grapefruit x Grape Ape with an unknown male, found by Green R Fieldz, listed under Dying Breed Seeds."
+  - field: parents
+    value: "(Grapefruit x Grape Ape) x unknown"
+    source: https://neptuneseedbank.com/product-tag/zkittlez
+    status: confirmed
+    note: "Retailer gives Grape Ape x Grapefruit x a mystery strain."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://hightimes.com/news/the-2017-high-times-seed-bank-hall-of-fame/
+    status: confirmed
+    note: "Calls it indica-dominant; names 3rd Generation Family / Terp Hogz (Dying Breed Seeds)."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://neptuneseedbank.com/product-tag/zkittlez
+    status: confirmed
+    note: "Labels it an indica-leaning hybrid."
+summary: "High Times plus a retailer confirm the hedged lineage and the type; the trademark-rename alias is correctly not added without a source."

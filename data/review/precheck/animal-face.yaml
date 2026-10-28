@@ -1,0 +1,12 @@
+id: animal-face
+note_sha256: 3e21f85f49bc17647d7b1f38624f418c86984a07953bad082e0be94556c2fdbd
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Face Off OG x Animal Mints"
+    source: https://hightimes.com/strains/best-strains-of-the-year/
+    status: confirmed
+    note: "Animal Face and sister pheno Blue Face came from a Seed Junky pack of Face Off OG x Animal Mints; Animal Face took the 2022 Emerald Cup top indoor prize."
+summary: "Parents are confirmed, but the body's claim that Fig Farms grew and selected Animal Face isn't stated in the source (it links Fig Farms only to Blue Face)."

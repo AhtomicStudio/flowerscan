@@ -1,0 +1,17 @@
+id: pink-panties
+note_sha256: b1c81107eab571d5c481832e613e81a2c089338bc7bef8b00e1ce43481db2731
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Larry OG x Burmese Blackberry Kush"
+    source: https://hightimes.com/grow/4-minutes-and-20-seconds-with-sherbinski-iconic-strain-cultivator/
+    status: confirmed
+    note: "Sherbinski says Burmese pollen from Jigga went on a Larry OG Ish Cut; names the father only as Burmese."
+  - field: parents
+    value: "Larry OG x Burmese Blackberry Kush"
+    source: https://hightimes.com/strains/gelato-deserves-her-flowers/
+    status: contradicted
+    note: "Gives an OG Kush female as the mother (father Burmese Blackberry Kush matches); documented in the disputed note."
+summary: "Disputed mother is documented accurately; the full father name comes only from the 2023 article, which disagrees on the mother. A founder should pick the version."

@@ -1,0 +1,32 @@
+id: gmo
+note_sha256: f340bfb934ae3b7c8f8106fca3a1b95002b904f46a013cd796acf284fde28f59
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Chem D x GSC Forum Cut"
+    source: https://hightimes.com/strains/gmo/
+    status: confirmed
+    note: "Mamiko crossed Chem D with the Forum cut of GSC."
+  - field: parents
+    value: "Chem D x GSC Forum Cut"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Seed labelled Chem D x GSC from Mamiko (does not name the Forum cut)."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://hightimes.com/strains/gmo/
+    status: confirmed
+    note: "Indica-dominant hybrid; notes the long flowering and stretch."
+  - field: aliases
+    value: "GMO Cookies"
+    source: https://hightimes.com/strains/gmo/
+    status: confirmed
+    note: "Name of its 2017 Midwest Cup win."
+  - field: aliases
+    value: "Garlic Cookies"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Headed Garlic Cookies a.k.a. GMO."
+summary: "Parents, type and both aliases are each confirmed by High Times, and the body matches the sources."

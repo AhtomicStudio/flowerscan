@@ -1,0 +1,17 @@
+id: gmo-x-triangle-kush-x-skunk-1
+note_sha256: bfd8ddf6dfde073f8ed964b8200dc5f3af60b929c3be223b08285bd5ebf1021c
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "GMO x (Triangle Kush x Skunk #1)"
+    source: https://thehighestcritic.com/reviews/strain-review-layer-cake-by-louis-vuchron/
+    status: confirmed
+    note: "Layer Cake given as ((GMO x (TK x Skunk)) x Wedding Cake) (pnw_chronic, 2022-05-30)."
+  - field: parents
+    value: "GMO x (Triangle Kush x Skunk #1)"
+    source: https://theorywellness.org/product/layer-cake-strain/
+    status: confirmed
+    note: "Writes Wedding Cake x GMO/TK Skunk, consistent with this grouping."
+summary: "Two pages agree on GMO paired with a TK Skunk cross; whether 'Skunk' means Skunk #1 is checked on the inner cross's record."

@@ -1,0 +1,32 @@
+id: la-kush-cake
+note_sha256: 05d45594188327c7cfaeaf5a9b0fcf59f5a449306f93f0dcc771d689fadb18cb
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Wedding Cake x Kush Mints"
+    source: https://thehighestcritic.com/reviews/strain-review-la-kush-cake-by-seed-junky-genetics/
+    status: confirmed
+    note: "Wedding Cake listed first, Seed Junky Genetics as breeder."
+  - field: parents
+    value: "Wedding Cake x Kush Mints"
+    source: https://thehighestcritic.com/reviews/strain-review-la-kush-cake-by-seven-leaves/
+    status: confirmed
+    note: "Same parents with Kush Mints first; Seed Junky as breeder."
+  - field: parents
+    value: "Wedding Cake x Kush Mints"
+    source: https://seedsherenow.com/la-kush-cake-strain-review/
+    status: confirmed
+    note: "Names the same two parents and warns packs under this name can differ."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/strain-review-la-kush-cake-by-seed-junky-genetics/
+    status: confirmed
+    note: "Labelled Indica in the review and filed under Indica Dominant."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/strain-review-la-kush-cake-by-seven-leaves/
+    status: confirmed
+    note: "Filed under Indica Dominant."
+summary: "Three sources agree on the parents and two reviews on the type; the note records the parent-order difference and the Seeds Here Now caution."

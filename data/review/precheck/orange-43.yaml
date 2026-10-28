@@ -1,0 +1,27 @@
+id: orange-43
+note_sha256: 5399baedcfc06fe8891fd61ff11980999aef767d080fa7158a8b1aee611fc3ee
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "WIFI 43 x Orange Juice Bud"
+    source: https://www.wweek.com/cannabis/2017/02/20/strain-review-orange-43-by-cultivated-industries/
+    status: confirmed
+    note: "Clone-only WIFI 43 mother from a TLC Collective run of The White x Fire OG, Orange Juice Bud male; Franchise Genetics, formerly Obsoul33t."
+  - field: parents
+    value: "WIFI 43 x Orange Juice Bud"
+    source: https://www.klutchcannabis.com/strain/orange-43/
+    status: contradicted
+    note: "Gives White Fire 43 x Orange instead; this is the dispute the note documents."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://www.wweek.com/cannabis/2017/02/20/strain-review-orange-43-by-cultivated-industries/
+    status: confirmed
+    note: "Calls it an indica-dominant hybrid."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://www.klutchcannabis.com/strain/orange-43/
+    status: contradicted
+    note: "Its type label is Sativa, though the text mentions an indica-dominant lineage; the note explains this."
+summary: "Disputed note records the naming split accurately. Willamette Week says WIFI 43 came from The White x Fire OG, which hints WIFI means White Fire, but neither page says so outright."

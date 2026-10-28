@@ -1,0 +1,12 @@
+id: afghan-landrace-x-colombian-gold
+note_sha256: add4f53f8e6c586c7f45143bd9dbfbd9c9aa086f9cee263bba35b1d99893413d
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Afghan landrace x Colombian Gold"
+    source: https://sensiseeds.com/en/blog/sam-the-skunkman-the-evolution-of-hybrids/
+    status: confirmed
+    note: "Skunk #1 began as an Afghan indica crossed with Colombian Gold, then outcrossed to Acapulco Gold (M. Smith, Sensi blog)."
+summary: "The one parents claim is confirmed by a breeder's account; the body correctly says the mother isn't named."

@@ -1,0 +1,37 @@
+id: gastro-pop
+note_sha256: e10ae8d8e0d52555efbe89c331376bb2d8009a2b6a05635b5bf9271fea4716fc
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Apples & Bananas x Grape Gasoline"
+    source: https://theorywellness.org/product/gastro-pop-strain/
+    status: confirmed
+    note: "Gives Apples & Bananas x Grape Gasoline."
+  - field: parents
+    value: "Apples & Bananas x Grape Gasoline"
+    source: https://www.micannacast.com/gastro-pop-strain-review/
+    status: confirmed
+    note: "Same pair, credits Compound Genetics."
+  - field: parents
+    value: "Apples & Bananas x Grape Gasoline"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gastro-pop-by-pdx-organics/
+    status: confirmed
+    note: "Same pair, Compound x Cannarado."
+  - field: parents
+    value: "Apples & Bananas x Grape Gasoline"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gastropop-by-strain-mason/
+    status: confirmed
+    note: "Same pair, Compound x Cannarado."
+  - field: effects
+    value: "relaxed"
+    source: https://theorywellness.org/product/gastro-pop-strain/
+    status: confirmed
+    note: "Mentions deep relaxation."
+  - field: effects
+    value: "relaxed"
+    source: https://thehighestcritic.com/reviews/cultivar-review-gastro-pop-by-pdx-organics/
+    status: confirmed
+    note: "Reviewer calls it physically relaxing."
+summary: "Four sources agree on the parents, the effect has two independent authors, and the unknown type is justified by the conflict the body describes."

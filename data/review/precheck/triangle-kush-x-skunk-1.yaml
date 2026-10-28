@@ -1,0 +1,17 @@
+id: triangle-kush-x-skunk-1
+note_sha256: 0b65da497063b05ac0fe12630fa7067927b7b80638c75ea65bca8765efdab037
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Triangle Kush x Skunk #1"
+    source: https://thehighestcritic.com/reviews/strain-review-layer-cake-by-louis-vuchron/
+    status: confirmed
+    note: "Writes (TK x Skunk) inside the Layer Cake lineage; does not say Skunk #1."
+  - field: parents
+    value: "Triangle Kush x Skunk #1"
+    source: https://thehighestcritic.com/reviews/strain-review-layer-cake-by-rythm/
+    status: confirmed
+    note: "Flat list Wedding Cake x GMO x Triangle Kush x Skunk #1 (fullspectrumconnoisseur, 2020-11-27): names spelled out, no grouping."
+summary: "Both sources are from the same review blog, and reading 'Skunk' as Skunk #1 rests on one flat, ungrouped list, as the body admits."

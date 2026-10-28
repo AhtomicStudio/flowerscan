@@ -1,0 +1,22 @@
+id: gelato
+note_sha256: 7709ece26f4246b0b5f9a5040c5954b37cb50fac1c0388f87c8b0a6677407102
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Sunset Sherbet x Thin Mint GSC"
+    source: https://sherbinskis.com/gelato
+    status: confirmed
+    note: "Breeder gives Sunset Sherbert x Thin Mint Cookies."
+  - field: parents
+    value: "Sunset Sherbet x Thin Mint GSC"
+    source: https://hightimes.com/strains/gelato-deserves-her-flowers/
+    status: confirmed
+    note: "Same parents, Sherbinski and Jigga, about 2014."
+  - field: reported_type
+    value: "balanced"
+    source: https://seedsherenow.com/gelato-strain-review/
+    status: confirmed
+    note: "Retailer blog gives 55% indica and says it leans slightly indica, which could also read as indica-dominant."
+summary: "Parents confirmed by the breeder; balanced rests on one weak retailer blog whose wording leans indica, and the 2018 interview tells the cross differently (documented)."

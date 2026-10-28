@@ -1,0 +1,17 @@
+id: pineapple-express
+note_sha256: 924a319cacf60e949885cc6f60c36bac2c455f7d7d201210173015bb4c0251d3
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Trainwreck x Hawaiian"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Lists Trainwreck x Hawaiian, no breeder named."
+  - field: parents
+    value: "Trainwreck x Hawaiian"
+    source: https://www.g13labs.com/feminized/g13-labs-seeds-pineapple-express
+    status: contradicted
+    note: "Its seed line is Big Bud x Hawaiian Skunk, 70% indica; documented in the disputed note."
+summary: "The chosen lineage rests on one round-up blog post; the other cited source contradicts it (documented). G13 is tagged supports: [parents] though it backs the other version."

@@ -1,0 +1,22 @@
+id: og-18
+note_sha256: 9817fa78b261f010b2b3ddf22016465322d9d2ed99ca8d2b14bce780cbd05234
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "OG Kush"
+    source: https://dnagenetics.com/holy-grail-kush-cannabis-strain/
+    status: confirmed
+    note: "Describes The OG #18 as an OG Kush phenotype and a Holy Grail Kush parent."
+  - field: derivation
+    value: "pheno"
+    source: https://dnagenetics.com/holy-grail-kush-cannabis-strain/
+    status: confirmed
+    note: "Phenotype wording fits a pheno of the OG Kush line."
+  - field: aliases
+    value: "The OG #18"
+    source: https://dnagenetics.com/holy-grail-kush-cannabis-strain/
+    status: confirmed
+    note: "The page writes the name as The OG #18."
+summary: "Confirmed, but by one source only, and the personal-use-only terms of DNA Genetics are an open founder question in SOURCES.md; if DNA is excluded the node has no source."

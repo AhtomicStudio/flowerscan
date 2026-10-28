@@ -1,0 +1,12 @@
+id: f1-durban
+note_sha256: 4a64244cc806e282f55a4e6825103d76f1588f3b340dad2764dcd4c3a65b0828
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "unknown x Durban Poison"
+    source: https://hightimes.com/grow/inside-girl-scout-cookies/
+    status: confirmed
+    note: "Jigga says the \"F1\" (a nickname) was crossed with Durban Poison and stabilised; the F1's own parents are not given."
+summary: "Parents match the breeders' account and Sensi Seeds uses the name F1 Durban; no type is claimed."

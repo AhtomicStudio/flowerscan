@@ -1,0 +1,27 @@
+id: thin-mint-gsc
+note_sha256: 5451748beb03c44ce02da5891131bb44498205db56dd8ae6e9c0fe72510d9a6d
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Girl Scout Cookies"
+    source: https://hightimes.com/strains/gelato-deserves-her-flowers/
+    status: confirmed
+    note: "Calls it the Cookies phenotype Thin Mint Cookies."
+  - field: derivation
+    value: "pheno"
+    source: https://hightimes.com/strains/gelato-deserves-her-flowers/
+    status: confirmed
+    note: "Phenotype wording supports a pheno of Girl Scout Cookies."
+  - field: aliases
+    value: "Thin Mint Cookies"
+    source: https://hightimes.com/strains/gelato-deserves-her-flowers/
+    status: confirmed
+    note: "Uses the name Thin Mint Cookies."
+  - field: aliases
+    value: "Thin Mint Cookies"
+    source: https://sherbinskis.com/gelato
+    status: confirmed
+    note: "Breeder site names it Thin Mint Cookies as a Gelato parent."
+summary: "Parents, derivation and alias confirmed, but breeder: Cookie Fam Genetics is in none of the cited sources (High Times names no breeder for it); it looks inferred from the GSC note."

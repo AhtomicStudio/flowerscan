@@ -1,0 +1,12 @@
+id: apple-fritter
+note_sha256: 492a38f0db0d33b2e4b400ae50c038f9d2ec1a29edd237056f96ccc5c74584ed
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Sour Apple x Animal Cookies"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Sour Apple (Sour Diesel x Cinderella 99) x Animal Cookies (GSC x Fire OG), credited to Lumpy Seeds; no type given."
+summary: "Parents and the Lumpy Seeds credit match the cited article, and the note rightly leaves the type unknown."

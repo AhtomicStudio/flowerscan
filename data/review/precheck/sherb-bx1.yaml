@@ -1,0 +1,12 @@
+id: sherb-bx1
+note_sha256: 1c5998559ae8c5292fb2bf964549cb42cf2cb0673c7090716db869483d0887cc
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Sunset Sherbet x unknown"
+    source: https://seedsherenow.com/permanent-marker-strain-review/
+    status: confirmed
+    note: "Calls Sherb Bx a backcross of Sunset Sherbet and names no other parent."
+summary: "One weak seed-retailer blog line is the only source; the note is honest about the backcross being understated, but a breeder source is needed."

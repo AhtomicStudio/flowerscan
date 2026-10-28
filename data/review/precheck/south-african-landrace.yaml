@@ -1,0 +1,27 @@
+id: south-african-landrace
+note_sha256: 819214904e2430b9fc628e2cdfe2877795000917889e2b68e43481cbfdaeff04
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: base_sativa_pct
+    value: "90"
+    source: https://pmc.ncbi.nlm.nih.gov/articles/PMC7148385
+    status: confirmed
+    note: "var. indica spread early to Africa; THCV common in African landraces; 1980s Central Asian introductions into South Africa also reported (in the body)."
+  - field: base_sativa_pct
+    value: "90"
+    source: https://www.aceseeds.org/en/seeds/durban-poison-80s-regular-seeds/
+    status: confirmed
+    note: "Khalifa Genetics line: 100% sativa landrace, North Coast of Durban, regular seeds, 11-15 weeks indoors, never hybridised. Also says the strain's origins are unclear, which the note leaves out."
+  - field: reported_type
+    value: sativa
+    source: https://www.aceseeds.org/en/seeds/durban-poison-80s-regular-seeds/
+    status: confirmed
+    note: "100% sativa."
+  - field: reported_type
+    value: sativa
+    source: https://hightimes.com/strains/durban-poison/
+    status: confirmed
+    note: "Durban Poison called a pure sativa landrace from near Durban."
+summary: "Claims are confirmed, but the cited line's seeds come from a 1980s grower (the decade of the reported broad-leaf introductions) and its page says the origins are unclear; the note omits that remark. Dutch Passion's Durban x Unknown Indica listing is described accurately and backs nothing."

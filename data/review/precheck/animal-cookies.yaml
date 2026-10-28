@@ -1,0 +1,12 @@
+id: animal-cookies
+note_sha256: 1f6a4aa7ccc5fd73a273558762c6ad832a13fe6ac7bdc683af910d5006cc2153
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Girl Scout Cookies x Fire OG"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Listed as GSC x Fire OG in the Apple Fritter entry; no type or breeder given, matching the note."
+summary: "The single parents claim is confirmed by High Times (A. Hanna, 2019-09-19); a second source would strengthen it."

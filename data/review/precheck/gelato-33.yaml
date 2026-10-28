@@ -1,0 +1,17 @@
+id: gelato-33
+note_sha256: 8d508f3b4ae1e3cddaca9587775fc27065e26976b6ec2b17475aa07acaf5ca18
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Gelato (seed line)"
+    source: https://hightimes.com/grow/4-minutes-and-20-seconds-with-sherbinski-iconic-strain-cultivator/
+    status: confirmed
+    note: "#33 is among the numbers listed as coming out of the Gelato cross."
+  - field: derivation
+    value: "pheno"
+    source: https://hightimes.com/grow/4-minutes-and-20-seconds-with-sherbinski-iconic-strain-cultivator/
+    status: confirmed
+    note: "A numbered selection from that cross."
+summary: "Pheno of the Gelato line is confirmed; the Larry Bird nickname is correctly left out pending an allowed source."

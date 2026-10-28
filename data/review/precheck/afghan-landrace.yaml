@@ -1,0 +1,22 @@
+id: afghan-landrace
+note_sha256: 9abca18c3a0a8a0cc59ca36098abb69d67df0f1c6ffd639deaedb3c5b3514cad
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: base_sativa_pct
+    value: "10"
+    source: https://pmc.ncbi.nlm.nih.gov/articles/PMC7148385
+    status: confirmed
+    note: "var. afghanica is broad-leaflet and early maturing, limited to Afghanistan, Pakistan and Turkestan before the 1970s; neotype from Ghazni, epitype near Kandahar. The Casano 2005 caveat is in the paper too."
+  - field: base_sativa_pct
+    value: "10"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Afghani #1 listed as pure Afghan landrace indica, Afghan Kush as a landrace indica from Afghanistan. No narrow-leaf influence mentioned."
+  - field: reported_type
+    value: indica
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Both Afghan lines described as indica."
+summary: "Both base-value sources and the type check out against the rubric's 10 rule; the line source is a Sensi blog roundup rather than a seed page, which still describes Sensi's own lines."

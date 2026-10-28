@@ -1,0 +1,12 @@
+id: cookies-and-cream
+note_sha256: 36221d8d4d09aafb9fc259f0b6a2adeb2ccc1bac14f15c468f7c4d9df854d134
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Thin Mint GSC x Starfighter F2"
+    source: https://hightimes.com/grow/caeczars-list-top-10-seed-companies-2016/
+    status: confirmed
+    note: "Listed as Thin Mint x Starfighter F2 under Exotic Genetix; linking \"Thin Mint\" to Thin Mint GSC is the curator's reading."
+summary: "One list mention backs the parents; the source also names Exotic Genetix (breeder left empty), and the body's Oreoz sentence points to a listing this source does not contain."

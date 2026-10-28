@@ -1,0 +1,12 @@
+id: gushers
+note_sha256: db814d7625fa99d24ac5dd7f3afb5137ae95fa6c55b5958866c03e4f9575c60c
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Gelato #41 x Triangle Kush"
+    source: https://seedsherenow.com/gush-mints-strain/
+    status: confirmed
+    note: "Says Gushers is Gelato #41 x Triangle Kush, in its own voice."
+summary: "Parents rest on one weak retailer blog; the second cited page backs nothing, as the note says."

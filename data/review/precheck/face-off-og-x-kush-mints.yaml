@@ -1,0 +1,12 @@
+id: face-off-og-x-kush-mints
+note_sha256: 15f5d99777298e4cbf539914776b9cdd75fa0ebe8fa1a5e66eb1e8673801c4c0
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Face Off OG x Kush Mints"
+    source: https://thehighestcritic.com/marijuana/cultivar-review-gas-face-by-fenario-farms/
+    status: confirmed
+    note: "Mother side of Gas Face given as (Face Off OG x Kush Mints) (Dank Maven, 2025-03-05)."
+summary: "Confirmed, but by a single review-blog page; the Theory page calls this side Face Mints without spelling out its parents."

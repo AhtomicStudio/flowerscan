@@ -1,0 +1,22 @@
+id: biscotti
+note_sha256: af4e636db982b5d883babfb359e9ad5a9105e25477626ffa07307cead2318e61
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Gelato 25 x Triangle Kush"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Gelato #25 x South Florida OG, which the article says is also known as Triangle Kush; credited to Cookie Family Genetics."
+  - field: parents
+    value: "Gelato 25 x Triangle Kush"
+    source: https://seedsherenow.com/permanent-marker-strain-review/
+    status: confirmed
+    note: "Says Biscotti is usually listed as Gelato #25 x South Florida OG (weak retailer blog)."
+  - field: reported_type
+    value: indica-dominant
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Called indica-dominant."
+summary: "Parents are confirmed by two sources and the type by High Times; the Triangle Kush link rests on High Times' a.k.a."

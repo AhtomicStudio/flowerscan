@@ -1,0 +1,27 @@
+id: kush-cake
+note_sha256: dfa798261a8229a71d19fc4c120269cf77da64f1e13f7d9890f9aad2efed1695
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Kush Mints x Wedding Cake"
+    source: https://thehighestcritic.com/reviews/strain-review-kush-cake-by-mohave-cannabis-co/
+    status: confirmed
+    note: "Lists Kush Mints x Wedding Cake, Seed Junky Genetics as original breeder."
+  - field: parents
+    value: "Kush Mints x Wedding Cake"
+    source: https://thehighestcritic.com/reviews/strain-review-kush-cake-by-preferred-gardens/
+    status: confirmed
+    note: "Same parents in the reverse order, also credited to Seed Junky."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/strain-review-kush-cake-by-mohave-cannabis-co/
+    status: confirmed
+    note: "Filed under Indica Dominant."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://thehighestcritic.com/reviews/strain-review-kush-cake-by-preferred-gardens/
+    status: confirmed
+    note: "Filed under Indica Dominant."
+summary: "Both reviews (different reviewers, one blog) confirm the cross, breeder and type; type rests on category tags only, and the separate LA Kush Cake node is explained."

@@ -1,0 +1,12 @@
+id: grapefruit-x-grape-ape
+note_sha256: 8762042411ea379fb2e9f5856db045f525e63576dae5c30644fdae668eb2202a
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Grapefruit x Grape Ape"
+    source: https://hightimes.com/grow/caeczars-list-top-10-seed-companies-2016/
+    status: confirmed
+    note: "Zkittlez given as a Grapefruit x Grape Ape cross with an unknown male, introduced with 'from what we know' (Caeczar, 2016-04-15)."
+summary: "Confirmed by a single source that hedges the lineage itself, so a human should decide whether it's firm enough."

@@ -1,0 +1,42 @@
+id: og-kush
+note_sha256: 27d4d7466586825b5a4b6444c86355cb0aa54738d56ac6986015a0107542d7e8
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Chemdawg x unknown"
+    source: https://cannabisnow.com/og-kush/
+    status: confirmed
+    note: "Surveys several origin stories and says Chemdawg genetics are most likely involved."
+  - field: parents
+    value: "Chemdawg x unknown"
+    source: https://hightimes.com/grow/25-years-of-chem-dog/
+    status: contradicted
+    note: "Its version is an S1 bag seed of Chem 91 (a separate vault node, not Chemdawg), called hard to substantiate; documented in the note."
+  - field: parents
+    value: "Chemdawg x unknown"
+    source: https://hightimes.com/grow/winter-weed-14-best-strains-to-get-you-through-the-cold/
+    status: confirmed
+    note: "Gives Hindu Kush x Chemdawg, with the genetics called uncertain."
+  - field: parents
+    value: "Chemdawg x unknown"
+    source: https://www.dinafem.org/en/og-kush/
+    status: confirmed
+    note: "Its seed line is Lemon Thai x Chemdawg."
+  - field: parents
+    value: "Chemdawg x unknown"
+    source: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
+    status: confirmed
+    note: "Lists Chemdawg, Lemon Thai and a Pakistani Kush."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://hightimes.com/grow/winter-weed-14-best-strains-to-get-you-through-the-cold/
+    status: contradicted
+    note: "Calls it an indica, not indica-dominant; the note explains choosing the more cautious value."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://www.dinafem.org/en/og-kush/
+    status: confirmed
+    note: "75% indica for the Dinafem seed line."
+summary: "Disputed note documents the versions well, but the Chem 91 S1 story points to the Chem 91 node rather than Chemdawg, and the only exact type match is a breeder's own seed line; a founder should weigh both."

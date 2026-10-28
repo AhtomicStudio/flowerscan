@@ -1,0 +1,22 @@
+id: wedding-cake
+note_sha256: 75bcd145ed3cf5817b3cfffe363b1da5c14fe88a572bf7f81e01485f8e260c7f
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Triangle Kush x Animal Mints"
+    source: https://seedsherenow.com/permanent-marker-strain-review/
+    status: confirmed
+    note: "Comparison table lists Wedding Cake as Triangle Kush x Animal Mints."
+  - field: aliases
+    value: "Triangle Mints #23"
+    source: https://neptuneseedbank.com/product/seed-junky-genetics-wedding-cake-f4-2/
+    status: confirmed
+    note: "Gives the Seed Junky Wedding Cake F4 seeds a Triangle Mints #23 F4 lineage; implies the same plant without saying it."
+  - field: reported_type
+    value: "indica-dominant"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Calls the Seed Junky Wedding Cake indica-dominant, but describes it as Cookies x Cherry Pie, the documented second version."
+summary: "Disputed note documents both lineages, but the chosen one rests on one weak blog table, the alias on an inference from a retailer listing, and the only type source describes the other lineage."

@@ -1,0 +1,17 @@
+id: super-boof
+note_sha256: 415e21924e7579cc16a4a9d7ea8d149a0c742f8c24b0735384d1a1055cfa66f3
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Black Cherry Punch x Tropicana Cookies"
+    source: https://www.micannacast.com/super-boof-strain-review-michigan/
+    status: confirmed
+    note: "Blockhead made the cross (first called Blockberry); Mobile Jay popularised the Super Boof cut."
+  - field: parents
+    value: "Black Cherry Punch x Tropicana Cookies"
+    source: https://seedsherenow.com/super-boof-strain-review/
+    status: confirmed
+    note: "Same parents, crediting Blockhead and the Blockberry name."
+summary: "Two independent sources agree on the parents and origin; type is correctly left unknown because one says balanced and the other indica-leaning."

@@ -1,0 +1,27 @@
+id: golden-pineapple
+note_sha256: 71a8e1e1ceaa1c6e99fb41ef2de2c84d468a18d10a3f132de604b66549a87659
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: check
+claims:
+  - field: parents
+    value: "Golden Goat x Pineapple Kush"
+    source: https://thehighestcritic.com/reviews/strain-review-golden-pineapple-by-phat-panda/
+    status: confirmed
+    note: "Same pair; breeder given as unknown."
+  - field: parents
+    value: "Golden Goat x Pineapple Kush"
+    source: https://thehighestcritic.com/reviews/antheia-farms-golden-pineapple/
+    status: confirmed
+    note: "Same pair; no breeder."
+  - field: reported_type
+    value: "sativa-dominant"
+    source: https://thehighestcritic.com/reviews/strain-review-golden-pineapple-by-phat-panda/
+    status: confirmed
+    note: "Category tag only."
+  - field: reported_type
+    value: "sativa-dominant"
+    source: https://thehighestcritic.com/reviews/antheia-farms-golden-pineapple/
+    status: confirmed
+    note: "Category tag only."
+summary: "Confirmed, but both sources are one review site and the type is only category tags; no breeder or second publication."

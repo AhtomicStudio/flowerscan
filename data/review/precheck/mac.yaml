@@ -1,0 +1,17 @@
+id: mac
+note_sha256: 40836db70f566944b72f13696e65db20d52939347e8db46145ae4d0c9ad3edae
+checked_at: 2026-10-27
+checker: fact-checker agent
+verdict: ready
+claims:
+  - field: parents
+    value: "Alien Cookies x Miracle 15"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Gives Alien Cookies F2 #7 x Miracle 15, bred by Capulator."
+  - field: aliases
+    value: "Miracle Alien Cookies"
+    source: https://hightimes.com/grow/20-trending-strains/
+    status: confirmed
+    note: "Uses Miracle Alien Cookies as the full name of MAC."
+summary: "A single magazine source confirms the parents, breeder and alias; type correctly left unknown. A second source would help."

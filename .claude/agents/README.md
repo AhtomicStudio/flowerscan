@@ -1,6 +1,6 @@
 # The FlowerScan Agent Team
 
-Ten specialist roles. Each file here is a role prompt: Claude Code loads them as sub-agents
+Eleven specialist roles. Each file here is a role prompt: Claude Code loads them as sub-agents
 automatically, and Gemini (or any other AI) can be told "act as the role in `.claude/agents/<role>.md`".
 Every role follows `AGENTS.md` first.
 
@@ -11,6 +11,7 @@ Every role follows `AGENTS.md` first.
 | **cannabis-expert** | Domain accuracy: genetics, naming, packaging, industry language, compliance | Review notes, doc suggestions | Set `verified`, write vault facts, make medical claims |
 | **marketing** | Drafts for Roy: names, taglines, landing and social copy, launch plans | `docs/brand/drafts/` | Finalize anything (Roy decides), overpromise |
 | **data-curator** | Strain/landrace/cross notes with sources, taxonomy | `data/vault/`, `data/taxonomy/` | Fill a field without a source, set `verified` |
+| **fact-checker** | Independently re-checks a note's cited sources before founder review | `data/review/precheck/` | Edit the vault, set `verified`, rescue a claim with new sources |
 | **core-engineer** | Pure TS domain logic and Node tooling | `packages/core/`, `tools/` | Use DOM/Node APIs in core |
 | **scanner-engineer** | Camera, barcode/QR, OCR workers, scan eval | `apps/web/src/platform`, `apps/web/src/workers`, `data/eval/` | Let OCR decide a result |
 | **ui-engineer** | Screens, components, tokens, PWA | `apps/web/src/` | Render filler, break the quality bar |
@@ -25,7 +26,7 @@ researcher ──▶ product-designer ──▶ cannabis-expert (domain check, w
                      ▼
           core / scanner / ui engineers ──▶ qa-tester ──▶ reviewer ──▶ tasks/done
                                                             ▲
-data-curator ──▶ cannabis-expert (spot check) ──▶ founder sets `verified`
+data-curator ──▶ fact-checker (pre-check) ──▶ founder approves in `pnpm vault:review`
 marketing drafts ──▶ Roy decides ──▶ docs/brand/
 ```
 
