@@ -13,8 +13,11 @@
   },
   "dependencies": {
     "@flowerscan/core": "workspace:*",
+    "@fontsource-variable/archivo": "catalog:",
+    "@fontsource-variable/inter": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:"
+    "react-dom": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@playwright/test": "catalog:",

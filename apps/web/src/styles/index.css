@@ -1,7 +1,251 @@
 @import "tailwindcss";
+@import "./tokens.css";
 
-/* Placeholder base. Real design tokens arrive in T-004 (src/styles/tokens.css). */
-body {
-  background-color: #0b0d0c;
-  color: #eef3ef;
+/* ========================================================================== Base */
+@layer base {
+  :root {
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-ui);
+    font-size: var(--text-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+  button {
+    cursor: pointer;
+  }
+  a {
+    color: var(--color-accent-text);
+  }
+  :focus {
+    outline: none;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  /* Headings get focus programmatically on route change (for screen readers); they aren't controls. */
+  [tabindex="-1"]:focus-visible {
+    outline: none;
+  }
+  mark {
+    background: none;
+    color: inherit;
+    font-weight: 800;
+  }
+  input[type="search"]::-webkit-search-cancel-button {
+    appearance: none;
+    display: none;
+  }
+}
+
+/* ========================================================================== Shared pieces */
+@layer components {
+  /* Type scale (tokens.css). Utilities such as text-[1.875rem] or leading-* still override these. */
+  .text-display {
+    font-size: var(--text-display);
+    line-height: var(--leading-display);
+  }
+  .text-title {
+    font-size: var(--text-title);
+    line-height: var(--leading-title);
+  }
+  .text-headline {
+    font-size: var(--text-headline);
+    line-height: var(--leading-headline);
+  }
+  .text-body {
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+  }
+  .text-footnote {
+    font-size: var(--text-footnote);
+    line-height: var(--leading-footnote);
+  }
+  .text-caption {
+    font-size: var(--text-caption);
+    line-height: var(--leading-caption);
+  }
+  .display {
+    font-family: var(--font-display);
+    font-stretch: 75%;
+    font-weight: 800;
+    letter-spacing: -0.005em;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* One variable per class, so pills, the flood and the hero share a single source. */
+  .cls-indica {
+    --cls: var(--color-class-indica);
+    --cls-ink: var(--color-class-indica-ink);
+  }
+  .cls-hybrid {
+    --cls: var(--color-class-hybrid);
+    --cls-ink: var(--color-class-hybrid-ink);
+  }
+  .cls-sativa {
+    --cls: var(--color-class-sativa);
+    --cls-ink: var(--color-class-sativa-ink);
+  }
+  .cls-unknown {
+    --cls: var(--color-class-unknown);
+    --cls-ink: var(--color-class-unknown-ink);
+  }
+
+  /* Press feedback within 100 ms: scale + darken. Reduced motion: darken only (below). */
+  .pressable {
+    transition:
+      transform var(--motion-instant) var(--ease-out),
+      filter var(--motion-instant) var(--ease-out);
+  }
+  .pressable:active {
+    transform: scale(0.97);
+    filter: brightness(0.9);
+  }
+
+  .skeleton {
+    background: var(--color-surface-2);
+    border-radius: 10px;
+    /* 1.2 s, 4 times: stops after ~5 s (SC 2.2.2). */
+    animation: skeleton-pulse 1.2s ease-in-out 4 alternate;
+  }
+
+  /* Anything on a class fill uses ink focus rings (≥ 6.33:1 on every fill). */
+  .on-class :focus-visible {
+    outline-color: var(--color-on-class);
+  }
+  .on-class .on-theme :focus-visible {
+    outline-color: var(--color-accent);
+  }
+
+  .fade-in {
+    animation: fade-in var(--motion-standard) var(--ease-out) both;
+  }
+}
+
+/* ========================================================================== Result view (D13) */
+@layer components {
+  .result-view {
+    container-type: inline-size;
+  }
+  .result-view[data-flooded="true"] {
+    background-color: var(--cls);
+  }
+  /* The flood: a class-color circle growing from the tapped row. Transform only. */
+  .flood-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--cls);
+    pointer-events: none;
+    animation: flood var(--motion-flood) var(--ease-out) both;
+  }
+  .result-content {
+    animation: fade-in 220ms 200ms var(--ease-out) both;
+  }
+  .answer-word {
+    font-size: min(23cqw, 7.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.01em;
+    overflow-wrap: normal;
+    word-break: keep-all;
+    hyphens: none;
+    animation: word-in var(--motion-standard) 300ms var(--ease-out) both;
+  }
+  .answer-word[data-unknown="true"] {
+    font-size: min(16cqw, 4.5rem);
+    line-height: 0.98;
+  }
+  .answer-icon {
+    animation: icon-in var(--motion-standard) 260ms var(--ease-snap) both;
+  }
+  .tag-chip {
+    animation: tag-in var(--motion-standard) var(--ease-snap) both;
+    animation-delay: calc(var(--i, 0) * 30ms);
+  }
+  .chevron {
+    transition: transform var(--motion-standard) var(--ease-out);
+  }
+  [aria-expanded="true"] > .chevron {
+    transform: rotate(90deg);
+  }
+  .tree ul {
+    margin-left: 10px;
+    padding-left: 14px;
+    border-left: 2px solid var(--color-border);
+  }
+}
+
+@keyframes flood {
+  from {
+    transform: scale(0.02);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes word-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+@keyframes icon-in {
+  from {
+    opacity: 0;
+    transform: rotate(-20deg) scale(0.8);
+  }
+}
+@keyframes tag-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.96);
+  }
+}
+@keyframes skeleton-pulse {
+  to {
+    opacity: 0.55;
+  }
+}
+
+/* ========================================================================== Reduced motion
+   Unlayered on purpose: unlayered rules beat every @layer rule (and Tailwind utilities) without !important. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms;
+    animation-delay: 0ms;
+    animation-iteration-count: 1;
+    transition-duration: 0.01ms;
+    scroll-behavior: auto;
+  }
+  .pressable:active {
+    transform: none;
+  }
+  /* No circle, no rise: the finished screen crossfades in over 150 ms. */
+  .flood-circle {
+    display: none;
+  }
+  .result-view {
+    background-color: var(--cls);
+    animation: fade-in 150ms linear both;
+  }
+  .result-content,
+  .answer-word,
+  .answer-icon,
+  .tag-chip {
+    animation: none;
+  }
 }

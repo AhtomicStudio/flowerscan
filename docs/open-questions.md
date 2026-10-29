@@ -38,6 +38,7 @@ signs off on the revised mockup.
 | D16 | Result actions | **Scan another sits next to Save** in the always-visible bar (Scan another primary). Approved 2026-10-27. | docs/design, T-013 |
 | D17 | "Also reported" (negative effects) | **Only in the details**, away from the answer screen. Approved 2026-10-27. | docs/design, T-013 |
 | D18 | Package "X-dominant" wording | **A lean on the package maps to that side** (revises P3, 2026-10-27): "Indica-dominant", "indica hybrid", "hybrid (i)" and "(I)" → `indica`; the sativa equivalents → `sativa`; bare "hybrid", "balanced" and "(H)" → `hybrid`. Matches D15. | docs/06, T-011 |
+| D19 | Beta data | **During the beta, the live site ships every sourced note, including unverified ones**, with a visible "Beta: our strain data is still being reviewed" notice (shown when `data_version` ends with `-dev`). At launch, `BETA` in `scripts/vercel-build.mjs` goes to false and production returns to the shipping policy. Decided 2026-10-29 by the tech lead ("get a working beta" to demo). | scripts/vercel-build.mjs, T-034 |
 
 **Still waiting on the founder** (details in docs/design/README.md): final sign-off on the T-021 design so T-004 can
 start; the designer's extra cuts (Q-D8, Q-D10, e.g. lists drop dominance, the strain page keeps a color block

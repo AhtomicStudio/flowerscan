@@ -1,0 +1,99 @@
+/*
+ * FlowerScan design tokens: PLACEHOLDER values from docs/design/tokens-proposal.md until Roy's identity lands
+ * (open-questions Q11). Swapping the identity means editing this file only; components read these names.
+ * Re-run the tokens-proposal contrast table after any change (all text ≥ 4.5:1, UI parts ≥ 3:1).
+ *
+ * Components use them through Tailwind custom-property utilities (bg-(--color-surface-1), text-(--color-text-2),
+ * rounded-(--radius-md)) and the type-scale classes in index.css (text-body, text-footnote, …).
+ */
+:root {
+  /* Dark theme (the default). Light overrides are below. */
+  --color-bg: #0b0d0c;
+  --color-surface-1: #141816;
+  --color-surface-2: #1c211f;
+  --color-surface-3: #262c29;
+  --color-border: #39413d;
+  --color-border-strong: #6b746f;
+  --color-text: #f1f4f2;
+  --color-text-2: #b4bdb8;
+  --color-text-3: #8c9690;
+  --color-accent: #5ce1ff;
+  --color-accent-text: #5ce1ff;
+  --color-on-accent: #04161b;
+  --color-accent-tint: #1b2c2d;
+  --color-danger: #ff6b5e;
+  --color-on-danger: #0b0d0c;
+
+  /* Classification fills (both themes) and the ink that goes on them. Never translucent text on a fill. */
+  --color-class-indica: #a07cff;
+  --color-class-hybrid: #1fe08a;
+  --color-class-sativa: #ff9419;
+  --color-class-unknown: #a3aca7;
+  --color-on-class: #0b0d0c;
+  /* Class-colored text on theme surfaces. */
+  --color-class-indica-ink: #a07cff;
+  --color-class-hybrid-ink: #1fe08a;
+  --color-class-sativa-ink: #ff9419;
+  --color-class-unknown-ink: #a3aca7;
+
+  --color-scrim: rgb(0 0 0 / 0.6);
+
+  /* Type: Archivo (condensed display) + Inter (UI), self-hosted via @fontsource-variable. */
+  --font-display: "Archivo Variable", "Arial Narrow", "Roboto Condensed", system-ui, sans-serif;
+  --font-ui: "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --text-display: 3.25rem;
+  --leading-display: 1;
+  --text-title: 1.625rem;
+  --leading-title: 1.15;
+  --text-headline: 1.25rem;
+  --leading-headline: 1.3;
+  --text-body: 1.0625rem;
+  --leading-body: 1.5;
+  --text-footnote: 0.9375rem;
+  --leading-footnote: 1.45;
+  --text-caption: 0.8125rem;
+  --leading-caption: 1.4;
+
+  /* Spacing: Tailwind's default 4 px scale is the 4/8 px grid (p-1 = 4 px, p-3 = 12 px, p-5 = 20 px). */
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --size-target: 48px;
+
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-snap: cubic-bezier(0.2, 0.9, 0.3, 1.2);
+  --motion-instant: 100ms;
+  --motion-fast: 180ms;
+  --motion-standard: 260ms;
+  --motion-flood: 340ms;
+}
+
+/* Light theme: follows the system setting (there's no theme setting in the beta). */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #f5f7f6;
+    --color-surface-1: #ffffff;
+    --color-surface-2: #eef1ef;
+    --color-surface-3: #e2e6e4;
+    --color-border: #d3d9d5;
+    --color-border-strong: #7c8681;
+    --color-text: #101412;
+    --color-text-2: #4a534e;
+    --color-text-3: #5f6964;
+    --color-accent: #006e87;
+    --color-accent-text: #006e87;
+    --color-on-accent: #ffffff;
+    --color-accent-tint: #ebf3f5;
+    --color-danger: #b42318;
+    --color-on-danger: #ffffff;
+    --color-class-indica-ink: #6a48e0;
+    --color-class-hybrid-ink: #17733d;
+    --color-class-sativa-ink: #9a5a00;
+    --color-class-unknown-ink: #5f6964;
+    color-scheme: light;
+  }
+}
