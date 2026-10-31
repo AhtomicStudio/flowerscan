@@ -24,12 +24,15 @@ export function ResultDetails({
   data,
   headingRef,
   footerInPanel,
+  learnedBarcode = false,
 }: {
   record: StrainRecord;
   data: StrainData;
   headingRef: Ref<HTMLHeadingElement>;
   /** At large text sizes the footer line moves here from the bar. */
   footerInPanel: boolean;
+  /** This scan taught barcode memory (docs/design/flows.md §4b). */
+  learnedBarcode?: boolean;
 }) {
   const basis = basisFor(record);
   return (
@@ -50,6 +53,11 @@ export function ResultDetails({
         {basis.term !== null && <b className="text-(--color-text)">{basis.term}: </b>}
         {basis.text}
       </p>
+      {learnedBarcode && (
+        <p className="mx-5 mt-2 text-footnote text-(--color-text-2)" data-testid="learned-note">
+          {RESULT_COPY.learnedBarcode}
+        </p>
+      )}
       <Effects record={record} data={data} />
       <HowWeKnow record={record} data={data} />
       {footerInPanel && (

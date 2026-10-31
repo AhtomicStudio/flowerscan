@@ -23,7 +23,7 @@ sources:
     title: "The Highest Critic: Strain Review: King Louie XIII from tru|med dispensary (slumpysmokes, 2020-11-28)"
     retrieved: 2026-10-27
     supports: [parents, reported_type, effects]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

@@ -1,8 +1,12 @@
 import { fireEvent, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { fakeFetch } from "../../test/fixtures";
-import { renderApp } from "../../test/render-app";
+import { type RenderOptions, renderApp } from "../../test/render-app";
 import { highlight } from "./highlight";
+
+function renderSearch(options: RenderOptions = {}) {
+  return renderApp({ path: "/search", ...options });
+}
 
 async function typeQuery(text: string) {
   const box = await screen.findByRole("searchbox", { name: "Search strains" });
@@ -11,8 +15,8 @@ async function typeQuery(text: string) {
 }
 
 describe("search screen", () => {
-  it("is the home screen: the field is focused and an empty query shows only the tip", async () => {
-    renderApp();
+  it("focuses the field and an empty query shows only the tip", async () => {
+    renderSearch();
     const box = await screen.findByRole("searchbox", { name: "Search strains" });
     expect(document.activeElement).toBe(box);
     expect(screen.getByText("Try a nickname or how it's spelled on the package.")).toBeTruthy();
@@ -20,7 +24,7 @@ describe("search screen", () => {
   });
 
   it("shows results as you type, with a class word pill per row", async () => {
-    renderApp();
+    renderSearch();
     await typeQuery("kestrel");
     const list = await screen.findByRole("list", { name: "Search strains" });
     const row = within(list).getByRole("link", { name: /Kestrel Haze/ });
@@ -31,14 +35,14 @@ describe("search screen", () => {
   });
 
   it("tolerates typos", async () => {
-    renderApp();
+    renderSearch();
     await typeQuery("kestral hze");
     const list = await screen.findByRole("list", { name: "Search strains" });
     expect(within(list).getByRole("link", { name: /Kestrel Haze/ })).toBeTruthy();
   });
 
   it("explains alias hits", async () => {
-    renderApp();
+    renderSearch();
     await typeQuery("K. Haze");
     const list = await screen.findByRole("list", { name: "Search strains" });
     const row = within(list).getByRole("link", { name: /Kestrel Haze/ });
@@ -46,7 +50,7 @@ describe("search screen", () => {
   });
 
   it("says we don't have it yet, with no Request it", async () => {
-    renderApp();
+    renderSearch();
     await typeQuery("zzqx");
     expect(await screen.findByText("We don't have that strain yet.")).toBeTruthy();
     expect(screen.getByText(/Nothing matches “zzqx”/)).toBeTruthy();
@@ -54,10 +58,10 @@ describe("search screen", () => {
   });
 
   it("shows the beta notice only for -dev data", async () => {
-    const beta = renderApp();
+    const beta = renderSearch();
     expect(await screen.findByText("Beta: our strain data is still being reviewed.")).toBeTruthy();
     beta.unmount();
-    renderApp({ fetch: fakeFetch({ dataVersion: "2026.10.27-a1b2c3" }) });
+    renderSearch({ fetch: fakeFetch({ dataVersion: "2026.10.27-a1b2c3" }) });
     await typeQuery("kestrel");
     await screen.findByRole("list", { name: "Search strains" });
     expect(screen.queryByText("Beta: our strain data is still being reviewed.")).toBeNull();
@@ -66,7 +70,7 @@ describe("search screen", () => {
   it("shows an error with Retry when the data fails, and recovers", async () => {
     const fetch = fakeFetch();
     fetch.fail = true;
-    renderApp({ fetch });
+    renderSearch({ fetch });
     const alert = await screen.findByRole("alert");
     expect(alert.textContent).toContain("Strain data didn't load.");
     fetch.fail = false;
@@ -77,7 +81,7 @@ describe("search screen", () => {
   });
 
   it("Escape clears the field", async () => {
-    renderApp();
+    renderSearch();
     const box = await typeQuery("kestrel");
     fireEvent.keyDown(box, { key: "Escape" });
     expect((box as HTMLInputElement).value).toBe("");

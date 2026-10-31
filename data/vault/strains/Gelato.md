@@ -31,9 +31,9 @@ sources:
     title: "Seeds Here Now blog: Gelato Strain Review (Chris A, 2024-03-11)"
     retrieved: 2026-10-26
     supports: [reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Gelato

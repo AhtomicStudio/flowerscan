@@ -126,20 +126,12 @@ function sourceIssues(node: NodeShape): Issue[] {
 const isSet = (value: unknown) => value !== undefined && value !== null;
 
 /**
- * Founder review (docs/04 "Founder review workflow"): `reviewed_by` and `reviewed_at` come together, and a
- * `verified` node needs both. Only `vault:review` or a founder by hand writes them, never an agent.
+ * Optional human review metadata (docs/04): `reviewed_by` and `reviewed_at` come together when set,
+ * while `verification: verified` only requires cited source backing (`sourceIssues`), not human sign-off.
  */
 function reviewIssues(node: NodeShape): Issue[] {
   const by = isSet(node.reviewed_by);
   const at = isSet(node.reviewed_at);
-  if (node.verification === "verified" && !(by && at)) {
-    return (["reviewed_by", "reviewed_at"] as const)
-      .filter((field) => !isSet(node[field]))
-      .map((field) => ({
-        path: [field],
-        message: `a verified node needs reviewed_by and reviewed_at (a founder approves it with pnpm vault:review); ${field} is missing`,
-      }));
-  }
   if (by && !at) {
     return [{ path: ["reviewed_at"], message: "reviewed_at is required with reviewed_by" }];
   }

@@ -22,7 +22,7 @@ sources:
   - url: https://hightimes.com/grow/25-years-of-chem-dog/
     title: "High Times: 25 Years of Chem Dog (D. Danko, 2016-09-07)"
     retrieved: 2026-10-26
-    supports: [parents]
+    supports: []
   - url: https://hightimes.com/grow/winter-weed-14-best-strains-to-get-you-through-the-cold/
     title: "High Times: Winter Weed: 14 Best Strains to Get You Through the Cold (M. Miller, 2016-12-19)"
     retrieved: 2026-10-26

@@ -23,7 +23,7 @@ sources:
     title: "The Highest Critic: Antheia Farms: Golden Pineapple (Haze4Dayz, 2026-03-07)"
     retrieved: 2026-10-27
     supports: [parents, reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

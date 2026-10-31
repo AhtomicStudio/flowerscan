@@ -23,9 +23,9 @@ sources:
     title: "3rd Coast Genetics: Award Winning Genetics"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Oreoz

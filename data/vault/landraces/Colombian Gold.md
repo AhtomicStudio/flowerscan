@@ -17,11 +17,15 @@ sources:
     title: "World of Seeds: Colombian Gold"
     retrieved: 2026-10-26
     supports: [base_sativa_pct, reported_type]
+  - url: https://hightimes.com/strains/the-25-greatest-strains-of-all-time/
+    title: "High Times: The 25 Greatest Strains of All Time (D. Danko, 2020-04-20)"
+    retrieved: 2026-10-26
+    supports: []
   - url: https://sensiseeds.com/en/blog/sam-the-skunkman-the-evolution-of-hybrids/
     title: "Sensi Seeds blog: Sam the Skunkman, The Evolution of Hybrids (M. Smith, updated 2025)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+verification: verified
 created: 2026-10-26
 updated: 2026-10-27
 ---
@@ -29,8 +33,8 @@ updated: 2026-10-27
 # Colombian Gold
 
 ## Curator notes
-A named traditional landrace from Colombia's Santa Marta range. It is a landrace node (not a seed-bank
-stabilisation) because the Skunk #1 history describes it as one of the imported landraces Sam the Skunkman crossed.
+A named traditional landrace from Colombia's Santa Marta range (High Times 2020 calls Colombian Gold one of the
+classic landraces used to breed Skunk #1 alongside Acapulco Gold and an Afghani indica).
 Modern seed packs called "Colombian Gold" are seed lines; a separate `strain` node can be added if they show up
 on packages.
 

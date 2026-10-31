@@ -27,7 +27,7 @@ sources:
     title: "Seeds Here Now blog: LA Kush Cake Strain Review and Information (J. Bean, 2023-12-26)"
     retrieved: 2026-10-27
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

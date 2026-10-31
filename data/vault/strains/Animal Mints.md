@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: balanced
 breeder: "[[Seed Junky Genetics]]"
 effects: []
 flavors: []
@@ -22,9 +22,13 @@ sources:
     title: "Seeds Here Now blog: Permanent Marker Strain Review (J. Bean, 2024-03-06, updated 2026-10-07)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/animal-mints
+    title: "Leafly: Animal Mints strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Animal Mints
@@ -34,3 +38,5 @@ Ancestor stub. Parent of Wedding Cake (one version), Kush Mints and Animal Face.
 Junky's Face Off OG x Animal Mints seed pack, hence the breeder. Its own parents are reported differently by
 sources I couldn't use (Animal Cookies x SinMint Cookies vs. Blue Power x Animal Cookies, seen only in search
 results), so `parents` stays `unknown` until an allowed source settles it.
+
+Leafly classifies Animal Mints as a balanced hybrid.

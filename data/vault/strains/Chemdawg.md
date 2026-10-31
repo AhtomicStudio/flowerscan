@@ -26,9 +26,9 @@ sources:
     title: "Sensi Seeds blog: 31 Best Weed Strains of All Time (S. Voser, updated 2025-05-28)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Chemdawg

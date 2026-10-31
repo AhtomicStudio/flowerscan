@@ -13,9 +13,9 @@ sources:
     title: "High Times strain profile: Gorilla Glue #4 (GG4)"
     retrieved: 2026-10-26
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Sour Dubb x Chem's Sister

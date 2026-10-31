@@ -23,14 +23,14 @@ sources:
     title: "High Times: 20 Trending Strains (A. Hanna, 2019-09-19)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Gelato #25
 
 ## Curator notes
-A numbered selection out of the Gelato cross (Sherbinski, High Times 2018 interview), named as the mother of
+A numbered selection out of the Gelato cross (Sherbinski, High Times 2018 interview), named as a parent of
 Biscotti by High Times (2019). Modelled as a `pheno` of the Gelato seed line (P7 fallback form; see the note on
 `Gelato #33` for why). No usable source for a nickname or type.

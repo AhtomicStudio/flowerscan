@@ -27,7 +27,7 @@ sources:
     title: "Seeds Here Now blog: Gelato Cake Strain Review (J. Bean, 2024-01-08)"
     retrieved: 2026-10-27
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

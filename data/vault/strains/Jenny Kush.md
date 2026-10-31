@@ -8,7 +8,7 @@ parents:
   - "[[Amnesia Haze]]"
   - "[[Rare Dankness 2]]"
 parent_weights: null
-reported_type: unknown
+reported_type: balanced
 breeder: "[[Rare Dankness Seeds]]"
 effects: []
 flavors: []
@@ -23,7 +23,11 @@ sources:
     title: "The Highest Critic: Concentrate Review: Jenny Kush Budder by aeriz (upinsmokesession, 2020-06-15)"
     retrieved: 2026-10-27
     supports: [parents]
-verification: unverified
+  - url: https://www.leafly.com/strains/jenny-kush
+    title: "Leafly: Jenny Kush strain information"
+    retrieved: 2026-10-27
+    supports: [parents, reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -34,5 +38,4 @@ updated: 2026-10-27
 Two reviews by different reviewers give "Amnesia Haze x Rare Dankness #2", original breeder Rare Dankness Seeds.
 Both review the same producer's products (aeriz flower and budder), so they aren't fully independent.
 
-`reported_type` is `unknown` because the reviews' tags conflict: the flower review is tagged sativa dominant, the
-budder review indica dominant.
+Leafly classifies Jenny Kush as a balanced hybrid.

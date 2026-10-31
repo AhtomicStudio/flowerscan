@@ -25,7 +25,7 @@ sources:
     title: "Dutch Passion: Durban Poison (feminised seeds)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+verification: verified
 created: 2026-10-26
 updated: 2026-10-27
 ---
@@ -44,7 +44,8 @@ type, late maturing, and no documented broad-leaf influence in the line cited. O
   common in African landraces.
 - ACE Seeds sells a Khalifa Genetics line, "Durban Poison 80s", as a 100% sativa landrace from the north coast of
   Durban (KwaZulu-Natal). Its seeds trace to a grower of the 1980s, it is sold as regular seeds, it flowers in
-  about 11 to 15 weeks indoors, and the page says it was never hybridised with a modern strain. That is the line
+  about 11 to 15 weeks indoors, and the page says it was never hybridised with a modern strain (while also noting
+  that the exact origins of the South African landrace are unclear). That is the line
   this value is judged on (L1).
 
 **Context that doesn't change the value (L1).**

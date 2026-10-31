@@ -8,7 +8,7 @@ parents:
   - "[[Alien Cookies]]"
   - "[[Miracle 15]]"
 parent_weights: null
-reported_type: unknown
+reported_type: balanced
 breeder: "[[Capulator]]"
 effects: []
 flavors: []
@@ -19,9 +19,13 @@ sources:
     title: "High Times: 20 Trending Strains (A. Hanna, 2019-09-19)"
     retrieved: 2026-10-26
     supports: [parents, aliases]
-verification: unverified
+  - url: https://www.leafly.com/strains/mac
+    title: "Leafly: MAC strain information"
+    retrieved: 2026-10-27
+    supports: [parents, reported_type, aliases]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # MAC
@@ -32,4 +36,4 @@ mother was a specific F2 selection (#7) of Alien Cookies; this pass links it to 
 and records the detail here.
 
 Not modelled yet: MAC 1 ("Cap's Cut" per the domain review), which is a specific clone and would be its own node.
-`reported_type` is unknown: no usable source classified it.
+Leafly classifies MAC as a balanced hybrid.

@@ -26,7 +26,11 @@ sources:
   - url: https://hightimes.com/grow/20-trending-strains/
     title: "High Times: 20 Trending Strains (A. Hanna, 2019-09-19)"
     retrieved: 2026-10-26
-    supports: [reported_type]
+    supports: []
+  - url: https://www.leafly.com/strains/wedding-cake
+    title: "Leafly: Wedding Cake strain information"
+    retrieved: 2026-10-27
+    supports: [parents, reported_type, aliases]
 verification: disputed
 created: 2026-10-26
 updated: 2026-10-26

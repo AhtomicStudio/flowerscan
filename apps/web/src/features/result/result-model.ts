@@ -15,7 +15,44 @@ export const TREE_GENERATIONS = 3;
 /** Chips shown before "+N more". */
 export const TAG_COLLAPSE_AFTER = 8;
 
+export const PACKAGE_RESULT_ID = "__package__";
+
+export function recordFromPackageSays(
+  label: "indica" | "sativa" | "hybrid",
+  readName: string,
+): StrainRecord {
+  const clean = readName.trim();
+  const sativaPct = label === "sativa" ? 85 : label === "indica" ? 15 : 50;
+  return {
+    id: PACKAGE_RESULT_ID,
+    name: clean !== "" ? clean : "Package label",
+    aliases: [],
+    kind: "strain",
+    parents: ["unknown"],
+    parent_weights: null,
+    derivation: null,
+    reported_type: label === "hybrid" ? "balanced" : label,
+    breeder_id: null,
+    effects: [],
+    flavors: [],
+    terpenes: [],
+    verification: "unverified",
+    lineage: {
+      sativa_pct: sativaPct,
+      indica_pct: 100 - sativaPct,
+      label,
+      sublabel: label === "hybrid" ? "balanced" : null,
+      confidence: 0.5,
+      confidence_level: "medium",
+      method: "reported",
+      algo_version: 2,
+    },
+    source_count: 0,
+  };
+}
+
 export function basisFor(record: StrainRecord): { term: string | null; text: string } {
+  if (record.id === PACKAGE_RESULT_ID) return BASIS.package;
   if (record.kind === "landrace") return BASIS.landrace;
   return BASIS[record.lineage.method];
 }

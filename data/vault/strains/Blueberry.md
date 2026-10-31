@@ -18,9 +18,9 @@ sources:
     title: "High Times: 25 Greatest Strains of All Time (N. Escondido, 2014-10-09)"
     retrieved: 2026-10-26
     supports: [reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Blueberry

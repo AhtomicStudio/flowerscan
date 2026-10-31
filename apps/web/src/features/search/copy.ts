@@ -5,6 +5,7 @@ export const SEARCH_COPY = {
   label: "Search strains",
   placeholder: "Search strains",
   clear: "Clear search",
+  back: "Back",
   about: "About",
   tip: "Try a nickname or how it's spelled on the package.",
   count: (n: number) => (n === 1 ? "1 result" : `${n} results`),

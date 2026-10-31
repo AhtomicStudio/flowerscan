@@ -1,5 +1,5 @@
 // Public API of @flowerscan/core. Anything not exported here is internal.
-// Schemas follow docs/04-data-model.md exactly. Scan and backup logic arrive with later tasks.
+// Schemas follow docs/04-data-model.md exactly. Backup logic arrives with a later task.
 
 export { sanitizeFilename, slugify } from "./ids/id-rules";
 export {
@@ -68,6 +68,32 @@ export {
   type SearchResult,
   search,
 } from "./match";
+export {
+  BARCODE_KINDS,
+  type BarcodeFacts,
+  type BarcodeKind,
+  type BarcodeRejection,
+  CANDIDATE_MAX_TOKENS,
+  CANDIDATE_WEIGHT_BLEND,
+  classifyBarcode,
+  classifyQr,
+  isBarcodeLearnable,
+  isTrackAndTraceUid,
+  LABEL_MAX_CANDIDATES,
+  LARGE_LINE_RATIO,
+  type LabelFacts,
+  type OcrBox,
+  type OcrEngine,
+  type OcrLine,
+  type OcrResult,
+  parseLabelText,
+  QR_KINDS,
+  type QrFacts,
+  type QrKind,
+  type QrOptions,
+  RETAIL_LEARNABLE_AFTER,
+  SOFT_TOKEN_PENALTY,
+} from "./scan";
 export { BACKUP_FORMAT, type BackupFile, BackupFileSchema } from "./schema/backup";
 export {
   type BarcodeMemory,

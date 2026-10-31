@@ -23,7 +23,7 @@ sources:
     title: "The Highest Critic: Cultivar Review: Gastropop by Strain Mason (theweedadvocate, 2022-08-30)"
     retrieved: 2026-10-27
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

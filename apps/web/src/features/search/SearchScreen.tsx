@@ -1,7 +1,7 @@
 import { type SearchResult, search } from "@flowerscan/core";
 import { type FormEvent, Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { APP_NAME } from "../../app/copy";
-import { consumeSearchReset, Link, strainPath } from "../../app/router";
+import { consumeSearchReset, goBack, Link, SEARCH_PATH, strainPath } from "../../app/router";
 import { useStrainData } from "../../data/data-context";
 import type { StrainData } from "../../data/load-data";
 import { BetaNotice } from "../../ui/BetaNotice";
@@ -15,13 +15,13 @@ import { highlight } from "./highlight";
 
 function initialQuery(): string {
   if (consumeSearchReset()) {
-    window.history.replaceState(window.history.state, "", "/");
+    window.history.replaceState(window.history.state, "", SEARCH_PATH);
     return "";
   }
   return new URLSearchParams(window.location.search).get("q") ?? "";
 }
 
-/** `/`: the home screen. One big field, results as you type, from core's matcher. */
+/** `/search`: one tap from the scanner. One big field, results as you type, from core's matcher. */
 export function SearchScreen() {
   const { state, retry } = useStrainData();
   const [query, setQuery] = useState(initialQuery);
@@ -35,7 +35,7 @@ export function SearchScreen() {
 
   // Keep the query in the URL, so Back from a result brings it (and its results) back.
   useEffect(() => {
-    const url = trimmed === "" ? "/" : `/?q=${encodeURIComponent(query)}`;
+    const url = trimmed === "" ? SEARCH_PATH : `${SEARCH_PATH}?q=${encodeURIComponent(query)}`;
     if (window.location.pathname + window.location.search !== url) {
       window.history.replaceState(window.history.state, "", url);
     }
@@ -65,8 +65,18 @@ export function SearchScreen() {
 
   return (
     <main className="mx-auto min-h-dvh max-w-[640px] px-5 pt-[calc(env(safe-area-inset-top)+8px)] pb-[calc(env(safe-area-inset-bottom)+32px)] max-[359px]:px-4">
-      <header className="-mr-2 flex min-h-12 items-center justify-between gap-3">
-        <span className="display text-[1.25rem] tracking-[0.01em]">{APP_NAME}</span>
+      <header className="-mx-2 flex min-h-12 items-center justify-between gap-3">
+        <span className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={goBack}
+            aria-label={SEARCH_COPY.back}
+            className="pressable grid size-12 place-items-center rounded-full"
+          >
+            <Icon name="back" />
+          </button>
+          <span className="display text-[1.25rem] tracking-[0.01em]">{APP_NAME}</span>
+        </span>
         <Link
           href="/about"
           className="pressable inline-flex min-h-12 items-center gap-1.5 rounded-(--radius-pill) px-3 font-semibold text-(--color-accent-text) text-footnote"

@@ -19,9 +19,9 @@ sources:
     title: "High Times: 25 Years of Chem Dog (D. Danko, 2016-09-07)"
     retrieved: 2026-10-26
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Chem D

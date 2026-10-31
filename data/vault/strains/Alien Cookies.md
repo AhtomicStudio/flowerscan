@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: balanced
 breeder: null
 effects: []
 flavors: []
@@ -18,13 +18,16 @@ sources:
     title: "High Times: 20 Trending Strains (A. Hanna, 2019-09-19)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/alien-cookies
+    title: "Leafly: Alien Cookies strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Alien Cookies
 
 ## Curator notes
-Ancestor stub. MAC's mother was an Alien Cookies F2 selection (#7) per High Times (2019). Lineage and type not
-sourced yet.
+Ancestor stub. MAC's mother was an Alien Cookies F2 selection (#7) per High Times (2019). Lineage not sourced yet. Leafly classifies Alien Cookies as a balanced hybrid.

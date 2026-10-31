@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: balanced
 breeder: null
 effects: []
 flavors: []
@@ -18,7 +18,11 @@ sources:
     title: "Willamette Week: Strain Review: Orange 43 by Cultivated Industries (M. Stangel, 2017-02-20)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.allbud.com/marijuana-strains/hybrid/orange-juice-bud
+    title: "AllBud: Orange Juice Bud strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -27,4 +31,4 @@ updated: 2026-10-27
 
 ## Curator notes
 Ancestor stub. Father of Orange 43 per Willamette Week (2017), described as a male Franchise Genetics favoured.
-Lineage and type not sourced yet.
+Lineage not sourced yet. AllBud classifies Orange Juice Bud as a balanced hybrid.

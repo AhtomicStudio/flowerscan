@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,7 +18,11 @@ sources:
     title: "The Highest Critic: Strain Review: Mule Fuel by Sugarbud (Terple Grapes, 2021-09-23)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/mendo-montage
+    title: "Leafly: Mendo Montage strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -26,4 +30,4 @@ updated: 2026-10-27
 # Mendo Montage
 
 ## Curator notes
-Ancestor stub. Father of Mule Fuel in the one usable source. Lineage and type not sourced yet.
+Ancestor stub. Father of Mule Fuel in the one usable source. Lineage not sourced yet. Leafly classifies Mendo Montage as an indica-dominant hybrid.

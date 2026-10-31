@@ -19,9 +19,9 @@ sources:
     title: "Sensi Seeds blog: 7 Best Cheese Strains (M. Smith, updated 2024-07-31)"
     retrieved: 2026-10-26
     supports: [parents, reported_type, aliases]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Cheese

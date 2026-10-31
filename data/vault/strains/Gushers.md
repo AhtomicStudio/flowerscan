@@ -20,10 +20,10 @@ sources:
     retrieved: 2026-10-27
     supports: [parents]
   - url: https://theorywellness.org/product/gush-mints-strain/
-    title: "Theory Wellness: Gush Mints Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Gush Mints Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

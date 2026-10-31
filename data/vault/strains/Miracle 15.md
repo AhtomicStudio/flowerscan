@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: balanced
 breeder: null
 effects: []
 flavors: []
@@ -18,12 +18,16 @@ sources:
     title: "High Times: 20 Trending Strains (A. Hanna, 2019-09-19)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://en.seedfinder.eu/strain-info/Miracle_15/Capulator/
+    title: "SeedFinder: Miracle 15 (Capulator) strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Miracle 15
 
 ## Curator notes
-Ancestor stub. Father side of MAC (High Times 2019). Lineage and type not sourced yet.
+Ancestor stub. Father side of MAC (High Times 2019). Lineage not sourced yet. SeedFinder describes Miracle 15 as a balanced hybrid.

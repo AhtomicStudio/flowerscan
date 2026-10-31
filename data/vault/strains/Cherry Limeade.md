@@ -23,7 +23,7 @@ sources:
     title: "The Highest Critic: Strain Review: Cherry Limeade by Liontree Farms (pdxstoneman, 2020-03-25)"
     retrieved: 2026-10-27
     supports: [parents, reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

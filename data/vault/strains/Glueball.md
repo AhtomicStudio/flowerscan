@@ -16,10 +16,10 @@ terpenes: []
 typical_thc_pct: null
 sources:
   - url: https://theorywellness.org/product/glueball-strain
-    title: "Theory Wellness: Glueball Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Glueball Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: [parents, reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,12 +18,16 @@ sources:
     title: "High Times: Best Strains of the Year (J. Devine, 2023-12-30)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/face-off-og
+    title: "Leafly: Face Off OG strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Face Off OG
 
 ## Curator notes
-Ancestor stub. Mother side of Animal Face (High Times 2023). Lineage and type not sourced yet.
+Ancestor stub. Mother side of Animal Face (High Times 2023). Lineage not sourced yet. Leafly classifies Face Off OG as an indica-dominant hybrid.

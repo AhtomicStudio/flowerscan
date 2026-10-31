@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: sativa-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,12 +18,16 @@ sources:
     title: "MiCannaCast: Super Boof strain review (Canna Dave, 2026-06-01)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/tropicana-cookies
+    title: "Leafly: Tropicana Cookies strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Tropicana Cookies
 
 ## Curator notes
-Ancestor stub. Father side of Super Boof. Lineage and type not sourced yet.
+Ancestor stub. Father side of Super Boof. Lineage not sourced yet. Leafly classifies Tropicana Cookies as a sativa-dominant hybrid.

@@ -16,7 +16,7 @@ terpenes: []
 typical_thc_pct: null
 sources:
   - url: https://theorywellness.org/product/layer-cake-strain/
-    title: "Theory Wellness: Layer Cake Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Layer Cake Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: [parents, reported_type, effects]
   - url: https://thehighestcritic.com/reviews/strain-review-layer-cake-by-louis-vuchron/
@@ -27,7 +27,7 @@ sources:
     title: "The Highest Critic: Strain Review: Layer Cake by Rythm (fullspectrumconnoisseur, 2020-11-27)"
     retrieved: 2026-10-27
     supports: [parents, reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

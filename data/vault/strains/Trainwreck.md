@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: sativa-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,12 +18,16 @@ sources:
     title: "Sensi Seeds blog: 31 Best Weed Strains of All Time (S. Voser, updated 2025-05-28)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/trainwreck
+    title: "Leafly: Trainwreck strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Trainwreck
 
 ## Curator notes
-Ancestor stub. Parent of Pineapple Express in Sensi Seeds' version. Lineage and type not sourced yet.
+Ancestor stub. Parent of Pineapple Express in Sensi Seeds' version. Lineage not sourced yet. Leafly classifies Trainwreck as a sativa-dominant cultivar.

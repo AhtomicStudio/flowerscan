@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica
 breeder: null
 effects: []
 flavors: []
@@ -22,7 +22,11 @@ sources:
     title: "The Highest Critic: Strain Review: King Louis by THC Design (sjweedreview, 2021-04-06)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/la-confidential
+    title: "Leafly: LA Confidential strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -31,4 +35,4 @@ updated: 2026-10-27
 
 ## Curator notes
 Ancestor stub. Father of King Louis in both reviews (one writes "L.A. Confidential"; not added as an alias until a
-source uses it as the strain's own name). Lineage and type not sourced yet.
+source uses it as the strain's own name). Lineage not sourced yet. Leafly classifies LA Confidential as an indica cultivar.

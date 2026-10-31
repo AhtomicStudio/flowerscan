@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: sativa-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,12 +18,16 @@ sources:
     title: "High Times strain profile: Gorilla Glue #4 (GG4)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/sour-dubb
+    title: "Leafly: Sour Dubb strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Sour Dubb
 
 ## Curator notes
-Ancestor stub. Part of Gorilla Glue #4 via `Sour Dubb x Chem's Sister`. Lineage and type not sourced yet.
+Ancestor stub. Part of Gorilla Glue #4 via `Sour Dubb x Chem's Sister`. Lineage not sourced yet. Leafly classifies Sour Dubb as a sativa-dominant hybrid.

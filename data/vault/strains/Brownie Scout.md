@@ -20,7 +20,7 @@ sources:
     retrieved: 2026-10-27
     supports: [parents]
   - url: https://theorywellness.org/product/brownie-scout-strain/
-    title: "Theory Wellness: Brownie Scout Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Brownie Scout Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: [reported_type]
   - url: https://hightimes.com/events/the-winners-of-the-high-times-cannabis-cup-illinois-peoples-choice-edition-2022/

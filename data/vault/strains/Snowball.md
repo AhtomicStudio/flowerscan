@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -15,10 +15,14 @@ terpenes: []
 typical_thc_pct: null
 sources:
   - url: https://theorywellness.org/product/glueball-strain
-    title: "Theory Wellness: Glueball Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Glueball Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/snowball
+    title: "Leafly: Snowball strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -26,4 +30,4 @@ updated: 2026-10-27
 # Snowball
 
 ## Curator notes
-Ancestor stub. Father of Glueball in the one source. Lineage and type not sourced yet.
+Ancestor stub. Father of Glueball in the one source. Lineage not sourced yet. Leafly classifies Snowball as an indica-dominant hybrid.

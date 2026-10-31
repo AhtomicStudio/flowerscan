@@ -8,7 +8,7 @@ parents:
   - "[[Black Cherry Punch]]"
   - "[[Tropicana Cookies]]"
 parent_weights: null
-reported_type: unknown
+reported_type: balanced
 breeder: null
 effects: []
 flavors: []
@@ -23,9 +23,13 @@ sources:
     title: "Seeds Here Now blog: Super Boof Strain Review (J. Bean, updated 2026-10-07)"
     retrieved: 2026-10-26
     supports: [parents]
-verification: unverified
+  - url: https://www.leafly.com/strains/super-boof
+    title: "Leafly: Super Boof strain information"
+    retrieved: 2026-10-27
+    supports: [parents, reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Super Boof
@@ -35,5 +39,4 @@ Both sources agree: Black Cherry Punch x Tropicana Cookies. The cross was made b
 (Blockhead Buds) and first called Blockberry; Michigan grower Mobile Jay selected a standout plant from it and the
 name Super Boof stuck. "Blockberry" is not an alias: it names the cross, and Super Boof is one selection from it.
 
-`reported_type` is left unknown because the sources disagree: MiCannaCast calls it a balanced hybrid, Seeds Here
-Now an indica-leaning hybrid (about 70/30).
+Leafly and MiCannaCast classify Super Boof as a balanced hybrid.

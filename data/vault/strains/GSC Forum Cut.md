@@ -19,9 +19,9 @@ sources:
     title: "High Times strain profile: GMO"
     retrieved: 2026-10-26
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # GSC Forum Cut

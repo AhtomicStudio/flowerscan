@@ -15,7 +15,7 @@ terpenes: []
 typical_thc_pct: null
 sources:
   - url: https://theorywellness.org/product/crescendo-strain/
-    title: "Theory Wellness: Crescendo Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Crescendo Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: [reported_type, effects]
   - url: https://thehighestcritic.com/reviews/strain-review-crescendo-by-ethos-genetics/
@@ -30,7 +30,7 @@ sources:
     title: "The Highest Critic: Strain Review: Crescendo by Loud Pack (sjweedreview, 2021-04-16)"
     retrieved: 2026-10-27
     supports: [reported_type, effects]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

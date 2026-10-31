@@ -27,14 +27,19 @@ sources:
     title: "Seeds Here Now blog: Gelato Strain Review (Chris A, 2024-03-11)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/thin-mint
+    title: "Leafly: Thin Mint GSC strain information"
+    retrieved: 2026-10-27
+    supports: [parents, aliases]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Thin Mint GSC
 
 ## Curator notes
 High Times (2023) calls it "the Cookies phenotype Thin Mint Cookies"; Sherbinskis writes "Thin Mint Cookies";
-Seeds Here Now writes "Thin Mint Girl Scout Cookies (GSC)". Modelled as a `pheno` of Girl Scout Cookies.
+Seeds Here Now writes "Thin Mint Girl Scout Cookies (GSC)"; Leafly credits Cookie Fam Genetics with the Thin Mint
+phenotype of Girl Scout Cookies. Modelled as a `pheno` of Girl Scout Cookies.
 Mother of Sunset Sherbet and a parent of Gelato and Cookies and Cream.

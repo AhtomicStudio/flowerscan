@@ -17,7 +17,7 @@ sources:
     title: "The Highest Critic: Strain Review: Layer Cake by Rythm (fullspectrumconnoisseur, 2020-11-27)"
     retrieved: 2026-10-27
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

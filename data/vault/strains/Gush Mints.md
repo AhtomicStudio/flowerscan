@@ -16,7 +16,7 @@ terpenes: []
 typical_thc_pct: null
 sources:
   - url: https://theorywellness.org/product/gush-mints-strain/
-    title: "Theory Wellness: Gush Mints Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Gush Mints Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: [parents, reported_type]
   - url: https://thehighestcritic.com/reviews/cultivar-review-gush-mints-by-pax-genetics/
@@ -27,7 +27,7 @@ sources:
     title: "The Highest Critic: Cultivar Review: Gush Mints by Moon Valley Cannabis (C. Chen, 2023-06-30)"
     retrieved: 2026-10-27
     supports: [parents, reported_type, effects, aliases]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

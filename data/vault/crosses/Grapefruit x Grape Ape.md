@@ -13,9 +13,9 @@ sources:
     title: "High Times: 10 Seed Companies To Add To Your Garden in 2016 (T.H. Caeczar, 2016-04-15)"
     retrieved: 2026-10-26
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Grapefruit x Grape Ape

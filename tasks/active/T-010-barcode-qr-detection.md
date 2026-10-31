@@ -2,8 +2,8 @@
 id: T-010
 title: Barcode & QR detection
 milestone: M2
-status: backlog
-owner: unassigned
+status: active
+owner: scanner-engineer
 depends_on: [T-009]
 touches: [apps/web/src/workers/detection.worker.ts, apps/web/src/platform/detectors/, packages/core/src/scan/classifyQr.ts, packages/core/src/scan/classifyBarcode.ts, packages/core/test/scan/, apps/web/e2e/]
 docs: [docs/06-scan-pipeline.md]

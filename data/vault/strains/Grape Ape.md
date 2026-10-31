@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica
 breeder: null
 effects: []
 flavors: []
@@ -18,12 +18,16 @@ sources:
     title: "High Times: 10 Seed Companies To Add To Your Garden in 2016 (T.H. Caeczar, 2016-04-15)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/grape-ape
+    title: "Leafly: Grape Ape strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Grape Ape
 
 ## Curator notes
-Ancestor stub. Part of Zkittlez via `Grapefruit x Grape Ape`. Lineage and type not sourced yet.
+Ancestor stub. Part of Zkittlez via `Grapefruit x Grape Ape`. Lineage not sourced yet. Leafly classifies Grape Ape as an indica cultivar.

@@ -16,7 +16,7 @@ terpenes: []
 typical_thc_pct: null
 sources:
   - url: https://theorywellness.org/product/gastro-pop-strain/
-    title: "Theory Wellness: Gastro Pop Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Gastro Pop Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: [parents, effects]
   - url: https://www.micannacast.com/gastro-pop-strain-review/
@@ -31,7 +31,7 @@ sources:
     title: "The Highest Critic: Cultivar Review: Gastropop by Strain Mason (theweedadvocate, 2022-08-30)"
     retrieved: 2026-10-27
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

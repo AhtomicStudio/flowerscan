@@ -3,11 +3,14 @@ import { describe, expect, it } from "vitest";
 import type { ShippedTerm } from "../../data/load-data";
 import { STRAINS, TAXONOMY } from "../../test/fixtures";
 import {
+  basisFor,
   disputedCount,
   effectsFor,
   leanFor,
   originsUnknown,
+  PACKAGE_RESULT_ID,
   parentsSummary,
+  recordFromPackageSays,
   resolveParent,
 } from "./result-model";
 
@@ -69,5 +72,17 @@ describe("family-tree helpers", () => {
     expect(leanFor(strain("goldcrest"))).toBeNull(); // reported
     expect(leanFor(strain("night-heron"))).toBeNull(); // unknown
     expect(leanFor(strain("landrace-c"))).toBeNull(); // landrace
+  });
+
+  it("builds a synthetic record from package_says with Printed on package basis", () => {
+    const rec = recordFromPackageSays("sativa", "Solar Flare");
+    expect(rec.id).toBe(PACKAGE_RESULT_ID);
+    expect(rec.name).toBe("Solar Flare");
+    expect(rec.lineage.label).toBe("sativa");
+    expect(basisFor(rec)).toEqual({
+      term: "Printed on package",
+      text: "read from the label. This strain isn't in our lineage database yet.",
+    });
+    expect(recordFromPackageSays("indica", "   ").name).toBe("Package label");
   });
 });

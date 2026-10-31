@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: sativa-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,12 +18,16 @@ sources:
     title: "High Times strain profile: Gorilla Glue #4 (GG4)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/chocolate-diesel
+    title: "Leafly: Chocolate Diesel strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Chocolate Diesel
 
 ## Curator notes
-Ancestor stub. Father side of Gorilla Glue #4. Lineage and type not sourced yet.
+Ancestor stub. Father side of Gorilla Glue #4. Lineage not sourced yet. Leafly classifies Chocolate Diesel as a sativa-dominant cultivar.

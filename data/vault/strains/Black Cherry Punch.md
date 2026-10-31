@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,13 +18,17 @@ sources:
     title: "MiCannaCast: Super Boof strain review (Canna Dave, 2026-06-01)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/black-cherry-punch
+    title: "Leafly: Black Cherry Punch strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Black Cherry Punch
 
 ## Curator notes
 Ancestor stub. Mother side of Super Boof. Don't merge it with "Cherry Punch" (Symbiotic Genetics, High Times
-2019): the names differ and no source I read links the two. Lineage and type not sourced yet.
+2019): the names differ and no source I read links the two. Lineage not sourced yet. Leafly classifies Black Cherry Punch as an indica-dominant hybrid.

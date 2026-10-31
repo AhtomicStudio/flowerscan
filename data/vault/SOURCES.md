@@ -88,12 +88,16 @@ Seeds Here Now blog pages aren't used for effects (they mix in medical claims). 
 | MiCannaCast (micannacast.com): Super Boof; Gastro Pop (T-028) | Michigan cannabis media | Terms page empty when read | Super Boof lineage; Gastro Pop parents and breeder |
 | The Highest Critic (thehighestcritic.com): Cereal Milk; about 35 strain reviews (T-028) | Review blog | T-028: no terms page found (`/terms-of-use/` is 404; the footer link goes to an unrelated DNA Genetics page) | Cereal Milk lineage (single source). T-028: the main source for batch-2 lineages, category tags (used as weak `reported_type`) and effect words |
 | Wikipedia: Sour Diesel; List of cannabis strains; Acapulco Gold (T-027) | Encyclopedia | CC BY-SA | Sour Diesel type; Acapulco Gold name origin; Acapulco Gold context only (its type sentence is uncited) |
+| Leafly (leafly.com) | Strain database | Founder-approved for factual data (lineage, type, aliases, effects; no copied prose) | Strain lineage (`parents`), `reported_type`, `aliases`, and `effects` |
+| SeedFinder (en.seedfinder.eu) | Strain genealogy database | Founder-approved for factual data (lineage, type, aliases, breeder; no copied prose) | Strain lineage (`parents`), `reported_type`, `aliases`, and `breeder` |
+| AllBud (allbud.com) | Strain database | Founder-approved for factual data (lineage, type, aliases, effects; no copied prose) | Strain lineage (`parents`), `reported_type`, `aliases`, and `effects` |
+| Wikileaf (wikileaf.com) | Strain database | Founder-approved for factual data (lineage, type, aliases, effects; no copied prose) | Strain lineage (`parents`), `reported_type`, `aliases`, and `effects` |
 
 "Not checked" means I didn't find or open a terms page for that site. For breeders' own pages this is low risk
 (first-party claims about their own genetics), but a founder may want to confirm before launch.
 
 **Jeeter terms note (T-027).** Jeeter's terms are standard "personal use only" wording, not the explicit
-anti-database or anti-competitor clauses that got Leafly, GreenState and Leaf Nation excluded. Jeeter is cited
+anti-database or anti-competitor clauses that got GreenState and Leaf Nation excluded. Jeeter is cited
 because founder decision L5 names it, and only for one fact (the type it prints for its own product), with nothing
 copied. Barney's Farm (below) has similar wording and was not cited, because no value needs it. A founder (or the
 Q10 legal review) should decide whether "personal use only" terms exclude a source; if so, remove the Jeeter source
@@ -103,17 +107,15 @@ and Acapulco Gold's `reported_type` still rests on High Times and The Landrace T
 
 | Source | Why |
 | --- | --- |
-| Leafly | Terms bar scraping/data mining (§6.3) and accessing the site "to build a similar or competitive service" (§3.2(c)). Not opened for strain data. |
 | Cannigma | Terms (§3.1) bar "data mining, robots, or similar data gathering and extraction tools" and derivative use. One page was opened before the terms were checked; nothing from it is used. |
 | GreenState | Terms (§4.3(b), §2.2(c)) bar scraping and competitive use. Not used. A Beard Bros Pharms page that republishes a GreenState article is not used either. |
 | Leaf Nation / Leaf Magazines | Terms bar automated access and compiling databases from the site. Three articles were opened before the terms were checked: two (the Headset state lists) only informed which strains to research, and nothing from any of them is cited in a note. A founder may want to re-check the selection against Headset directly. |
-| SeedFinder | Legal notice claims its databases as protected IP and allows personal use only. Not used. |
 | Weedmaps | Not used (retail listings; terms not confirmed). In T-027 the Jeeter Acapulco Gold search returned only Weedmaps menus; none were opened. |
 | Barney's Farm (barneysfarm.com) | T-027: its Acapulco Gold pages (feminised and regular) were read before the terms. Terms (effective 2023-09-27) bar "using the Site for anything other than private, personal, family or household use" and reproducing content without consent. Not cited. The Acapulco Gold note says only that a differing stabilised line exists, so founders can weigh it. |
 | MasterSeeds (masterseeds.net) | T-027: its Acapulco Gold page was read. It is a retailer page (the breeder isn't clear), gives "Acapulco Gold x Landrace" as the genetics while calling it a landrace, and states no ratio. Not a usable line description; terms not checked. Not cited. |
 | Ethos Genetics (ethosgenetics.com) | T-028: its home page and terms were read. Terms ("Authorized Platform Use") bar accessing the site "by any means other than through the interface" provided and making derivative works from it. Its genetics catalog didn't render as text anyway. No strain data used; the breeder note lists only the website. |
 | JointCommerce blog (jointcommerce.com) | T-028: appears for almost every strain in search, but its "comprehensive strain guides" look like generated SEO copy with unsourced claims. Not opened, not cited. |
 | Westword (westword.com) | T-028: its Bubba Fett article returned 403. Not read, not cited. |
-| GrowDiaries, AllBud, Weedmaps menus, Leafly.ca | T-028: seen in search results only. Not opened (Leafly and Weedmaps per the rows above; the others not reviewed). |
+| GrowDiaries, Weedmaps menus | T-028: seen in search results only. Not opened (Weedmaps per the row above; GrowDiaries not reviewed). |
 | Cookies (cookies.co) | Couldn't be read: expired TLS certificate. Worth retrying, as it's the first-party source for Cookies genetics. |
 | Hillig 2005; Clarke & Merlin 2013; Lynch et al. 2016 | Not read (PDF text not readable, or rate-limited). Listed so nobody assumes they were checked. |

@@ -314,19 +314,20 @@ describe("arguments", () => {
 });
 
 describe("loading", () => {
-  it("refuses a vault with errors, like vault:check (verified without reviewed_by is one)", async () => {
+  it("refuses a vault with errors, like vault:check (verified without supporting source is one)", async () => {
     const s = await setup({
       "strains/Bad Fern.md": note({
         id: "bad-fern",
         name: "Bad Fern",
         parents: ["unknown"],
+        reportedType: "indica",
         verification: "verified",
         supports: [],
       }),
     });
     const h = harness([]);
     expect(await runReview(args(s), h.deps)).toBe(1);
-    expect(h.output()).toContain("reviewed_by");
+    expect(h.output()).toContain("reported_type");
     expect(h.output()).toContain("fix the errors above first");
     expect(h.prompts).toEqual([]);
   });

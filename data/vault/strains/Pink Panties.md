@@ -8,7 +8,7 @@ parents:
   - "[[Larry OG]]"
   - "[[Burmese Blackberry Kush]]"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: "[[Sherbinskis]]"
 effects: []
 flavors: []
@@ -22,10 +22,14 @@ sources:
   - url: https://hightimes.com/strains/gelato-deserves-her-flowers/
     title: "High Times: Gelato Deserves Her Flowers (E. Holland, 2023-02-10)"
     retrieved: 2026-10-26
-    supports: [parents]
+    supports: []
+  - url: https://www.leafly.com/strains/pink-panties
+    title: "Leafly: Pink Panties strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
 verification: disputed
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Pink Panties
@@ -39,4 +43,4 @@ Father of Sunset Sherbet. Made by Sherbinski with Burmese pollen from Jigga. **T
 
 The breeder's first-hand account is preferred for the mother. The father's full name, Burmese Blackberry Kush,
 comes from the 2023 article (the interview says only "Burmese"). Both versions put an OG-family mother with a
-Burmese father.
+Burmese father. Leafly classifies Pink Panties as an indica-dominant hybrid.

@@ -26,11 +26,11 @@ async function noSidewaysScroll(page: Page) {
   expect(overflow).toBeLessThanOrEqual(0);
 }
 
-test("gate → search blue dream → result → Details → family tree → Search another", async ({
+test("gate → search blue dream → result → Details → family tree → Scan another", async ({
   page,
 }) => {
   const foreign = guardNetwork(page);
-  await page.goto("/");
+  await page.goto("/search");
   expect(page.url()).toMatch(/^https:/);
   await passGate(page);
 
@@ -58,17 +58,15 @@ test("gate → search blue dream → result → Details → family tree → Sear
   await expect(tree.getByText("Blue Dream", { exact: true })).toBeVisible();
   await expect(tree.getByRole("link").first()).toBeVisible();
 
-  await page.getByRole("button", { name: /Search another/ }).click();
+  await page.getByRole("button", { name: /Scan another/ }).click();
   await expect(page).toHaveURL(/\/$/);
-  await expect(box).toBeFocused();
-  await expect(box).toHaveValue("");
   await expect(page.locator('meta[name="theme-color"]')).toHaveAttribute("content", "#0b0d0c");
 
   expect(foreign).toEqual([]);
 });
 
 test("search tolerates typos", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/search");
   await passGate(page);
   await page.getByRole("searchbox").fill("blu dream");
   await expect(page.getByRole("link", { name: /^Blue Dream/ })).toBeVisible();
@@ -108,7 +106,7 @@ test("the beta notice follows the data version", async ({ page, request }) => {
     data_version: string;
   };
   const beta = latest.data_version.endsWith("-dev");
-  await page.goto("/");
+  await page.goto("/search");
   await passGate(page);
   await page.getByRole("searchbox").fill("blue dream");
   await expect(page.getByRole("link", { name: /^Blue Dream/ })).toBeVisible();
@@ -121,7 +119,7 @@ test("the beta notice follows the data version", async ({ page, request }) => {
 for (const width of [390, 320]) {
   test(`no horizontal scroll at ${width} px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 844 });
-    await page.goto("/");
+    await page.goto("/search");
     await passGate(page);
     await page.getByRole("searchbox").fill("platinum girl scout cookies");
     await expect(page.getByRole("link").nth(1)).toBeVisible();
@@ -164,7 +162,7 @@ test("200% text: the answer word stays on screen and nothing scrolls sideways", 
   await expect(word).toBeVisible();
   const box = await word.boundingBox();
   expect((box?.x ?? 0) + (box?.width ?? 0)).toBeLessThanOrEqual(390);
-  await expect(page.getByRole("button", { name: /Search another/ })).toBeInViewport();
+  await expect(page.getByRole("button", { name: /Scan another/ })).toBeInViewport();
   await noSidewaysScroll(page);
 });
 
@@ -177,7 +175,7 @@ test("filler sweep: no %, THC or potency on any real strain's result", async ({
     id: string;
   }[];
   expect(strains.length).toBeGreaterThan(0);
-  await page.goto("/");
+  await page.goto("/search");
   await passGate(page);
   await expect(page.getByRole("searchbox")).toBeVisible();
   for (const { id } of strains) {

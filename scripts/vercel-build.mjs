@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 
 const repoRoot = fileURLToPath(new URL("..", import.meta.url));
 const env = process.env.VERCEL_ENV ?? "development";
-const BETA = true;
+const BETA = false;
 const vaultFlags = env === "production" && !BETA ? "" : " --include-unverified";
 
 const run = (command) => {

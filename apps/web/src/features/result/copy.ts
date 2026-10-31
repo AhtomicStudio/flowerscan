@@ -5,7 +5,8 @@ export const RESULT_COPY = {
   close: "Close",
   back: "Back",
   details: "Details",
-  searchAnother: "Search another",
+  scanAnother: "Scan another",
+  learnedBarcode: "We'll recognize this barcode next time (on this phone).",
   commonlyReported: "Commonly reported",
   alsoReported: "Also reported",
   effectsLabel: "Commonly reported effects",
@@ -38,7 +39,10 @@ export const RESULT_COPY = {
 } as const;
 
 /** BasisLine (docs/08): one line per method, the term in bold. Never a number. */
-export const BASIS: Record<LineageMethod | "landrace", { term: string | null; text: string }> = {
+export const BASIS: Record<
+  LineageMethod | "landrace" | "package",
+  { term: string | null; text: string }
+> = {
   traced: { term: "Lineage traced", text: "an estimate from its family tree, not a lab test." },
   partial: {
     term: "Partly traced",
@@ -47,6 +51,10 @@ export const BASIS: Record<LineageMethod | "landrace", { term: string | null; te
   reported: {
     term: "Reported type",
     text: "how sources describe it. We don't have enough of its family tree yet.",
+  },
+  package: {
+    term: "Printed on package",
+    text: "read from the label. This strain isn't in our lineage database yet.",
   },
   unknown: { term: null, text: "We don't have enough of its family tree to say." },
   landrace: {

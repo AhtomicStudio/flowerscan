@@ -24,7 +24,7 @@ describe("result view", () => {
     expect(answer()).toBe("Sativa");
     expect(screen.getByRole("main").getAttribute("data-class")).toBe("sativa");
     expect(screen.getByRole("button", { name: "Details" })).toBeTruthy();
-    expect(screen.getByRole("button", { name: /Search another/ })).toBeTruthy();
+    expect(screen.getByRole("button", { name: /Scan another/ })).toBeTruthy();
     // No Save in the beta (hidden, not faked) and no Share.
     expect(screen.queryByRole("button", { name: /save|share/i })).toBeNull();
     expect(basis()).toBe("Lineage traced: an estimate from its family tree, not a lab test.");
@@ -165,29 +165,48 @@ describe("result view", () => {
     expect(screen.getByRole("button", { name: "Search strains" })).toBeTruthy();
   });
 
-  it("Search another returns to search with an empty, focused field", async () => {
-    renderApp();
+  it("Scan another returns to the scanner", async () => {
+    renderApp({ path: "/search" });
     const box = await screen.findByRole("searchbox");
     fireEvent.change(box, { target: { value: "kestrel" } });
     fireEvent.click(await screen.findByRole("link", { name: /Kestrel Haze/ }));
     await screen.findByTestId("answer-word");
     expect(window.location.pathname).toBe("/s/kestrel-haze");
-    fireEvent.click(screen.getByRole("button", { name: /Search another/ }));
-    // history.go(-1) is async in jsdom.
-    const again = await screen.findByRole("searchbox");
+    fireEvent.click(screen.getByRole("button", { name: /Scan another/ }));
     await waitFor(() => expect(window.location.pathname).toBe("/"));
-    expect((again as HTMLInputElement).value).toBe("");
-    expect(document.activeElement).toBe(again);
+    expect(await screen.findByTestId("scanner")).toBeTruthy();
   });
 
   it("Escape closes the result back to the search with the query kept", async () => {
-    renderApp();
+    renderApp({ path: "/search" });
     fireEvent.change(await screen.findByRole("searchbox"), { target: { value: "sandpiper" } });
     fireEvent.click(await screen.findByRole("link", { name: /Sandpiper/ }));
     await screen.findByTestId("answer-word");
     fireEvent.keyDown(window, { key: "Escape" });
     const box = await screen.findByRole("searchbox");
     await waitFor(() => expect((box as HTMLInputElement).value).toBe("sandpiper"));
+  });
+
+  it("renders a package-says fallback result with full class color and honest basis", async () => {
+    window.history.replaceState(
+      { packageResult: { label: "indica", name: "Mystery Bag" } },
+      "",
+      "/s/__package__",
+    );
+    renderApp({ path: "/s/__package__" });
+    // Restore history state since renderApp calls replaceState(null, ...)
+    window.history.replaceState(
+      { packageResult: { label: "indica", name: "Mystery Bag" } },
+      "",
+      "/s/__package__",
+    );
+    window.dispatchEvent(new PopStateEvent("popstate"));
+    expect(await screen.findByRole("heading", { level: 1, name: "Mystery Bag" })).toBeTruthy();
+    expect(answer()).toBe("Indica");
+    expect(screen.getByRole("main").getAttribute("data-class")).toBe("indica");
+    expect(basis()).toBe(
+      "Printed on package: read from the label. This strain isn't in our lineage database yet.",
+    );
   });
 });
 
@@ -210,7 +229,7 @@ describe("filler sweep", () => {
   }
 
   it("search results and About carry no % or potency either", async () => {
-    const app = renderApp();
+    const app = renderApp({ path: "/search" });
     fireEvent.change(await screen.findByRole("searchbox"), { target: { value: "a" } });
     await screen.findByRole("list", { name: "Search strains" });
     for (const pattern of BANNED) expect(document.body.textContent).not.toMatch(pattern);

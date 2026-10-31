@@ -15,10 +15,10 @@ describe("age gate (component)", () => {
     expect(fetch.calls).toEqual([]);
   });
 
-  it("opens search after yes, and remembers it", async () => {
+  it("opens the scanner after yes, and remembers it", async () => {
     const { store, fetch } = renderApp({ confirmed: false });
     fireEvent.click(screen.getByRole("button", { name: "I'm 21 or older" }));
-    expect(await screen.findByRole("searchbox", { name: "Search strains" })).toBeTruthy();
+    expect(await screen.findByTestId("scanner")).toBeTruthy();
     expect(fetch.calls[0]).toBe("/data/latest.json");
     expect(store.getItem("flowerscan.age_confirmed_at")).toBe(NOW.toISOString());
   });
@@ -65,20 +65,23 @@ describe("age gate (component)", () => {
 });
 
 describe("routes", () => {
-  it("matches the beta's routes", () => {
-    expect(matchRoute("/")).toEqual({ name: "search" });
+  it("matches the app's routes", () => {
+    expect(matchRoute("/")).toEqual({ name: "scan" });
+    expect(matchRoute("/scan")).toEqual({ name: "scan" });
+    expect(matchRoute("/scan/")).toEqual({ name: "scan" });
+    expect(matchRoute("/search")).toEqual({ name: "search" });
+    expect(matchRoute("/search/")).toEqual({ name: "search" });
     expect(matchRoute("/about")).toEqual({ name: "about" });
     expect(matchRoute("/about/")).toEqual({ name: "about" });
     expect(matchRoute("/s/blue-dream")).toEqual({ name: "result", id: "blue-dream" });
     expect(matchRoute("/s/%E0%A4%A")).toEqual({ name: "not-found" });
-    expect(matchRoute("/scan")).toEqual({ name: "not-found" });
   });
 
   it("shows a friendly page for an unknown path", async () => {
     renderApp({ path: "/nope" });
     expect(screen.getByRole("heading", { name: "We can't find that page." })).toBeTruthy();
     fireEvent.click(screen.getByRole("button", { name: "Search strains" }));
-    await waitFor(() => expect(window.location.pathname).toBe("/"));
+    await waitFor(() => expect(window.location.pathname).toBe("/search"));
     expect(await screen.findByRole("searchbox")).toBeTruthy();
   });
 });

@@ -19,14 +19,14 @@ sources:
     title: "Seeds Here Now: Garlic Breath clone (ACC listing)"
     retrieved: 2026-10-26
     supports: [parents, reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Garlic Breath
 
 ## Curator notes
 Single source: a clone listing gives GMO x Mendo Breath and calls it an indica-dominant hybrid (70/30). The
-listing names ACC as the brand selling the clone, not as the original breeder, so `breeder` is empty. Needs a
-better source.
+listing says "Breeder: ACC" (the clone vendor), whereas other sources credit Horg / ThugPug Genetics for the cross,
+so `breeder` stays empty until settled.

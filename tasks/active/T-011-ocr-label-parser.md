@@ -2,8 +2,8 @@
 id: T-011
 title: OCR engine + label text parser
 milestone: M2
-status: backlog
-owner: unassigned
+status: active
+owner: scanner-engineer
 depends_on: [T-008, T-009]
 touches: [apps/web/src/workers/ocr.worker.ts, apps/web/src/platform/ocr/, packages/core/src/scan/parseLabelText.ts, packages/core/src/scan/lexicon/, packages/core/test/scan/]
 docs: [docs/06-scan-pipeline.md]

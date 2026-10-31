@@ -7,7 +7,7 @@ aliases: ["The Y"]
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: balanced
 breeder: null
 effects: []
 flavors: []
@@ -18,12 +18,16 @@ sources:
     title: "The Highest Critic: Strain review: Cereal Milk by Powerzzzup Genetics (thefirescale, 2020-07-18)"
     retrieved: 2026-10-26
     supports: [aliases]
-verification: unverified
+  - url: https://www.leafly.com/strains/y-life
+    title: "Leafly: Y Life strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Y-Life
 
 ## Curator notes
-Ancestor stub. Mother side of Cereal Milk, written "Y-Life (aka The Y)" in the review. Lineage and type not sourced yet.
+Ancestor stub. Mother side of Cereal Milk, written "Y-Life (aka The Y)" in the review. Lineage not sourced yet. Leafly classifies Y-Life as a balanced hybrid.

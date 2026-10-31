@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: sativa-dominant
 breeder: null
 effects: []
 flavors: []
@@ -22,7 +22,11 @@ sources:
     title: "The Highest Critic: Antheia Farms: Golden Pineapple (Haze4Dayz, 2026-03-07)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/golden-goat
+    title: "Leafly: Golden Goat strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -32,3 +36,5 @@ updated: 2026-10-27
 ## Curator notes
 Ancestor stub. Mother side of Golden Pineapple. Its own lineage appeared only in search snippets (pages not read),
 so `parents` stays `unknown`.
+
+Leafly classifies Golden Goat as a sativa-dominant hybrid.

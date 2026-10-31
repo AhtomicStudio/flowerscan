@@ -22,7 +22,7 @@ sources:
   - url: https://www.klutchcannabis.com/strain/orange-43/
     title: "Klutch Cannabis: Orange 43 Ohio's Favorite Sativa (strain page)"
     retrieved: 2026-10-27
-    supports: [parents, reported_type]
+    supports: [reported_type]
 verification: disputed
 created: 2026-10-27
 updated: 2026-10-27

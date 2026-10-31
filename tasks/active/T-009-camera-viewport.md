@@ -2,8 +2,8 @@
 id: T-009
 title: Camera viewport & permission flow
 milestone: M2
-status: backlog
-owner: unassigned
+status: active
+owner: scanner-engineer
 depends_on: [T-004]
 touches: [apps/web/src/platform/camera/, apps/web/src/features/scan/, apps/web/e2e/]
 docs: [docs/06-scan-pipeline.md, docs/08-ux-and-design.md]

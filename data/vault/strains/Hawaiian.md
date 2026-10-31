@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: sativa-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,9 +18,13 @@ sources:
     title: "Sensi Seeds blog: 31 Best Weed Strains of All Time (S. Voser, updated 2025-05-28)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/hawaiian
+    title: "Leafly: Hawaiian strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Hawaiian
@@ -29,3 +33,5 @@ updated: 2026-10-26
 Ancestor stub for the "Hawaiian" parent of Pineapple Express. Kept as a `strain` with unknown parents, not a
 landrace: the source doesn't say whether it means a traditional Hawaiian population or a named Hawaiian cultivar.
 If a source shows it is a landrace, convert it and apply the rubric.
+
+Leafly classifies Hawaiian as a sativa-dominant cultivar.

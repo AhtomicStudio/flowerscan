@@ -6,6 +6,7 @@ fix one of them in the same change.
 | # | Doc | Read when |
 | --- | --- | --- |
 | 00 | [Gemini brief review](00-gemini-brief-review.md) | Once: explains why the plan looks like this |
+| 00b | [Gemini review & fixes (2026-10-31)](00-gemini-review-and-fixes.md) | Always: explains D20–D23 (allowed sources, sourced verification, non-blocking barcodes, `package_says` fallback, OCR wiring) |
 | 01 | [Product brief](01-product-brief.md) | Always: personas, principles, metrics |
 | 02 | [MVP scope](02-mvp-scope.md) | Before proposing any feature |
 | 03 | [Architecture](03-architecture.md) | Before writing any code |

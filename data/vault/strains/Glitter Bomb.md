@@ -23,7 +23,11 @@ sources:
     title: "The Highest Critic: Cultivar Review: Love Potion by Smoken Promises (yieldisdead, 2025-08-23)"
     retrieved: 2026-10-27
     supports: [parents, reported_type]
-verification: unverified
+  - url: https://www.leafly.com/strains/glitter-bomb
+    title: "Leafly: Glitter Bomb strain information"
+    retrieved: 2026-10-27
+    supports: [parents, reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -31,10 +35,10 @@ updated: 2026-10-27
 # Glitter Bomb
 
 ## Curator notes
-Seeds Here Now gives "Grape Gas #10 x OGKB Blueberry Headband" from Compound Genetics (with NorCal growers). A
+Leafly and Seeds Here Now give "Grape Gas #10 x OGKB Blueberry Headband" from Compound Genetics (with NorCal growers). A
 Highest Critic review headed "LOVE POTION aka Glitter Bomb" (a grower's rename) gives "Grape Gas x OGKB Blueberry
-Headband", original breeder Compound Genetics, tagged indica dominant. Seeds Here Now says it's "usually described
-as an indica-leaning hybrid".
+Headband", original breeder Compound Genetics, tagged indica dominant. Seeds Here Now and Leafly also describe it
+as an indica-leaning hybrid.
 
 The first parent is linked to `Grape Gasoline` (Grape Gas is its alias). Seeds Here Now specifies the numbered
 selection #10; it isn't its own node yet, and a pheno of the seed line takes the line's value anyway (P7).

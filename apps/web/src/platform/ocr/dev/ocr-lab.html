@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>OCR lab (dev)</title>
+    <style>
+      body { font: 14px/1.4 system-ui, sans-serif; margin: 16px; background: #fff; color: #111; }
+      fieldset { margin: 0 0 12px; display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
+      button { font: inherit; padding: 6px 12px; }
+      #status { font-family: ui-monospace, monospace; white-space: pre-wrap; }
+      .run { border-top: 1px solid #ccc; padding: 12px 0; display: grid; gap: 8px; }
+      .run canvas { max-width: 320px; max-height: 240px; border: 1px solid #ddd; }
+      .run table { border-collapse: collapse; font-family: ui-monospace, monospace; font-size: 12px; }
+      .run td { padding: 2px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+      .pass { color: #0a6b2a; } .fail { color: #b00020; }
+    </style>
+  </head>
+  <body>
+    <h1>OCR lab (dev only)</h1>
+    <p>
+      Runs the on-device engine on synthetic labels or your own crops. Nothing leaves this machine:
+      "Record" saves <code>data/eval/ocr-cache/</code> JSON as a local download.
+    </p>
+    <fieldset>
+      <button id="prefetch" type="button">Prefetch</button>
+      <button id="synthetic" type="button">Run synthetic labels</button>
+      <label>Images <input id="files" type="file" accept="image/*" multiple /></label>
+      <label>PSM
+        <select id="psm">
+          <option value="11">11 sparse text</option>
+          <option value="3">3 auto</option>
+          <option value="6">6 single block</option>
+          <option value="12">12 sparse + OSD</option>
+        </select>
+      </label>
+      <label><input id="rotation" type="checkbox" checked /> Rotation retry</label>
+      <label><input id="invert" type="checkbox" checked /> Auto-invert dark crops</label>
+      <label><input id="threshold" type="checkbox" /> Adaptive threshold</label>
+      <label><input id="record" type="checkbox" /> Record (download ocr-cache JSON)</label>
+    </fieldset>
+    <div id="status">idle</div>
+    <div id="runs"></div>
+    <script type="module" src="./ocr-lab.ts"></script>
+  </body>
+</html>

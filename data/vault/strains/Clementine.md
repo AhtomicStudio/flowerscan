@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: sativa-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,12 +18,16 @@ sources:
     title: "High Times: 20 Trending Strains (A. Hanna, 2019-09-19)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/clementine
+    title: "Leafly: Clementine strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Clementine
 
 ## Curator notes
-Ancestor stub. Mother side of Mimosa (High Times 2019). Lineage and type not sourced yet.
+Ancestor stub. Mother side of Mimosa (High Times 2019). Lineage not sourced yet. Leafly classifies Clementine as a sativa-dominant cultivar.

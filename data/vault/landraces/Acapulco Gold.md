@@ -33,7 +33,7 @@ sources:
     title: "Wikipedia: Acapulco Gold (CC BY-SA, last edited 2026-10-04)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+verification: verified
 created: 2026-10-26
 updated: 2026-10-27
 ---

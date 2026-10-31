@@ -30,7 +30,7 @@ sources:
     title: "Seeds Here Now blog: Discover the Delicious Lilac Diesel Strain (J. Bean, 2023-12-11)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

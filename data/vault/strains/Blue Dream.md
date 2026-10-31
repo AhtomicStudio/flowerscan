@@ -22,20 +22,20 @@ sources:
   - url: https://cannabisnow.com/strain-review-blue-dream/
     title: "Cannabis Now: Strain Review: Blue Dream (Dragonfly de la Luz, 2014-06-24)"
     retrieved: 2026-10-26
-    supports: [parents, reported_type]
+    supports: [reported_type]
   - url: https://sensiseeds.com/en/blog/31-best-weed-strains-of-all-time-the-greatest-hits-of-cannabis/
     title: "Sensi Seeds blog: 31 Best Weed Strains of All Time (S. Voser, updated 2025-05-28)"
     retrieved: 2026-10-26
     supports: [parents]
 verification: disputed
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Blue Dream
 
 ## Curator notes
-A California clone-only cut from the Santa Cruz area. High Times (2023) found no one who knows the original
+A California cultivar from the Santa Cruz area. High Times (2023) found no one who knows the original
 breeder, so `breeder` stays empty.
 
 **Which Haze is disputed.** Sources agree on Blueberry (DJ Short's line) x a Haze:

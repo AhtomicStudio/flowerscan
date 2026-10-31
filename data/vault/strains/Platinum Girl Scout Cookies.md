@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -19,10 +19,14 @@ sources:
     retrieved: 2026-10-27
     supports: []
   - url: https://theorywellness.org/product/brownie-scout-strain/
-    title: "Theory Wellness: Brownie Scout Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Brownie Scout Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/platinum-gsc
+    title: "Leafly: Platinum GSC strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -33,3 +37,5 @@ updated: 2026-10-27
 Ancestor stub. Parent of Brownie Scout in both versions of its lineage. Not linked to `Girl Scout Cookies`: no source
 read says what this cut's parents are. "Platinum GSC" and "Platinum Cookies" appear in review titles seen in search
 results but aren't confirmed as the same plant, so they aren't aliases yet.
+
+Leafly classifies Platinum Girl Scout Cookies as an indica-dominant hybrid.

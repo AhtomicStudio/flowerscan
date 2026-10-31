@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -22,7 +22,11 @@ sources:
     title: "The Highest Critic: Antheia Farms: Golden Pineapple (Haze4Dayz, 2026-03-07)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/pineapple-kush
+    title: "Leafly: Pineapple Kush strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -31,4 +35,4 @@ updated: 2026-10-27
 
 ## Curator notes
 Ancestor stub. Father side of Golden Pineapple. Search results show seed companies selling different "Pineapple
-Kush" lines; none were read, so lineage and type stay unknown.
+Kush" lines; none were read, so lineage stays unknown. Leafly classifies Pineapple Kush as an indica-dominant hybrid.

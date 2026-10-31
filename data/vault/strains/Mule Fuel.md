@@ -19,7 +19,7 @@ sources:
     title: "The Highest Critic: Strain Review: Mule Fuel by Sugarbud (Terple Grapes, 2021-09-23)"
     retrieved: 2026-10-27
     supports: [parents, reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

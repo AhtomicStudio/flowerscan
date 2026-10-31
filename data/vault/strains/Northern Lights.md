@@ -31,9 +31,9 @@ sources:
     title: "High Times: Winter Weed: 14 Best Strains to Get You Through the Cold (M. Miller, 2016-12-19)"
     retrieved: 2026-10-26
     supports: [reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Northern Lights

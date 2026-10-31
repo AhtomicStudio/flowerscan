@@ -19,9 +19,9 @@ sources:
     title: "The Highest Critic: Strain review: Cereal Milk by Powerzzzup Genetics (thefirescale, 2020-07-18)"
     retrieved: 2026-10-26
     supports: [parents, reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Cereal Milk

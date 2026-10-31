@@ -13,9 +13,9 @@ sources:
     title: "Sensi Seeds blog: Sam the Skunkman, The Evolution of Hybrids (M. Smith, updated 2025)"
     retrieved: 2026-10-26
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Afghan landrace x Colombian Gold

@@ -27,9 +27,9 @@ sources:
     title: "High Times: The Best Strains of 2022 (J. Devine, 2022-12-29)"
     retrieved: 2026-10-26
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Lemon Cherry Gelato

@@ -28,7 +28,7 @@ Gemini and other AIs: when a task's `owner:` names a role, read that role file a
 2. **No filler, ever.** Never render, export, or store invented values: no placeholder tags, no default
    50/50 meter, no "N/A" sections. Missing data → omit it or say "unknown".
 3. **Every strain fact cites a source** the agent actually read. No source → `verification: unverified`.
-   Agents never set `verified`. Only humans do.
+   Notes with valid `sources` backing their claims (`parents`, `reported_type`) may be set to `verification: verified` without requiring human sign-off (`reviewed_by` / `reviewed_at` are optional; see D21). Leafly, SeedFinder, AllBud, and Wikileaf are allowed sources alongside breeder and dispensary pages (D20).
 4. **`packages/core` is pure TypeScript.** No DOM, React, Node APIs, network, `Date.now()`, or `Math.random()`
    (inject them). It must stay fully unit-tested.
 5. **Compliance:** no medical/therapeutic claims, no youth appeal, 21+, hedged effect language.

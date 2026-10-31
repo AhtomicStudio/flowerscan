@@ -27,9 +27,9 @@ sources:
     title: "High Times: 4 Minutes and 20 Seconds with Sherbinski, Iconic Strain Cultivator (T.H. Caeczar, 2018-12-28)"
     retrieved: 2026-10-26
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Gelato #41

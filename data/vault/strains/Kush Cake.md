@@ -23,7 +23,7 @@ sources:
     title: "The Highest Critic: Strain Review: Kush Cake by Preferred Gardens (cannasseur777, 2021-10-10)"
     retrieved: 2026-10-27
     supports: [parents, reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

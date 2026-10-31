@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,7 +18,11 @@ sources:
     title: "High Times: 3 Fuel-Forward Strains to Heat Up Summer (E. Holland, 2022-06-07)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/black-lime-special-reserve
+    title: "Leafly: Black Lime Special Reserve strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -28,3 +32,5 @@ updated: 2026-10-27
 ## Curator notes
 Ancestor stub. A parent of Cherry Limeade in High Times (2022). The Highest Critic writes "Black Lime" for the same
 parent; not an alias until a source confirms they're the same plant.
+
+Leafly classifies Black Lime Reserve as an indica-dominant hybrid.

@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -19,10 +19,14 @@ sources:
     retrieved: 2026-10-27
     supports: []
   - url: https://theorywellness.org/?p=55622
-    title: "Theory Wellness: Blueberry Muffin Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Blueberry Muffin Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/purple-panty-dropper
+    title: "Leafly: Purple Panty Dropper strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -37,3 +41,5 @@ The same catalog has a "P.P.D." entry (indica dominant; Matanuska Mist x Oregon 
 which is very likely this plant under a shortened name. I couldn't read a page that says so (the breeder's site was
 blocked), so the P.P.D. data isn't used and "P.P.D." isn't an alias yet. The catalog also offers P.P.D. as an
 autoflower; any autoflower version is out of scope (P1) and not this node.
+
+Leafly classifies Purple Panty Dropper as an indica-dominant hybrid.

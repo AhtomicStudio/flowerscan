@@ -7,7 +7,7 @@ aliases: ["South Florida OG"]
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -22,9 +22,13 @@ sources:
     title: "Seeds Here Now blog: Permanent Marker Strain Review (J. Bean, 2024-03-06, updated 2026-10-07)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/triangle-kush
+    title: "Leafly: Triangle Kush strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Triangle Kush
@@ -35,3 +39,5 @@ treated as the same plant here. Parent of Wedding Cake (one version) and Biscott
 parents or type; lineages for it exist in databases whose terms I couldn't use.
 
 **Alias check for founders:** if South Florida OG and Triangle Kush turn out to be distinct cuts, split them.
+
+Leafly classifies Triangle Kush as an indica-dominant cultivar.

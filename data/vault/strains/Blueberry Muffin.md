@@ -20,10 +20,10 @@ sources:
     retrieved: 2026-10-27
     supports: [parents, reported_type]
   - url: https://theorywellness.org/?p=55622
-    title: "Theory Wellness: Blueberry Muffin Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Blueberry Muffin Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

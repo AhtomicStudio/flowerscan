@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -19,10 +19,14 @@ sources:
     retrieved: 2026-10-27
     supports: []
   - url: https://theorywellness.org/?p=55622
-    title: "Theory Wellness: Blueberry Muffin Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Blueberry Muffin Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/razzleberry
+    title: "Leafly: Razzleberry strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -32,3 +36,5 @@ updated: 2026-10-27
 ## Curator notes
 Ancestor stub. Father side of Blueberry Muffin; both sources spell it "Razzle Berry". Lineage, type and breeder not
 sourced yet.
+
+Leafly classifies Razzle Berry as an indica-dominant hybrid.

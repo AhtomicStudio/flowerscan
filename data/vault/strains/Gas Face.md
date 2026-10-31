@@ -20,10 +20,10 @@ sources:
     retrieved: 2026-10-27
     supports: [parents, reported_type, effects]
   - url: https://theorywellness.org/product/gas-face-strain/
-    title: "Theory Wellness: Gas Face Strain (dispensary product page)"
+    title: "Theory (theorywellness.org): Gas Face Strain (dispensary product page)"
     retrieved: 2026-10-27
     supports: [reported_type, effects]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

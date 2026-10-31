@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,12 +18,16 @@ sources:
     title: "Seeds Here Now: Garlic Breath clone (ACC listing)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/mendo-breath
+    title: "Leafly: Mendo Breath strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Mendo Breath
 
 ## Curator notes
-Ancestor stub. Parent of Garlic Breath. Lineage and type not sourced yet.
+Ancestor stub. Parent of Garlic Breath. Lineage not sourced yet. Leafly classifies Mendo Breath as an indica-dominant hybrid.

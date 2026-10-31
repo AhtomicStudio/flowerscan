@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -22,7 +22,11 @@ sources:
     title: "The Highest Critic: Cultivar Review: Love Potion by Smoken Promises (yieldisdead, 2025-08-23)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://en.seedfinder.eu/strain-info/Glitter_Bomb/Compound_Genetics/
+    title: "SeedFinder: Glitter Bomb (Compound Genetics) strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -32,3 +36,5 @@ updated: 2026-10-27
 ## Curator notes
 Ancestor stub. Father of Glitter Bomb. Seeds Here Now describes it as OGKB crossed with Blueberry Headband but leaves
 the breeder unnamed; that's one retailer blog, so `parents` stays `unknown` for now.
+
+SeedFinder describes OGKB Blueberry Headband as an indica-dominant hybrid.

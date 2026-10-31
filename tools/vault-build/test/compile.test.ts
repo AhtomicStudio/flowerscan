@@ -426,22 +426,26 @@ describe("fixture vocabulary", () => {
 });
 
 describe("founder review fields (T-029)", () => {
-  it("errors on a verified note without reviewed_by and reviewed_at", () => {
-    const result = compile([
+  it("accepts a verified note without reviewed_by and reviewed_at when sourced, and errors if only one is set", () => {
+    const ok = compile([
       landrace("Northvale Highland", "northvale-highland", {
         reviewed_by: undefined,
         reviewed_at: null,
       }),
     ]);
-    expect(describeIssues(result.issues, "error")).toEqual([
+    expect(describeIssues(ok.issues, "error")).toEqual([]);
+    const mismatch = compile([
+      landrace("Northvale Highland", "northvale-highland", {
+        reviewed_by: "Fictional Founder",
+        reviewed_at: null,
+      }),
+    ]);
+    expect(describeIssues(mismatch.issues, "error")).toEqual([
       expect.stringMatching(
-        /^schema vault\/landraces\/Northvale Highland\.md reviewed_by: a verified node needs/,
-      ),
-      expect.stringMatching(
-        /^schema vault\/landraces\/Northvale Highland\.md reviewed_at: a verified node needs/,
+        /^schema vault\/landraces\/Northvale Highland\.md reviewed_at: reviewed_at is required with reviewed_by/,
       ),
     ]);
-    expect(result.data).toBeNull();
+    expect(mismatch.data).toBeNull();
   });
 
   it("accepts unreviewed unverified and disputed notes, and exposes the graph for vault:review", () => {

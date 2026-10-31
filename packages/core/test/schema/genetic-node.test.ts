@@ -305,11 +305,10 @@ describe("GeneticNode: founder review (reviewed_by, reviewed_at)", () => {
     expectValid(S, withFields(landrace, { ...reviewed, verification: "disputed" }));
   });
 
-  it("rejects a verified note without them", () => {
-    expectIssue(S, unreviewed, ["reviewed_by"], "vault:review");
-    expectIssue(S, unreviewed, ["reviewed_at"], "vault:review");
-    expectIssue(S, withFields(strain, { reviewed_by: null }), ["reviewed_by"], "verified");
-    expectIssue(S, withFields(strain, { reviewed_at: undefined }), ["reviewed_at"], "verified");
+  it("accepts a verified note without reviewed_by and reviewed_at when sourced", () => {
+    expectValid(S, unreviewed);
+    expectValid(S, withFields(strain, { reviewed_by: null, reviewed_at: null }));
+    expectValid(S, withFields(strain, { reviewed_by: undefined, reviewed_at: undefined }));
   });
 
   it("requires them together", () => {

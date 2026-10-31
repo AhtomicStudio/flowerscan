@@ -15,9 +15,16 @@
     "@flowerscan/core": "workspace:*",
     "@fontsource-variable/archivo": "catalog:",
     "@fontsource-variable/inter": "catalog:",
+    "@tesseract.js-data/eng": "catalog:",
+    "barcode-detector": "catalog:",
+    "dexie": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "zod": "catalog:"
+    "tesseract.js": "catalog:",
+    "tesseract.js-core": "catalog:",
+    "zod": "catalog:",
+    "zustand": "catalog:",
+    "zxing-wasm": "catalog:"
   },
   "devDependencies": {
     "@playwright/test": "catalog:",
@@ -29,6 +36,7 @@
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-basic-ssl": "catalog:",
     "@vitejs/plugin-react": "catalog:",
+    "fake-indexeddb": "catalog:",
     "jsdom": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",

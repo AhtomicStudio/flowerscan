@@ -1,6 +1,6 @@
 import type { StrainRecord } from "@flowerscan/core";
 import { type ReactNode, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { currentNavState, goBack, returnToSearch } from "../../app/router";
+import { currentNavState, goBack, returnHome, returnToSearch } from "../../app/router";
 import { useStrainData } from "../../data/data-context";
 import type { StrainData } from "../../data/load-data";
 import { BetaNotice } from "../../ui/BetaNotice";
@@ -13,6 +13,7 @@ import { useFocusOnMount } from "../../ui/use-focus-on-mount";
 import { useLargeText } from "../../ui/use-large-text";
 import { RESULT_COPY } from "./copy";
 import { ResultDetails } from "./ResultDetails";
+import { PACKAGE_RESULT_ID, recordFromPackageSays } from "./result-model";
 
 /** `/s/:id`: the full-screen class-color answer (D13), with the details below the fold. */
 export function ResultScreen({ id }: { id: string }) {
@@ -26,10 +27,14 @@ export function ResultScreen({ id }: { id: string }) {
       </PageShell>
     );
   }
-  const record = state.data.byId.get(id);
+  const navPkg = currentNavState().packageResult;
+  const record =
+    id === PACKAGE_RESULT_ID && navPkg !== undefined
+      ? recordFromPackageSays(navPkg.label, navPkg.name)
+      : state.data.byId.get(id);
   if (record === undefined) return <StrainNotFound />;
   // Keyed by id: a family-tree link to another strain replays the flood and resets the details.
-  return <ResultView key={record.id} record={record} data={state.data} />;
+  return <ResultView key={`${record.id}:${record.name}`} record={record} data={state.data} />;
 }
 
 function ResultView({ record, data }: { record: StrainRecord; data: StrainData }) {
@@ -41,6 +46,7 @@ function ResultView({ record, data }: { record: StrainRecord; data: StrainData }
   const root = useRef<HTMLElement>(null);
   const [flooded, setFlooded] = useState(false);
   const [origin] = useState(() => currentNavState().flood ?? { x: 0.5, y: 0.45 });
+  const [learned] = useState(() => currentNavState().learned === true);
   const [circle, setCircle] = useState<{ left: number; top: number; size: number } | null>(null);
   const largeText = useLargeText();
   const announce = useAnnounce();
@@ -165,6 +171,7 @@ function ResultView({ record, data }: { record: StrainRecord; data: StrainData }
             data={data}
             headingRef={detailsHeading}
             footerInPanel={largeText}
+            learnedBarcode={learned}
           />
         </div>
         <div className="flex-none bg-(--cls) px-5 pt-1 pb-[calc(env(safe-area-inset-bottom)+14px)]">
@@ -172,13 +179,13 @@ function ResultView({ record, data }: { record: StrainRecord; data: StrainData }
           {!largeText && (
             <p className="mb-2 text-center font-semibold text-caption">{RESPONSIBLE_FOOTER}</p>
           )}
+          {/* Scan another (D6, D16): straight back to the live scanner. Save joins it with T-015. */}
           <button
             type="button"
-            onClick={() => returnToSearch({ reset: true })}
+            onClick={returnHome}
             className="pressable flex min-h-[52px] w-full items-center justify-center gap-2 rounded-(--radius-md) bg-(--color-on-class) px-5 font-semibold text-(--cls)"
           >
-            <Icon name="search" size={18} className="max-[340px]:hidden" />
-            {RESULT_COPY.searchAnother}
+            {RESULT_COPY.scanAnother}
           </button>
         </div>
       </div>

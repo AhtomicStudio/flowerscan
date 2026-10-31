@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -22,9 +22,13 @@ sources:
     title: "Cannabis Now: OG Kush: A Phenotype by Any Other Name Would Smell As Sweet (M. Colbert, 2025-06-10)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/larry-og
+    title: "Leafly: Larry OG strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Larry OG
@@ -33,3 +37,5 @@ updated: 2026-10-26
 Ancestor stub. Parent of Purple Punch and, in Sherbinski's account, the mother of Pink Panties (a Larry OG "Ish
 Cut"). Cannabis Now (2025) lists it among the OG Kush phenotypes sold. Its own lineage isn't sourced, so it is not
 linked to OG Kush yet.
+
+Leafly classifies Larry OG as an indica-dominant hybrid.

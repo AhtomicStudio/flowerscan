@@ -27,9 +27,9 @@ sources:
     title: "Neptune Seed Bank: Zkittlez products (listing)"
     retrieved: 2026-10-26
     supports: [parents, reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Zkittlez

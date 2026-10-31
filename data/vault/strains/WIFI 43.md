@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica-dominant
 breeder: null
 effects: []
 flavors: []
@@ -18,7 +18,11 @@ sources:
     title: "Willamette Week: Strain Review: Orange 43 by Cultivated Industries (M. Stangel, 2017-02-20)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/white-fire-43
+    title: "Leafly: White Fire 43 strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -30,3 +34,5 @@ Ancestor stub. Mother of Orange 43 per Willamette Week (2017): a clone-only numb
 seed run in Los Angeles. As a numbered selection it would be a `pheno` of its seed line, but the seed line isn't
 named, so `parents` is `unknown`. Klutch Cannabis writes "White Fire 43" for Orange 43's mother; see the Orange 43
 note for that dispute.
+
+Leafly classifies WIFI 43 (White Fire 43) as an indica-dominant hybrid.

@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: balanced
 breeder: null
 effects: []
 flavors: []
@@ -18,9 +18,13 @@ sources:
     title: "Seeds Here Now blog: Georgia Pie strain review (Chris A, 2024-03-05)"
     retrieved: 2026-10-26
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/gelatti
+    title: "Leafly: Gelatti strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-26
-updated: 2026-10-26
+updated: 2026-10-27
 ---
 
 # Gelatti
@@ -28,3 +32,5 @@ updated: 2026-10-26
 ## Curator notes
 Ancestor stub. Parent of Georgia Pie. Lineage and type not sourced yet (search results suggest a Gelato x
 Biscotti cross; not opened, not used).
+
+Leafly classifies Gelatti as a balanced hybrid.

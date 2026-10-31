@@ -13,7 +13,7 @@ sources:
     title: "The Highest Critic: Cultivar Review: Gas Face by Fenario Farms (Dank Maven, 2025-03-05)"
     retrieved: 2026-10-27
     supports: [parents]
-verification: unverified
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---

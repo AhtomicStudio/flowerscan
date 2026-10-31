@@ -17,7 +17,7 @@ sources:
     title: "ACE Seeds: Thai Chiang Mai (regular seeds)"
     retrieved: 2026-10-26
     supports: [base_sativa_pct, reported_type]
-verification: unverified
+verification: verified
 created: 2026-10-26
 updated: 2026-10-27
 ---

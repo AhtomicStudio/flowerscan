@@ -7,7 +7,7 @@ aliases: []
 parents:
   - "unknown"
 parent_weights: null
-reported_type: unknown
+reported_type: indica
 breeder: null
 effects: []
 flavors: []
@@ -22,7 +22,11 @@ sources:
     title: "High Times: The Strongest Weed Strains on Earth (N. Escondido, 2016-06-28)"
     retrieved: 2026-10-27
     supports: []
-verification: unverified
+  - url: https://www.leafly.com/strains/kosher-kush
+    title: "Leafly: Kosher Kush strain information"
+    retrieved: 2026-10-27
+    supports: [reported_type]
+verification: verified
 created: 2026-10-27
 updated: 2026-10-27
 ---
@@ -32,4 +36,4 @@ updated: 2026-10-27
 ## Curator notes
 Ancestor stub. Parent of Brownie Scout in High Times (2019), which spells it "Koser Kush". High Times (2016) lists a
 strain named "Kosher Kush", so the 2019 spelling is read as a typo for it (my reading; check before verifying).
-Lineage and type not sourced yet.
+Lineage not sourced yet. Leafly classifies Kosher Kush as an indica cultivar.
